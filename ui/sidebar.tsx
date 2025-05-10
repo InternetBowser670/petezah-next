@@ -3,13 +3,19 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
+  const searchParams = useSearchParams();
+  
   const [sidebarToggled, setSidebarToggled] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [sidebarTab, setSidebarTab] = useState(decodeURIComponent(searchParams.get("tab") || "/"));
 
-  const pathname = usePathname();
+  console.log(sidebarTab)
+
+  const router = useRouter();
+
 
   useEffect(() => {
     setMounted(true);
@@ -28,30 +34,37 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
     url: string;
     icon: string;
   }) {
+    function handleClick() {
+      setSidebarTab(url);
+      router.push(`${url}?tab=${encodeURIComponent((url))}`);
+    }
+    
     return (
       <>
         <li
+          onClick={handleClick}
           className={clsx(
             !sidebarToggled && "aspect-square w-[10%]",
-            "max-w-[90%] h-[40px] flex items-center p-2 rounded-2xl disable-no-m-p pl-8 hover:bg-white hover:text-black m-2!",
+            "max-w-[90%] h-[40px] flex items-center py-6! rounded-2xl disable-no-m-p pl-8 hover:bg-white hover:text-black m-2!",
             !sidebarToggled &&
               "justify-center content-center items-center w-[60%] aspect-square",
-            pathname === url && "bg-white text-black"
+          (sidebarTab === url) && "bg-white text-black"
           )}
         >
-          <Link
-            href={url}
+          <button
+            type="button"
+            onClick={handleClick}
             className={clsx(
-              "w-full disable-no-m-p",
+              "w-full h-full my-6! disable-no-m-p",
               !sidebarToggled && "flex justify-center",
               sidebarToggled && "flex"
             )}
           >
-            <div className={clsx("flex disable-no-m-p box-content ml-8",)}>
+            <div className={clsx("flex items-center disable-no-m-p box-content ml-8",)}>
               <span className="ml-2! nav-icon material-symbols-rounded">{icon}</span>
               {sidebarToggled && <span className="ml-2! nav-label disable-no-m-p">{title}</span>}
             </div>
-          </Link>
+          </button>
         </li>
       </>
     );

@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import Particles from "@/ui/particles";
 import Sidebar from "@/ui/sidebar";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "PeteZah",
@@ -80,7 +81,7 @@ export default function RootLayout({
       <body>
         <Particles />
         <div className="flex p-2 main-container">
-          <Sidebar>{children}</Sidebar>
+          <Suspense><Sidebar>{children}</Sidebar></Suspense>
         </div>
 
         {/* Changelogfy Widget */}

@@ -1,3 +1,15 @@
+*:not(.disable-no-m-p) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.disable-no-m-p {
+  margin: initial;
+  padding: initial;
+}
+
 @import "tailwindcss";
 
 :root {
@@ -23,4 +35,205 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #04041d;
+  overflow: hidden;
+}
+.sidebar {
+  border-radius: 16px;
+  background: #151a2d;
+  transition: all 0.4s ease;
+  border: 1px solid white;
+  border-radius: 16px;
+  margin-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+.sidebar.collapsed {
+  width: 85px;
+}
+
+.sidebar-header {
+  position: relative;
+  padding: 25px 20px;
+}
+
+.sidebar .sidebar-header {
+  position: relative;
+  padding: 25px 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar.collapsed .sidebar-header .toggler {
+  transform: translate(2px, 0.1px);
+}
+.sidebar-header .toggler:hover {
+  background: #dde4fb;
+}
+.sidebar-header .toggler span {
+  font-size: 1.75rem;
+  transition: 0.4s ease;
+}
+
+.sidebar-header .header-logo img {
+  width: 46px;
+  height: 46px;
+  display: block;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.sidebar-header .toggler {
+  height: 35px;
+  width: 35px;
+  color: #151a2d;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: 0.4s ease;
+}
+.sidebar-header .sidebar-toggler {
+  position: absolute;
+  right: 20px;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    height: 56px;
+    margin: 13px;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: calc(100% - 26px);
+    max-height: calc(100vh - 26px);
+  }
+  .sidebar.menu-active {
+    overflow-y: auto;
+  }
+  .sidebar .sidebar-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-radius: 16px;
+    background: #151a2d;
+    padding: 8px 10px;
+  }
+  .sidebar-header .sidebar-toggler,
+  .sidebar-nav .nav-item:hover .nav-tooltip {
+    display: none;
+  }
+
+  .sidebar-header .menu-toggler span {
+    font-size: 1.3rem;
+  }
+  .sidebar .sidebar-nav .nav-list {
+    padding: 10px;
+  }
+  .sidebar-nav .nav-link {
+    padding: 10px;
+    font-size: 0.94rem;
+  }
+  .sidebar-nav .nav-link .nav-icon {
+    font-size: 1.37rem;
+  }
+  .sidebar-nav .secondary-nav {
+    position: relative;
+    bottom: 0;
+    margin: 40px 0 30px;
+  }
+}
+.main-content {
+  border: 1px solid white;
+  background: #151a2d;
+  height: calc(100vh - 32px);
+  margin-bottom: 16px;
+  margin-top: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: calc(100% - 101px); /* Adjusted width for collapsed sidebar */
+  border-radius: 16px;
+  transition: margin-left 0.4s ease, width 0.4s ease;
+}
+.main-content.sidebar-expanded {
+  width: calc(100% - 290px);
+}
+.mainiframe-container {
+  width: 90%;
+  height: 90%;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 5;
+  border-radius: 16px;
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.2;
+}
+.particle {
+  position: absolute;
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: floatParticle 8s infinite ease-in-out;
+  opacity: 0.1;
+  border: 1px solid lightblue;
+}
+@keyframes floatParticle {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(50px, -100px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-30px, -200px);
+    opacity: 0;
+  }
+}
+
+.sidebar-nav .nav-link.active {
+  color: #151a2d;
+  background: #fff;
+}
+
+.sidebar-nav .nav-item {
+  position: relative;
+}
+
+.sidebar-nav .nav-item:hover .nav-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(50%);
+  transition: all 0.4s ease;
+}
+
+.sidebar-nav .nav-item:hover .nav-tooltip {
+  display: none;
+}
+
+.sidebar-nav .nav-link:hover {
+  color: #151a2d;
+  background: #fff;
 }

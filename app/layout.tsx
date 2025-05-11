@@ -44,6 +44,11 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
+        <meta name="description" content="Pete Zah, game on" />
+        <meta
+          name="keywords"
+          content="Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah"
+        />
         <meta charSet="utf-8" />
         <meta
           name="viewport"
@@ -81,7 +86,9 @@ export default function RootLayout({
       <body>
         <Particles />
         <div className="flex p-2 main-container">
-          <Suspense><Sidebar>{children}</Sidebar></Suspense>
+          <Suspense>
+            <Sidebar>{children}</Sidebar>
+          </Suspense>
         </div>
 
         {/* Changelogfy Widget */}

@@ -8,7 +8,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   
-  const [sidebarToggled, setSidebarToggled] = useState(true);
+  const sidebarToggledParam = searchParams.get("sidebarToggled");
+  const [sidebarToggled, setSidebarToggled] = useState(sidebarToggledParam !== null ? decodeURIComponent(sidebarToggledParam) === "true" : true);
   const [mounted, setMounted] = useState(false);
   const [sidebarTab, setSidebarTab] = useState(decodeURIComponent(searchParams.get("tab") || "/"));
 
@@ -19,9 +20,15 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
     setMounted(true);
   }, []);
 
-  function toggleSidebar() {
+  const toggleSidebar = () => {
+    const newValue = !sidebarToggled;
+    const params = new URLSearchParams(window.location.search);
+    params.set('sidebarToggled', String(newValue));
     setSidebarToggled(!sidebarToggled);
-  }
+    window.history.replaceState(null, '', `?${params.toString()}`);
+    setSidebarToggled(newValue);
+  };
+
 
   function NavbarLink({
     title,
@@ -32,9 +39,12 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
     url: string;
     icon: string;
   }) {
+
     function handleClick() {
+      const params = new URLSearchParams(window.location.search);
+      params.set('tab', encodeURIComponent(url));
       setSidebarTab(url);
-      router.push(`${url}?tab=${encodeURIComponent((url))}`);
+      router.push(`${url}?${params.toString()}`);
     }
     
     return (
@@ -53,14 +63,14 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             type="button"
             onClick={handleClick}
             className={clsx(
-              "w-full h-full my-6! disable-no-m-p",
-              !sidebarToggled && "flex justify-center",
-              sidebarToggled && "flex"
+              "disable-no-m-p",
+              !sidebarToggled && "flex justify-center aspect-square!",
+              sidebarToggled && "flex ml-2!"
             )}
           >
-            <div className={clsx("flex items-center disable-no-m-p box-content ml-8",)}>
-              <span className="ml-2! nav-icon material-symbols-rounded">{icon}</span>
-              {sidebarToggled && <span className="ml-2! nav-label disable-no-m-p">{title}</span>}
+            <div className={clsx("flex items-center justify-center disable-no-m-p box-content",)}>
+              <span className="nav-icon material-symbols-rounded">{icon}</span>
+              {sidebarToggled && <span className="nav-label disable-no-m-p">{title}</span>}
             </div>
           </button>
         </li>
@@ -117,10 +127,10 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           )}
         </header>
 
-        <hr />
+        <hr className={clsx(!sidebarToggled && "w-[80%] ml-[10%]!", sidebarToggled && "w-[90%] ml-[5%]!")} />
 
         <nav className="mt-0 sidebar-nav ">
-          <ul className="pl-2! my-2 nav-list primary-nav">
+          <ul className={clsx("my-2 nav-list primary-nav", !sidebarToggled && "flex flex-col items-center")}>
             <NavbarLink title="Home" icon="Home" url="/" />
             <NavbarLink title="Games" icon="sports_esports" url="/g" />
             <NavbarLink title="Apps" icon="apps" url="/a" />
@@ -131,9 +141,9 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             />
           </ul>
           
-          <hr />
+          <hr className={clsx(!sidebarToggled && "w-[80%] ml-[10%]!", sidebarToggled && "w-[90%] ml-[5%]!")} />
 
-          <ul className="nav-list secondary-nav">
+          <ul className={clsx("my-2 nav-list secondary-nav", !sidebarToggled && "flex flex-col items-center")}>
             <NavbarLink
               title="Profile"
               icon="account_circle"

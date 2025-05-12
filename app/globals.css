@@ -68,20 +68,39 @@ body {
   justify-content: space-between;
 }
 
-.sidebar.collapsed .sidebar-header .toggler {
-  transform: translate(2px, 0.1px);
-}
-.sidebar-header .toggler:hover {
-  background: #dde4fb;
-}
 .sidebar-header .toggler span {
   font-size: 1.75rem;
   transition: 0.4s ease;
 }
 
+.sidebar-header .toggler span {
+	font-size: 1.75rem;
+	transition: 0.4s ease;
+}
+.sidebar.collapsed .sidebar-header .toggler span {
+	transform: rotate(180deg);
+}
+
+.spacer {
+  height: 20px;
+  transition: height 0.3s ease, margin 0.3s ease;
+
+}
+
+.spacer.nospacer {
+  height: 0;
+  margin-top: 0;
+}
+
+.spacer.spacer-margin-top {
+  margin-top: 20px;
+}
+
+.spacer.spacer-margin-top.nospacer {
+  margin-top: 0px;
+}
+
 .sidebar-header .header-logo img {
-  width: 46px;
-  height: 46px;
   display: block;
   object-fit: contain;
   border-radius: 50%;
@@ -100,9 +119,18 @@ body {
   border-radius: 8px;
   transition: 0.4s ease;
 }
+
+.sidebar.collapsed .sidebar-header .toggler {
+	transform: translate(3px, 50px);
+}
+
+.sidebar.sidebar-expanded .sidebar-header .toggler {
+	transform: translate(200px, 0px);
+}
+
 .sidebar-header .sidebar-toggler {
-  position: absolute;
-  right: 20px;
+	position: absolute;
+	right: 20px;
 }
 
 @media (max-width: 1024px) {
@@ -125,6 +153,11 @@ body {
     background: #151a2d;
     padding: 8px 10px;
   }
+
+  .nav-label {
+    transform: all 0.3s ease;
+  }
+
   .sidebar-header .sidebar-toggler,
   .sidebar-nav .nav-item:hover .nav-tooltip {
     display: none;

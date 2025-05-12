@@ -70,7 +70,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           >
             <div className={clsx("flex items-center justify-center disable-no-m-p box-content",)}>
               <span className="nav-icon material-symbols-rounded">{icon}</span>
-              {sidebarToggled && <span className="nav-label disable-no-m-p">{title}</span>}
+               <span className={clsx("nav-label disable-no-m-p", !sidebarToggled && "opacity-0 hidden")}>{title}</span>
             </div>
           </button>
         </li>
@@ -88,8 +88,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       >
         <header
           className={clsx(
-            "sidebar-header",
-            sidebarToggled ? "flex justify-between items-center" : ""
+            "sidebar-header flex justify-between"
           )}
         >
           <Link
@@ -103,29 +102,17 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               alt="PeteZah"
             />
           </Link>
-          {!sidebarToggled && <br />}
-          {sidebarToggled ? (
-            <>
-              <button
-                className="toggler sidebar-toggler w-[40px] bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300"
+          <div className={clsx("spacer mt-20px!", { nospacer: sidebarToggled })}></div>
+          <button
+                className="toggler w-[40px] absolute bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300"
                 type="button"
                 onClick={toggleSidebar}
               >
                 <span className="material-symbols-rounded">chevron_left</span>
               </button>
-            </>
-          ) : (
-            <>
-              <button
-                className="toggler menu-toggler w-[40px] bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300"
-                type="button"
-                onClick={toggleSidebar}
-              >
-                <p className="material-symbols-rounded">menu</p>
-              </button>
-            </>
-          )}
         </header>
+
+        <div className={clsx("spacer spacer-margin-top", { nospacer: sidebarToggled })}></div>
 
         <hr className={clsx(!sidebarToggled && "w-[80%] ml-[10%]!", sidebarToggled && "w-[90%] ml-[5%]!")} />
 

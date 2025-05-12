@@ -83,7 +83,7 @@ export default function RootLayout({
           href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
         />
       </head>
-      <body>
+      <body className="text-[#ededed] bg-[#0a0a0a]">
         <Particles />
         <div className="flex p-2 main-container">
           <Suspense>

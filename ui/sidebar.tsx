@@ -52,10 +52,10 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         <li
           onClick={handleClick}
           className={clsx(
-            !sidebarToggled && "aspect-square w-[10%]",
-            "max-w-[90%] h-[40px] flex items-center py-6! rounded-2xl disable-no-m-p pl-8 hover:bg-white hover:text-black m-2!",
+            !sidebarToggled && "aspect-square w-[50px]!",
+            "max-w-[90%] h-[50px] flex rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
             !sidebarToggled &&
-              "justify-center content-center items-center w-[60%] aspect-square",
+              "w-[60%] aspect-square translate-x-[8px] transition-transform",
           (sidebarTab === url) && "bg-white text-black"
           )}
         >
@@ -64,13 +64,13 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             onClick={handleClick}
             className={clsx(
               "disable-no-m-p",
-              !sidebarToggled && "flex justify-center aspect-square!",
+              !sidebarToggled && "flex justify-center h-full aspect-square! ",
               sidebarToggled && "flex ml-2!"
             )}
           >
             <div className={clsx("flex items-center justify-center disable-no-m-p box-content",)}>
               <span className="nav-icon material-symbols-rounded">{icon}</span>
-               <span className={clsx("nav-label disable-no-m-p", !sidebarToggled && "opacity-0 hidden")}>{title}</span>
+               <span className={clsx("nav-label disable-no-m-p ml-2!", !sidebarToggled && "opacity-0 hidden", sidebarToggled && "opacity-100 ")}>{title}</span>
             </div>
           </button>
         </li>
@@ -114,10 +114,10 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
         <div className={clsx("spacer spacer-margin-top", { nospacer: sidebarToggled })}></div>
 
-        <hr className={clsx(!sidebarToggled && "w-[80%] ml-[10%]!", sidebarToggled && "w-[90%] ml-[5%]!")} />
+        <hr className={clsx(!sidebarToggled && "w-[80%] ml-[10%]!", sidebarToggled && "w-[90%] ml-[5%]!", "transition-all")} />
 
         <nav className="mt-0 sidebar-nav ">
-          <ul className={clsx("my-2 nav-list primary-nav", !sidebarToggled && "flex flex-col items-center")}>
+          <ul className={clsx("my-2 nav-list primary-nav")}>
             <NavbarLink title="Home" icon="Home" url="/" />
             <NavbarLink title="Games" icon="sports_esports" url="/g" />
             <NavbarLink title="Apps" icon="apps" url="/a" />
@@ -130,7 +130,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           
           <hr className={clsx(!sidebarToggled && "w-[80%] ml-[10%]!", sidebarToggled && "w-[90%] ml-[5%]!")} />
 
-          <ul className={clsx("my-2 nav-list secondary-nav", !sidebarToggled && "flex flex-col items-center")}>
+          <ul className={clsx("my-2 nav-list secondary-nav")}>
             <NavbarLink
               title="Profile"
               icon="account_circle"

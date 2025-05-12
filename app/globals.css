@@ -155,7 +155,7 @@ body {
   }
 
   .nav-label {
-    transform: all 0.3s ease;
+    transition: opacity 0.3s ease;
   }
 
   .sidebar-header .sidebar-toggler,

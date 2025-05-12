@@ -52,7 +52,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         <li
           onClick={handleClick}
           className={clsx(
-            !sidebarToggled && "w-[60%] aspect-square translate-x-[8px] transition-transform aspect-square w-[50px]!",
+            !sidebarToggled && "w-[60%] aspect-square translate-x-[8px] transition-transform aspect-square w-[50px]! items-center!",
             "max-w-[90%] h-[50px] flex items-center rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
           (sidebarTab === url) && "bg-white text-black"
           )}

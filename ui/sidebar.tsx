@@ -62,11 +62,11 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             onClick={handleClick}
             className={clsx(
               "disable-no-m-p",
-              !sidebarToggled && "flex justify-center h-full aspect-square! ",
+              !sidebarToggled && "flex justify-center items-center h-full aspect-square! ",
               sidebarToggled && "flex ml-2!"
             )}
           >
-            <div className={clsx("flex items-center justify-center disable-no-m-p box-content",)}>
+            <div className={clsx("flex h-full items-center justify-center disable-no-m-p box-content",)}>
               <span className="nav-icon material-symbols-rounded">{icon}</span>
                <span className={clsx("nav-label disable-no-m-p ml-2!", !sidebarToggled && "opacity-0 hidden", sidebarToggled && "opacity-100 ")}>{title}</span>
             </div>

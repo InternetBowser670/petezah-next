@@ -83,17 +83,16 @@ export default function RootLayout({
           href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
         />
       </head>
-      <body className="text-[#ededed] bg-[#0a0a0a]">
+      <body className="text-[#ededed] h-full bg-[#0a0a0a]">
         <Particles />
-        <div className="flex p-2 main-container">
-          <Suspense>
-            <Sidebar>{children}</Sidebar>
-          </Suspense>
-        </div>
+        <Suspense>
+          <Sidebar>{children}</Sidebar>
+        </Suspense>
 
-        {/* Changelogfy Widget */}
+        {/* changelog */}
+
         <Script id="changelogfy-config">
-          {`
+        {`
             let CLF_config = {
               app_id: "03599c7b-79db-4651-8efa-90e18b54dabf",
               data: {
@@ -109,8 +108,8 @@ export default function RootLayout({
               }
             };
           `}
-        </Script>
-        <Script async src="https://widget.changelogfy.com/index.js" />
+      </Script>
+      <Script async src="https://widget.changelogfy.com/index.js" />
 
         {/* Scripts */}
         <Script src="/storage/js/index.js" />

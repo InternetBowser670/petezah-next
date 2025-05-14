@@ -1,0 +1,258 @@
+
+monica.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 172, 819
+  size: 127, 200
+  orig: 132, 204
+  offset: 3, 2
+  index: -1
+bow
+  rotate: false
+  xy: 2, 665
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+drop
+  rotate: false
+  xy: 195, 285
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+hand1_1
+  rotate: false
+  xy: 160, 18
+  size: 29, 89
+  orig: 40, 92
+  offset: 6, 2
+  index: -1
+hand1_2
+  rotate: false
+  xy: 154, 109
+  size: 36, 89
+  orig: 40, 92
+  offset: 2, 1
+  index: -1
+hand1_3
+  rotate: false
+  xy: 177, 228
+  size: 29, 50
+  orig: 40, 52
+  offset: 6, 1
+  index: -1
+hand2_1
+  rotate: false
+  xy: 191, 18
+  size: 29, 89
+  orig: 40, 92
+  offset: 6, 2
+  index: -1
+hand2_2
+  rotate: false
+  xy: 192, 109
+  size: 29, 89
+  orig: 40, 92
+  offset: 6, 1
+  index: -1
+hand2_3
+  rotate: false
+  xy: 195, 324
+  size: 29, 50
+  orig: 40, 52
+  offset: 6, 1
+  index: -1
+hat
+  rotate: true
+  xy: 2, 85
+  size: 111, 65
+  orig: 112, 68
+  offset: 1, 2
+  index: -1
+head
+  rotate: false
+  xy: 2, 376
+  size: 233, 287
+  orig: 252, 292
+  offset: 18, 3
+  index: -1
+head_mask_leg
+  rotate: false
+  xy: 69, 88
+  size: 52, 108
+  orig: 56, 112
+  offset: 2, 2
+  index: -1
+head_mask_wing_1_1
+  rotate: false
+  xy: 84, 8
+  size: 43, 78
+  orig: 48, 84
+  offset: 2, 3
+  index: -1
+head_mask_wing_1_2
+  rotate: false
+  xy: 2, 2
+  size: 39, 81
+  orig: 44, 88
+  offset: 3, 3
+  index: -1
+head_mask_wing_2_1
+  rotate: false
+  xy: 133, 200
+  size: 42, 78
+  orig: 48, 84
+  offset: 3, 3
+  index: -1
+head_mask_wing_2_2
+  rotate: false
+  xy: 43, 2
+  size: 39, 81
+  orig: 44, 88
+  offset: 3, 3
+  index: -1
+leg1_1
+  rotate: false
+  xy: 123, 102
+  size: 29, 94
+  orig: 32, 96
+  offset: 2, 1
+  index: -1
+leg1_2
+  rotate: false
+  xy: 129, 6
+  size: 29, 94
+  orig: 32, 96
+  offset: 2, 1
+  index: -1
+leg1_3
+  rotate: false
+  xy: 177, 200
+  size: 46, 26
+  orig: 48, 32
+  offset: 1, 3
+  index: -1
+leg2_1
+  rotate: false
+  xy: 133, 280
+  size: 29, 94
+  orig: 32, 96
+  offset: 2, 1
+  index: -1
+leg2_2
+  rotate: false
+  xy: 164, 280
+  size: 29, 94
+  orig: 32, 96
+  offset: 2, 1
+  index: -1
+leg2_3
+  rotate: true
+  xy: 208, 237
+  size: 46, 26
+  orig: 48, 32
+  offset: 1, 3
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 172, 683
+  size: 107, 134
+  orig: 136, 215
+  offset: 18, 15
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 172, 680
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_monica
+  rotate: false
+  xy: 2, 198
+  size: 129, 176
+  orig: 252, 292
+  offset: 62, 74
+  index: -1

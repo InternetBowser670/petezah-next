@@ -1,0 +1,81 @@
+{
+    "damage": 35,
+    "zombieDamage": 45,
+    "anchorPoint": {
+        "x": 0.5,
+        "y": 0.6
+    },
+    "boneAngle": 35,
+    "boneShift": {
+        "x": 0,
+        "y": 0
+    },
+    "weaponType": 62,
+    "launchType": 2,
+    "tutorialType": 11,
+    "fatalityActivationType": 7,
+    "isPhysical": 1,
+    "angularVelocity": 0,
+    "isRotateFromDirection": 1,
+    "gravityRatio": 100,
+    "maxSpeed": 2806,
+    "lifeTime": -1,
+    "periodicalDamageInfo": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "weaponType": 0,
+        "frequency": 0,
+        "radius": 0,
+        "damage": 0,
+        "duration": 0,
+        "isSpreadEnabled": 0,
+        "type": 0
+    },
+    "isAccelerationEnabled": 0,
+    "acceleration": 0,
+    "ignoreEmissionAngleForRotation": 0,
+    "bounciness": 0,
+    "decalType": 1,
+    "isUnfollowedAfterActivation": 0,
+    "isDisabledAfterCollision": 0,
+    "unfollowDuration": 6.5,
+    "createSound": "weapon_create",
+    "idleSound": "",
+    "shootSound": "weapon_shoot",
+    "flyingSound": "",
+    "activationSound": "",
+    "activationFlyingSound": "",
+    "groundHitSound": "ground_collision_1",
+    "groundPierceSound": "",
+    "characterHitSound": "character_collision_1",
+    "characterPierceSound": "",
+    "flyOutSound": "",
+    "isRotatingFlyingSound": 0,
+    "whooshDelayBetweenSounds": 0.25,
+    "whooshMinVelocity": 6.5,
+    "whooshMaxVelocity": 35,
+    "isOneTimeActivated": 0,
+    "isPiercing": true,
+    "pirceDistance": -100,
+    "removeBodyAfterCollision": true,
+    "disableAfterHit": true,
+    "missAfterGroundHit": true,
+    "finalizeAfterActivation": false,
+    "disableVelocityLimit": 1,
+    "trail": {
+        "maxPoints": 12,
+        "maxLength": 1000,
+        "alpha": 0.25,
+        "color": "#FFFFFF",
+        "headWidth": 10,
+        "tailScale": 0,
+        "shift": {
+            "x": -300,
+            "y": -10
+        }
+    },
+    "ai": {}
+}

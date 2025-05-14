@@ -1,0 +1,384 @@
+
+necromancer.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 132, 156
+  size: 129, 183
+  orig: 133, 187
+  offset: 2, 2
+  index: -1
+bow
+  rotate: false
+  xy: 2, 668
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+brow1
+  rotate: true
+  xy: 285, 903
+  size: 52, 25
+  orig: 56, 29
+  offset: 2, 2
+  index: -1
+brow2
+  rotate: false
+  xy: 258, 593
+  size: 52, 27
+  orig: 56, 31
+  offset: 2, 2
+  index: -1
+coat_back
+  rotate: true
+  xy: 2, 2
+  size: 128, 145
+  orig: 132, 149
+  offset: 2, 2
+  index: -1
+dead_eyes
+  rotate: true
+  xy: 225, 477
+  size: 91, 27
+  orig: 104, 36
+  offset: 6, 5
+  index: -1
+drop
+  rotate: false
+  xy: 199, 3
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+ear
+  rotate: false
+  xy: 258, 622
+  size: 28, 79
+  orig: 33, 83
+  offset: 2, 2
+  index: -1
+eyes_1
+  rotate: true
+  xy: 285, 485
+  size: 84, 19
+  orig: 104, 36
+  offset: 10, 9
+  index: -1
+eyes_2
+  rotate: true
+  xy: 174, 374
+  size: 96, 13
+  orig: 104, 36
+  offset: 4, 12
+  index: -1
+eyes_3
+  rotate: true
+  xy: 174, 472
+  size: 96, 18
+  orig: 104, 36
+  offset: 4, 9
+  index: -1
+eyes_4
+  rotate: false
+  xy: 227, 571
+  size: 81, 20
+  orig: 104, 36
+  offset: 12, 8
+  index: -1
+eyes_5
+  rotate: false
+  xy: 132, 134
+  size: 91, 20
+  orig: 104, 36
+  offset: 7, 8
+  index: -1
+eyes_6
+  rotate: false
+  xy: 310, 571
+  size: 58, 20
+  orig: 104, 36
+  offset: 23, 8
+  index: -1
+eyes_7
+  rotate: true
+  xy: 306, 485
+  size: 84, 17
+  orig: 104, 36
+  offset: 10, 10
+  index: -1
+hand1_1
+  rotate: false
+  xy: 251, 386
+  size: 29, 89
+  orig: 33, 93
+  offset: 2, 2
+  index: -1
+hand1_2
+  rotate: false
+  xy: 227, 593
+  size: 29, 89
+  orig: 33, 93
+  offset: 2, 2
+  index: -1
+hand1_3
+  rotate: true
+  xy: 312, 594
+  size: 29, 50
+  orig: 33, 54
+  offset: 2, 2
+  index: -1
+hand2_1
+  rotate: false
+  xy: 254, 480
+  size: 29, 89
+  orig: 33, 93
+  offset: 2, 2
+  index: -1
+hand2_2
+  rotate: false
+  xy: 282, 389
+  size: 29, 89
+  orig: 33, 93
+  offset: 2, 2
+  index: -1
+hand2_3
+  rotate: false
+  xy: 303, 851
+  size: 29, 50
+  orig: 33, 54
+  offset: 2, 2
+  index: -1
+head
+  rotate: false
+  xy: 2, 341
+  size: 170, 325
+  orig: 174, 329
+  offset: 2, 2
+  index: -1
+leg1_1
+  rotate: false
+  xy: 189, 376
+  size: 29, 94
+  orig: 33, 98
+  offset: 2, 2
+  index: -1
+leg1_2
+  rotate: false
+  xy: 194, 474
+  size: 29, 94
+  orig: 33, 98
+  offset: 2, 2
+  index: -1
+leg1_3
+  rotate: true
+  xy: 252, 788
+  size: 44, 26
+  orig: 48, 30
+  offset: 2, 2
+  index: -1
+leg2_1
+  rotate: true
+  xy: 209, 345
+  size: 29, 94
+  orig: 33, 98
+  offset: 2, 2
+  index: -1
+leg2_2
+  rotate: false
+  xy: 220, 378
+  size: 29, 94
+  orig: 33, 98
+  offset: 2, 2
+  index: -1
+leg2_3
+  rotate: true
+  xy: 280, 788
+  size: 44, 26
+  orig: 48, 30
+  offset: 2, 2
+  index: -1
+magic_skull
+  rotate: false
+  xy: 172, 902
+  size: 111, 120
+  orig: 115, 124
+  offset: 2, 2
+  index: -1
+mouth_1
+  rotate: false
+  xy: 174, 341
+  size: 33, 31
+  orig: 41, 39
+  offset: 4, 4
+  index: -1
+mouth_2
+  rotate: true
+  xy: 174, 570
+  size: 103, 51
+  orig: 111, 59
+  offset: 4, 4
+  index: -1
+mouth_3
+  rotate: true
+  xy: 288, 625
+  size: 76, 51
+  orig: 84, 59
+  offset: 4, 4
+  index: -1
+mouth_4
+  rotate: true
+  xy: 285, 957
+  size: 65, 59
+  orig: 73, 67
+  offset: 4, 4
+  index: -1
+mouth_5
+  rotate: true
+  xy: 209, 684
+  size: 102, 28
+  orig: 110, 36
+  offset: 4, 4
+  index: -1
+mouth_6
+  rotate: true
+  xy: 152, 42
+  size: 90, 69
+  orig: 98, 77
+  offset: 4, 4
+  index: -1
+mouth_7
+  rotate: true
+  xy: 172, 675
+  size: 111, 35
+  orig: 119, 43
+  offset: 4, 4
+  index: -1
+mouth_8
+  rotate: true
+  xy: 252, 834
+  size: 66, 49
+  orig: 74, 57
+  offset: 4, 4
+  index: -1
+nose
+  rotate: true
+  xy: 149, 5
+  size: 35, 48
+  orig: 39, 52
+  offset: 2, 2
+  index: -1
+shoulder
+  rotate: true
+  xy: 239, 703
+  size: 83, 67
+  orig: 87, 71
+  offset: 2, 2
+  index: -1
+shoulder_skull
+  rotate: false
+  xy: 172, 788
+  size: 78, 112
+  orig: 82, 116
+  offset: 2, 2
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 2, 132
+  size: 128, 207
+  orig: 136, 215
+  offset: 4, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 149, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_necromancer
+  rotate: true
+  xy: 225, 5
+  size: 149, 163
+  orig: 174, 329
+  offset: 2, 82
+  index: -1

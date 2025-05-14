@@ -1,0 +1,62 @@
+
+bird-hunt-box.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_cover
+  rotate: false
+  xy: 2, 204
+  size: 141, 90
+  orig: 143, 92
+  offset: 1, 1
+  index: -1
+01_shadow
+  rotate: true
+  xy: 110, 126
+  size: 76, 26
+  orig: 78, 28
+  offset: 1, 1
+  index: -1
+02_box
+  rotate: false
+  xy: 138, 131
+  size: 32, 32
+  orig: 125, 83
+  offset: 0, 51
+  index: -1
+02_circle
+  rotate: false
+  xy: 220, 89
+  size: 74, 74
+  orig: 76, 76
+  offset: 1, 1
+  index: -1
+03_circle
+  rotate: false
+  xy: 2, 12
+  size: 82, 82
+  orig: 84, 84
+  offset: 1, 1
+  index: -1
+04_circle
+  rotate: false
+  xy: 2, 96
+  size: 106, 106
+  orig: 108, 108
+  offset: 1, 1
+  index: -1
+05_ring
+  rotate: false
+  xy: 110, 62
+  size: 108, 62
+  orig: 108, 62
+  offset: 0, 0
+  index: -1
+06_circle_glow
+  rotate: false
+  xy: 145, 165
+  size: 128, 129
+  orig: 134, 134
+  offset: 3, 2
+  index: -1

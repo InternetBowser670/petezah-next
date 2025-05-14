@@ -1,0 +1,111 @@
+
+dead-duck.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+duck_dead_body
+  rotate: true
+  xy: 129, 345
+  size: 159, 191
+  orig: 159, 191
+  offset: 0, 0
+  index: -1
+duck_dead_eye_1
+  rotate: false
+  xy: 375, 272
+  size: 62, 62
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+duck_dead_eye_2
+  rotate: false
+  xy: 439, 281
+  size: 53, 53
+  orig: 53, 53
+  offset: 0, 0
+  index: -1
+duck_dead_tail
+  rotate: true
+  xy: 129, 26
+  size: 156, 121
+  orig: 156, 121
+  offset: 0, 0
+  index: -1
+duck_dead_tongue
+  rotate: false
+  xy: 129, 2
+  size: 78, 22
+  orig: 78, 22
+  offset: 0, 0
+  index: -1
+duck_dead_willow
+  rotate: false
+  xy: 2, 256
+  size: 125, 248
+  orig: 125, 248
+  offset: 0, 0
+  index: -1
+duck_leg
+  rotate: false
+  xy: 322, 281
+  size: 39, 53
+  orig: 39, 53
+  offset: 0, 0
+  index: -1
+duck_neck
+  rotate: false
+  xy: 322, 421
+  size: 180, 83
+  orig: 180, 83
+  offset: 0, 0
+  index: -1
+duck_nose
+  rotate: false
+  xy: 209, 3
+  size: 77, 21
+  orig: 77, 21
+  offset: 0, 0
+  index: -1
+duck_skeleton_dead_body
+  rotate: true
+  xy: 129, 184
+  size: 159, 191
+  orig: 159, 191
+  offset: 0, 0
+  index: -1
+duck_skeleton_dead_tail
+  rotate: true
+  xy: 252, 26
+  size: 156, 121
+  orig: 156, 121
+  offset: 0, 0
+  index: -1
+duck_skeleton_dead_willow
+  rotate: false
+  xy: 2, 6
+  size: 125, 248
+  orig: 125, 248
+  offset: 0, 0
+  index: -1
+duck_skeleton_leg
+  rotate: false
+  xy: 322, 226
+  size: 39, 53
+  orig: 39, 53
+  offset: 0, 0
+  index: -1
+duck_skeleton_neck
+  rotate: false
+  xy: 322, 336
+  size: 180, 83
+  orig: 180, 83
+  offset: 0, 0
+  index: -1
+duck_skeleton_nose
+  rotate: false
+  xy: 288, 3
+  size: 77, 21
+  orig: 77, 21
+  offset: 0, 0
+  index: -1

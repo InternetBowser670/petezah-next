@@ -1,0 +1,349 @@
+
+thor-odinson.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 181, 135
+  size: 232, 220
+  orig: 236, 224
+  offset: 2, 2
+  index: -1
+bow
+  rotate: false
+  xy: 2, 668
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+clock
+  rotate: false
+  xy: 2, 130
+  size: 177, 237
+  orig: 184, 244
+  offset: 3, 4
+  index: -1
+dead_eyes
+  rotate: false
+  xy: 403, 138
+  size: 82, 27
+  orig: 88, 32
+  offset: 3, 3
+  index: -1
+drop
+  rotate: false
+  xy: 405, 649
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyebrow_left
+  rotate: false
+  xy: 452, 371
+  size: 40, 19
+  orig: 44, 24
+  offset: 2, 3
+  index: -1
+eyebrow_right
+  rotate: true
+  xy: 465, 12
+  size: 40, 19
+  orig: 44, 24
+  offset: 2, 3
+  index: -1
+eyes_1
+  rotate: true
+  xy: 172, 668
+  size: 71, 22
+  orig: 76, 28
+  offset: 2, 3
+  index: -1
+eyes_2
+  rotate: true
+  xy: 365, 49
+  size: 84, 13
+  orig: 88, 20
+  offset: 2, 4
+  index: -1
+eyes_3
+  rotate: false
+  xy: 373, 370
+  size: 77, 20
+  orig: 80, 24
+  offset: 2, 2
+  index: -1
+eyes_4
+  rotate: true
+  xy: 308, 682
+  size: 57, 24
+  orig: 60, 28
+  offset: 2, 2
+  index: -1
+hammer_thor
+  rotate: true
+  xy: 2, 369
+  size: 297, 211
+  orig: 300, 216
+  offset: 1, 2
+  index: -1
+hand1_1
+  rotate: false
+  xy: 264, 15
+  size: 49, 118
+  orig: 52, 124
+  offset: 2, 3
+  index: -1
+hand1_2
+  rotate: false
+  xy: 150, 10
+  size: 55, 118
+  orig: 60, 124
+  offset: 2, 3
+  index: -1
+hand1_3
+  rotate: true
+  xy: 215, 387
+  size: 49, 77
+  orig: 52, 80
+  offset: 2, 1
+  index: -1
+hand2_1
+  rotate: false
+  xy: 315, 15
+  size: 48, 118
+  orig: 52, 124
+  offset: 2, 3
+  index: -1
+hand2_2
+  rotate: false
+  xy: 207, 15
+  size: 55, 118
+  orig: 60, 124
+  offset: 2, 3
+  index: -1
+hand2_3
+  rotate: true
+  xy: 294, 388
+  size: 48, 77
+  orig: 52, 82
+  offset: 2, 3
+  index: -1
+head
+  rotate: false
+  xy: 403, 167
+  size: 144, 201
+  orig: 148, 204
+  offset: 2, 2
+  index: -1
+helmet
+  rotate: true
+  xy: 172, 741
+  size: 281, 277
+  orig: 284, 280
+  offset: 2, 1
+  index: -1
+leg1_1
+  rotate: false
+  xy: 86, 6
+  size: 30, 122
+  orig: 36, 128
+  offset: 3, 3
+  index: -1
+leg1_2
+  rotate: false
+  xy: 2, 6
+  size: 40, 122
+  orig: 44, 128
+  offset: 2, 3
+  index: -1
+leg1_3
+  rotate: true
+  xy: 365, 2
+  size: 45, 28
+  orig: 52, 32
+  offset: 3, 2
+  index: -1
+leg2_1
+  rotate: false
+  xy: 118, 6
+  size: 30, 122
+  orig: 36, 128
+  offset: 3, 3
+  index: -1
+leg2_2
+  rotate: false
+  xy: 44, 6
+  size: 40, 122
+  orig: 44, 128
+  offset: 2, 3
+  index: -1
+leg2_3
+  rotate: true
+  xy: 435, 4
+  size: 45, 28
+  orig: 52, 32
+  offset: 3, 2
+  index: -1
+mouth
+  rotate: false
+  xy: 215, 369
+  size: 34, 16
+  orig: 40, 20
+  offset: 3, 2
+  index: -1
+mouth_1
+  rotate: false
+  xy: 334, 688
+  size: 76, 51
+  orig: 80, 56
+  offset: 2, 3
+  index: -1
+mouth_2
+  rotate: true
+  xy: 196, 672
+  size: 67, 49
+  orig: 72, 54
+  offset: 2, 2
+  index: -1
+mouth_3
+  rotate: false
+  xy: 373, 392
+  size: 78, 44
+  orig: 84, 48
+  offset: 3, 2
+  index: -1
+mouth_4
+  rotate: true
+  xy: 247, 674
+  size: 65, 59
+  orig: 68, 64
+  offset: 2, 3
+  index: -1
+mouth_5
+  rotate: true
+  xy: 445, 54
+  size: 82, 26
+  orig: 88, 32
+  offset: 3, 3
+  index: -1
+mouth_6
+  rotate: true
+  xy: 412, 708
+  size: 31, 24
+  orig: 36, 28
+  offset: 2, 2
+  index: -1
+mouth_7
+  rotate: true
+  xy: 380, 51
+  size: 82, 63
+  orig: 88, 68
+  offset: 2, 3
+  index: -1
+nose
+  rotate: false
+  xy: 395, 3
+  size: 38, 46
+  orig: 44, 52
+  offset: 3, 3
+  index: -1
+skeleton_body
+  rotate: true
+  xy: 215, 438
+  size: 232, 188
+  orig: 240, 205
+  offset: 4, 13
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 196, 669
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_thor_upgraded
+  rotate: false
+  xy: 487, 24
+  size: 136, 141
+  orig: 148, 204
+  offset: 2, 19
+  index: -1

@@ -1,37 +1,32 @@
-"use client";
+'use client';
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import clsx from "clsx";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSidebar } from "@/context/sidebar-context";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
-  const searchParams = useSearchParams();
-
-  const sidebarToggledParam = searchParams.get("sidebarToggled");
-  const [sidebarToggled, setSidebarToggled] = useState(
-    sidebarToggledParam !== null
-      ? decodeURIComponent(sidebarToggledParam) === "true"
-      : true
-  );
-  const [mounted, setMounted] = useState(false);
-  const [sidebarTab, setSidebarTab] = useState(
-    decodeURIComponent(searchParams.get("tab") || "/")
-  );
-
+  const pathname = usePathname();
   const router = useRouter();
+
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+  
+  const { sidebarToggled, toggleSidebar, hydrated } = useSidebar();
 
-  const toggleSidebar = () => {
-    const newValue = !sidebarToggled;
-    const params = new URLSearchParams(window.location.search);
-    params.set("sidebarToggled", String(newValue));
-    setSidebarToggled(!sidebarToggled);
-    window.history.replaceState(null, "", `?${params.toString()}`);
-    setSidebarToggled(newValue);
+  if (!hydrated) return null;
+
+  function isActiveTab(linkHref: string, altLinks?: string[]) {
+    return (
+      pathname === linkHref ||
+      (altLinks && altLinks.includes(pathname)) ||
+      pathname.startsWith(linkHref + "/")
+    );
   };
 
   function NavbarLink({
@@ -44,147 +39,116 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
     icon: string;
   }) {
     function handleClick() {
-      const params = new URLSearchParams(window.location.search);
-      params.set("tab", encodeURIComponent(url));
-      setSidebarTab(url);
-      router.push(`${url}?${params.toString()}`);
+      router.push(url);
     }
 
     return (
-      <>
-        <li
-          onClick={handleClick}
+      <li
+        onClick={handleClick}
+        className={clsx(
+          !sidebarToggled &&
+            "translate-x-[8px] transition-transform aspect-square w-[50px]! items-center!",
+          "max-w-[90%] h-[50px] flex items-center rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
+          isActiveTab(url, []) && "bg-white text-black"
+        )}
+      >
+        <button
+          type="button"
           className={clsx(
+            "disable-no-m-p",
             !sidebarToggled &&
-              "translate-x-[8px] transition-transform aspect-square w-[50px]! items-center!",
-            "max-w-[90%] h-[50px] flex items-center rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
-            sidebarTab === url && "bg-white text-black"
+              "flex justify-center items-center h-full aspect-square!",
+            sidebarToggled && "flex ml-2!"
           )}
         >
-          <button
-            type="button"
-            onClick={handleClick}
-            className={clsx(
-              "disable-no-m-p",
-              !sidebarToggled &&
-                "flex justify-center items-center h-full aspect-square! ",
-              sidebarToggled && "flex ml-2!"
-            )}
-          >
-            <div
+          <div className="box-content flex items-center justify-center h-full disable-no-m-p">
+            <span className="nav-icon material-symbols-rounded">{icon}</span>
+            <span
               className={clsx(
-                "flex h-full items-center justify-center disable-no-m-p box-content"
+                "nav-label disable-no-m-p ml-2!",
+                !sidebarToggled && "opacity-0 hidden",
+                sidebarToggled && "opacity-100"
               )}
             >
-              <span className="nav-icon material-symbols-rounded">{icon}</span>
-              <span
-                className={clsx(
-                  "nav-label disable-no-m-p ml-2!",
-                  !sidebarToggled && "opacity-0 hidden",
-                  sidebarToggled && "opacity-100 "
-                )}
-              >
-                {title}
-              </span>
-            </div>
-          </button>
-        </li>
-      </>
+              {title}
+            </span>
+          </div>
+        </button>
+      </li>
     );
   }
 
-  return mounted ? (
-    <>
-      <div className="flex h-full w-full">
-        <aside
-          className={clsx(
-            "sidebar ml-2",
-            sidebarToggled ? "sidebar-expanded w-[270px]" : "collapsed"
-          )}
-        >
-          <header className={clsx("sidebar-header flex justify-between")}>
-            <Link
-              href="/"
-              className="header-logo w-[46px] h-[46px] flex justify-center items-center"
-            >
-              <img
-                src="/logo-png-removebg-preview.png"
-                height={40}
-                width={40}
-                alt="PeteZah"
-              />
-            </Link>
-            <div
-              className={clsx("spacer mt-20px!", { nospacer: sidebarToggled })}
-            ></div>
-            <button
-              className="toggler w-[40px] absolute bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300"
-              type="button"
-              onClick={toggleSidebar}
-            >
-              <span className="material-symbols-rounded">chevron_left</span>
-            </button>
-          </header>
+  return (
+    mounted && (
+    <div className="flex w-full h-full">
+      <aside
+        className={clsx(
+          "sidebar ml-2",
+          sidebarToggled ? "sidebar-expanded w-[270px]" : "collapsed"
+        )}
+      >
+        <header className="flex justify-between sidebar-header">
+          <Link
+            href="/"
+            className="header-logo w-[46px] h-[46px] flex justify-center items-center"
+          >
+            <img
+              src="/logo-png-removebg-preview.png"
+              height={40}
+              width={40}
+              alt="PeteZah"
+            />
+          </Link>
+          <div className={clsx("spacer mt-20px!", { nospacer: sidebarToggled })}></div>
+          <button
+            className="toggler w-[40px] absolute bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300"
+            type="button"
+            onClick={toggleSidebar}
+          >
+            <span className="material-symbols-rounded">chevron_left</span>
+          </button>
+        </header>
 
-          <div
-            className={clsx("spacer spacer-margin-top", {
-              nospacer: sidebarToggled,
-            })}
-          ></div>
+        <div className={clsx("spacer spacer-margin-top", { nospacer: sidebarToggled })}></div>
+
+        <hr
+          className={clsx(
+            !sidebarToggled && "w-[80%] ml-[10%]!",
+            sidebarToggled && "w-[90%] ml-[5%]!",
+            "transition-all"
+          )}
+        />
+
+        <nav className="mt-0 sidebar-nav">
+          <ul className="my-2 nav-list primary-nav">
+            <NavbarLink title="Home" icon="Home" url="/" />
+            <NavbarLink title="Games" icon="sports_esports" url="/g" />
+            <NavbarLink title="Apps" icon="apps" url="/a" />
+            <NavbarLink title="Proxy" icon="globe_book" url="/static/prox/main" />
+          </ul>
 
           <hr
             className={clsx(
               !sidebarToggled && "w-[80%] ml-[10%]!",
-              sidebarToggled && "w-[90%] ml-[5%]!",
-              "transition-all"
+              sidebarToggled && "w-[90%] ml-[5%]!"
             )}
           />
 
-          <nav className="mt-0 sidebar-nav ">
-            <ul className={clsx("my-2 nav-list primary-nav")}>
-              <NavbarLink title="Home" icon="Home" url="/" />
-              <NavbarLink title="Games" icon="sports_esports" url="/g" />
-              <NavbarLink title="Apps" icon="apps" url="/a" />
-              <NavbarLink
-                title="Proxy"
-                icon="globe_book"
-                url="/static/prox/main"
-              />
-            </ul>
+          <ul className="my-2 nav-list secondary-nav">
+            <NavbarLink title="Profile" icon="account_circle" url="/pages/settings/p" />
+            <NavbarLink title="Settings" icon="settings" url="/pages/settings" />
+          </ul>
+        </nav>
+      </aside>
 
-            <hr
-              className={clsx(
-                !sidebarToggled && "w-[80%] ml-[10%]!",
-                sidebarToggled && "w-[90%] ml-[5%]!"
-              )}
-            />
-
-            <ul className={clsx("my-2 nav-list secondary-nav")}>
-              <NavbarLink
-                title="Profile"
-                icon="account_circle"
-                url="/pages/settings/p"
-              />
-              <NavbarLink
-                title="Settings"
-                icon="settings"
-                url="/pages/settings"
-              />
-            </ul>
-          </nav>
-        </aside>
-
-        <main
-          className={clsx(
-            "main-content overflow-hidden",
-            sidebarToggled ? "sidebar-expanded" : ""
-          )}
-        >
-          {children}
-        </main>
-      </div>
-    </>
-  ) : (
-    <></>
-  );
+      <main
+        className={clsx(
+          "main-content overflow-hidden",
+          sidebarToggled ? "sidebar-expanded" : ""
+        )}
+      >
+        {children}
+      </main>
+    </div>
+  ))
 }

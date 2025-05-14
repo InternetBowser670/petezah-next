@@ -1,0 +1,55 @@
+
+tutorial-hammer.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tutor_base
+  rotate: false
+  xy: 2, 746
+  size: 1315, 771
+  orig: 1317, 773
+  offset: 1, 1
+  index: -1
+tutor_base_line
+  rotate: false
+  xy: 2, 1806
+  size: 1303, 18
+  orig: 1303, 18
+  offset: 0, 0
+  index: -1
+tutor_circle
+  rotate: false
+  xy: 1307, 1800
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+tutor_explode_2
+  rotate: false
+  xy: 353, 1519
+  size: 487, 285
+  orig: 487, 285
+  offset: 0, 0
+  index: -1
+tutor_hammer
+  rotate: false
+  xy: 1525, 1675
+  size: 299, 149
+  orig: 299, 149
+  offset: 0, 0
+  index: -1
+tutor_hand
+  rotate: true
+  xy: 2, 1542
+  size: 262, 349
+  orig: 262, 349
+  offset: 0, 0
+  index: -1
+tutor_hand_strip
+  rotate: false
+  xy: 1333, 1731
+  size: 190, 93
+  orig: 190, 93
+  offset: 0, 0
+  index: -1

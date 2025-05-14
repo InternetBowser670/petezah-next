@@ -1,0 +1,884 @@
+{
+    "skeleton": {
+        "hash": "YsBsfZwA+YNW2p4hseQe0dNAc34",
+        "spine": "3.8.99"
+    },
+    "bones": [
+        {
+            "name": "root"
+        },
+        {
+            "name": "chest",
+            "parent": "root",
+            "y": 225
+        },
+        {
+            "name": "chest_bottom",
+            "parent": "chest",
+            "y": -225
+        },
+        {
+            "name": "chest_back",
+            "parent": "chest_bottom"
+        },
+        {
+            "name": "chest_front",
+            "parent": "chest_bottom"
+        },
+        {
+            "name": "key_rot",
+            "parent": "chest_bottom",
+            "y": 225
+        },
+        {
+            "name": "lock_2",
+            "parent": "chest_bottom",
+            "x": 7,
+            "y": 222
+        },
+        {
+            "name": "key",
+            "parent": "key_rot",
+            "length": 80,
+            "rotation": 180,
+            "y": -225
+        }
+    ],
+    "slots": [
+        {
+            "name": "chest",
+            "bone": "chest_back",
+            "attachment": "chest"
+        },
+        {
+            "name": "chest_lock2",
+            "bone": "lock_2"
+        },
+        {
+            "name": "chest_opened_back",
+            "bone": "chest_back",
+            "attachment": "chest_opened_back"
+        },
+        {
+            "name": "chest_opened_front",
+            "bone": "chest_front",
+            "attachment": "chest_opened_front"
+        },
+        {
+            "name": "result_key_full",
+            "bone": "key",
+            "attachment": "result_key_full"
+        }
+    ],
+    "skins": [
+        {
+            "name": "default",
+            "attachments": {
+                "chest": {
+                    "chest": {
+                        "y": 225,
+                        "width": 593,
+                        "height": 447
+                    }
+                },
+                "chest_lock2": {
+                    "chest_lock": {
+                        "x": -8,
+                        "width": 189,
+                        "height": 189
+                    }
+                },
+                "chest_opened_back": {
+                    "chest_opened_back": {
+                        "y": 379.5,
+                        "width": 610,
+                        "height": 770
+                    }
+                },
+                "chest_opened_front": {
+                    "chest_opened_front": {
+                        "y": 315.8,
+                        "width": 593,
+                        "height": 628
+                    }
+                },
+                "result_key_full": {
+                    "result_key_full": {
+                        "x": -28,
+                        "rotation": -180,
+                        "width": 260,
+                        "height": 140
+                    },
+                    "result_key_half": {
+                        "x": -28,
+                        "rotation": -180,
+                        "width": 219,
+                        "height": 120
+                    }
+                }
+            }
+        }
+    ],
+    "events": {
+        "Appear_End": {},
+        "Center_Unlock_End": {},
+        "Jump_End": {},
+        "Jump_Start": {},
+        "Left_Unlock_End": {},
+        "Open_End": {},
+        "Open_Start": {},
+        "Right_Unlock_End": {},
+        "Unlock_End": {}
+    },
+    "animations": {
+        "appear_one_lock": {
+            "slots": {
+                "chest_lock2": {
+                    "attachment": [
+                        {
+                            "name": "chest_lock"
+                        }
+                    ]
+                },
+                "chest_opened_back": {
+                    "attachment": [
+                        {
+                            "name": null
+                        }
+                    ]
+                },
+                "chest_opened_front": {
+                    "attachment": [
+                        {
+                            "name": null
+                        }
+                    ]
+                },
+                "result_key_full": {
+                    "attachment": [
+                        {
+                            "name": null
+                        }
+                    ]
+                }
+            },
+            "bones": {
+                "chest_bottom": {
+                    "scale": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "curve": 0.16,
+                            "c2": 0.2,
+                            "c3": 0.756,
+                            "c4": 1.01
+                        },
+                        {
+                            "time": 0.1333,
+                            "x": 1.2,
+                            "y": 0.8,
+                            "curve": 0.239,
+                            "c3": 0.16
+                        },
+                        {
+                            "time": 0.3,
+                            "x": 0.9,
+                            "y": 1.1,
+                            "curve": 0.845,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.4667,
+                            "x": 1.2,
+                            "y": 0.8,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 0.95,
+                            "y": 1.05,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.6667,
+                            "x": 1.02,
+                            "y": 0.98,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.7333
+                        }
+                    ]
+                },
+                "chest": {
+                    "rotate": [
+                        {
+                            "time": 0.0667,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.2,
+                            "angle": -8,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.4,
+                            "angle": 5,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.1,
+                            "curve": 0.073,
+                            "c2": 0.27,
+                            "c3": 0.162
+                        },
+                        {
+                            "time": 0.2667,
+                            "y": 175,
+                            "curve": 0.771,
+                            "c3": 0.947,
+                            "c4": 0.78
+                        },
+                        {
+                            "time": 0.4333
+                        }
+                    ]
+                }
+            },
+            "events": [
+                {
+                    "time": 0.7333,
+                    "name": "Appear_End"
+                }
+            ]
+        },
+        "open": {
+            "slots": {
+                "chest": {
+                    "attachment": [{ "time": 0.2667, "name": null }]
+                },
+                "chest_opened_back": {
+                    "attachment": [
+                        { "time": 0.2667, "name": "chest_opened_back" }
+                    ]
+                },
+                "chest_opened_front": {
+                    "attachment": [
+                        { "time": 0.2667, "name": "chest_opened_front" }
+                    ]
+                }
+            },
+            "bones": {
+                "chest_back": {
+                    "translate": [
+                        {
+                            "time": 1.1667,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.2667,
+                            "y": -10,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.3667,
+                            "y": 5,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.4667,
+                            "y": -5,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.5667,
+                            "y": 2,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.6667
+                        }
+                    ]
+                },
+                "chest_bottom": {
+                    "scale": [
+                        {
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.0667,
+                            "x": 0.9,
+                            "y": 1.1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.1667,
+                            "x": 1.2,
+                            "y": 0.8,
+                            "curve": 0.239,
+                            "c3": 0.16
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 0.8,
+                            "y": 1.2,
+                            "curve": 0.845,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5667,
+                            "x": 1.2,
+                            "y": 0.8,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.6667,
+                            "x": 0.9,
+                            "y": 1.1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.7667,
+                            "x": 1.05,
+                            "y": 0.95,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.8333,
+                            "x": 0.98,
+                            "y": 1.02,
+                            "curve": 0.258,
+                            "c3": 0.619,
+                            "c4": 0.45
+                        },
+                        {
+                            "time": 0.9,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.1,
+                            "x": 0.9,
+                            "y": 1.1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.2,
+                            "x": 1.1,
+                            "y": 0.9,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.3,
+                            "x": 0.9,
+                            "y": 1.1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.4333
+                        }
+                    ]
+                },
+                "chest": {
+                    "rotate": [
+                        {
+                            "time": 0.1667,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.3,
+                            "angle": -5,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5,
+                            "angle": 3,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.6
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "time": 0.2,
+                            "curve": 0.041,
+                            "c2": 0.29,
+                            "c3": 0
+                        },
+                        {
+                            "time": 0.3667,
+                            "y": 175,
+                            "curve": 0.927,
+                            "c3": 0.947,
+                            "c4": 0.78
+                        },
+                        {
+                            "time": 0.5333,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 1.9,
+                            "curve": 0.269,
+                            "c3": 0.618,
+                            "c4": 0.42
+                        },
+                        {
+                            "time": 2,
+                            "x": 20,
+                            "curve": 0.32,
+                            "c2": 0.29,
+                            "c3": 0.667,
+                            "c4": 0.67
+                        },
+                        {
+                            "time": 2.1,
+                            "x": -20,
+                            "curve": 0.349,
+                            "c2": 0.39,
+                            "c3": 0.689,
+                            "c4": 0.74
+                        },
+                        {
+                            "time": 2.1667,
+                            "x": 20,
+                            "curve": 0.375,
+                            "c2": 0.62,
+                            "c3": 0.716
+                        },
+                        {
+                            "time": 2.2333,
+                            "x": -20,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 2.3,
+                            "x": 20,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 2.3667,
+                            "x": -20,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 2.4333,
+                            "x": 20,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 2.5,
+                            "x": -20,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 2.5667,
+                            "x": 20,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 2.6667
+                        }
+                    ]
+                },
+                "root": {
+                    "scale": [
+                        {
+                            "time": 0.1667,
+                            "curve": 0.171,
+                            "c2": 0.42,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5333,
+                            "x": 1.1,
+                            "y": 1.1
+                        }
+                    ]
+                }
+            },
+            "events": [
+                {
+                    "time": 0.1667,
+                    "name": "Jump_Start"
+                },
+                {
+                    "time": 0.5333,
+                    "name": "Jump_End"
+                },
+                {
+                    "time": 1.3333,
+                    "name": "Open_Start"
+                },
+                {
+                    "time": 2.6333,
+                    "name": "Open_End"
+                }
+            ]
+        },
+        "unlock_one_lock": {
+            "slots": {
+                "chest_lock2": {
+                    "attachment": [
+                        {
+                            "name": "chest_lock"
+                        },
+                        {
+                            "time": 1.5,
+                            "name": null
+                        }
+                    ]
+                },
+                "chest_opened_back": {
+                    "attachment": [
+                        {
+                            "name": null
+                        }
+                    ]
+                },
+                "chest_opened_front": {
+                    "attachment": [
+                        {
+                            "name": null
+                        }
+                    ]
+                },
+                "result_key_full": {
+                    "attachment": [
+                        {
+                            "time": 0.7333,
+                            "name": "result_key_half"
+                        },
+                        {
+                            "time": 1.5,
+                            "name": null
+                        }
+                    ]
+                }
+            },
+            "bones": {
+                "lock_2": {
+                    "translate": [
+                        {
+                            "time": 0.7333,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.8,
+                            "x": -8,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 6,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": -4,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1,
+                            "x": 2,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.0667
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "time": 0.7333,
+                            "curve": 0.239,
+                            "c3": 0.16
+                        },
+                        {
+                            "time": 0.9667,
+                            "x": 1.1,
+                            "y": 1.1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.0667
+                        }
+                    ]
+                },
+                "key": {
+                    "rotate": [
+                        {
+                            "angle": -90,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.4333,
+                            "angle": -90,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": 20,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.6667
+                        }
+                    ],
+                    "translate": [
+                        {
+                            "x": 400,
+                            "y": 285,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": 430,
+                            "y": 295,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.4333,
+                            "x": 430,
+                            "y": 295,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5333,
+                            "x": 460,
+                            "y": 235,
+                            "curve": 0.57,
+                            "c3": 0.867,
+                            "c4": 0.71
+                        },
+                        {
+                            "time": 0.7,
+                            "x": 84.9,
+                            "y": 235,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.7333,
+                            "x": -1,
+                            "y": 235
+                        }
+                    ],
+                    "scale": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.1,
+                            "x": 1.6,
+                            "y": 1.6,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.2,
+                            "x": 1.25,
+                            "y": 1.25,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.2667,
+                            "x": 1.5,
+                            "y": 1.5,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.3333,
+                            "x": 1.35,
+                            "y": 1.35,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.4,
+                            "x": 1.4,
+                            "y": 1.4,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.5,
+                            "x": 1.4,
+                            "y": 1.4,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.6,
+                            "x": 1.45,
+                            "y": 1.45,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.6667,
+                            "x": 1.2,
+                            "y": 0.8,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.8,
+                            "x": 0.8,
+                            "y": 1.2,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.9,
+                            "x": 1.15,
+                            "y": 0.85,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1,
+                            "x": 0.9,
+                            "y": 1.1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.1,
+                            "x": 1.05,
+                            "y": 0.95,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.2,
+                            "x": 0.98,
+                            "y": 1.02,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1.2667
+                        }
+                    ]
+                },
+                "chest": {
+                    "translate": [
+                        {
+                            "time": 0.7333,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.8,
+                            "x": -5,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.8667,
+                            "x": 3,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.9333,
+                            "x": -1,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 1
+                        }
+                    ]
+                },
+                "key_rot": {
+                    "rotate": [
+                        {
+                            "angle": -90,
+                            "curve": 0.239,
+                            "c3": 0.16
+                        },
+                        {
+                            "time": 0.3333,
+                            "curve": "stepped"
+                        },
+                        {
+                            "time": 0.4333,
+                            "curve": 0.25,
+                            "c3": 0.75
+                        },
+                        {
+                            "time": 0.5667,
+                            "angle": 5,
+                            "curve": 0.239,
+                            "c3": 0.16
+                        },
+                        {
+                            "time": 0.7333
+                        }
+                    ]
+                }
+            },
+            "events": [
+                {
+                    "time": 1,
+                    "name": "Center_Unlock_End"
+                },
+                {
+                    "time": 2,
+                    "name": "Unlock_End"
+                }
+            ]
+        }
+    }
+}

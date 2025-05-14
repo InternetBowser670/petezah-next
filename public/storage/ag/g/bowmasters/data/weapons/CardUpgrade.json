@@ -1,0 +1,87 @@
+{
+    "damage": 30,
+    "zombieDamage": 0,
+    "anchorPoint": {
+        "x": 0.5,
+        "y": 0.5
+    },
+    "boneAngle": 50,
+    "boneShift": {
+        "x": 30,
+        "y": 0
+    },
+    "weaponType": 91,
+    "launchType": 2,
+    "tutorialType": 1,
+    "fatalityActivationType": 2,
+    "isPhysical": 0,
+    "angularVelocity": 0,
+    "isRotateFromDirection": 1,
+    "gravityRatio": 100,
+    "maxSpeed": 2700,
+    "lifeTime": -1,
+    "periodicalDamageInfo": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "weaponType": 0,
+        "frequency": 0,
+        "radius": 0,
+        "damage": 0,
+        "duration": 0,
+        "isSpreadEnabled": 0,
+        "type": 0
+    },
+    "isAccelerationEnabled": 0,
+    "acceleration": 0,
+    "ignoreEmissionAngleForRotation": 0,
+    "bounciness": 0,
+    "decalType": 2,
+    "isUnfollowedAfterActivation": 0,
+    "isDisabledAfterCollision": 0,
+    "unfollowDuration": 6.5,
+    "createSound": "card_create",
+    "idleSound": "card_idle",
+    "shootSound": "weapon_shoot",
+    "flyingSound": "",
+    "activationSound": "card_activation",
+    "activationFlyingSound": "",
+    "groundHitSound": "card_collision",
+    "groundPierceSound": "",
+    "characterHitSound": "card_collision",
+    "characterPierceSound": "",
+    "flyOutSound": "",
+    "isRotatingFlyingSound": 0,
+    "whooshDelayBetweenSounds": 0.25,
+    "whooshMinVelocity": 6.5,
+    "whooshMaxVelocity": 35,
+    "isOneTimeActivated": 0,
+    "isPiercing": false,
+    "pirceDistance": 0,
+    "removeBodyAfterCollision": true,
+    "disableAfterHit": true,
+    "missAfterGroundHit": true,
+    "finalizeAfterActivation": true,
+    "disableVelocityLimit": 1,
+    "trail": {
+        "maxPoints": 12,
+        "maxLength": 1000,
+        "alpha": 0.25,
+        "color": "#FFFFFF",
+        "headWidth": 35,
+        "tailScale": 0,
+        "shift": {
+            "x": -40,
+            "y": 0
+        }
+    },
+    "ai": {
+        "type": "RadialAutoActivation",
+        "maxRadius": 500,
+        "minRadius": 300,
+        "activatePossibility": 0.8,
+        "activateShootType": 0
+    }
+}

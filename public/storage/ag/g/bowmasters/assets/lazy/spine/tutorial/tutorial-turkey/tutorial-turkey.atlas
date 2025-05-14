@@ -1,0 +1,62 @@
+
+tutorial-turkey.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tutor_base
+  rotate: false
+  xy: 2, 788
+  size: 1315, 771
+  orig: 1317, 773
+  offset: 1, 1
+  index: -1
+tutor_base_line
+  rotate: false
+  xy: 2, 1874
+  size: 1303, 18
+  orig: 1303, 18
+  offset: 0, 0
+  index: -1
+tutor_circle
+  rotate: false
+  xy: 1307, 1868
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+tutor_explode
+  rotate: false
+  xy: 353, 1561
+  size: 619, 311
+  orig: 619, 311
+  offset: 0, 0
+  index: -1
+tutor_hand
+  rotate: true
+  xy: 2, 1610
+  size: 262, 349
+  orig: 262, 349
+  offset: 0, 0
+  index: -1
+tutor_hand_strip
+  rotate: false
+  xy: 1437, 1799
+  size: 190, 93
+  orig: 190, 93
+  offset: 0, 0
+  index: -1
+tutor_turkey
+  rotate: false
+  xy: 1629, 1637
+  size: 263, 255
+  orig: 268, 260
+  offset: 3, 2
+  index: -1
+tutor_turkey_egg
+  rotate: true
+  xy: 1333, 1812
+  size: 80, 102
+  orig: 88, 108
+  offset: 3, 3
+  index: -1

@@ -1,0 +1,87 @@
+{
+    "anchorPoint": {
+        "x": 1,
+        "y": 0.5
+    },
+    "boneAngle": 180,
+    "boneShift": {
+        "x": 400,
+        "y": 0
+    },
+    "weaponType": 57,
+    "launchType": 1,
+    "tutorialType": 23,
+    "fatalityActivationType": 7,
+    "isPhysical": 1,
+    "angularVelocity": 0,
+    "isRotateFromDirection": 1,
+    "gravityRatio": 100,
+    "maxSpeed": 3100,
+    "lifeTime": -1,
+    "periodicalDamageInfo": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "weaponType": 0,
+        "frequency": 0,
+        "radius": 0,
+        "damage": 0,
+        "duration": 0,
+        "isSpreadEnabled": 0,
+        "type": 0
+    },
+    "isAccelerationEnabled": 0,
+    "acceleration": 0,
+    "ignoreEmissionAngleForRotation": 0,
+    "bounciness": 0,
+    "decalType": 1,
+    "isUnfollowedAfterActivation": 1,
+    "isDisabledAfterCollision": 0,
+    "unfollowDuration": 6.5,
+    "createSound": "weapon_create",
+    "idleSound": "",
+    "shootSound": "katniss_arrow_shoot",
+    "flyingSound": "",
+    "activationSound": "kunai_activation",
+    "activationFlyingSound": "",
+    "groundHitSound": "kunai_ground_hit",
+    "groundPierceSound": "",
+    "characterHitSound": "kunai_character_hit",
+    "characterPierceSound": "",
+    "flyOutSound": "",
+    "isRotatingFlyingSound": 0,
+    "whooshDelayBetweenSounds": 0.25,
+    "whooshMinVelocity": 6.5,
+    "whooshMaxVelocity": 35,
+    "isOneTimeActivated": 0,
+    "isPiercing": true,
+    "pirceDistance": 40,
+    "removeBodyAfterCollision": true,
+    "disableAfterHit": true,
+    "missAfterGroundHit": true,
+    "finalizeAfterActivation": false,
+    "disableVelocityLimit": 1,
+    "trail": {
+        "maxPoints": 12,
+        "maxLength": 1000,
+        "alpha": 0.25,
+        "color": "#FFFFFF",
+        "headWidth": 55,
+        "tailScale": 0,
+        "shift": {
+            "x": 0,
+            "y": 0
+        }
+    },
+    "damage": 20,
+    "zombieDamage": 0,
+    "ai": {
+        "type": "RadialAutoActivation",
+        "maxRadius": 900,
+        "minRadius": 200,
+        "activatePossibility": 0.9,
+        "activateShootType": 0
+    }
+}

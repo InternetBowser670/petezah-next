@@ -1,0 +1,104 @@
+
+dead-eagle.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eagle_dead_body
+  rotate: false
+  xy: 2, 694
+  size: 237, 133
+  orig: 237, 133
+  offset: 0, 0
+  index: -1
+eagle_dead_head
+  rotate: false
+  xy: 715, 895
+  size: 279, 111
+  orig: 279, 111
+  offset: 0, 0
+  index: -1
+eagle_dead_tail
+  rotate: false
+  xy: 2, 838
+  size: 219, 111
+  orig: 219, 111
+  offset: 0, 0
+  index: -1
+eagle_dead_wing_back
+  rotate: false
+  xy: 223, 829
+  size: 208, 120
+  orig: 208, 120
+  offset: 0, 0
+  index: -1
+eagle_dead_wing_front
+  rotate: true
+  xy: 864, 654
+  size: 239, 142
+  orig: 239, 142
+  offset: 0, 0
+  index: -1
+eagle_leg_1
+  rotate: true
+  xy: 2, 951
+  size: 55, 106
+  orig: 55, 106
+  offset: 0, 0
+  index: -1
+eagle_leg_2
+  rotate: true
+  xy: 110, 951
+  size: 55, 106
+  orig: 55, 106
+  offset: 0, 0
+  index: -1
+eagle_skeleton_dead_body
+  rotate: false
+  xy: 241, 663
+  size: 237, 133
+  orig: 237, 133
+  offset: 0, 0
+  index: -1
+eagle_skeleton_dead_head
+  rotate: false
+  xy: 434, 911
+  size: 279, 95
+  orig: 279, 111
+  offset: 0, 0
+  index: -1
+eagle_skeleton_dead_tail
+  rotate: false
+  xy: 433, 798
+  size: 219, 111
+  orig: 219, 111
+  offset: 0, 0
+  index: -1
+eagle_skeleton_dead_wing_back
+  rotate: false
+  xy: 654, 773
+  size: 208, 120
+  orig: 208, 120
+  offset: 0, 0
+  index: -1
+eagle_skeleton_dead_wing_front
+  rotate: false
+  xy: 480, 629
+  size: 239, 142
+  orig: 239, 142
+  offset: 0, 0
+  index: -1
+eagle_skeleton_leg_1
+  rotate: true
+  xy: 218, 951
+  size: 55, 106
+  orig: 55, 106
+  offset: 0, 0
+  index: -1
+eagle_skeleton_leg_2
+  rotate: true
+  xy: 326, 951
+  size: 55, 106
+  orig: 55, 106
+  offset: 0, 0
+  index: -1

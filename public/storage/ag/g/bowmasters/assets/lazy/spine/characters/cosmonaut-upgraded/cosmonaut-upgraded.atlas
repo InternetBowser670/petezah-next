@@ -1,0 +1,244 @@
+
+cosmonaut-upgraded.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 588, 522
+  size: 223, 196
+  orig: 228, 200
+  offset: 2, 2
+  index: -1
+bow
+  rotate: true
+  xy: 598, 720
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+drop
+  rotate: true
+  xy: 165, 929
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyes
+  rotate: false
+  xy: 103, 936
+  size: 60, 16
+  orig: 64, 20
+  offset: 2, 2
+  index: -1
+eyes_6
+  rotate: false
+  xy: 5, 939
+  size: 96, 13
+  orig: 104, 36
+  offset: 4, 12
+  index: -1
+hand1_1
+  rotate: true
+  xy: 2, 863
+  size: 71, 150
+  orig: 76, 156
+  offset: 2, 3
+  index: -1
+hand1_2
+  rotate: true
+  xy: 722, 892
+  size: 60, 107
+  orig: 68, 112
+  offset: 4, 3
+  index: -1
+hand1_3
+  rotate: true
+  xy: 572, 908
+  size: 44, 73
+  orig: 48, 80
+  offset: 2, 3
+  index: -1
+hand2_1
+  rotate: true
+  xy: 154, 847
+  size: 71, 150
+  orig: 76, 156
+  offset: 2, 3
+  index: -1
+hand2_2
+  rotate: true
+  xy: 831, 890
+  size: 62, 107
+  orig: 68, 112
+  offset: 3, 3
+  index: -1
+hand2_3
+  rotate: true
+  xy: 647, 908
+  size: 44, 73
+  orig: 48, 80
+  offset: 2, 3
+  index: -1
+head
+  rotate: true
+  xy: 2, 661
+  size: 184, 238
+  orig: 188, 244
+  offset: 2, 3
+  index: -1
+leg1_1
+  rotate: true
+  xy: 254, 920
+  size: 32, 104
+  orig: 36, 108
+  offset: 2, 2
+  index: -1
+leg2_1
+  rotate: true
+  xy: 254, 920
+  size: 32, 104
+  orig: 36, 108
+  offset: 2, 2
+  index: -1
+leg1_2
+  rotate: true
+  xy: 360, 920
+  size: 32, 104
+  orig: 36, 108
+  offset: 2, 2
+  index: -1
+leg1_3
+  rotate: false
+  xy: 204, 924
+  size: 48, 28
+  orig: 52, 32
+  offset: 2, 2
+  index: -1
+leg2_3
+  rotate: false
+  xy: 204, 924
+  size: 48, 28
+  orig: 52, 32
+  offset: 2, 2
+  index: -1
+leg2_2
+  rotate: true
+  xy: 466, 920
+  size: 32, 104
+  orig: 36, 108
+  offset: 2, 2
+  index: -1
+mini_flag
+  rotate: true
+  xy: 242, 561
+  size: 178, 344
+  orig: 180, 344
+  offset: 0, 0
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 2, 441
+  size: 223, 218
+  orig: 231, 226
+  offset: 4, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 2, 951
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_dark_cosmonaut
+  rotate: false
+  xy: 427, 741
+  size: 169, 165
+  orig: 188, 244
+  offset: 10, 41
+  index: -1
+skull
+  rotate: true
+  xy: 306, 812
+  size: 106, 119
+  orig: 108, 124
+  offset: 2, 3
+  index: -1

@@ -1,0 +1,69 @@
+
+tutorial-card.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tutor_base
+  rotate: false
+  xy: 526, 1156
+  size: 1315, 771
+  orig: 1317, 773
+  offset: 1, 1
+  index: -1
+tutor_base_line
+  rotate: false
+  xy: 2, 2024
+  size: 1303, 18
+  orig: 1303, 18
+  offset: 0, 0
+  index: -1
+tutor_circle
+  rotate: false
+  xy: 1307, 2018
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+tutor_hand
+  rotate: true
+  xy: 175, 1760
+  size: 262, 349
+  orig: 262, 349
+  offset: 0, 0
+  index: -1
+tutor_hand_strip
+  rotate: false
+  xy: 1333, 1949
+  size: 190, 93
+  orig: 190, 93
+  offset: 0, 0
+  index: -1
+tutor_kart_1
+  rotate: true
+  xy: 1525, 1929
+  size: 113, 171
+  orig: 113, 171
+  offset: 0, 0
+  index: -1
+tutor_kart_2
+  rotate: true
+  xy: 1698, 1929
+  size: 113, 171
+  orig: 113, 171
+  offset: 0, 0
+  index: -1
+tutor_kart_3
+  rotate: true
+  xy: 1871, 1929
+  size: 113, 171
+  orig: 113, 171
+  offset: 0, 0
+  index: -1
+tutor_kart_4
+  rotate: true
+  xy: 2, 1909
+  size: 113, 171
+  orig: 113, 171
+  offset: 0, 0
+  index: -1

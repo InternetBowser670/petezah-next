@@ -1,0 +1,370 @@
+
+homeless-upgraded.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 332, 195
+  size: 179, 206
+  orig: 184, 212
+  offset: 2, 3
+  index: -1
+bottle
+  rotate: true
+  xy: 271, 670
+  size: 66, 163
+  orig: 74, 171
+  offset: 4, 4
+  index: -1
+bow
+  rotate: false
+  xy: 2, 668
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+collar
+  rotate: true
+  xy: 167, 423
+  size: 243, 105
+  orig: 248, 112
+  offset: 2, 4
+  index: -1
+dead_eyes
+  rotate: true
+  xy: 266, 937
+  size: 85, 27
+  orig: 100, 36
+  offset: 7, 5
+  index: -1
+drop
+  rotate: true
+  xy: 266, 829
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyebrow_left
+  rotate: false
+  xy: 167, 402
+  size: 44, 19
+  orig: 48, 24
+  offset: 2, 3
+  index: -1
+eyebrow_right
+  rotate: false
+  xy: 213, 402
+  size: 44, 19
+  orig: 48, 24
+  offset: 2, 3
+  index: -1
+eyes_1
+  rotate: false
+  xy: 84, 6
+  size: 91, 13
+  orig: 100, 36
+  offset: 4, 11
+  index: -1
+eyes_2
+  rotate: false
+  xy: 259, 403
+  size: 87, 18
+  orig: 100, 36
+  offset: 6, 9
+  index: -1
+eyes_3
+  rotate: true
+  xy: 288, 855
+  size: 80, 20
+  orig: 100, 36
+  offset: 10, 8
+  index: -1
+eyes_4
+  rotate: true
+  xy: 266, 854
+  size: 81, 20
+  orig: 100, 36
+  offset: 9, 8
+  index: -1
+eyes_5
+  rotate: false
+  xy: 305, 833
+  size: 62, 20
+  orig: 100, 36
+  offset: 19, 8
+  index: -1
+eyes_6
+  rotate: false
+  xy: 2, 2
+  size: 80, 17
+  orig: 100, 36
+  offset: 9, 9
+  index: -1
+hand1_1
+  rotate: false
+  xy: 499, 58
+  size: 44, 96
+  orig: 48, 100
+  offset: 2, 2
+  index: -1
+hand1_2
+  rotate: false
+  xy: 172, 728
+  size: 44, 96
+  orig: 48, 100
+  offset: 2, 2
+  index: -1
+hand1_3
+  rotate: false
+  xy: 239, 676
+  size: 30, 50
+  orig: 36, 56
+  offset: 3, 3
+  index: -1
+hand2_1
+  rotate: true
+  xy: 403, 2
+  size: 45, 96
+  orig: 48, 100
+  offset: 2, 2
+  index: -1
+hand2_2
+  rotate: false
+  xy: 218, 728
+  size: 44, 96
+  orig: 48, 100
+  offset: 2, 2
+  index: -1
+hand2_3
+  rotate: false
+  xy: 361, 895
+  size: 30, 50
+  orig: 36, 56
+  offset: 3, 3
+  index: -1
+hat
+  rotate: true
+  xy: 172, 826
+  size: 196, 92
+  orig: 200, 100
+  offset: 2, 4
+  index: -1
+head
+  rotate: false
+  xy: 2, 402
+  size: 163, 264
+  orig: 168, 268
+  offset: 2, 2
+  index: -1
+leg1_1
+  rotate: true
+  xy: 211, 4
+  size: 30, 94
+  orig: 36, 100
+  offset: 3, 3
+  index: -1
+leg1_2
+  rotate: true
+  xy: 211, 4
+  size: 30, 94
+  orig: 36, 100
+  offset: 3, 3
+  index: -1
+leg1_3
+  rotate: false
+  xy: 501, 6
+  size: 65, 50
+  orig: 72, 56
+  offset: 3, 3
+  index: -1
+leg2_1
+  rotate: true
+  xy: 307, 4
+  size: 30, 94
+  orig: 36, 100
+  offset: 3, 3
+  index: -1
+leg2_2
+  rotate: true
+  xy: 307, 4
+  size: 30, 94
+  orig: 36, 100
+  offset: 3, 3
+  index: -1
+leg2_3
+  rotate: false
+  xy: 172, 676
+  size: 65, 50
+  orig: 72, 56
+  offset: 3, 3
+  index: -1
+mouth_1
+  rotate: true
+  xy: 443, 50
+  size: 99, 54
+  orig: 104, 60
+  offset: 2, 3
+  index: -1
+mouth_2
+  rotate: true
+  xy: 264, 738
+  size: 86, 61
+  orig: 92, 68
+  offset: 3, 4
+  index: -1
+mouth_3
+  rotate: true
+  xy: 295, 947
+  size: 75, 69
+  orig: 80, 76
+  offset: 2, 4
+  index: -1
+mouth_4
+  rotate: true
+  xy: 445, 152
+  size: 41, 27
+  orig: 48, 32
+  offset: 3, 3
+  index: -1
+mouth_5
+  rotate: true
+  xy: 362, 49
+  size: 100, 79
+  orig: 104, 84
+  offset: 2, 3
+  index: -1
+mouth_6
+  rotate: false
+  xy: 332, 151
+  size: 111, 42
+  orig: 116, 48
+  offset: 2, 3
+  index: -1
+mouth_7
+  rotate: true
+  xy: 310, 879
+  size: 66, 49
+  orig: 72, 56
+  offset: 3, 4
+  index: -1
+nose
+  rotate: true
+  xy: 474, 156
+  size: 37, 44
+  orig: 44, 48
+  offset: 3, 2
+  index: -1
+skeleton_body
+  rotate: true
+  xy: 2, 21
+  size: 128, 207
+  orig: 136, 215
+  offset: 4, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 84, 3
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_homeless_upgraded
+  rotate: true
+  xy: 211, 36
+  size: 113, 149
+  orig: 168, 268
+  offset: 44, 63
+  index: -1
+urn_can
+  rotate: true
+  xy: 2, 151
+  size: 249, 242
+  orig: 252, 248
+  offset: 2, 3
+  index: -1
+urn_cap
+  rotate: true
+  xy: 246, 158
+  size: 242, 84
+  orig: 248, 92
+  offset: 3, 4
+  index: -1

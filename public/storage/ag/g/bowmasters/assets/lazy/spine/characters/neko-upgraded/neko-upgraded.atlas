@@ -1,0 +1,391 @@
+
+neko-upgraded.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body_shop
+  rotate: false
+  xy: 493, 816
+  size: 128, 206
+  orig: 176, 228
+  offset: 24, 19
+  index: -1
+body_skirt_shop
+  rotate: true
+  xy: 485, 501
+  size: 173, 69
+  orig: 176, 76
+  offset: 2, 5
+  index: -1
+bow
+  rotate: false
+  xy: 2, 668
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+dead_eyes
+  rotate: true
+  xy: 539, 418
+  size: 81, 27
+  orig: 100, 36
+  offset: 9, 5
+  index: -1
+drop
+  rotate: false
+  xy: 354, 367
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyes_1
+  rotate: false
+  xy: 254, 346
+  size: 92, 12
+  orig: 100, 36
+  offset: 4, 12
+  index: -1
+eyes_2
+  rotate: true
+  xy: 345, 672
+  size: 86, 18
+  orig: 100, 36
+  offset: 7, 9
+  index: -1
+eyes_3
+  rotate: false
+  xy: 496, 697
+  size: 71, 20
+  orig: 100, 36
+  offset: 15, 8
+  index: -1
+eyes_4
+  rotate: false
+  xy: 348, 340
+  size: 81, 20
+  orig: 100, 36
+  offset: 10, 8
+  index: -1
+eyes_5
+  rotate: true
+  xy: 255, 15
+  size: 55, 20
+  orig: 100, 36
+  offset: 20, 8
+  index: -1
+eyes_6
+  rotate: false
+  xy: 428, 2
+  size: 74, 17
+  orig: 100, 36
+  offset: 13, 10
+  index: -1
+eyes_7
+  rotate: true
+  xy: 515, 417
+  size: 82, 22
+  orig: 100, 36
+  offset: 9, 9
+  index: -1
+eyes_fire_emt
+  rotate: false
+  xy: 310, 362
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+hair
+  rotate: false
+  xy: 172, 760
+  size: 189, 262
+  orig: 256, 333
+  offset: 36, 8
+  index: -1
+hand1_1
+  rotate: false
+  xy: 236, 669
+  size: 30, 89
+  orig: 36, 96
+  offset: 4, 3
+  index: -1
+hand1_2
+  rotate: false
+  xy: 172, 668
+  size: 30, 90
+  orig: 36, 97
+  offset: 4, 3
+  index: -1
+hand1_3
+  rotate: false
+  xy: 355, 20
+  size: 30, 50
+  orig: 36, 56
+  offset: 4, 3
+  index: -1
+hand2_1
+  rotate: false
+  xy: 268, 669
+  size: 30, 89
+  orig: 36, 96
+  offset: 4, 3
+  index: -1
+hand2_2
+  rotate: false
+  xy: 204, 668
+  size: 30, 90
+  orig: 36, 97
+  offset: 4, 3
+  index: -1
+hand2_3
+  rotate: false
+  xy: 387, 20
+  size: 30, 50
+  orig: 36, 56
+  offset: 4, 3
+  index: -1
+head
+  rotate: false
+  xy: 2, 339
+  size: 250, 327
+  orig: 256, 333
+  offset: 3, 3
+  index: -1
+leg1_1
+  rotate: true
+  xy: 379, 374
+  size: 30, 95
+  orig: 36, 96
+  offset: 4, 0
+  index: -1
+leg1_2
+  rotate: true
+  xy: 431, 342
+  size: 30, 95
+  orig: 36, 96
+  offset: 4, 0
+  index: -1
+leg1_3
+  rotate: true
+  xy: 254, 360
+  size: 44, 26
+  orig: 52, 32
+  offset: 4, 3
+  index: -1
+leg2_1
+  rotate: true
+  xy: 476, 374
+  size: 30, 95
+  orig: 36, 96
+  offset: 4, 0
+  index: -1
+leg2_2
+  rotate: false
+  xy: 496, 719
+  size: 30, 95
+  orig: 36, 96
+  offset: 4, 0
+  index: -1
+leg2_3
+  rotate: true
+  xy: 282, 360
+  size: 44, 26
+  orig: 52, 32
+  offset: 4, 3
+  index: -1
+mouth_1
+  rotate: false
+  xy: 393, 4
+  size: 33, 14
+  orig: 41, 22
+  offset: 4, 4
+  index: -1
+mouth_2
+  rotate: true
+  xy: 300, 671
+  size: 87, 43
+  orig: 95, 51
+  offset: 4, 4
+  index: -1
+mouth_3
+  rotate: false
+  xy: 277, 19
+  size: 76, 51
+  orig: 84, 59
+  offset: 4, 4
+  index: -1
+mouth_4
+  rotate: true
+  xy: 2, 5
+  size: 65, 59
+  orig: 73, 67
+  offset: 4, 4
+  index: -1
+mouth_5
+  rotate: false
+  xy: 124, 6
+  size: 84, 64
+  orig: 92, 72
+  offset: 4, 4
+  index: -1
+mouth_6
+  rotate: true
+  xy: 485, 407
+  size: 92, 28
+  orig: 100, 36
+  offset: 4, 4
+  index: -1
+mouth_7
+  rotate: true
+  xy: 210, 12
+  size: 58, 43
+  orig: 66, 51
+  offset: 4, 4
+  index: -1
+mouth_8
+  rotate: true
+  xy: 419, 21
+  size: 49, 36
+  orig: 57, 44
+  offset: 4, 4
+  index: -1
+mouth_9
+  rotate: true
+  xy: 63, 5
+  size: 65, 59
+  orig: 73, 67
+  offset: 4, 4
+  index: -1
+nose
+  rotate: false
+  xy: 371, 2
+  size: 20, 16
+  orig: 28, 24
+  offset: 4, 4
+  index: -1
+shy_face
+  rotate: false
+  xy: 277, 3
+  size: 92, 14
+  orig: 100, 20
+  offset: 3, 3
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 363, 815
+  size: 128, 207
+  orig: 136, 215
+  offset: 4, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_neko_upgraded
+  rotate: false
+  xy: 365, 676
+  size: 129, 137
+  orig: 256, 333
+  offset: 66, 73
+  index: -1
+tail_1
+  rotate: false
+  xy: 236, 72
+  size: 218, 265
+  orig: 232, 272
+  offset: 5, 4
+  index: -1
+tail_2
+  rotate: false
+  xy: 2, 72
+  size: 232, 265
+  orig: 232, 272
+  offset: 0, 2
+  index: -1
+tail_3
+  rotate: false
+  xy: 254, 406
+  size: 229, 261
+  orig: 232, 272
+  offset: 3, 8
+  index: -1

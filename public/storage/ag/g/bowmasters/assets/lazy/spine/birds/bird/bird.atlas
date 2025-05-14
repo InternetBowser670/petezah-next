@@ -1,0 +1,76 @@
+
+bird.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bird_body
+  rotate: false
+  xy: 2, 328
+  size: 207, 177
+  orig: 207, 177
+  offset: 0, 0
+  index: -1
+bird_eagle_1
+  rotate: false
+  xy: 462, 480
+  size: 43, 25
+  orig: 43, 25
+  offset: 0, 0
+  index: -1
+bird_eagle_2
+  rotate: false
+  xy: 462, 453
+  size: 43, 25
+  orig: 43, 25
+  offset: 0, 0
+  index: -1
+bird_leg1_1
+  rotate: false
+  xy: 462, 396
+  size: 18, 55
+  orig: 18, 55
+  offset: 0, 0
+  index: -1
+bird_leg1_2
+  rotate: false
+  xy: 462, 373
+  size: 42, 21
+  orig: 42, 21
+  offset: 0, 0
+  index: -1
+bird_leg2_1
+  rotate: false
+  xy: 482, 396
+  size: 18, 55
+  orig: 18, 55
+  offset: 0, 0
+  index: -1
+bird_leg2_2
+  rotate: false
+  xy: 462, 350
+  size: 42, 21
+  orig: 42, 21
+  offset: 0, 0
+  index: -1
+bird_tail
+  rotate: false
+  xy: 211, 350
+  size: 102, 61
+  orig: 102, 61
+  offset: 0, 0
+  index: -1
+bird_wing_back
+  rotate: false
+  xy: 211, 413
+  size: 155, 92
+  orig: 155, 92
+  offset: 0, 0
+  index: -1
+bird_wing_front
+  rotate: true
+  xy: 368, 350
+  size: 155, 92
+  orig: 155, 92
+  offset: 0, 0
+  index: -1

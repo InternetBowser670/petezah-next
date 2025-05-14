@@ -1,0 +1,48 @@
+
+scull.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eye_l
+  rotate: false
+  xy: 15, 93
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1
+eye_r
+  rotate: false
+  xy: 36, 93
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1
+front
+  rotate: false
+  xy: 2, 36
+  size: 51, 55
+  orig: 51, 55
+  offset: 0, 0
+  index: -1
+nose
+  rotate: false
+  xy: 2, 103
+  size: 11, 7
+  orig: 11, 7
+  offset: 0, 0
+  index: -1
+scull
+  rotate: true
+  xy: 55, 22
+  size: 51, 55
+  orig: 51, 55
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: true
+  xy: 57, 75
+  size: 35, 38
+  orig: 36, 38
+  offset: 0, 0
+  index: -1

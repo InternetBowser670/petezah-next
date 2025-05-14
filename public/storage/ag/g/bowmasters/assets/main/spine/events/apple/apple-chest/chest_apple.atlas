@@ -1,0 +1,67 @@
+
+chest_apple.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+apple_chest
+  rotate: false
+  xy: 2, 298
+  size: 593, 447
+  orig: 593, 447
+  offset: 0, 0
+  index: -1
+apple_chest_lock
+  rotate: true
+  xy: 697, 717
+  size: 210, 230
+  orig: 210, 230
+  offset: 0, 0
+  index: -1
+apple_chest_opened_back_lock
+  rotate: false
+  xy: 485, 747
+  size: 210, 180
+  orig: 210, 180
+  offset: 0, 0
+  index: -1
+result_key_full
+  rotate: false
+  xy: 223, 787
+  size: 260, 140
+  orig: 260, 140
+  offset: 0, 0
+  index: -1
+result_key_half
+  rotate: false
+  xy: 2, 807
+  size: 219, 120
+  orig: 219, 120
+  offset: 0, 0
+  index: -1
+
+chest_apple2.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+apple_chest_opened_front
+  rotate: true
+  xy: 2, 37
+  size: 593, 628
+  orig: 593, 628
+  offset: 0, 0
+  index: -1
+
+chest_apple3.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+apple_chest_opened_back
+  rotate: false
+  xy: 2, 2
+  size: 610, 770
+  orig: 610, 770
+  offset: 0, 0
+  index: -1

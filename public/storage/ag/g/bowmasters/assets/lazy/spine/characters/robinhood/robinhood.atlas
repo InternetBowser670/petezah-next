@@ -1,0 +1,349 @@
+
+robinhood.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arrow_simple
+  rotate: false
+  xy: 2, 963
+  size: 399, 58
+  orig: 408, 66
+  offset: 4, 4
+  index: -1
+body
+  rotate: false
+  xy: 759, 824
+  size: 232, 197
+  orig: 240, 205
+  offset: 4, 4
+  index: -1
+bow
+  rotate: true
+  xy: 403, 853
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+dead_eyes
+  rotate: true
+  xy: 993, 819
+  size: 71, 27
+  orig: 81, 36
+  offset: 5, 5
+  index: -1
+drop
+  rotate: false
+  xy: 711, 698
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyebrow_left
+  rotate: false
+  xy: 691, 677
+  size: 40, 19
+  orig: 48, 27
+  offset: 4, 4
+  index: -1
+eyebrow_right
+  rotate: false
+  xy: 620, 676
+  size: 39, 19
+  orig: 47, 27
+  offset: 4, 4
+  index: -1
+eyes
+  rotate: false
+  xy: 960, 774
+  size: 60, 22
+  orig: 81, 36
+  offset: 11, 7
+  index: -1
+eyes_2
+  rotate: false
+  xy: 620, 719
+  size: 73, 13
+  orig: 81, 36
+  offset: 4, 12
+  index: -1
+eyes_3
+  rotate: false
+  xy: 620, 697
+  size: 69, 20
+  orig: 81, 36
+  offset: 6, 8
+  index: -1
+eyes_4
+  rotate: true
+  xy: 711, 737
+  size: 47, 24
+  orig: 81, 36
+  offset: 17, 6
+  index: -1
+hand1_1
+  rotate: true
+  xy: 620, 786
+  size: 65, 126
+  orig: 73, 134
+  offset: 4, 4
+  index: -1
+hand1_2
+  rotate: true
+  xy: 2, 534
+  size: 47, 118
+  orig: 73, 126
+  offset: 13, 4
+  index: -1
+hand1_3
+  rotate: true
+  xy: 122, 534
+  size: 47, 77
+  orig: 73, 85
+  offset: 13, 4
+  index: -1
+hand2_1
+  rotate: true
+  xy: 236, 676
+  size: 65, 126
+  orig: 73, 134
+  offset: 4, 4
+  index: -1
+hand2_2
+  rotate: true
+  xy: 748, 775
+  size: 47, 118
+  orig: 73, 126
+  offset: 13, 4
+  index: -1
+hand3_1
+  rotate: true
+  xy: 737, 726
+  size: 47, 77
+  orig: 73, 85
+  offset: 13, 4
+  index: -1
+hat
+  rotate: false
+  xy: 2, 583
+  size: 202, 92
+  orig: 210, 100
+  offset: 4, 4
+  index: -1
+head
+  rotate: true
+  xy: 402, 669
+  size: 182, 216
+  orig: 190, 224
+  offset: 4, 4
+  index: -1
+leg1_1
+  rotate: true
+  xy: 278, 743
+  size: 30, 122
+  orig: 48, 130
+  offset: 9, 4
+  index: -1
+leg1_2
+  rotate: false
+  xy: 236, 743
+  size: 40, 122
+  orig: 48, 130
+  offset: 4, 4
+  index: -1
+leg1_3
+  rotate: true
+  xy: 993, 977
+  size: 44, 28
+  orig: 52, 36
+  offset: 4, 4
+  index: -1
+leg2_1
+  rotate: true
+  xy: 232, 644
+  size: 30, 122
+  orig: 48, 130
+  offset: 9, 4
+  index: -1
+leg2_2
+  rotate: true
+  xy: 278, 775
+  size: 40, 122
+  orig: 48, 130
+  offset: 4, 4
+  index: -1
+leg2_3
+  rotate: true
+  xy: 993, 931
+  size: 44, 28
+  orig: 52, 36
+  offset: 4, 4
+  index: -1
+mouth_1
+  rotate: false
+  xy: 736, 673
+  size: 76, 51
+  orig: 84, 59
+  offset: 4, 4
+  index: -1
+mouth_2
+  rotate: true
+  xy: 816, 707
+  size: 66, 49
+  orig: 74, 57
+  offset: 4, 4
+  index: -1
+mouth_3
+  rotate: false
+  xy: 620, 734
+  size: 89, 50
+  orig: 97, 58
+  offset: 4, 4
+  index: -1
+mouth_4
+  rotate: true
+  xy: 960, 707
+  size: 65, 59
+  orig: 73, 67
+  offset: 4, 4
+  index: -1
+mouth_5
+  rotate: true
+  xy: 364, 650
+  size: 91, 31
+  orig: 99, 39
+  offset: 4, 4
+  index: -1
+mouth_6
+  rotate: false
+  xy: 960, 798
+  size: 31, 24
+  orig: 39, 32
+  offset: 4, 4
+  index: -1
+mouth_7
+  rotate: false
+  xy: 868, 753
+  size: 90, 69
+  orig: 98, 77
+  offset: 4, 4
+  index: -1
+mustache
+  rotate: true
+  xy: 206, 564
+  size: 111, 24
+  orig: 119, 32
+  offset: 4, 4
+  index: -1
+nose
+  rotate: false
+  xy: 993, 892
+  size: 28, 37
+  orig: 36, 45
+  offset: 4, 4
+  index: -1
+quiver
+  rotate: true
+  xy: 2, 867
+  size: 94, 276
+  orig: 100, 280
+  offset: 3, 2
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 2, 677
+  size: 232, 188
+  orig: 240, 205
+  offset: 4, 13
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 748, 850
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_arrow
+  rotate: false
+  xy: 280, 817
+  size: 120, 144
+  orig: 208, 272
+  offset: 37, 46
+  index: -1

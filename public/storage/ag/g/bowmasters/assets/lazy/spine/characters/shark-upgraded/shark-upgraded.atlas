@@ -1,0 +1,314 @@
+
+shark-upgraded.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 2, 39
+  size: 221, 206
+  orig: 228, 212
+  offset: 3, 3
+  index: -1
+bow
+  rotate: false
+  xy: 2, 262
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+dead_eyes
+  rotate: true
+  xy: 302, 870
+  size: 152, 40
+  orig: 160, 48
+  offset: 4, 4
+  index: -1
+drop
+  rotate: true
+  xy: 360, 269
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eye_close
+  rotate: true
+  xy: 276, 4
+  size: 48, 24
+  orig: 52, 28
+  offset: 2, 2
+  index: -1
+eye_close_back
+  rotate: true
+  xy: 357, 660
+  size: 40, 16
+  orig: 44, 20
+  offset: 2, 2
+  index: -1
+eyes_1
+  rotate: false
+  xy: 366, 10
+  size: 42, 42
+  orig: 50, 50
+  offset: 4, 4
+  index: -1
+eyes_1_back
+  rotate: false
+  xy: 144, 3
+  size: 34, 34
+  orig: 42, 42
+  offset: 4, 4
+  index: -1
+eyes_blink
+  rotate: false
+  xy: 100, 3
+  size: 42, 34
+  orig: 46, 38
+  offset: 2, 2
+  index: -1
+eyes_blink_back
+  rotate: true
+  xy: 302, 10
+  size: 42, 62
+  orig: 46, 66
+  offset: 2, 2
+  index: -1
+hair_back
+  rotate: false
+  xy: 373, 91
+  size: 74, 176
+  orig: 80, 184
+  offset: 3, 4
+  index: -1
+hand1_1
+  rotate: false
+  xy: 172, 294
+  size: 53, 100
+  orig: 61, 108
+  offset: 4, 4
+  index: -1
+hand1_2
+  rotate: false
+  xy: 227, 294
+  size: 53, 100
+  orig: 61, 108
+  offset: 4, 4
+  index: -1
+hand1_3
+  rotate: true
+  xy: 344, 877
+  size: 53, 72
+  orig: 61, 80
+  offset: 4, 4
+  index: -1
+hand2_1
+  rotate: false
+  xy: 282, 294
+  size: 53, 100
+  orig: 61, 108
+  offset: 4, 4
+  index: -1
+hand2_2
+  rotate: false
+  xy: 337, 294
+  size: 53, 100
+  orig: 61, 108
+  offset: 4, 4
+  index: -1
+hand2_3
+  rotate: false
+  xy: 302, 628
+  size: 53, 72
+  orig: 61, 80
+  offset: 4, 4
+  index: -1
+head
+  rotate: false
+  xy: 2, 618
+  size: 298, 404
+  orig: 304, 408
+  offset: 4, 2
+  index: -1
+leg1_1
+  rotate: true
+  xy: 180, 7
+  size: 30, 94
+  orig: 38, 102
+  offset: 4, 4
+  index: -1
+leg1_2
+  rotate: true
+  xy: 180, 7
+  size: 30, 94
+  orig: 38, 102
+  offset: 4, 4
+  index: -1
+leg1_3
+  rotate: false
+  xy: 268, 267
+  size: 44, 25
+  orig: 52, 33
+  offset: 4, 4
+  index: -1
+leg2_1
+  rotate: true
+  xy: 172, 262
+  size: 30, 94
+  orig: 38, 102
+  offset: 4, 4
+  index: -1
+leg2_2
+  rotate: true
+  xy: 172, 262
+  size: 30, 94
+  orig: 38, 102
+  offset: 4, 4
+  index: -1
+leg2_3
+  rotate: false
+  xy: 314, 267
+  size: 44, 25
+  orig: 52, 33
+  offset: 4, 4
+  index: -1
+mouth_1
+  rotate: true
+  xy: 410, 2
+  size: 87, 64
+  orig: 92, 68
+  offset: 3, 2
+  index: -1
+mouth_2
+  rotate: true
+  xy: 302, 702
+  size: 74, 63
+  orig: 82, 71
+  offset: 4, 4
+  index: -1
+mouth_3
+  rotate: true
+  xy: 403, 936
+  size: 86, 70
+  orig: 92, 76
+  offset: 2, 3
+  index: -1
+mouth_4
+  rotate: false
+  xy: 2, 2
+  size: 96, 35
+  orig: 104, 43
+  offset: 4, 4
+  index: -1
+mouth_5
+  rotate: true
+  xy: 344, 932
+  size: 90, 57
+  orig: 98, 65
+  offset: 4, 4
+  index: -1
+mouth_6
+  rotate: true
+  xy: 302, 778
+  size: 90, 60
+  orig: 96, 68
+  offset: 4, 3
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 210, 54
+  size: 161, 206
+  orig: 169, 214
+  offset: 3, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 180, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head
+  rotate: true
+  xy: 172, 396
+  size: 220, 213
+  orig: 288, 370
+  offset: 4, 78
+  index: -1

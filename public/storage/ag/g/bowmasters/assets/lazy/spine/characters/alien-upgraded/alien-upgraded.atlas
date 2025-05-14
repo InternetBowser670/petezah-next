@@ -1,0 +1,342 @@
+
+alien-upgraded.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 853, 789
+  size: 143, 157
+  orig: 152, 252
+  offset: 4, 43
+  index: -1
+bow
+  rotate: true
+  xy: 2, 748
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+dead_eyes
+  rotate: false
+  xy: 886, 995
+  size: 109, 27
+  orig: 121, 36
+  offset: 6, 5
+  index: -1
+drop
+  rotate: true
+  xy: 755, 999
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyes_1
+  rotate: false
+  xy: 30, 1009
+  size: 113, 13
+  orig: 121, 36
+  offset: 4, 12
+  index: -1
+eyes_2
+  rotate: false
+  xy: 365, 1003
+  size: 110, 19
+  orig: 121, 36
+  offset: 6, 9
+  index: -1
+eyes_3
+  rotate: false
+  xy: 251, 1004
+  size: 112, 18
+  orig: 121, 36
+  offset: 5, 9
+  index: -1
+eyes_4
+  rotate: false
+  xy: 477, 1002
+  size: 106, 20
+  orig: 121, 36
+  offset: 8, 8
+  index: -1
+eyes_5
+  rotate: false
+  xy: 585, 1002
+  size: 108, 20
+  orig: 121, 36
+  offset: 6, 8
+  index: -1
+eyes_6
+  rotate: false
+  xy: 695, 1002
+  size: 58, 20
+  orig: 121, 36
+  offset: 32, 8
+  index: -1
+eyes_7
+  rotate: false
+  xy: 145, 1005
+  size: 104, 17
+  orig: 121, 36
+  offset: 8, 10
+  index: -1
+hand1_1
+  rotate: true
+  xy: 106, 974
+  size: 29, 89
+  orig: 76, 96
+  offset: 24, 3
+  index: -1
+hand1_2
+  rotate: true
+  xy: 185, 919
+  size: 52, 89
+  orig: 76, 96
+  offset: 1, 4
+  index: -1
+hand1_3
+  rotate: true
+  xy: 197, 974
+  size: 29, 50
+  orig: 76, 56
+  offset: 24, 3
+  index: -1
+hand2_1
+  rotate: true
+  xy: 249, 973
+  size: 29, 89
+  orig: 76, 96
+  offset: 24, 3
+  index: -1
+hand2_2
+  rotate: true
+  xy: 276, 918
+  size: 52, 89
+  orig: 76, 96
+  offset: 1, 4
+  index: -1
+hand2_3
+  rotate: true
+  xy: 340, 972
+  size: 29, 50
+  orig: 76, 56
+  offset: 24, 3
+  index: -1
+head
+  rotate: true
+  xy: 2, 472
+  size: 274, 333
+  orig: 276, 336
+  offset: 1, 0
+  index: -1
+leg1_1
+  rotate: true
+  xy: 697, 948
+  size: 49, 94
+  orig: 52, 100
+  offset: 1, 3
+  index: -1
+leg1_2
+  rotate: true
+  xy: 392, 971
+  size: 29, 94
+  orig: 52, 100
+  offset: 11, 3
+  index: -1
+leg1_3
+  rotate: false
+  xy: 794, 997
+  size: 44, 25
+  orig: 52, 32
+  offset: 4, 3
+  index: -1
+leg2_1
+  rotate: true
+  xy: 861, 944
+  size: 49, 94
+  orig: 52, 100
+  offset: 1, 3
+  index: -1
+leg2_2
+  rotate: true
+  xy: 488, 971
+  size: 29, 94
+  orig: 52, 100
+  offset: 11, 3
+  index: -1
+leg2_3
+  rotate: false
+  xy: 840, 997
+  size: 44, 25
+  orig: 52, 32
+  offset: 4, 3
+  index: -1
+mouth_1
+  rotate: false
+  xy: 367, 910
+  size: 99, 59
+  orig: 107, 67
+  offset: 4, 4
+  index: -1
+mouth_2
+  rotate: false
+  xy: 80, 921
+  size: 103, 51
+  orig: 111, 59
+  offset: 4, 4
+  index: -1
+mouth_3
+  rotate: false
+  xy: 2, 926
+  size: 76, 51
+  orig: 84, 59
+  offset: 4, 4
+  index: -1
+mouth_4
+  rotate: false
+  xy: 957, 934
+  size: 65, 59
+  orig: 73, 67
+  offset: 4, 4
+  index: -1
+mouth_5
+  rotate: false
+  xy: 2, 979
+  size: 102, 28
+  orig: 110, 36
+  offset: 4, 4
+  index: -1
+mouth_6
+  rotate: false
+  xy: 468, 900
+  size: 90, 69
+  orig: 98, 77
+  offset: 4, 4
+  index: -1
+mouth_7
+  rotate: false
+  xy: 584, 965
+  size: 111, 35
+  orig: 119, 43
+  offset: 4, 4
+  index: -1
+mouth_8
+  rotate: false
+  xy: 793, 946
+  size: 66, 49
+  orig: 74, 57
+  offset: 4, 4
+  index: -1
+nose
+  rotate: false
+  xy: 5, 1011
+  size: 23, 11
+  orig: 28, 16
+  offset: 3, 3
+  index: -1
+skeleton_body_alien_upgraded
+  rotate: true
+  xy: 694, 816
+  size: 128, 157
+  orig: 152, 252
+  offset: 12, 43
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 2, 1021
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_alien_upgraded
+  rotate: true
+  xy: 560, 834
+  size: 129, 132
+  orig: 276, 336
+  offset: 75, 94
+  index: -1
+ufo
+  rotate: false
+  xy: 358, 586
+  size: 496, 201
+  orig: 500, 240
+  offset: 1, 36
+  index: -1

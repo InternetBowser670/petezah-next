@@ -1,0 +1,55 @@
+
+tutorial-probe.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tutor_base
+  rotate: false
+  xy: 2, 921
+  size: 1315, 771
+  orig: 1317, 773
+  offset: 1, 1
+  index: -1
+tutor_base_line
+  rotate: false
+  xy: 2, 901
+  size: 1303, 18
+  orig: 1303, 18
+  offset: 0, 0
+  index: -1
+tutor_circle
+  rotate: false
+  xy: 2, 524
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+tutor_hand
+  rotate: false
+  xy: 2, 550
+  size: 262, 349
+  orig: 262, 349
+  offset: 0, 0
+  index: -1
+tutor_hand_strip
+  rotate: false
+  xy: 1319, 1153
+  size: 190, 93
+  orig: 190, 93
+  offset: 0, 0
+  index: -1
+tutor_laser_probe
+  rotate: false
+  xy: 1319, 1248
+  size: 239, 444
+  orig: 239, 444
+  offset: 0, 0
+  index: -1
+tutor_probe
+  rotate: false
+  xy: 1560, 1560
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1

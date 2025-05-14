@@ -2,66 +2,108 @@
 
 import { useRouter } from "next/navigation";
 import Typewriter from "@/ui/typewriter";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const router = useRouter();
 
   function redirectToGames() {
-    const params = window.location.search;
-    router.push(`/g${params}`);
+    router.push(`/g`);
   }
 
+  const images = [
+    { src: "/storage/images/main/smashy.jpg", caption: "Smashy Road" },
+    { src: "/storage/images/main/ragdoll.jpg", caption: "Ragdoll Simulator" },
+    { src: "/storage/ag/g/slope/IMG_5256.jpeg", caption: "Slope" },
+    { src: "/storage/images/main/slitherio.jpg", caption: "Slither.io" },
+    { src: "/storage/images/main/brawlstars1.jpg", caption: "Brawl Stars" },
+    { src: "/storage/ag/g/yohoho/IMG_5302.jpeg", caption: "YoHoHo!" },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentImage = images[currentIndex];
+
   return (
-    <div className="flex justify-start items-center h-[100vh] w-full bg-[#0A1D37] text-white overflow-hidden">
-      <div className="relative text-white text-left left-[10%]">
-        <h2 className="text-[40px] font-bold">
-          Welcome to
+    <div className="flex items-center h-[100vh] w-full bg-[#0A1D37] text-white overflow-hidden">
+      <div className="flex items-center justify-between w-full">
+        <div className="relative text-white text-left left-[10%] w-[35%]">
+          <h2 className="text-[40px] font-bold">
+            Welcome to
+            <br />
+            <span className="cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent h-[27px]">
+              <Typewriter />
+            </span>
+          </h2>
+          <p className="my-[20px]! text-[18px]">Game on!</p>
+          <button
+            onClick={redirectToGames}
+            type="button"
+            className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors duration-500 hover:bg-[#31476b]"
+          >
+            Start Gaming
+          </button>
           <br />
-          <span className="cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent h-[27px]">
-            <Typewriter />
-          </span>
-        </h2>
-        <p className="my-[20px]! text-[18px]">Game on!</p>
+          <div className="flex social-media-tray">
+            <a href="https://x.com/PeteZahGames/" target="_parent">
+              <div className="flex justify-center items-center h-[30px] w-[30px] m-[4px]! mt-[15px]! bg-[#112c69] rounded-[8px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="14"
+                  width="14"
+                  viewBox="0 0 512 512"
+                >
+                  {/*<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->*/}
+                  <path
+                    fill="#ffffff"
+                    d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+                  />
+                </svg>
+              </div>
+            </a>
+            <a href="https://discord.gg/cYjHFDguxS" target="_parent">
+              <div className="flex justify-center items-center h-[30px] w-[30px] m-[4px]! mt-[15px]! bg-[#112c69] rounded-[8px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="14"
+                  width="17.5"
+                  viewBox="0 0 640 512"
+                >
+                  {/*<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->*/}
+                  <path
+                    fill="#ffffff"
+                    d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
         <button
-          onClick={redirectToGames}
+          className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[rgba(0,0,0,0.5)] shadow-[0_15px_30px_rgba(0,0,0,0.6)] cursor-pointer hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300"
           type="button"
-          className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors duration-500 hover:bg-[#31476b]"
+          onClick={redirectToGames}
         >
-          Start Gaming
+          <img
+            src={currentImage.src}
+            alt={currentImage.caption}
+            className="h-[200px] border-[5px] border-solid border-[#ffffff] rounded-[12px] shadow-[0_12px_35px_rgba(255,255,255,0.3)] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"
+            id="large-image"
+          />
+          <div
+            className="mt-[10px]! text-white font-[600] text-[18px] bg-blue-950 backdrop-opacity-50 p-[8px]! rounded-[8px]"
+            id="large-image-caption"
+          >
+            {currentImage.caption}
+          </div>
         </button>
-        <br />
-        <div className="social-media-tray flex">
-        <a href="https://x.com/PeteZahGames/" target="_parent"
-          ><div className="flex justify-center items-center h-[30px] w-[30px] m-[4px]! mt-[15px]! bg-[#112c69] rounded-[8px]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              width="14"
-              viewBox="0 0 512 512"
-            >
-              {/*<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->*/}
-              <path
-                fill="#ffffff"
-                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-              />
-            </svg></div
-        ></a>
-        <a href="https://discord.gg/cYjHFDguxS" target="_parent"
-          ><div className="flex justify-center items-center h-[30px] w-[30px] m-[4px]! mt-[15px]! bg-[#112c69] rounded-[8px]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              width="17.5"
-              viewBox="0 0 640 512"
-            >
-              {/*<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->*/}
-              <path
-                fill="#ffffff"
-                d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"
-              />
-            </svg></div
-        ></a>
-      </div>
       </div>
     </div>
   );

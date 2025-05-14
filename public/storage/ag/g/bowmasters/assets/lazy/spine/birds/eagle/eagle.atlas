@@ -1,0 +1,69 @@
+
+eagle.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eagle_beak_1
+  rotate: false
+  xy: 80, 775
+  size: 81, 53
+  orig: 81, 53
+  offset: 0, 0
+  index: -1
+eagle_beak_2
+  rotate: false
+  xy: 2, 811
+  size: 76, 17
+  orig: 76, 17
+  offset: 0, 0
+  index: -1
+eagle_body
+  rotate: false
+  xy: 526, 609
+  size: 262, 122
+  orig: 262, 122
+  offset: 0, 0
+  index: -1
+eagle_head
+  rotate: false
+  xy: 615, 733
+  size: 213, 95
+  orig: 213, 95
+  offset: 0, 0
+  index: -1
+eagle_leg_1
+  rotate: true
+  xy: 163, 773
+  size: 55, 106
+  orig: 55, 106
+  offset: 0, 0
+  index: -1
+eagle_leg_2
+  rotate: true
+  xy: 271, 773
+  size: 55, 106
+  orig: 55, 106
+  offset: 0, 0
+  index: -1
+eagle_tail
+  rotate: false
+  xy: 379, 744
+  size: 234, 84
+  orig: 234, 84
+  offset: 0, 0
+  index: -1
+eagle_wing_back
+  rotate: false
+  xy: 2, 666
+  size: 260, 105
+  orig: 260, 105
+  offset: 0, 0
+  index: -1
+eagle_wing_front
+  rotate: false
+  xy: 264, 637
+  size: 260, 105
+  orig: 260, 105
+  offset: 0, 0
+  index: -1

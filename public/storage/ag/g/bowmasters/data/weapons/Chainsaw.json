@@ -1,0 +1,80 @@
+{
+    "damage": 20,
+    "zombieDamage": 0,
+    "anchorPoint": {
+        "x": 0.5,
+        "y": 0.5
+    },
+    "boneAngle": 240,
+    "boneShift": {
+        "x": 100,
+        "y": 140
+    },
+    "weaponType": 8,
+    "launchType": 2,
+    "tutorialType": 11,
+    "fatalityActivationType": 7,
+    "isPhysical": 1,
+    "angularVelocity": 15,
+    "isRotateFromDirection": 0,
+    "gravityRatio": 100,
+    "maxSpeed": 2750,
+    "lifeTime": -1,
+    "periodicalDamageInfo": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "weaponType": 0,
+        "frequency": 0,
+        "radius": 0,
+        "damage": 0,
+        "duration": 0,
+        "isSpreadEnabled": 0,
+        "type": 0
+    },
+    "isAccelerationEnabled": 0,
+    "acceleration": 0,
+    "ignoreEmissionAngleForRotation": 0,
+    "bounciness": 0,
+    "decalType": 1,
+    "isUnfollowedAfterActivation": 1,
+    "isDisabledAfterCollision": 0,
+    "unfollowDuration": 6.5,
+    "createSound": "weapon_create",
+    "idleSound": "chainsaw_idle",
+    "shootSound": "weapon_shoot",
+    "flyingSound": "axe_flying",
+    "activationSound": "",
+    "activationFlyingSound": "",
+    "groundHitSound": "chainsaw_ground_hit",
+    "groundPierceSound": "",
+    "characterHitSound": "chainsaw_character_hit",
+    "characterPierceSound": "",
+    "flyOutSound": "",
+    "isRotatingFlyingSound": 1,
+    "whooshDelayBetweenSounds": 0.25,
+    "whooshMinVelocity": 6.5,
+    "whooshMaxVelocity": 35,
+    "isOneTimeActivated": 0,
+    "isPiercing": false,
+    "pirceDistance": 0,
+    "removeBodyAfterCollision": false,
+    "disableAfterHit": false,
+    "missAfterGroundHit": false,
+    "disableVelocityLimit": 1,
+    "trail": {
+        "maxPoints": 12,
+        "maxLength": 1000,
+        "alpha": 0.25,
+        "color": 16777215,
+        "headWidth": 55,
+        "tailScale": 0,
+        "shift": {
+            "x": 0,
+            "y": 0
+        }
+    },
+    "ai": {}
+}

@@ -1,0 +1,363 @@
+
+professor.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 172, 805
+  size: 128, 217
+  orig: 136, 225
+  offset: 4, 4
+  index: -1
+body_back
+  rotate: true
+  xy: 172, 675
+  size: 128, 217
+  orig: 136, 225
+  offset: 4, 4
+  index: -1
+bow
+  rotate: false
+  xy: 2, 668
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+collar
+  rotate: true
+  xy: 2, 59
+  size: 150, 74
+  orig: 158, 83
+  offset: 4, 4
+  index: -1
+dead_eyes
+  rotate: true
+  xy: 238, 122
+  size: 91, 27
+  orig: 104, 36
+  offset: 6, 5
+  index: -1
+drop
+  rotate: false
+  xy: 263, 391
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyes_1
+  rotate: false
+  xy: 176, 98
+  size: 84, 19
+  orig: 104, 36
+  offset: 10, 8
+  index: -1
+eyes_2
+  rotate: true
+  xy: 215, 292
+  size: 96, 13
+  orig: 104, 36
+  offset: 4, 11
+  index: -1
+eyes_3
+  rotate: true
+  xy: 195, 292
+  size: 96, 18
+  orig: 104, 36
+  offset: 4, 9
+  index: -1
+eyes_4
+  rotate: false
+  xy: 262, 100
+  size: 81, 20
+  orig: 104, 36
+  offset: 12, 8
+  index: -1
+eyes_5
+  rotate: true
+  xy: 201, 5
+  size: 91, 20
+  orig: 104, 36
+  offset: 7, 8
+  index: -1
+eyes_6
+  rotate: true
+  xy: 282, 610
+  size: 63, 20
+  orig: 104, 36
+  offset: 21, 8
+  index: -1
+eyes_7
+  rotate: true
+  xy: 263, 589
+  size: 84, 17
+  orig: 104, 36
+  offset: 10, 9
+  index: -1
+eyes_8
+  rotate: true
+  xy: 230, 292
+  size: 96, 13
+  orig: 104, 36
+  offset: 4, 12
+  index: -1
+glasses
+  rotate: true
+  xy: 78, 70
+  size: 139, 59
+  orig: 147, 67
+  offset: 4, 4
+  index: -1
+hand1_1
+  rotate: false
+  xy: 267, 9
+  size: 29, 89
+  orig: 50, 97
+  offset: 11, 4
+  index: -1
+hand1_2
+  rotate: false
+  xy: 223, 7
+  size: 42, 89
+  orig: 50, 97
+  offset: 4, 4
+  index: -1
+hand1_3
+  rotate: true
+  xy: 304, 591
+  size: 29, 50
+  orig: 50, 58
+  offset: 11, 4
+  index: -1
+hand2_1
+  rotate: false
+  xy: 298, 9
+  size: 29, 89
+  orig: 50, 97
+  offset: 11, 4
+  index: -1
+hand2_2
+  rotate: false
+  xy: 267, 125
+  size: 42, 89
+  orig: 50, 97
+  offset: 4, 4
+  index: -1
+hand2_3
+  rotate: false
+  xy: 345, 623
+  size: 29, 50
+  orig: 50, 58
+  offset: 11, 4
+  index: -1
+head
+  rotate: false
+  xy: 2, 390
+  size: 259, 276
+  orig: 288, 284
+  offset: 4, 4
+  index: -1
+leg1_1
+  rotate: false
+  xy: 176, 119
+  size: 29, 94
+  orig: 49, 102
+  offset: 10, 4
+  index: -1
+leg1_2
+  rotate: false
+  xy: 158, 2
+  size: 41, 94
+  orig: 49, 102
+  offset: 4, 4
+  index: -1
+leg1_3
+  rotate: true
+  xy: 263, 476
+  size: 44, 26
+  orig: 52, 34
+  offset: 4, 4
+  index: -1
+leg2_1
+  rotate: false
+  xy: 207, 119
+  size: 29, 94
+  orig: 49, 102
+  offset: 10, 4
+  index: -1
+leg2_2
+  rotate: false
+  xy: 245, 294
+  size: 41, 94
+  orig: 49, 102
+  offset: 4, 4
+  index: -1
+leg2_3
+  rotate: true
+  xy: 263, 430
+  size: 44, 26
+  orig: 52, 34
+  offset: 4, 4
+  index: -1
+mouth_1
+  rotate: true
+  xy: 329, 11
+  size: 87, 24
+  orig: 95, 32
+  offset: 4, 4
+  index: -1
+mouth_2
+  rotate: false
+  xy: 2, 6
+  size: 103, 51
+  orig: 111, 59
+  offset: 4, 4
+  index: -1
+mouth_3
+  rotate: true
+  xy: 257, 216
+  size: 76, 51
+  orig: 84, 59
+  offset: 4, 4
+  index: -1
+mouth_4
+  rotate: true
+  xy: 263, 522
+  size: 65, 59
+  orig: 73, 67
+  offset: 4, 4
+  index: -1
+mouth_5
+  rotate: true
+  xy: 165, 286
+  size: 102, 28
+  orig: 110, 36
+  offset: 4, 4
+  index: -1
+mouth_6
+  rotate: false
+  xy: 165, 215
+  size: 90, 69
+  orig: 98, 77
+  offset: 4, 4
+  index: -1
+mouth_7
+  rotate: true
+  xy: 139, 98
+  size: 111, 35
+  orig: 119, 43
+  offset: 4, 4
+  index: -1
+mouth_8
+  rotate: true
+  xy: 107, 2
+  size: 66, 49
+  orig: 74, 57
+  offset: 4, 4
+  index: -1
+nose
+  rotate: false
+  xy: 304, 622
+  size: 39, 51
+  orig: 47, 59
+  offset: 4, 4
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 302, 815
+  size: 128, 207
+  orig: 136, 215
+  offset: 4, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 172, 672
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_professor
+  rotate: false
+  xy: 2, 211
+  size: 161, 177
+  orig: 288, 284
+  offset: 48, 20
+  index: -1

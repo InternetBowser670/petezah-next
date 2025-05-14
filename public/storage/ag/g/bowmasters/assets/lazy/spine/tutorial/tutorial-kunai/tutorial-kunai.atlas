@@ -1,0 +1,48 @@
+
+tutorial-kunai.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tutor_base
+  rotate: false
+  xy: 2, 836
+  size: 1315, 771
+  orig: 1317, 773
+  offset: 1, 1
+  index: -1
+tutor_base_line
+  rotate: false
+  xy: 2, 816
+  size: 1303, 18
+  orig: 1303, 18
+  offset: 0, 0
+  index: -1
+tutor_circle
+  rotate: false
+  xy: 1583, 1583
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+tutor_hand
+  rotate: false
+  xy: 1319, 1258
+  size: 262, 349
+  orig: 262, 349
+  offset: 0, 0
+  index: -1
+tutor_hand_strip
+  rotate: false
+  xy: 1319, 1163
+  size: 190, 93
+  orig: 190, 93
+  offset: 0, 0
+  index: -1
+tutor_kunai
+  rotate: false
+  xy: 2, 719
+  size: 361, 95
+  orig: 361, 95
+  offset: 0, 0
+  index: -1

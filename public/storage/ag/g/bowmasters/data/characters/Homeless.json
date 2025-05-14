@@ -1,0 +1,739 @@
+{
+    "id": 23,
+    "name": "Jeremy",
+    "description": "the drunk master",
+    "localizedName": "ui.main.shop.homeless.name",
+    "localizedDescription": "ui.main.shop.homeless.description",
+    "localizedWeaponDescription": "ui.main.shop.homeless.weapon.description",
+    "icon": "icon_homeless",
+    "avatar": "avatar_homeless",
+    "characterType": 1,
+    "characterVoiceType": 2,
+    "health": 100,
+    "restoreVelocityRoot": 4,
+    "shouldSpawnAllFatalities": 1,
+    "headMassRatio": 0.4,
+    "minDamageForPainSound": 10,
+    "appleHeightOffset": 195,
+    "isAvailableAsAppleBoy": 1,
+    "isAvailableAsEnemy": 1,
+    "characterMode": 0,
+    "needHappyAnimation": 1,
+    "hittingProbabilities": [
+        {
+            "shotCount": 0,
+            "minProbability": 0.2,
+            "maxProbability": 1
+        },
+        {
+            "shotCount": 3,
+            "minProbability": 0.4,
+            "maxProbability": 1
+        },
+        {
+            "shotCount": 7,
+            "minProbability": 0.65,
+            "maxProbability": 1
+        },
+        {
+            "shotCount": 10,
+            "minProbability": 1,
+            "maxProbability": 1
+        }
+    ],
+    "weapon": "TrashCan",
+    "winningAnimationName": "",
+    "endLevelDelay": 5,
+    "shootBounds": {
+        "x": -300,
+        "y": 0,
+        "width": 600,
+        "height": 320
+    },
+    "jumpToPositionEase": 28,
+    "jumpToPositionDuration": 0.25,
+    "appearSounds": [],
+    "getTurnSounds": [],
+    "aimingSounds": [],
+    "aimingEnemySounds": [],
+    "missedSounds": [],
+    "hitTheEnemySounds": [],
+    "damageMeSounds": [],
+    "recoversSounds": [],
+    "enemyNearMissedSounds": [],
+    "enemyMissesByFarSounds": [],
+    "bodyBoneName": "body",
+    "weaponBoneName": "weapon",
+    "triggerBonesName": [
+        "arm_l",
+        "arm_r",
+        "forearm_l",
+        "forearm_r",
+        "hand_l",
+        "hand_r"
+    ],
+    "headBoneName": "head",
+    "spine": "homeless",
+    "polygons": [
+        {
+            "bone": "hand_l",
+            "vertices": [
+                {
+                    "x": 11.604809,
+                    "y": 7.4168606
+                },
+                {
+                    "x": -0.30762482,
+                    "y": 7.4168606
+                },
+                {
+                    "x": -0.058322906,
+                    "y": -7.445734
+                },
+                {
+                    "x": 11.929802,
+                    "y": -7.445734
+                },
+                {
+                    "x": 14.401543,
+                    "y": -6.5457478
+                },
+                {
+                    "x": 16.076519,
+                    "y": -5.0236053
+                },
+                {
+                    "x": 17.751492,
+                    "y": -2.3736477
+                },
+                {
+                    "x": 18.076485,
+                    "y": -0.04868126
+                },
+                {
+                    "x": 17.751492,
+                    "y": 2.2512836
+                },
+                {
+                    "x": 16.076519,
+                    "y": 5.0762424
+                },
+                {
+                    "x": 13.876549,
+                    "y": 6.8918667
+                }
+            ],
+            "scale": {
+                "x": 2.2,
+                "y": 2
+            },
+            "centre": {
+                "x": -12,
+                "y": 0
+            }
+        },
+        {
+            "bone": "thigh_l",
+            "vertices": [
+                {
+                    "x": 33.624924,
+                    "y": -7.3422813
+                },
+                {
+                    "x": 33.624924,
+                    "y": 7.1175766
+                },
+                {
+                    "x": -6.6013947,
+                    "y": 7.1175766
+                },
+                {
+                    "x": -6.6013947,
+                    "y": -7.3422813
+                }
+            ],
+            "scale": {
+                "x": 2,
+                "y": 2
+            },
+            "centre": {
+                "x": -30,
+                "y": 0
+            }
+        },
+        {
+            "bone": "thigh_r",
+            "vertices": [
+                {
+                    "x": 33.87657,
+                    "y": -7.1385503
+                },
+                {
+                    "x": 33.87657,
+                    "y": 7.2481265
+                },
+                {
+                    "x": -6.8269577,
+                    "y": 7.2481265
+                },
+                {
+                    "x": -6.8269577,
+                    "y": -7.1385503
+                }
+            ],
+            "scale": {
+                "x": 2,
+                "y": 2
+            },
+            "centre": {
+                "x": -30,
+                "y": 0
+            }
+        },
+        {
+            "bone": "arm_l",
+            "vertices": [
+                {
+                    "x": -5.117874,
+                    "y": 7.240034
+                },
+                {
+                    "x": -5.3671875,
+                    "y": -7.328699
+                },
+                {
+                    "x": 31.470963,
+                    "y": -7.328699
+                },
+                {
+                    "x": 31.470963,
+                    "y": 7.240034
+                }
+            ],
+            "scale": {
+                "x": 2.2,
+                "y": 2
+            },
+            "centre": {
+                "x": -30,
+                "y": 0
+            }
+        },
+        {
+            "bone": "shin_r",
+            "vertices": [
+                {
+                    "x": -0.12135315,
+                    "y": 7.267017
+                },
+                {
+                    "x": -0.12135315,
+                    "y": -7.3664746
+                },
+                {
+                    "x": 33.282173,
+                    "y": -7.3664746
+                },
+                {
+                    "x": 33.282173,
+                    "y": 7.516311
+                }
+            ],
+            "scale": {
+                "x": 2.5,
+                "y": 2
+            },
+            "centre": {
+                "x": -40,
+                "y": 0
+            }
+        },
+        {
+            "bone": "head",
+            "vertices": [
+                {
+                    "x": 71.81119,
+                    "y": 32.468754
+                },
+                {
+                    "x": -6.2161713,
+                    "y": 32.269703
+                },
+                {
+                    "x": -6.2161713,
+                    "y": -31.961716
+                },
+                {
+                    "x": 74.83977,
+                    "y": -32.161186
+                },
+                {
+                    "x": 87.10016,
+                    "y": -28.759064
+                },
+                {
+                    "x": 94.19142,
+                    "y": -22.612362
+                },
+                {
+                    "x": 100.3203,
+                    "y": -14.229954
+                },
+                {
+                    "x": 102.55022,
+                    "y": 0.1051178
+                },
+                {
+                    "x": 99.84247,
+                    "y": 13.803087
+                },
+                {
+                    "x": 92.73724,
+                    "y": 23.680372
+                },
+                {
+                    "x": 84.39241,
+                    "y": 30.181969
+                }
+            ],
+            "scale": {
+                "x": 2,
+                "y": 2
+            },
+            "centre": {
+                "x": -90,
+                "y": 0
+            }
+        },
+        {
+            "bone": "shin_l",
+            "vertices": [
+                {
+                    "x": 33.23514,
+                    "y": -7.1403503
+                },
+                {
+                    "x": 33.23514,
+                    "y": 7.36689
+                },
+                {
+                    "x": -0.6222954,
+                    "y": 7.1175766
+                },
+                {
+                    "x": -0.6222954,
+                    "y": -7.3896637
+                }
+            ],
+            "scale": {
+                "x": 2.5,
+                "y": 2
+            },
+            "centre": {
+                "x": -40,
+                "y": 0
+            }
+        },
+        {
+            "bone": "arm_r",
+            "vertices": [
+                {
+                    "x": 31.219543,
+                    "y": -7.442175
+                },
+                {
+                    "x": 31.219543,
+                    "y": 6.7683887
+                },
+                {
+                    "x": -6.146118,
+                    "y": 6.7683887
+                },
+                {
+                    "x": -6.146118,
+                    "y": -7.442175
+                }
+            ],
+            "scale": {
+                "x": 2.2,
+                "y": 2
+            },
+            "centre": {
+                "x": -30,
+                "y": 0
+            }
+        },
+        {
+            "bone": "forearm_r",
+            "vertices": [
+                {
+                    "x": 31.036781,
+                    "y": -7.4367886
+                },
+                {
+                    "x": 30.78748,
+                    "y": 7.2206974
+                },
+                {
+                    "x": -0.12670898,
+                    "y": 7.2206974
+                },
+                {
+                    "x": -0.12670898,
+                    "y": -7.4367886
+                }
+            ],
+            "scale": {
+                "x": 2.5,
+                "y": 2
+            },
+            "centre": {
+                "x": -25,
+                "y": 0
+            }
+        },
+        {
+            "bone": "forearm_l",
+            "vertices": [
+                {
+                    "x": -0.37390137,
+                    "y": 7.4736614
+                },
+                {
+                    "x": -0.62319946,
+                    "y": -7.2959385
+                },
+                {
+                    "x": 30.041676,
+                    "y": -7.2959385
+                },
+                {
+                    "x": 30.041676,
+                    "y": 7.4736614
+                }
+            ],
+            "scale": {
+                "x": 2.5,
+                "y": 2
+            },
+            "centre": {
+                "x": -25,
+                "y": 0
+            }
+        },
+        {
+            "bone": "body",
+            "vertices": [
+                {
+                    "x": 2.1851883,
+                    "y": 31.703463
+                },
+                {
+                    "x": -6.718134,
+                    "y": 29.04386
+                },
+                {
+                    "x": -12.889345,
+                    "y": 24.206854
+                },
+                {
+                    "x": -17.54031,
+                    "y": 13.464268
+                },
+                {
+                    "x": -17.387817,
+                    "y": -1.3997326
+                },
+                {
+                    "x": -17.258373,
+                    "y": -15.288764
+                },
+                {
+                    "x": -13.646666,
+                    "y": -24.187962
+                },
+                {
+                    "x": -6.8705673,
+                    "y": -29.778297
+                },
+                {
+                    "x": -0.20380402,
+                    "y": -32.43144
+                },
+                {
+                    "x": 50.041107,
+                    "y": -32.431442
+                },
+                {
+                    "x": 50.041107,
+                    "y": 31.703457
+                }
+            ],
+            "scale": {
+                "x": 2.1,
+                "y": 2
+            },
+            "centre": {
+                "x": -43,
+                "y": 0
+            }
+        },
+        {
+            "bone": "hand_r",
+            "vertices": [
+                {
+                    "x": 11.673729,
+                    "y": -7.3629894
+                },
+                {
+                    "x": 14.465572,
+                    "y": -6.851988
+                },
+                {
+                    "x": 16.108067,
+                    "y": -5.4060726
+                },
+                {
+                    "x": 17.60458,
+                    "y": -2.7415752
+                },
+                {
+                    "x": 17.933075,
+                    "y": 0.03242302
+                },
+                {
+                    "x": 17.531578,
+                    "y": 3.207922
+                },
+                {
+                    "x": 16.035088,
+                    "y": 5.5804195
+                },
+                {
+                    "x": 13.954582,
+                    "y": 7.120985
+                },
+                {
+                    "x": 11.600727,
+                    "y": 7.2669926
+                },
+                {
+                    "x": -0.3097458,
+                    "y": 7.2669926
+                },
+                {
+                    "x": -0.06044388,
+                    "y": -7.3629894
+                }
+            ],
+            "scale": {
+                "x": 2.2,
+                "y": 2
+            },
+            "centre": {
+                "x": -12,
+                "y": 0
+            }
+        }
+    ],
+    "joints": [
+        {
+            "bone": "hand_l",
+            "connectedBone": "forearm_l",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "thigh_l",
+            "connectedBone": "body",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "thigh_r",
+            "connectedBone": "body",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "arm_l",
+            "connectedBone": "body",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "shin_r",
+            "connectedBone": "thigh_r",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "head",
+            "connectedBone": "body",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "shin_l",
+            "connectedBone": "thigh_l",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "arm_r",
+            "connectedBone": "body",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "forearm_r",
+            "connectedBone": "arm_r",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "forearm_l",
+            "connectedBone": "arm_l",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        },
+        {
+            "bone": "hand_r",
+            "connectedBone": "forearm_r",
+            "connectedAnchor": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "limits": {
+                "min": -30,
+                "max": 30,
+                "bounciness": 0,
+                "bounceMinVelocity": 0,
+                "contactDistance": 0
+            }
+        }
+    ],
+    "ragdoll": {
+        "startingBoneName": "body",
+        "stopBoneNames": [
+            "bow",
+            "ball_brutality",
+            "weapon",
+            "belly",
+            "hand_ik_l",
+            "hand_ik_r",
+            "eyes",
+            "hat",
+            "mouth",
+            "foot_dummy_l",
+            "foot_dummy_r",
+            "tie"
+        ],
+        "rotationLimit": 30,
+        "rootMass": 1600,
+        "massFalloffFactor": 0.4,
+        "colliderLayer": 0,
+        "disableIk": 1
+    }
+}

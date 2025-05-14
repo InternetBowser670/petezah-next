@@ -1,0 +1,81 @@
+{
+    "damage": 10,
+    "zombieDamage": 35,
+    "anchorPoint": {
+        "x": 0.5,
+        "y": 0.5
+    },
+    "boneAngle": 180,
+    "boneShift": {
+        "x": 0,
+        "y": 0
+    },
+    "weaponType": 13,
+    "launchType": 2,
+    "tutorialType": 11,
+    "fatalityActivationType": 7,
+    "isPhysical": 1,
+    "angularVelocity": 20,
+    "isRotateFromDirection": 0,
+    "gravityRatio": 100,
+    "maxSpeed": 2600,
+    "lifeTime": -1,
+    "periodicalDamageInfo": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "weaponType": 0,
+        "frequency": 0,
+        "radius": 0,
+        "damage": 0,
+        "duration": 0,
+        "isSpreadEnabled": 0,
+        "type": 0
+    },
+    "isAccelerationEnabled": 0,
+    "acceleration": 0,
+    "ignoreEmissionAngleForRotation": 0,
+    "bounciness": 0,
+    "decalType": 3,
+    "isUnfollowedAfterActivation": 0,
+    "isDisabledAfterCollision": 0,
+    "unfollowDuration": 6.5,
+    "createSound": "weapon_create",
+    "idleSound": "acid_bottle_idle",
+    "shootSound": "weapon_shoot",
+    "flyingSound": "",
+    "activationSound": "",
+    "activationFlyingSound": "",
+    "groundHitSound": "acid_bottle_collision",
+    "groundPierceSound": "",
+    "characterHitSound": "acid_bottle_collision",
+    "characterPierceSound": "",
+    "flyOutSound": "",
+    "isRotatingFlyingSound": 0,
+    "whooshDelayBetweenSounds": 0.25,
+    "whooshMinVelocity": 6.5,
+    "whooshMaxVelocity": 35,
+    "isOneTimeActivated": 1,
+    "isPiercing": false,
+    "pirceDistance": 0,
+    "removeBodyAfterCollision": true,
+    "disableAfterHit": true,
+    "missAfterGroundHit": true,
+    "finalizeAfterActivation": false,
+    "disableVelocityLimit": 1,
+    "trail": {
+        "maxPoints": 12,
+        "maxLength": 1000,
+        "alpha": 0.25,
+        "color": "#FFFFFF",
+        "headWidth": 55,
+        "tailScale": 0,
+        "shift": {
+            "x": 0,
+            "y": 0
+        }
+    },
+    "ai": {}
+}

@@ -1,0 +1,159 @@
+<html lang="en-us"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="25010801/theme/game.css">
+	<meta name="robots" content="noindex, nofollow">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&amp;display=swap" rel="stylesheet">
+	<title>Escape Road City</title>
+	<meta name="description" content="Escape Road City is a thrilling car chase game on the streets! Control your car, overcome all obstacles and escape from the police chase.">
+	<style type="text/css">
+		.jss1:before {
+			top: 0;
+			width: 100%;
+			filter: blur(16px);
+			height: 100%;
+			content: "";
+			display: block;
+			opacity: .5;
+			z-index: 0;
+			position: absolute;
+			background-size: cover;
+			background-image: url("25010801/loading.png")
+		}
+	</style> 
+	 
+	<script>
+		var buildUrl = "Build";
+		var versionFolder = "25010801/";
+		buildUrl = "https://games.azgame.io/game/escape-road-city/"+versionFolder + buildUrl;
+		var loaderUrl = buildUrl + "/escape-road-city-v25010801.loader.js";
+		var config = {
+			dataUrl: buildUrl + "/escape-road-city-v25010801.data.unityweb",
+			frameworkUrl: buildUrl + "/escape-road-city-v25010801.framework.js.unityweb",
+			codeUrl: buildUrl + "/escape-road-city-v25010801.wasm.unityweb",
+			streamingAssetsUrl: versionFolder+"StreamingAssets",
+			companyName: "azgames.io",
+			productName: "Escape Road City",
+			productVersion: "25010801",
+			pubId: ""
+		};
+		config.gameId = "escape-road-city";
+		config.eventLog=true;
+		config.buildAPI = "https://event.azgame.io/apiaz/event";
+		let currentDate = new Date();
+		let endLogDate = new Date("2025-02-19T04:10:39.577Z");
+		if(currentDate>endLogDate){
+			config.eventLog=false;
+		}
+	</script>
+	<script id="gmsoft-jssdk" src="lib/gmsoftsdk_v4.js"></script>
+<script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-1H7ZZ16PN7" async=""></script></head>
+
+<body>
+<div id="unity-container" style="display: block;">
+	<canvas id="unity-canvas" width="968" height="1280" style="cursor: default;"></canvas> 
+</div>
+<div id="loadingBlock" style="display: none;">
+	<div class="jss31 jss34 jss1">
+	<div style="position: absolute; font-family: Arial, Helvetica, sans-serif;	bottom: 10px; right: 10px; font-size: 18px; color: #ffffff; opacity: 0.5;">25010801</div>
+		<div class="spinner"></div>
+		<div class="jss31 jss34 jss48" style="flex: 1 1 0%;">
+			<div class="jss32">
+				<div class="jss7 jss9 jss20 jss3">
+					<div class="jss125">
+						<div class="jss123">
+						 <img src="25010801/logo.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--PRODUCT_VERSION:25010801END-->
+		<div class="jss31 jss34" style="flex: 3 1 0%;">
+			<div class="jss32">
+				<div class="jss31 jss34 jss39 jss50 gameloader">
+					<div class="jss32">
+						<div class="gameloader-game-name">Escape Road City</div>
+					</div>
+					<div class="jss32">
+						<div class="jss32 gameloader-logo">
+							<img id="game-logo" src="25010801/loading.png">
+						</div>
+					</div>
+					<div class="jss32">
+						<div>
+							<div class="gameloader-progressbar">
+								<div class="gameloader-progressbar-progress" id="progress_fill" style="width: 100%;"></div>
+							</div>
+							<div class="gameloader-progress-info">Downloading file: 100%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<script> 
+		var progressElement = document.getElementById('progress_fill');
+		var container =	document.getElementById("unity-container");
+		var canvas =	document.getElementById("unity-canvas");
+		var loadingBar = document.querySelector("#loadingBlock");
+		var progressBarFull = document.querySelector("#progress_fill");
+		var progress_text = document.querySelector(".gameloader-progress-info");
+		let text_percent = "";
+		var script = document.createElement("script");
+		script.src = loaderUrl;
+		script.onload = () => {
+		createUnityInstance(canvas, config, (progress) => {
+			progressElement.style.width = 100 * progress + "%";
+			text_percent = "Downloading file: " + Math.round(progress*100) + "%";
+			progress_text.innerText = text_percent;
+			if (progress >= 99) {
+				progress_text.innerText = "Game Loading ...";
+			}
+		}).then((unityInstance) => {
+			window.unityInstance = unityInstance;
+			setTimeout(function() {
+				loadingBar.style.display = "none";
+				window.focus();
+			}, 2000);
+			container.style.display = "block";
+		}).catch((message) => {
+			alert(message);
+		});
+		};
+		document.body.appendChild(script);
+	</script><script src="Build/escape-road-city-v25010801.loader.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+	<script type="module">
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+		import { getAuth	} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+		 const firebaseConfig = {
+ apiKey: "AIzaSyC6GFq04M6ozRPZEH-WTKcu1lpWFp8UYp4",
+ authDomain: "smashy-road-f60ea.firebaseapp.com",
+ projectId: "smashy-road-f60ea",
+ storageBucket: "smashy-road-f60ea.appspot.com",
+ messagingSenderId: "731814317541",
+ appId: "1:731814317541:web:f85188f4a5be85149ff30c",
+ measurementId: "G-1H7ZZ16PN7"
+};
+		window.dataLayer = window.dataLayer || [];
+		window.gtag = function () { window.dataLayer.push(arguments); }
+
+		window.gtag("config", firebaseConfig.measurementId, {
+		  cookie_domain: window.location.hostname,
+		  cookie_flags: "SameSite=None;Secure",
+		});
+		// Initialize Firebase
+		const app = firebase.initializeApp(firebaseConfig);
+		const auth = getAuth(app);
+	</script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9106a75f6a44feec&quot;,&quot;version&quot;:&quot;2025.1.0&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;7aa564ef6af14bc2822f8b6f902775d5&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
+	
+
+
+<script src="blob:https://game.azgame.io/9e6a8ca5-27a8-43fc-9f50-6b97f1163a00"></script></body></html>

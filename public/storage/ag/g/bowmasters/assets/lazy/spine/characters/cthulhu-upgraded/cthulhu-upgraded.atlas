@@ -1,0 +1,230 @@
+
+cthulhu-upgraded.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 227, 112
+  size: 330, 217
+  orig: 368, 232
+  offset: 36, 9
+  index: -1
+bow
+  rotate: true
+  xy: 240, 535
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+drop
+  rotate: true
+  xy: 482, 410
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyebrow
+  rotate: false
+  xy: 385, 400
+  size: 42, 21
+  orig: 44, 24
+  offset: 1, 2
+  index: -1
+glasses
+  rotate: false
+  xy: 240, 393
+  size: 111, 40
+  orig: 112, 44
+  offset: 1, 2
+  index: -1
+hand1_1
+  rotate: true
+  xy: 596, 659
+  size: 44, 107
+  orig: 48, 112
+  offset: 2, 2
+  index: -1
+hand1_2
+  rotate: true
+  xy: 596, 659
+  size: 44, 107
+  orig: 48, 112
+  offset: 2, 2
+  index: -1
+hand1_3
+  rotate: true
+  xy: 596, 567
+  size: 44, 73
+  orig: 48, 76
+  offset: 2, 1
+  index: -1
+hand2_1
+  rotate: true
+  xy: 596, 613
+  size: 44, 107
+  orig: 48, 112
+  offset: 2, 2
+  index: -1
+hand2_2
+  rotate: true
+  xy: 596, 613
+  size: 44, 107
+  orig: 48, 112
+  offset: 2, 2
+  index: -1
+hand2_3
+  rotate: true
+  xy: 407, 423
+  size: 44, 73
+  orig: 48, 76
+  offset: 2, 1
+  index: -1
+head
+  rotate: false
+  xy: 2, 331
+  size: 236, 372
+  orig: 236, 372
+  offset: 0, 0
+  index: -1
+leg1_1
+  rotate: true
+  xy: 407, 469
+  size: 64, 108
+  orig: 68, 112
+  offset: 2, 2
+  index: -1
+leg1_2
+  rotate: true
+  xy: 240, 359
+  size: 32, 104
+  orig: 68, 108
+  offset: 18, 2
+  index: -1
+leg1_3
+  rotate: false
+  xy: 596, 535
+  size: 48, 30
+  orig: 52, 36
+  offset: 2, 3
+  index: -1
+leg2_1
+  rotate: true
+  xy: 517, 469
+  size: 64, 108
+  orig: 68, 112
+  offset: 2, 2
+  index: -1
+leg2_2
+  rotate: true
+  xy: 482, 435
+  size: 32, 104
+  orig: 68, 108
+  offset: 18, 2
+  index: -1
+leg2_3
+  rotate: true
+  xy: 353, 385
+  size: 48, 30
+  orig: 52, 36
+  offset: 2, 3
+  index: -1
+skeleton_body
+  rotate: false
+  xy: 2, 111
+  size: 223, 218
+  orig: 231, 226
+  offset: 4, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 346, 390
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_cthulhu_upgraded
+  rotate: true
+  xy: 240, 435
+  size: 98, 165
+  orig: 162, 245
+  offset: 31, 53
+  index: -1

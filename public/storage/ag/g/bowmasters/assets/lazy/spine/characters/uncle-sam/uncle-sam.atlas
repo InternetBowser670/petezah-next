@@ -1,0 +1,363 @@
+
+uncle-sam.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 2, 780
+  size: 129, 187
+  orig: 132, 192
+  offset: 1, 3
+  index: -1
+bow
+  rotate: true
+  xy: 580, 655
+  size: 168, 354
+  orig: 176, 362
+  offset: 4, 4
+  index: -1
+coat_back
+  rotate: false
+  xy: 613, 851
+  size: 128, 105
+  orig: 132, 108
+  offset: 2, 2
+  index: -1
+dead_eyes
+  rotate: false
+  xy: 886, 986
+  size: 91, 27
+  orig: 104, 36
+  offset: 6, 5
+  index: -1
+drop
+  rotate: true
+  xy: 664, 990
+  size: 23, 37
+  orig: 25, 39
+  offset: 1, 1
+  index: -1
+eyebrow1_left
+  rotate: false
+  xy: 287, 994
+  size: 53, 19
+  orig: 61, 27
+  offset: 4, 4
+  index: -1
+eyes_1
+  rotate: false
+  xy: 342, 994
+  size: 84, 19
+  orig: 104, 36
+  offset: 10, 9
+  index: -1
+eyes_2
+  rotate: false
+  xy: 5, 1000
+  size: 96, 13
+  orig: 104, 36
+  offset: 4, 12
+  index: -1
+eyes_3
+  rotate: false
+  xy: 189, 995
+  size: 96, 18
+  orig: 104, 36
+  offset: 4, 9
+  index: -1
+eyes_4
+  rotate: false
+  xy: 428, 993
+  size: 81, 20
+  orig: 104, 36
+  offset: 12, 8
+  index: -1
+eyes_5
+  rotate: false
+  xy: 511, 993
+  size: 91, 20
+  orig: 104, 36
+  offset: 7, 8
+  index: -1
+eyes_6
+  rotate: false
+  xy: 604, 993
+  size: 58, 20
+  orig: 104, 36
+  offset: 23, 8
+  index: -1
+eyes_7
+  rotate: false
+  xy: 103, 996
+  size: 84, 17
+  orig: 104, 36
+  offset: 10, 10
+  index: -1
+hand1_1
+  rotate: true
+  xy: 2, 969
+  size: 29, 89
+  orig: 32, 92
+  offset: 1, 2
+  index: -1
+hand1_2
+  rotate: true
+  xy: 93, 965
+  size: 29, 89
+  orig: 32, 92
+  offset: 1, 2
+  index: -1
+hand1_3
+  rotate: true
+  xy: 621, 958
+  size: 30, 51
+  orig: 32, 52
+  offset: 0, 1
+  index: -1
+hand2_1
+  rotate: true
+  xy: 184, 964
+  size: 29, 90
+  orig: 32, 92
+  offset: 1, 2
+  index: -1
+hand2_2
+  rotate: true
+  xy: 380, 962
+  size: 29, 90
+  orig: 32, 92
+  offset: 1, 2
+  index: -1
+hand2_3
+  rotate: true
+  xy: 472, 962
+  size: 29, 51
+  orig: 32, 52
+  offset: 1, 1
+  index: -1
+hat
+  rotate: false
+  xy: 353, 733
+  size: 225, 156
+  orig: 232, 160
+  offset: 3, 2
+  index: -1
+head
+  rotate: true
+  xy: 2, 575
+  size: 186, 292
+  orig: 200, 296
+  offset: 3, 3
+  index: -1
+leg1_1
+  rotate: true
+  xy: 525, 962
+  size: 29, 94
+  orig: 32, 96
+  offset: 1, 1
+  index: -1
+leg1_2
+  rotate: true
+  xy: 674, 958
+  size: 29, 94
+  orig: 32, 96
+  offset: 1, 1
+  index: -1
+leg1_3
+  rotate: false
+  xy: 792, 987
+  size: 45, 26
+  orig: 48, 28
+  offset: 1, 1
+  index: -1
+leg2_1
+  rotate: true
+  xy: 770, 956
+  size: 29, 94
+  orig: 32, 96
+  offset: 1, 1
+  index: -1
+leg2_2
+  rotate: true
+  xy: 866, 955
+  size: 29, 94
+  orig: 32, 96
+  offset: 1, 1
+  index: -1
+leg2_3
+  rotate: false
+  xy: 839, 987
+  size: 45, 26
+  orig: 48, 28
+  offset: 1, 1
+  index: -1
+little_flag
+  rotate: true
+  xy: 366, 903
+  size: 57, 86
+  orig: 60, 88
+  offset: 1, 1
+  index: -1
+mouth_1
+  rotate: false
+  xy: 703, 989
+  size: 87, 24
+  orig: 95, 32
+  offset: 4, 4
+  index: -1
+mouth_2
+  rotate: false
+  xy: 183, 911
+  size: 103, 51
+  orig: 111, 59
+  offset: 4, 4
+  index: -1
+mouth_3
+  rotate: false
+  xy: 288, 911
+  size: 76, 51
+  orig: 84, 59
+  offset: 4, 4
+  index: -1
+mouth_4
+  rotate: false
+  xy: 454, 901
+  size: 65, 59
+  orig: 73, 67
+  offset: 4, 4
+  index: -1
+mouth_5
+  rotate: false
+  xy: 276, 964
+  size: 102, 28
+  orig: 110, 36
+  offset: 4, 4
+  index: -1
+mouth_6
+  rotate: false
+  xy: 521, 891
+  size: 90, 69
+  orig: 98, 77
+  offset: 4, 4
+  index: -1
+mouth_7
+  rotate: false
+  xy: 2, 928
+  size: 111, 35
+  orig: 119, 43
+  offset: 4, 4
+  index: -1
+mouth_8
+  rotate: false
+  xy: 115, 914
+  size: 66, 49
+  orig: 74, 57
+  offset: 4, 4
+  index: -1
+nose
+  rotate: false
+  xy: 979, 965
+  size: 34, 48
+  orig: 43, 56
+  offset: 5, 4
+  index: -1
+skeleton_body
+  rotate: true
+  xy: 743, 825
+  size: 128, 207
+  orig: 136, 215
+  offset: 4, 4
+  index: -1
+skeleton_hand_1
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_1.1.1
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_hand_L_1.1.1
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_2.2.2
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_leg_L_2.2.2
+  rotate: false
+  xy: 2, 1012
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+skeleton_head_unclesam
+  rotate: true
+  xy: 191, 763
+  size: 146, 160
+  orig: 200, 296
+  offset: 19, 67
+  index: -1

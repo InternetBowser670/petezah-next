@@ -1,0 +1,146 @@
+
+tutorial-shooting.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tutor_2_men_arrow
+  rotate: false
+  xy: 2, 1931
+  size: 293, 86
+  orig: 293, 86
+  offset: 0, 0
+  index: -1
+tutor_2_men_body
+  rotate: false
+  xy: 842, 1517
+  size: 347, 323
+  orig: 414, 338
+  offset: 4, 3
+  index: -1
+tutor_2_men_leg
+  rotate: true
+  xy: 489, 1923
+  size: 94, 124
+  orig: 406, 125
+  offset: 91, 0
+  index: -1
+tutor_3_men_body
+  rotate: false
+  xy: 1191, 1477
+  size: 478, 323
+  orig: 486, 338
+  offset: 4, 3
+  index: -1
+tutor_apple
+  rotate: true
+  xy: 821, 1901
+  size: 116, 147
+  orig: 116, 147
+  offset: 0, 0
+  index: -1
+tutor_arrow_2
+  rotate: false
+  xy: 1766, 1973
+  size: 271, 64
+  orig: 271, 64
+  offset: 0, 0
+  index: -1
+tutor_base
+  rotate: false
+  xy: 2, 704
+  size: 1315, 771
+  orig: 1317, 773
+  offset: 1, 1
+  index: -1
+tutor_base_line
+  rotate: false
+  xy: 2, 2019
+  size: 1303, 18
+  orig: 1303, 18
+  offset: 0, 0
+  index: -1
+tutor_bird
+  rotate: true
+  xy: 1702, 1738
+  size: 233, 240
+  orig: 233, 240
+  offset: 0, 0
+  index: -1
+tutor_chek
+  rotate: true
+  xy: 970, 1883
+  size: 134, 138
+  orig: 134, 138
+  offset: 0, 0
+  index: -1
+tutor_explode_2
+  rotate: false
+  xy: 353, 1614
+  size: 487, 285
+  orig: 487, 285
+  offset: 0, 0
+  index: -1
+tutor_hand
+  rotate: true
+  xy: 2, 1660
+  size: 262, 349
+  orig: 262, 349
+  offset: 0, 0
+  index: -1
+tutor_hand_strip
+  rotate: false
+  xy: 297, 1924
+  size: 190, 93
+  orig: 190, 93
+  offset: 0, 0
+  index: -1
+tutor_men
+  rotate: true
+  xy: 1287, 1802
+  size: 179, 413
+  orig: 179, 413
+  offset: 0, 0
+  index: -1
+tutor_zombie_angry_eyes
+  rotate: false
+  xy: 1307, 2014
+  size: 50, 23
+  orig: 68, 40
+  offset: 7, 9
+  index: -1
+tutor_zombie_body
+  rotate: false
+  xy: 1110, 1842
+  size: 175, 175
+  orig: 188, 188
+  offset: 6, 8
+  index: -1
+tutor_zombie_death_eyes
+  rotate: false
+  xy: 1359, 2014
+  size: 59, 23
+  orig: 68, 28
+  offset: 4, 3
+  index: -1
+tutor_zombie_death_head
+  rotate: true
+  xy: 615, 1904
+  size: 113, 204
+  orig: 124, 216
+  offset: 6, 5
+  index: -1
+tutor_zombie_hand
+  rotate: false
+  xy: 1546, 1983
+  size: 218, 54
+  orig: 224, 68
+  offset: 3, 7
+  index: -1
+tutor_zombie_leg
+  rotate: true
+  xy: 1420, 1995
+  size: 42, 124
+  orig: 48, 132
+  offset: 3, 3
+  index: -1

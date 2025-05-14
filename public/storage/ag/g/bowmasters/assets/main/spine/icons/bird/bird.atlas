@@ -1,0 +1,167 @@
+
+bird.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+beak
+  rotate: false
+  xy: 117, 194
+  size: 10, 12
+  orig: 10, 12
+  offset: 0, 0
+  index: -1
+beak_2
+  rotate: true
+  xy: 116, 157
+  size: 13, 14
+  orig: 13, 14
+  offset: 0, 0
+  index: -1
+beak_2_stroke
+  rotate: false
+  xy: 116, 172
+  size: 17, 19
+  orig: 17, 19
+  offset: 0, 0
+  index: -1
+beak_stroke
+  rotate: false
+  xy: 93, 95
+  size: 15, 17
+  orig: 15, 17
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 113
+  size: 52, 66
+  orig: 52, 66
+  offset: 0, 0
+  index: -1
+body_stroke
+  rotate: false
+  xy: 2, 181
+  size: 57, 71
+  orig: 57, 71
+  offset: 0, 0
+  index: -1
+eye_1
+  rotate: false
+  xy: 117, 208
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+eye_2
+  rotate: false
+  xy: 118, 235
+  size: 17, 17
+  orig: 17, 17
+  offset: 0, 0
+  index: -1
+leg_1
+  rotate: false
+  xy: 92, 226
+  size: 8, 26
+  orig: 8, 26
+  offset: 0, 0
+  index: -1
+leg_1_stroke
+  rotate: false
+  xy: 77, 188
+  size: 12, 31
+  orig: 12, 31
+  offset: 0, 0
+  index: -1
+leg_2
+  rotate: true
+  xy: 90, 145
+  size: 10, 26
+  orig: 10, 26
+  offset: 0, 0
+  index: -1
+leg_2_stroke
+  rotate: false
+  xy: 61, 188
+  size: 14, 31
+  orig: 14, 31
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 56, 144
+  size: 32, 35
+  orig: 32, 35
+  offset: 0, 0
+  index: -1
+tail_1
+  rotate: false
+  xy: 102, 228
+  size: 14, 24
+  orig: 14, 24
+  offset: 0, 0
+  index: -1
+tail_1_stroke
+  rotate: false
+  xy: 91, 114
+  size: 18, 29
+  orig: 18, 29
+  offset: 0, 0
+  index: -1
+tail_2
+  rotate: false
+  xy: 91, 193
+  size: 24, 26
+  orig: 24, 26
+  offset: 0, 0
+  index: -1
+tail_2_stroke
+  rotate: false
+  xy: 61, 221
+  size: 29, 31
+  orig: 29, 31
+  offset: 0, 0
+  index: -1
+tail_3
+  rotate: true
+  xy: 90, 157
+  size: 29, 24
+  orig: 29, 24
+  offset: 0, 0
+  index: -1
+tail_3_stroke
+  rotate: false
+  xy: 56, 113
+  size: 33, 29
+  orig: 33, 29
+  offset: 0, 0
+  index: -1
+wing_1
+  rotate: false
+  xy: 50, 54
+  size: 41, 57
+  orig: 41, 57
+  offset: 0, 0
+  index: -1
+wing_1_stroke
+  rotate: false
+  xy: 2, 49
+  size: 46, 62
+  orig: 46, 62
+  offset: 0, 0
+  index: -1
+wing_2
+  rotate: true
+  xy: 58, 2
+  size: 50, 40
+  orig: 50, 40
+  offset: 0, 0
+  index: -1
+wing_2_stroke
+  rotate: false
+  xy: 2, 2
+  size: 54, 45
+  orig: 54, 45
+  offset: 0, 0
+  index: -1

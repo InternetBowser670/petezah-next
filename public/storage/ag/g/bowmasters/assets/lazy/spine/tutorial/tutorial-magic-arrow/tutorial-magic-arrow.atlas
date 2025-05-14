@@ -1,0 +1,55 @@
+
+tutorial-magic-arrow.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tutor_base
+  rotate: false
+  xy: 2, 752
+  size: 1315, 771
+  orig: 1317, 773
+  offset: 1, 1
+  index: -1
+tutor_base_line
+  rotate: false
+  xy: 2, 1977
+  size: 1303, 18
+  orig: 1303, 18
+  offset: 0, 0
+  index: -1
+tutor_circle
+  rotate: false
+  xy: 1307, 1971
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+tutor_hand
+  rotate: true
+  xy: 2, 1713
+  size: 262, 349
+  orig: 262, 349
+  offset: 0, 0
+  index: -1
+tutor_hand_strip
+  rotate: false
+  xy: 1333, 1902
+  size: 190, 93
+  orig: 190, 93
+  offset: 0, 0
+  index: -1
+tutor_tranduil_arrow
+  rotate: false
+  xy: 1525, 1868
+  size: 470, 127
+  orig: 470, 127
+  offset: 0, 0
+  index: -1
+tutor_tranduil_spiral
+  rotate: false
+  xy: 353, 1525
+  size: 450, 450
+  orig: 450, 450
+  offset: 0, 0
+  index: -1

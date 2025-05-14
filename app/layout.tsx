@@ -4,6 +4,7 @@ import "./globals.css";
 import Particles from "@/ui/particles";
 import Sidebar from "@/ui/sidebar";
 import { Suspense } from "react";
+import { SidebarProvider } from '@/context/sidebar-context';
 
 export const metadata: Metadata = {
   title: "PeteZah",
@@ -86,7 +87,7 @@ export default function RootLayout({
       <body className="text-[#ededed] h-full bg-[#0a0a0a]">
         <Particles />
         <Suspense>
-          <Sidebar>{children}</Sidebar>
+          <SidebarProvider><Sidebar>{children}</Sidebar></SidebarProvider>
         </Suspense>
 
         {/* changelog */}
@@ -110,10 +111,6 @@ export default function RootLayout({
           `}
       </Script>
       <Script async src="https://widget.changelogfy.com/index.js" />
-
-        {/* Scripts */}
-        <Script src="/storage/js/index.js" />
-        <Script src="/storage/js/settings.js" />
       </body>
     </html>
   );

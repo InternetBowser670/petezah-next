@@ -1,0 +1,87 @@
+{
+    "damage": 20,
+    "zombieDamage": 40,
+    "anchorPoint": {
+        "x": 0.85,
+        "y": 0.5
+    },
+    "boneAngle": 0,
+    "boneShift": {
+        "x": 100,
+        "y": 0
+    },
+    "weaponType": 82,
+    "launchType": 2,
+    "tutorialType": 29,
+    "fatalityActivationType": 0,
+    "isPhysical": 1,
+    "angularVelocity": 60,
+    "isRotateFromDirection": 0,
+    "gravityRatio": 100,
+    "maxSpeed": 2750,
+    "lifeTime": -1,
+    "periodicalDamageInfo": {
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "weaponType": 0,
+        "frequency": 1,
+        "radius": 6000,
+        "damage": 30,
+        "duration": 2,
+        "isSpreadEnabled": 0,
+        "type": 3
+    },
+    "isAccelerationEnabled": 0,
+    "acceleration": 0,
+    "ignoreEmissionAngleForRotation": 0,
+    "bounciness": 0,
+    "decalType": 0,
+    "isUnfollowedAfterActivation": 0,
+    "isDisabledAfterCollision": 0,
+    "unfollowDuration": 6.5,
+    "createSound": "weapon_create",
+    "idleSound": "mjolnir_idle",
+    "shootSound": "weapon_shoot",
+    "flyingSound": "mjolnir_flying",
+    "activationSound": "mjolnir_activation",
+    "activationFlyingSound": "",
+    "groundHitSound": "mjolnir_ground_hit",
+    "groundPierceSound": "mjolnir_ground_pierce",
+    "characterHitSound": "mjolnir_character_hit",
+    "characterPierceSound": "",
+    "flyOutSound": "",
+    "isRotatingFlyingSound": 1,
+    "whooshDelayBetweenSounds": 0.25,
+    "whooshMinVelocity": 6.5,
+    "whooshMaxVelocity": 35,
+    "isOneTimeActivated": 0,
+    "isPiercing": false,
+    "pirceDistance": 0,
+    "removeBodyAfterCollision": false,
+    "disableAfterHit": false,
+    "missAfterGroundHit": false,
+    "finalizeAfterActivation": false,
+    "disableVelocityLimit": 1,
+    "trail": {
+        "maxPoints": 12,
+        "maxLength": 1000,
+        "alpha": 0.25,
+        "color": "#FFFFFF",
+        "headWidth": 55,
+        "tailScale": 0,
+        "shift": {
+            "x": 0,
+            "y": 0
+        }
+    },
+    "ai": {
+        "type": "RadialAutoActivation",
+        "maxRadius": 500,
+        "minRadius": 100,
+        "activatePossibility": 0,
+        "activateShootType": 2
+    }
+}

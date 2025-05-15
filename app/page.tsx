@@ -91,7 +91,7 @@ export default function Page() {
             </a>
           </div>
         </div>
-        <ASCIIText text='PeteZah' asciiFontSize={8} className="z-0 blur-[2px]" />
+        <ASCIIText text='PeteZah ' asciiFontSize={8} className="z-0 blur-[2px]" />
         <button
           className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[rgba(0,0,0,0.5)] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 hover:opacity-75"
           type="button"

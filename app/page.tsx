@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import Typewriter from "@/ui/typewriter";
 import { useEffect, useState } from "react";
+import Particles from "@/ui/particles";
+import ASCIIText from "@/ui/ascii-text";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,6 +16,7 @@ export default function Page() {
   }
 
   const images = [
+    { src: "/storage/images/main/geo.jpeg", caption: "Geometry Dash" },
     { src: "/storage/images/main/smashy.jpg", caption: "Smashy Road" },
     { src: "/storage/images/main/ragdoll.jpg", caption: "Ragdoll Simulator" },
     { src: "/storage/ag/g/slope/IMG_5256.jpeg", caption: "Slope" },
@@ -32,9 +35,10 @@ export default function Page() {
   const currentImage = images[currentIndex];
 
   return (
-    <div className="flex items-center h-[100vh] w-full bg-[#0A1D37] text-white overflow-hidden">
+    <div className="flex items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden">
+      <Particles />
       <div className="flex items-center justify-between w-full">
-        <div className="relative text-white text-left left-[10%] w-[35%]">
+        <div className="relative z-5 backdrop-filter backdrop-blur-sm p-4! rounded-2xl bg-black/10 border-2 border-[#0096FF] text-white text-left left-[10%] w-[400px]">
           <h2 className="text-[40px] font-bold">
             Welcome to
             <br />
@@ -86,8 +90,9 @@ export default function Page() {
             </a>
           </div>
         </div>
+        <ASCIIText text='PeteZah' asciiFontSize={8} className="z-0 blur-xs" />
         <button
-          className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[rgba(0,0,0,0.5)] shadow-[0_15px_30px_rgba(0,0,0,0.6)] cursor-pointer hover:shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300"
+          className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[rgba(0,0,0,0.5)] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 hover:opacity-75"
           type="button"
           onClick={redirectToGames}
         >

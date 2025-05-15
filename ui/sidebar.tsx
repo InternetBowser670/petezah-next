@@ -47,8 +47,8 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         onClick={handleClick}
         className={clsx(
           !sidebarToggled &&
-            "translate-x-[8px] transition-transform aspect-square w-[50px]! items-center!",
-          "max-w-[90%] h-[50px] flex items-center rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
+            "translate-x-[8px] w-[50px]! items-center!",
+          "max-w-[90%] h-[50px] flex items-center transition-all rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
           isActiveTab(url, []) && "bg-white text-black"
         )}
       >
@@ -65,9 +65,9 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             <span className="nav-icon material-symbols-rounded">{icon}</span>
             <span
               className={clsx(
-                "nav-label disable-no-m-p ml-2!",
-                !sidebarToggled && "opacity-0 hidden",
-                sidebarToggled && "opacity-100"
+                "nav-label disable-no-m-p transition-all",
+                !sidebarToggled && "opacity-0 content-[] w-0",
+                sidebarToggled && "opacity-100 ml-2!"
               )}
             >
               {title}
@@ -119,7 +119,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           )}
         />
 
-        <nav className="mt-0 sidebar-nav">
+        <nav className="h-full sidebar-nav">
           <ul className="my-2 nav-list primary-nav">
             <NavbarLink title="Home" icon="Home" url="/" />
             <NavbarLink title="Games" icon="sports_esports" url="/g" />
@@ -134,7 +134,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             )}
           />
 
-          <ul className="my-2 nav-list secondary-nav">
+          <ul className="h-full my-2 nav-list secondary-nav">
             <NavbarLink title="Profile" icon="account_circle" url="/pages/settings/p" />
             <NavbarLink title="Settings" icon="settings" url="/pages/settings" />
           </ul>

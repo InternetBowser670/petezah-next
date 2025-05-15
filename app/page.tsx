@@ -5,6 +5,7 @@ import Typewriter from "@/ui/typewriter";
 import { useEffect, useState } from "react";
 import Particles from "@/ui/particles";
 import ASCIIText from "@/ui/ascii-text";
+ import Image from "next/image";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,7 +31,7 @@ export default function Page() {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
   const currentImage = images[currentIndex];
 
@@ -96,7 +97,7 @@ export default function Page() {
           type="button"
           onClick={redirectToGames}
         >
-          <img
+          <Image
             src={currentImage.src}
             alt={currentImage.caption}
             className="h-[200px] border-[5px] border-solid border-[#ffffff] rounded-[12px] shadow-[0_12px_35px_rgba(255,255,255,0.3)] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"

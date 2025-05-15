@@ -98,6 +98,8 @@ export default function Page() {
           onClick={redirectToGames}
         >
           <Image
+            height={200}
+            width={200}
             src={currentImage.src}
             alt={currentImage.caption}
             className="h-[200px] border-[5px] border-solid border-[#ffffff] rounded-[12px] shadow-[0_12px_35px_rgba(255,255,255,0.3)] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"

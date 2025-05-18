@@ -5,10 +5,12 @@ import Typewriter from "@/ui/typewriter";
 import { useEffect, useState } from "react";
 import Particles from "@/ui/particles";
 import ASCIIText from "@/ui/ascii-text";
- import Image from "next/image";
+import Image from "next/image";
+import clsx from "clsx";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   const router = useRouter();
 
@@ -25,6 +27,10 @@ export default function Page() {
     { src: "/storage/images/main/brawlstars1.jpg", caption: "Brawl Stars" },
     { src: "/storage/ag/g/yohoho/IMG_5302.jpeg", caption: "YoHoHo!" },
   ];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -91,7 +97,49 @@ export default function Page() {
             </a>
           </div>
         </div>
-        <ASCIIText text='PeteZah ' asciiFontSize={8} className="z-0 blur-[0.5px]" />
+        <div className="absolute top-0 flex items-center justify-center w-full pt-2!">
+          <div className="gh-image-shuffler flex items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! shadow-[0_12px_35px_rgba(255,255,255,0.2)] mx-auto border-2 border-white">
+            <button type="button" id="gh-prev-btn" className="gh-arrow bg-[#2a5daf] text-[1.2em] flex items-center justify-center h-[50px] aspect-square rounded-[6px] m-2!">
+              {"<"}
+            </button>
+            <div className="w-full overflow-hidden gh-image-wrapper">
+              <div className="flex items-center transition-transform duration-500 ease-in-out gh-image-container w-max">
+                {mounted &&
+                  images.map((image, index) => (
+                    <div
+                      key={index}
+                      className={clsx(
+                        "relative flex flex-col z-10 border-white border-2 group items-center text-center cursor-pointer rounded-md overflow-hidden gh-image-box"
+                      )}
+                      onClick={redirectToGames}
+                    >
+                      <img
+                        src={image.src}
+                        alt="Image 1"
+                        className="gh-image w-[120px] h-[80px] object-cover mx-[4px]!"
+                      />
+                      <div
+                        className={clsx(
+                          "gh-caption absolute opacity-0 group-hover:opacity-100 caption bottom-0 left-0 w-full text-center text-[12px] tracking-[0.5px] bg-[linear-gradient(45deg,rgba(10,29,55,0.9),rgba(40,40,40,0.8))] shadow-[0_3px_8px_rgba(255,255,255,0.1)] transition-opacity duration-500 ease-in-out"
+                        )}
+                      >
+                        {image.caption}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+            <button type="button" id="next-btn" className="gh-arrow bg-[#2a5daf] text-[1.2em] h-[50px] aspect-square rounded-[6px] m-2!">
+              {">"}
+            </button>
+          </div>
+        </div>
+
+        <ASCIIText
+          text="PeteZah "
+          asciiFontSize={8}
+          className="z-0 blur-[0.5px]"
+        />
         <button
           className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[rgba(0,0,0,0.5)] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 hover:opacity-75"
           type="button"
@@ -102,7 +150,7 @@ export default function Page() {
             width={200}
             src={currentImage.src}
             alt={currentImage.caption}
-            className="h-[200px] border-[5px] border-solid border-[#ffffff] rounded-[12px] shadow-[0_12px_35px_rgba(255,255,255,0.3)] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"
+            className="h-[200px] border-[5px] border-solid border-[rgba(255, 255, 255, 0.5)] rounded-[12px] shadow-[0_12px_35px_rgba(255,255,255,0.3)] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"
             id="large-image"
           />
           <div

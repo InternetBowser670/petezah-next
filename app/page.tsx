@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Typewriter from "@/ui/typewriter";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Particles from "@/ui/particles";
 import ASCIIText from "@/ui/ascii-text";
 import Image from "next/image";
@@ -10,13 +10,6 @@ import clsx from "clsx";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  const router = useRouter();
-
-  function redirectToGames() {
-    router.push(`/g`);
-  }
 
   const images = [
     { src: "/storage/images/main/geo.jpeg", caption: "Geometry Dash" },
@@ -28,9 +21,65 @@ export default function Page() {
     { src: "/storage/ag/g/yohoho/IMG_5302.jpeg", caption: "YoHoHo!" },
   ];
 
+  const imageWidth = 128;
+  const totalImages = images.length;
+
+  const [counter, setCounter] = useState(4);
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const clonesBefore = images.slice(totalImages - 4, totalImages);
+  const clonesAfter = images.slice(0, 4);
+  const fullImageSet = [...clonesBefore, ...images, ...clonesAfter];
+
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    const container = containerRef.current;
+    if (!container) return;
+
+    container.style.transition = "transform 0.5s ease-in-out";
+    container.style.transform = `translateX(-${counter * imageWidth}px)`;
+
+    Array.from(container.children).forEach((child) => {
+      const img = child.querySelector("img");
+      if (img) img.classList.remove("glow");
+    });
+
+    const currentImage = container.children[counter];
+    if (currentImage) {
+      const img = currentImage.querySelector("img");
+      if (img) img.classList.add("glow");
+    }
+  }, [counter]);
+
+  function handleTransitionEnd() {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (counter >= totalImages + 4) {
+      container.style.transition = "none";
+      setCounter(4);
+      container.style.transform = `translateX(-${4 * imageWidth}px)`;
+    } else if (counter <= 0) {
+      container.style.transition = "none";
+      setCounter(totalImages);
+      container.style.transform = `translateX(-${totalImages * imageWidth}px)`;
+    }
+  }
+
+  function handleNext() {
+    setCounter((prev) => prev + 1);
+  }
+
+  function handlePrev() {
+    console.log("prev");
+    setCounter((prev) => prev - 1);
+  }
+
+  const router = useRouter();
+
+  function redirectToGames() {
+    router.push(`/g`);
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -99,37 +148,54 @@ export default function Page() {
         </div>
         <div className="absolute top-0 flex items-center justify-center w-full pt-2!">
           <div className="gh-image-shuffler flex items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! shadow-[0_12px_35px_rgba(255,255,255,0.2)] mx-auto border-2 border-white">
-            <button type="button" id="gh-prev-btn" className="gh-arrow bg-[#2a5daf] text-[1.2em] flex items-center justify-center h-[50px] aspect-square rounded-[6px] m-2!">
+            <button
+              type="button"
+              id="gh-prev-btn"
+              className="gh-arrow bg-[#2a5daf] text-[1.2em] flex items-center justify-center h-[50px] aspect-square rounded-[6px] m-2! transition-all duration-300 z-10 hover:bg-[#0062ff]"
+              onClick={handlePrev}
+            >
               {"<"}
             </button>
-            <div className="w-full overflow-hidden gh-image-wrapper">
-              <div className="flex items-center transition-transform duration-500 ease-in-out gh-image-container w-max">
-                {mounted &&
-                  images.map((image, index) => (
+
+            <div className="z-20 w-full overflow-hidden gh-image-wrapper">
+              <div
+                ref={containerRef}
+                className="flex items-center gh-image-container w-max"
+                onTransitionEnd={handleTransitionEnd}
+                style={{ transform: `translateX(-${counter * imageWidth}px)` }}
+              >
+                {fullImageSet.map((image, index) => (
+                  <div
+                    key={index}
+                    className={clsx(
+                      "relative flex flex-col z-10 border-white border-2 group items-center text-center cursor-pointer rounded-md overflow-hidden gh-image-box"
+                    )}
+                    onClick={redirectToGames}
+                    style={{ width: imageWidth }}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.caption || `Image ${index}`}
+                      className="gh-image w-[120px] h-[80px] object-cover mx-[4px]"
+                    />
                     <div
-                      key={index}
                       className={clsx(
-                        "relative flex flex-col z-10 border-white border-2 group items-center text-center cursor-pointer rounded-md overflow-hidden gh-image-box"
+                        "gh-caption absolute opacity-0 group-hover:opacity-100 caption bottom-0 left-0 w-full text-center text-[12px] tracking-[0.5px] bg-[linear-gradient(45deg,rgba(10,29,55,0.9),rgba(40,40,40,0.8))] shadow-[0_3px_8px_rgba(255,255,255,0.1)] transition-opacity duration-500 ease-in-out"
                       )}
-                      onClick={redirectToGames}
                     >
-                      <img
-                        src={image.src}
-                        alt="Image 1"
-                        className="gh-image w-[120px] h-[80px] object-cover mx-[4px]!"
-                      />
-                      <div
-                        className={clsx(
-                          "gh-caption absolute opacity-0 group-hover:opacity-100 caption bottom-0 left-0 w-full text-center text-[12px] tracking-[0.5px] bg-[linear-gradient(45deg,rgba(10,29,55,0.9),rgba(40,40,40,0.8))] shadow-[0_3px_8px_rgba(255,255,255,0.1)] transition-opacity duration-500 ease-in-out"
-                        )}
-                      >
-                        {image.caption}
-                      </div>
+                      {image.caption}
                     </div>
-                  ))}
+                  </div>
+                ))}
               </div>
             </div>
-            <button type="button" id="next-btn" className="gh-arrow bg-[#2a5daf] text-[1.2em] h-[50px] aspect-square rounded-[6px] m-2!">
+
+            <button
+              type="button"
+              id="next-btn"
+              className="gh-arrow bg-[#2a5daf] text-[1.2em] h-[50px] aspect-square rounded-[6px] m-2! z-10 transition-all duration-500 hover:bg-[#0062ff]"
+              onClick={handleNext}
+            >
               {">"}
             </button>
           </div>

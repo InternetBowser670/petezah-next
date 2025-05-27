@@ -44,12 +44,6 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
           crossOrigin="anonymous"
         />
-
-        <meta name="description" content="Pete Zah, game on" />
-        <meta
-          name="keywords"
-          content="Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah"
-        />
         <meta charSet="utf-8" />
         <meta
           name="viewport"

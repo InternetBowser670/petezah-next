@@ -2,15 +2,14 @@ import Marquee from "react-fast-marquee";
 import Image from "next/image";
 
 const MarqueeRow = () => {
-  const offset = Math.floor(Math.random() * 1000) - 500;
   return (
     <Marquee
       speed={200}
       autoFill={true}
       pauseOnHover={true}
-      className="flex-1 h-1/5 z-[0] flex items-center text-[10vh] font-bold text-white"
+      className="flex-1 h-1/5 z-[0] flex items-center text-[10vh] font-bold text-white overflow-y-hidden"
     >
-      <div className="flex items-center mr-5!" style={{ transform: `translateX(${offset}px)` }}>
+      <div className="flex items-center mr-5!">
         PeteZah Games |{" "}
         <Image
           src={"/logo-png-removebg-preview.png"}

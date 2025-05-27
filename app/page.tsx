@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Typewriter from "@/ui/typewriter";
 import { useEffect, useState, useRef } from "react";
 import Particles from "@/ui/particles";
-import ASCIIText from "@/ui/ascii-text";
+import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import Image from "next/image";
 import clsx from "clsx";
 
@@ -147,7 +147,7 @@ export default function Page() {
           </div>
         </div>
         <div className="absolute top-0 flex items-center justify-center w-full pt-2!">
-          <div className="gh-image-shuffler flex items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! shadow-[0_12px_35px_rgba(255,255,255,0.2)] mx-auto border-2 border-white">
+          <div className="gh-image-shuffler flex items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! z-5 shadow-[0_12px_35px_rgba(255,255,255,0.2)] mx-auto border-2 border-white">
             <button
               type="button"
               id="gh-prev-btn"
@@ -201,11 +201,7 @@ export default function Page() {
           </div>
         </div>
 
-        <ASCIIText
-          text="PeteZah "
-          asciiFontSize={8}
-          className="z-0 blur-[0.5px]"
-        />
+        <MarqueeBg />
         <button
           className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[rgba(0,0,0,0.5)] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 hover:opacity-75"
           type="button"

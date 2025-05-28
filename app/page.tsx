@@ -11,6 +11,8 @@ import clsx from "clsx";
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [mounted, setMounted] = useState(false);
+
   const images = [
     { src: "/storage/images/main/geo.jpeg", caption: "Geometry Dash" },
     { src: "/storage/images/main/smashy.jpg", caption: "Smashy Road" },
@@ -71,7 +73,6 @@ export default function Page() {
   }
 
   function handlePrev() {
-    console.log("prev");
     setCounter((prev) => prev - 1);
   }
 
@@ -82,9 +83,16 @@ export default function Page() {
   }
 
   useEffect(() => {
+    setMounted(true);
+    if (!mounted) {
+      handlePrev();
+    }
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -157,7 +165,19 @@ export default function Page() {
               {"<"}
             </button>
 
-            <div className="z-20 w-full overflow-hidden gh-image-wrapper">
+            <div
+              className="z-20 w-full overflow-hidden gh-image-wrapper"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                maskImage:
+                  "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskSize: "100% 100%",
+                maskSize: "100% 100%",
+              }}
+            >
               <div
                 ref={containerRef}
                 className="flex items-center gh-image-container w-max"

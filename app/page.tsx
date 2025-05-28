@@ -200,7 +200,7 @@ export default function Page() {
             </button>
           </div>
         </div>
-        <MarqueeBg hoverPause={true}  />
+        <MarqueeBg />
         <button
           className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[#0A1D37] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF]"
           type="button"

@@ -22,6 +22,11 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
   if (!hydrated) return null;
 
   function isActiveTab(linkHref: string, altLinks?: string[]) {
+    if (pathname === "/pages/settings/p" && linkHref === "/pages/settings") {
+      //special case for profile settings
+      return false
+    }
+    
     return (
       pathname === linkHref ||
       (altLinks && altLinks.includes(pathname)) ||

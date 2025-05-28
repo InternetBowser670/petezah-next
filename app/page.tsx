@@ -94,7 +94,7 @@ export default function Page() {
     <div className="flex items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden">
       <Particles />
       <div className="flex items-center justify-between w-full">
-        <div className="relative z-5 backdrop-filter backdrop-blur-sm p-4! rounded-2xl bg-black/10 border-2 border-[#0096FF] text-white text-left left-[10%] w-[400px]">
+        <div className="relative z-5 p-8! rounded-2xl bg-[#0A1D37] border-2 border-[#0096FF] text-white text-left left-[10%] w-[450px]">
           <h2 className="text-[40px] font-bold">
             Welcome to
             <br />
@@ -200,10 +200,9 @@ export default function Page() {
             </button>
           </div>
         </div>
-
-        <MarqueeBg />
+        <MarqueeBg hoverPause={true}  />
         <button
-          className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[rgba(0,0,0,0.5)] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 hover:opacity-75"
+          className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[#0A1D37] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF]"
           type="button"
           onClick={redirectToGames}
         >
@@ -212,7 +211,7 @@ export default function Page() {
             width={200}
             src={currentImage.src}
             alt={currentImage.caption}
-            className="h-[200px] border-[5px] border-solid border-[rgba(255, 255, 255, 0.5)] rounded-[12px] shadow-[0_12px_35px_rgba(255,255,255,0.3)] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"
+            className="h-[200px] border-[5px] border-solid border-[rgba(255, 255, 255, 0.5)] rounded-[12px] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"
             id="large-image"
           />
           <div

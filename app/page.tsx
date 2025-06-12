@@ -199,7 +199,7 @@ export default function Page() {
                     onClick={redirectToGames}
                     style={{ width: imageWidth }}
                   >
-                    <img
+                    <Image
                       src={image.src}
                       alt={image.caption || `Image ${index}`}
                       className="gh-image w-[120px] h-[80px] object-cover mx-[4px]"

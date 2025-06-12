@@ -6,6 +6,7 @@ import { useSidebar } from "@/context/sidebar-context";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -52,7 +53,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         onClick={handleClick}
         className={clsx(
           !sidebarToggled &&
-            "translate-x-[8px] w-[50px]! items-center!",
+            "translate-x-[8px] items-center!",
           "max-w-[90%] h-[50px] flex items-center transition-all rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
           isActiveTab(url, []) && "bg-white text-black"
         )}
@@ -97,7 +98,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             href="/"
             className="header-logo w-[46px] h-[46px] flex justify-center items-center"
           >
-            <img
+            <Image
               src="/logo-png-removebg-preview.png"
               height={40}
               width={40}
@@ -125,7 +126,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         />
 
         <nav className="h-full sidebar-nav">
-          <ul className="my-2 nav-list primary-nav">
+          <ul className={clsx("transition-all my-2 nav-list primary-nav", sidebarToggled ? "pr-2!" : "pr-[18%]!")}>
             <NavbarLink title="Home" icon="Home" url="/" />
             <NavbarLink title="Games" icon="sports_esports" url="/g" />
             <NavbarLink title="Apps" icon="apps" url="/a" />

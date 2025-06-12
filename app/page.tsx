@@ -203,6 +203,7 @@ export default function Page() {
                       src={image.src}
                       alt={image.caption || `Image ${index}`}
                       className="gh-image w-[120px] h-[80px] object-cover mx-[4px]"
+                      width={120} height={80}
                     />
                     <div
                       className={clsx(

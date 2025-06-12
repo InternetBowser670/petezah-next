@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PeteZah | Home</title>
+    <link rel="icon" type="icon/x-icon" href="/storage/images/logo-png-removebg-preview.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+      *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+      :root{
+        --text-color:#e6ecf5;
+        --subheading-color:#a0b0d0;
+        --placeholder-color:#b8c4d9;
+        --primary-color:#0A1D37;
+        --secondary-color:rgba(255, 255, 255, 0.08);
+        --secondary-hover-color:rgba(255, 255, 255, 0.16);
+        --scrollbar-color:rgba(255, 255, 255, 0.12);
+        --ai-container-bg:rgba(255, 255, 255, 0.06);
+      }
+      body{color:var(--text-color);background:var(--primary-color)}
+      .container{overflow-y:auto;padding:32px 0 60px;height:calc(100vh - 127px);scrollbar-color:var(--scrollbar-color) transparent}
+      .container :where(.app-header,.suggestions,.message,.prompt-wrapper){position:relative;margin:0 auto;width:100%;padding:0 20px;max-width:990px}
+      .container .app-header{margin-top:3vh}
+      .container .suggestions{width:100%;list-style:none;display:flex;gap:15px;margin-top:9.5vh;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;position:absolute;bottom:100px;left:50%;transform:translateX(-50%)}
+      body.chats-active .container :where(.app-header,.suggestions){display:none}
+      .suggestions .suggestions-item{cursor:pointer;padding:18px;width:228px;flex-shrink:0;display:flex;scroll-snap-align:center;flex-direction:column;align-items:flex-end;border-radius:18px;justify-content:space-between;background:var(--secondary-color);transition:.1s}
+      .suggestions .suggestions-item:hover{background:var(--secondary-hover-color)}
+      .suggestions .suggestions-item .text{font-size:1.1rem}
+      .suggestions .suggestions-item .icon{width:45px;height:45px;display:flex;font-size:1.1rem;margin-top:35px;align-self:flex-end;align-items:center;border-radius:28%;justify-content:center;color:#4a90e2;background:var(--primary-color)}
+      .suggestions .suggestions-item:nth-child(2) .icon{color:#f4e050}
+      .suggestions .suggestions-item:nth-child(3) .icon{color:#68c368}
+      .suggestions .suggestions-item:nth-child(4) .icon{color:#8e63ce}
+      .container .chats-container{display:flex;gap:20px;flex-direction:column}
+      .chats-container .message{display:flex;gap:11px;align-items:flex-start}
+      .chats-container .message .avatar{width:43px;height:43px;flex-shrink:0;border-radius:50%;padding:6px;margin-right:-7px;background:var(--secondary-color);border:1px solid var(--secondary-hover-color)}
+      .chats-container .message.loading .avatar{animation:3s linear infinite rotate}
+      @keyframes rotate{100%{transform:rotate(360deg)}}
+      .chats-container .message .message-text{padding:3px 16px;word-wrap:break-word;white-space:pre-line}
+      .chats-container .bot-message{margin:9px auto}
+      .chats-container .bot-message .ai-container{padding:16px;border-radius:16px;background:var(--ai-container-bg);max-width:75%;position:relative}
+      .chats-container .user-message{flex-direction:column;align-items:flex-end}
+      .chats-container .user-message .message-text{padding:12px 16px;max-width:75%;background:var(--secondary-color);border-radius:16px}
+      .chats-container .user-message .img-attachment{margin-top:-7px;width:50%;border-radius:18px}
+      .chats-container .user-message .file-attachment{display:flex;gap:6px;align-items:center;padding:10px;margin-top:-7px;border-radius:16px;background:var(--secondary-color)}
+      .chats-container .user-message .file-attachment span,.prompt-wrapper .prompt-form .file-icon{color:#4a90e2}
+      .container .prompt-container{position:fixed;width:100%;left:0;bottom:0;padding:16px 0;background:var(--primary-color)}
+      .prompt-container :where(.prompt-wrapper,.prompt-form,.prompt-actions){display:flex;gap:12px;height:56px;align-items:center}
+      .prompt-container .prompt-form{height:100%;width:100%;border-radius:18px;background:var(--secondary-color)}
+      .prompt-form .prompt-input{width:100%;height:100%;background:0 0;outline:0;border:none;font-size:1rem;color:var(--text-color);padding-left:24px}
+      .prompt-form .prompt-input::placeholder{color:var(--placeholder-color)}
+      .prompt-wrapper button{width:56px;height:100%;flex-shrink:0;cursor:pointer;border-radius:14px;font-size:1.1rem;border:none;color:var(--text-color);background:var(--secondary-color);transition:.1s}
+      .prompt-wrapper :is(button:hover,#cancel-file-btn,.file-icon){background:var(--secondary-hover-color)}
+      .prompt-form .prompt-actions{gap:5px;margin-right:7px}
+      .prompt-wrapper .prompt-form :where(.file-upload-wrapper,button,img){position:relative;height:45px;width:45px}
+      .prompt-form .prompt-actions #send-prompt-btn{color:#fff;display:none;background:#4a90e2}
+      .prompt-form .prompt-input:valid~.prompt-actions #send-prompt-btn{display:block}
+      .prompt-form #send-prompt-btn:hover{background:#5a9ef2}
+      .prompt-form .file-upload-wrapper :where(button,img){display:none;border-radius:14px;object-fit:cover;position:absolute}
+      .prompt-form #stop-response-btn,.prompt-form .file-upload-wrapper.active #add-file-btn,body.bot-responding .prompt-form .file-upload-wrapper{display:none}
+      .prompt-form .file-upload-wrapper #add-file-btn,.prompt-form .file-upload-wrapper.active.file-attached .file-icon,.prompt-form .file-upload-wrapper.active.img-attached img,.prompt-form .file-upload-wrapper.active:hover #cancel-file-btn,body.bot-responding .prompt-form #stop-response-btn{display:block}
+      .prompt-form :is(#stop-response-btn:hover,#cancel-file-btn){color:#e04e5e}
+      .material-icons {font-size: 24px;}
+      .bot-message .buttons {display: flex; gap: 10px; margin-top: 8px; justify-content: flex-end;}
+      .bot-message .buttons button {width: 40px; height: 40px; background: var(--secondary-color); color: var(--text-color); border: none; border-radius:10px; cursor: pointer; transition: .1s; display: flex; align-items: center; justify-content: center;}
+      .bot-message .buttons button:hover {background: var(--secondary-hover-color);}
+      .code-grid {
+        background: #1a2b4a;
+        padding: 15px;
+        border-radius: 12px;
+        margin-top: 12px;
+        white-space: pre-wrap;
+        font-family: 'Courier New', monospace;
+        color: #f0f4fa;
+        overflow-x: auto;
+        line-height: 1.5;
+        position: relative;
+      }
+      .code-grid::before {
+        content: "CODE";
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 0.7em;
+        padding: 2px 8px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 0 0 4px 0;
+      }
+      @media (max-width:768px){
+        .container{padding:20px 0 100px}
+        .app-header :is(.heading,.sub-heading){font-size:2rem;line-height:1.4}
+        .app-header .sub-heading{font-size:1.7rem}
+        .container .chats-container{gap:15px}
+        .chats-container .bot-message{margin:4px auto}
+        .prompt-container :where(.prompt-wrapper,.prompt-form,.prompt-actions){gap:8px;height:53px}
+        .prompt-container button{width:53px}
+        .prompt-form :is(.file-upload-wrapper,button,img){height:42px;width:42px}
+        .prompt-form .prompt-input{padding-left:20px}
+        .prompt-form .file-upload-wrapper.active #cancel-file-btn{opacity:0}
+        .prompt-wrapper.hide-controls :where(#delete-chats-btn){display:none}
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <ul class="suggestions">
+        <li class="suggestions-item">
+          <p class="text">Compose an article about canines.</p>
+          <span class="icon"><i class="material-icons">edit</i></span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Propose an innovative craft concept.</p>
+          <span class="icon"><i class="material-icons">lightbulb</i></span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Assist with organizing a short trip.</p>
+          <span class="icon"><i class="material-icons">map</i></span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Create a basic task manager in Python.</p>
+          <span class="icon"><i class="material-icons">code</i></span>
+        </li>
+      </ul>
+      <div class="chats-container"></div>
+      <div class="prompt-container">
+        <div class="prompt-wrapper">
+          <form action="#" class="prompt-form">
+            <input
+              type="text"
+              placeholder="Message PeteAI..."
+              class="prompt-input"
+              required
+            />
+            <div class="prompt-actions">
+              <div class="file-upload-wrapper">
+                <img src="#" class="file-preview" />
+                <input
+                  id="file-input"
+                  type="file"
+                  accept="image/*, .pdf, .txt, .csv"
+                  hidden
+                />
+                <button type="button">
+                  <i class="material-icons">arrow_forward</i>
+                </button>
+                <button id="cancel-file-btn" type="button">
+                  <i class="material-icons">attach_file</i>
+                </button>
+                <button id="add-file-btn" type="button">
+                  <i class="material-icons">attach_file</i>
+                </button>
+              </div>
+              <button id="stop-response-btn" type="button">
+                <i class="material-icons">stop</i>
+              </button>
+              <button id="send-prompt-btn">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </form>
+          <button id="delete-chats-btn">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const PeteAIKey = "AIzaSyC-t9UqpXINmssoIb8vNiMMU8ZOYss7cKY";
+      const container = document.querySelector(".container"),
+            chatsContainer = document.querySelector(".chats-container"),
+            promptForm = document.querySelector(".prompt-form"),
+            promptInput = prompt ഇForm.querySelector(".prompt-input"),
+            fileInput = promptForm.querySelector("#file-input"),
+            fileUploadWrapper = promptForm.querySelector(".file-upload-wrapper"),
+            API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${PeteAIKey}`;
+      let controller, typingInterval;
+      const chatHistory = [], userData = { message: "", file: {} };
+
+      const createMessageElement = (content, ...classes) => {
+        const div = document.createElement("div");
+        div.classList.add("message", ...classes);
+        div.innerHTML = content;
+        return div;
+      };
+
+      const scrollToBottom = () => {
+        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      };
+
+      const typingEffect = (text, element, callback) => {
+        element.textContent = "";
+        let i = 0;
+        typingInterval = setInterval(() => {
+          if (i < text.length) {
+            element.textContent += text[i++];
+            scrollToBottom();
+          } else {
+            clearInterval(typingInterval);
+            callback();
+          }
+        }, 10);
+      };
+
+      const formatResponse = (text) => {
+        const codeBlockRegex = /```(?:(\w+)\n)?([\s\S]*?)```/g;
+        let html = '';
+        let lastIndex = 0;
+        let match;
+
+        while ((match = codeBlockRegex.exec(text)) !== null) {
+          if (match.index > lastIndex) {
+            html += `<p class="message-text">${text.slice(lastIndex, match.index).trim()}</p>`;
+          }
+          
+          const language = match[1] || 'text';
+          const codeContent = match[2].trim();
+          html += `<pre class="code-grid" data-language="${language}">${escapeHtml(codeContent)}</pre>`;
+          
+          lastIndex = codeBlockRegex.lastIndex;
+        }
+
+        if (lastIndex < text.length) {
+          html += `<p class="message-text">${text.slice(lastIndex).trim()}</p>`;
+        }
+
+        return `<div class="ai-container">${html || `<p class="message-text">${text}</p>`}</div>`;
+      };
+
+      const escapeHtml = (text) => {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      };
+
+      const addButtons = (messageElement, text) => {
+        const buttonsDiv = document.createElement("div");
+        buttonsDiv.className = "buttons";
+
+        const copyBtn = document.createElement("button");
+        copyBtn.innerHTML = '<i class="material-icons">content_copy</i>';
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(text).then(() => {
+            copyBtn.innerHTML = '<i class="material-icons">check</i>';
+            setTimeout(() => copyBtn.innerHTML = '<i class="material-icons">content_copy</i>', 1500);
+          });
+        };
+
+        const redoBtn = document.createElement("button");
+        redoBtn.innerHTML = '<i class="material-icons">refresh</i>';
+        redoBtn.onclick = () => {
+          const lastUserMessage = chatHistory[chatHistory.length - 2]?.parts[0].text;
+          if (lastUserMessage) {
+            userData.message = lastUserMessage;
+            generateBotResponse();
+          }
+        };
+
+        buttonsDiv.appendChild(copyBtn);
+        buttonsDiv.appendChild(redoBtn);
+        messageElement.querySelector('.ai-container').appendChild(buttonsDiv);
+      };
+
+      const generateBotResponse = () => {
+        document.body.classList.add("bot-responding");
+        const botMessage = createMessageElement('<div class="ai-container"><p class="message-text">...</p></div>', "bot-message", "loading");
+        chatsContainer.appendChild(botMessage);
+        scrollToBottom();
+        generateResponse(botMessage);
+      };
+
+      const generateResponse = async (messageElement) => {
+        controller = new AbortController();
+        chatHistory.push({ 
+          role: "user", 
+          parts: [
+            { text: userData.message },
+            ...(userData.file.data ? [{ inline_data: { data: userData.file.data, mimeType: userData.file.mime_type } }] : [])
+          ]
+        });
+
+        try {
+          const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: chatHistory }),
+            signal: controller.signal
+          });
+
+          if (!response.ok) throw new Error((await response.json()).error.message);
+          
+          const data = await response.json();
+          const responseText = data.candidates[0].content.parts[0].text.trim();
+          messageElement.innerHTML = formatResponse(responseText);
+          messageElement.classList.remove("loading");
+
+          const textElements = messageElement.querySelectorAll(".message-text");
+          let currentIndex = 0;
+
+          const animateText = () => {
+            if (currentIndex < textElements.length) {
+              typingEffect(textElements[currentIndex].textContent, textElements[currentIndex], () => {
+                currentIndex++;
+                animateText();
+              });
+            } else {
+              document.body.classList.remove("bot-responding");
+              addButtons(messageElement, responseText);
+              scrollToBottom();
+              chatHistory.push({ role: "model", parts: [{ text: responseText }] });
+            }
+          };
+
+          animateText();
+        } catch (error) {
+          messageElement.innerHTML = `<div class="ai-container"><p class="message-text">${error.name === "AbortError" ? "Response stopped" : error.message}</p></div>`;
+          messageElement.classList.remove("loading");
+          messageElement.querySelector(".message-text").style.color = "#e04e5e";
+          document.body.classList.remove("bot-responding");
+          scrollToBottom();
+        } finally {
+          userData.file = {};
+        }
+      };
+
+      const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const prompt = promptInput.value.trim();
+        if (!prompt || document.body.classList.contains("bot-responding")) return;
+
+        userData.message = prompt;
+        promptInput.value = "";
+        document.body.classList.add("chats-active", "bot-responding");
+        fileUploadWrapper.classList.remove("file-attached", "img-attached", "active");
+
+        const userContent = `
+          <p class="message-text">${escapeHtml(userData.message)}</p>
+          ${userData.file.data ? 
+            userData.file.isImage ? 
+              `<img src="data:${userData.file.mime_type};base64,${userData.file.data}" class="img-attachment" />` : 
+              `<p class="file-attachment"><span class="material-icons">description</span>${escapeHtml(userData.file.fileName)}</p>` 
+            : ""}
+        `;
+        
+        const userMessage = createMessageElement(userContent, "user-message");
+        chatsContainer.appendChild(userMessage);
+        scrollToBottom();
+
+        setTimeout(generateBotResponse, 600);
+      };
+
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+        
+        const isImage = file.type.startsWith("image/");
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+          fileInput.value = "";
+          const data = e.target.result.split(",")[1];
+          fileUploadWrapper.querySelector(".file-preview").src = e.target.result;
+          fileUploadWrapper.classList.add("active", isImage ? "img-attached" : "file-attached");
+          userData.file = { 
+            fileName: file.name, 
+            data: data, 
+            mime_type: file.type, 
+            isImage: isImage 
+          };
+        };
+      });
+
+      document.querySelector("#cancel-file-btn").addEventListener("click", () => {
+        userData.file = {};
+        fileUploadWrapper.classList.remove("file-attached", "img-attached", "active");
+      });
+
+      document.querySelector("#stop-response-btn").addEventListener("click", () => {
+        controller?.abort();
+        clearInterval(typingInterval);
+        document.body.classList.remove("bot-responding");
+      });
+
+      document.querySelector("#delete-chats-btn").addEventListener("click", () => {
+        chatHistory.length = 0;
+        chatsContainer.innerHTML = "";
+        document.body.classList.remove("chats-active", "bot-responding");
+      });
+
+      document.querySelectorAll(".suggestions-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          promptInput.value = item.querySelector(".text").textContent;
+          promptForm.dispatchEvent(new Event("submit"));
+        });
+      });
+
+      document.addEventListener("click", ({ target }) => {
+        const wrapper = document.querySelector(".prompt-wrapper");
+        const shouldHide = target.classList.contains("prompt-input") || 
+                          (wrapper.classList.contains("hide-controls") && 
+                          (target.id === "add-file-btn" || target.id === "stop-response-btn"));
+        wrapper.classList.toggle("hide-controls", shouldHide);
+      });
+
+      promptForm.addEventListener("submit", handleFormSubmit);
+      promptForm.querySelector("#add-file-btn").addEventListener("click", () => fileInput.click());
+    </script>
+  </body>
+</html>

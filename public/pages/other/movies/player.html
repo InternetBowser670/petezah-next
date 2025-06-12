@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>szvyflix</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <nav>
+      <h1>szvyflix</h1>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+      </div>
+    </nav>
+    <main>
+      <div>
+        <label for="player-source">choose a movie source:</label>
+        <select id="player-source">
+          <option value="streamlink">streamlink (default)</option>
+          <option value="embed.su">embed.su</option>
+          <option value="moviesapi.club">moviesapi.club</option>
+          <option value="vidbinge">vidbinge</option>
+          <option value="vidsrc">vidsrc</option>
+          <option value="2embed">2embed</option>
+        </select>
+      </div>
+      <div id="player-container">
+        <h1>Loading...</h1>
+      </div>
+    </main>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const tmdbId = urlParams.get("tmdbid");
+
+      const playerContainer = document.getElementById("player-container");
+      const playerSource = document.getElementById("player-source");
+
+      function loadPlayer(source) {
+        if (tmdbId) {
+          const iframe = document.createElement("iframe");
+          iframe.allow = "autoplay; fullscreen";
+          iframe.allowfullscreen = true;
+
+          if (source === "streamlink") {
+            iframe.src = `https://www.vidlink.pro/movie/${tmdbId}?autoplay=false`;
+          } else if (source === "embed.su") {
+            iframe.src = `https://embed.su/embed/movie/${tmdbId}`;
+          } else if (source === "moviesapi.club") {
+            iframe.src = `https://moviesapi.club/movie/${tmdbId}`;
+          } else if (source === "vidbinge") {
+            iframe.src = `https://vidbinge.dev/embed/movie/${tmdbId}`;
+          } else if (source === "vidsrc") {
+            iframe.src = `https://vidsrc.net/embed/${tmdbId}`;
+          } else if (source === "2embed") {
+            iframe.src = `https://www.2embed.skin/embed/${tmdbId}`;
+          }
+
+          playerContainer.innerHTML = "";
+          playerContainer.appendChild(iframe);
+        } else {
+          playerContainer.innerHTML = "<h1>error: no movie found :c</h1>";
+        }
+      }
+
+      loadPlayer("streamlink");
+
+      playerSource.addEventListener("change", (e) => {
+        loadPlayer(e.target.value);
+      });
+    </script>
+  </body>
+</html>

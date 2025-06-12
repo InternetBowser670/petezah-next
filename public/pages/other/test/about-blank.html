@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about:blank embedder - Echo Net Extras</title>
+  <meta name="description" content="Welcome to my extras website! This is a collection of random tools that I have created and use somewhat regularly.">
+  <meta property="og:description" content="Welcome to my extras website! This is a collection of random tools that I have created and use somewhat regularly.">
+  <meta property="og:title" content="Echo Net Extras">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.33/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-sonner@1.0.0/dist/vue-sonner.min.js"></script> <!-- Include the vue-sonner library -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .flex-grow {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .p-2 {
+      padding: 16px;
+    }
+    .rounded-lg {
+      border-radius: 8px;
+    }
+    .overflow-auto {
+      overflow: auto;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .text-4xl {
+      font-size: 2.25rem;
+      font-weight: bold;
+    }
+    .lg\:text-5xl {
+      font-size: 3rem;
+    }
+    .scroll-m-20 {
+      margin-top: 20px;
+    }
+    .py-2 {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    input {
+      padding: 8px;
+      margin-right: 8px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .mr-2 {
+      margin-right: 8px;
+    }
+    .bg-gray-200 {
+      background-color: #e5e5e5;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="flex-grow p-2 rounded-lg overflow-auto hide-scrollbar">
+    <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">about:blank embedder</h1>
+    <div class="mt-6">
+      <input id="url-target" type="url" placeholder="Enter URL here..." />
+      <div class="flex py-2">
+        <button class="bg-gray-200 mr-2" onclick="createPage()">Create Page</button>
+        <button class="bg-gray-200" onclick="clearInput()">Clear Input</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toast notification function (you can replace it with a real toast library if necessary)
+    function toast(type, options) {
+      alert(`${type}: ${options.description}`);
+    }
+
+    function createPage() {
+      let url = document.getElementById("url-target").value;
+      if (!url) {
+        toast("Error", { description: "URL cannot be empty." });
+        return;
+      }
+      toast("Page opened!", { description: "The page has been opened in a new tab." });
+      if (url.substring(0, 8) !== "https://" && url.substring(0, 7) !== "http://") {
+        url = "https://" + url.split("https://").pop();
+      } else if (url.substring(0, 7) == "http://") {
+        url = "https://" + url.split("http://").pop();
+      }
+      const win = window.open();
+      win.document.body.style.margin = "0";
+      win.document.body.style.height = "100vh";
+      let frm = win.document.createElement("iframe");
+      frm.style.border = "none";
+      frm.style.width = "100%";
+      frm.style.height = "100%";
+      frm.style.margin = "0";
+      frm.referrerpolicy = "no-referrer";
+      frm.allow = "fullscreen";
+      frm.src = url;
+      win.document.body.appendChild(frm);
+    }
+
+    function clearInput() {
+      let url = document.getElementById("url-target").value;
+      if (!url) {
+        toast("Error", { description: "Input is already empty." });
+        return;
+      }
+      document.getElementById("url-target").value = "";
+      toast("Input cleared", {
+        description: "The input has been cleared.",
+        action: {
+          label: "Undo",
+          onClick: function() {
+            document.getElementById("url-target").value = url;
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

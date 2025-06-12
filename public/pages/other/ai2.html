@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PeteZah | Home</title>
+    <link rel="icon" type="icon/x-icon" href="/storage/images/logo-png-removebg-preview.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+      :root {
+            --primary-bg: #12182B;
+            --secondary-bg: #1E293B;
+            --accent-color: #6366F1;
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --border-color: #374151;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --code-bg: #2D3748;
+            --code-text: #CBD5E0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 40px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) transparent;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background-color: var(--border-color);
+            border-radius: 3px;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .app-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .app-header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .suggestions {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .suggestions-item {
+            background-color: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 150px;
+        }
+
+        .suggestions-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .suggestions-item .text {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .suggestions-item .icon {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .chats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 80px; /* Adjust for the fixed prompt container */
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .message.loading .avatar {
+            animation: rotate 2s linear infinite;
+        }
+
+        .message-text {
+            background-color: var(--secondary-bg);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: 10px;
+            word-break: break-word;
+            white-space: pre-line;
+            box-shadow: var(--box-shadow);
+        }
+
+        .bot-message {
+            align-self: flex-start;
+        }
+
+        .user-message {
+            align-self: flex-end;
+        }
+
+        .user-message .message-text {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+        }
+
+        .img-attachment {
+            margin-top: 10px;
+            max-width: 80%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .file-attachment {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            box-shadow: var(--box-shadow);
+        }
+
+        .file-attachment span {
+            color: var(--accent-color);
+        }
+
+        .prompt-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-bg);
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .prompt-wrapper {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .prompt-form {
+            flex-grow: 1;
+            background-color: var(--secondary-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .prompt-input {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 1rem;
+            padding: 10px 15px;
+            outline: none;
+        }
+
+        .prompt-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .prompt-actions {
+            display: flex;
+            gap: 8px;
+            margin-right: 8px;
+        }
+
+        .prompt-actions button {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .prompt-actions button:hover {
+            background-color: #5558ce;
+        }
+
+        .prompt-actions .file-upload-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .prompt-actions .file-upload-wrapper #add-file-btn {
+            background-color: var(--border-color);
+        }
+
+        .prompt-actions .file-upload-wrapper #cancel-file-btn,
+        .prompt-actions .file-upload-wrapper button i {
+            font-size: 1.2rem;
+        }
+
+        .prompt-actions .file-upload-wrapper #cancel-file-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #dc2626;
+            color: var(--text-primary);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .prompt-actions .file-upload-wrapper.active #cancel-file-btn {
+            display: flex;
+        }
+
+        .prompt-actions .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .prompt-actions #stop-response-btn {
+            background-color: #e02424;
+            display: none;
+        }
+
+        body.bot-responding .prompt-actions #stop-response-btn {
+            display: flex;
+        }
+
+        body.bot-responding .prompt-actions #send-prompt-btn {
+            display: none;
+        }
+
+        #delete-chats-btn {
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        #delete-chats-btn:hover {
+            background-color: #3f4a5e;
+        }
+
+        .bot-message .buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            justify-content: flex-end;
+        }
+
+        .bot-message .buttons button {
+            width: 36px;
+            height: 36px;
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .bot-message .buttons button:hover {
+            background-color: #3f4a5e;
+        }
+
+        .code-grid {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: monospace, monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+        }
+
+        .code-grid::before {
+            content: "CODE";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .app-header h1 {
+                font-size: 2rem;
+            }
+
+            .suggestions {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 15px;
+                margin: 20px 0;
+            }
+
+            .suggestions-item {
+                padding: 15px;
+                height: auto;
+            }
+
+            .suggestions-item .text {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .suggestions-item .icon {
+                font-size: 1.5rem;
+            }
+
+            .chats-container {
+                padding-bottom: 120px; /* Adjust for smaller screens */
+            }
+
+            .message-text {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+
+            .prompt-wrapper {
+                gap: 10px;
+            }
+
+            .prompt-input {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+
+            .prompt-actions button {
+                padding: 8px;
+            }
+
+            #delete-chats-btn {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            .bot-message .buttons {
+                gap: 6px;
+                margin-top: 8px;
+            }
+
+            .bot-message .buttons button {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <ul class="suggestions">
+        <li class="suggestions-item">
+          <p class="text">Compose an article about canines.</p>
+          <span class="icon"><i class="material-icons">edit</i></span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Propose an innovative craft concept.</p>
+          <span class="icon"><i class="material-icons">lightbulb</i></span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Assist with organizing a short trip.</p>
+          <span class="icon"><i class="material-icons">map</i></span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Create a basic task manager in Python.</p>
+          <span class="icon"><i class="material-icons">code</i></span>
+        </li>
+      </ul>
+      <div class="chats-container"></div>
+      <div class="prompt-container">
+        <div class="prompt-wrapper">
+          <form action="#" class="prompt-form">
+            <input
+              type="text"
+              placeholder="Message PeteAI..."
+              class="prompt-input"
+              required
+            />
+            <div class="prompt-actions">
+              <div class="file-upload-wrapper">
+                <img src="#" class="file-preview" />
+                <input
+                  id="file-input"
+                  type="file"
+                  accept="image/*, .pdf, .txt, .csv"
+                  hidden
+                />
+                <button type="button">
+                  <i class="material-icons">arrow_forward</i>
+                </button>
+                <button id="cancel-file-btn" type="button">
+                  <i class="material-icons">attach_file</i>
+                </button>
+                <button id="add-file-btn" type="button">
+                  <i class="material-icons">attach_file</i>
+                </button>
+              </div>
+              <button id="stop-response-btn" type="button">
+                <i class="material-icons">stop</i>
+              </button>
+              <button id="send-prompt-btn">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </form>
+          <button id="delete-chats-btn">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const PeteAIKey = "AIzaSyC-t9UqpXINmssoIb8vNiMMU8ZOYss7cKY";
+      const container = document.querySelector(".container"),
+            chatsContainer = document.querySelector(".chats-container"),
+            promptForm = document.querySelector(".prompt-form"),
+            promptInput = prompt ഇForm.querySelector(".prompt-input"),
+            fileInput = promptForm.querySelector("#file-input"),
+            fileUploadWrapper = promptForm.querySelector(".file-upload-wrapper"),
+            API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${PeteAIKey}`;
+      let controller, typingInterval;
+      const chatHistory = [], userData = { message: "", file: {} };
+
+      const createMessageElement = (content, ...classes) => {
+        const div = document.createElement("div");
+        div.classList.add("message", ...classes);
+        div.innerHTML = content;
+        return div;
+      };
+
+      const scrollToBottom = () => {
+        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      };
+
+      const typingEffect = (text, element, callback) => {
+        element.textContent = "";
+        let i = 0;
+        typingInterval = setInterval(() => {
+          if (i < text.length) {
+            element.textContent += text[i++];
+            scrollToBottom();
+          } else {
+            clearInterval(typingInterval);
+            callback();
+          }
+        }, 10);
+      };
+
+      const formatResponse = (text) => {
+        const codeBlockRegex = /```(?:(\w+)\n)?([\s\S]*?)```/g;
+        let html = '';
+        let lastIndex = 0;
+        let match;
+
+        while ((match = codeBlockRegex.exec(text)) !== null) {
+          if (match.index > lastIndex) {
+            html += `<p class="message-text">${text.slice(lastIndex, match.index).trim()}</p>`;
+          }
+          
+          const language = match[1] || 'text';
+          const codeContent = match[2].trim();
+          html += `<pre class="code-grid" data-language="${language}">${escapeHtml(codeContent)}</pre>`;
+          
+          lastIndex = codeBlockRegex.lastIndex;
+        }
+
+        if (lastIndex < text.length) {
+          html += `<p class="message-text">${text.slice(lastIndex).trim()}</p>`;
+        }
+
+        return `<div class="ai-container">${html || `<p class="message-text">${text}</p>`}</div>`;
+      };
+
+      const escapeHtml = (text) => {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      };
+
+      const addButtons = (messageElement, text) => {
+        const buttonsDiv = document.createElement("div");
+        buttonsDiv.className = "buttons";
+
+        const copyBtn = document.createElement("button");
+        copyBtn.innerHTML = '<i class="material-icons">content_copy</i>';
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(text).then(() => {
+            copyBtn.innerHTML = '<i class="material-icons">check</i>';
+            setTimeout(() => copyBtn.innerHTML = '<i class="material-icons">content_copy</i>', 1500);
+          });
+        };
+
+        const redoBtn = document.createElement("button");
+        redoBtn.innerHTML = '<i class="material-icons">refresh</i>';
+        redoBtn.onclick = () => {
+          const lastUserMessage = chatHistory[chatHistory.length - 2]?.parts[0].text;
+          if (lastUserMessage) {
+            userData.message = lastUserMessage;
+            generateBotResponse();
+          }
+        };
+
+        buttonsDiv.appendChild(copyBtn);
+        buttonsDiv.appendChild(redoBtn);
+        messageElement.querySelector('.ai-container').appendChild(buttonsDiv);
+      };
+
+      const generateBotResponse = () => {
+        document.body.classList.add("bot-responding");
+        const botMessage = createMessageElement('<div class="ai-container"><p class="message-text">...</p></div>', "bot-message", "loading");
+        chatsContainer.appendChild(botMessage);
+        scrollToBottom();
+        generateResponse(botMessage);
+      };
+
+      const generateResponse = async (messageElement) => {
+        controller = new AbortController();
+        chatHistory.push({ 
+          role: "user", 
+          parts: [
+            { text: userData.message },
+            ...(userData.file.data ? [{ inline_data: { data: userData.file.data, mimeType: userData.file.mime_type } }] : [])
+          ]
+        });
+
+        try {
+          const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: chatHistory }),
+            signal: controller.signal
+          });
+
+          if (!response.ok) throw new Error((await response.json()).error.message);
+          
+          const data = await response.json();
+          const responseText = data.candidates[0].content.parts[0].text.trim();
+          messageElement.innerHTML = formatResponse(responseText);
+          messageElement.classList.remove("loading");
+
+          const textElements = messageElement.querySelectorAll(".message-text");
+          let currentIndex = 0;
+
+          const animateText = () => {
+            if (currentIndex < textElements.length) {
+              typingEffect(textElements[currentIndex].textContent, textElements[currentIndex], () => {
+                currentIndex++;
+                animateText();
+              });
+            } else {
+              document.body.classList.remove("bot-responding");
+              addButtons(messageElement, responseText);
+              scrollToBottom();
+              chatHistory.push({ role: "model", parts: [{ text: responseText }] });
+            }
+          };
+
+          animateText();
+        } catch (error) {
+          messageElement.innerHTML = `<div class="ai-container"><p class="message-text">${error.name === "AbortError" ? "Response stopped" : error.message}</p></div>`;
+          messageElement.classList.remove("loading");
+          messageElement.querySelector(".message-text").style.color = "#e04e5e";
+          document.body.classList.remove("bot-responding");
+          scrollToBottom();
+        } finally {
+          userData.file = {};
+        }
+      };
+
+      const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const prompt = promptInput.value.trim();
+        if (!prompt || document.body.classList.contains("bot-responding")) return;
+
+        userData.message = prompt;
+        promptInput.value = "";
+        document.body.classList.add("chats-active", "bot-responding");
+        fileUploadWrapper.classList.remove("file-attached", "img-attached", "active");
+
+        const userContent = `
+          <p class="message-text">${escapeHtml(userData.message)}</p>
+          ${userData.file.data ? 
+            userData.file.isImage ? 
+              `<img src="data:${userData.file.mime_type};base64,${userData.file.data}" class="img-attachment" />` : 
+              `<p class="file-attachment"><span class="material-icons">description</span>${escapeHtml(userData.file.fileName)}</p>` 
+            : ""}
+        `;
+        
+        const userMessage = createMessageElement(userContent, "user-message");
+        chatsContainer.appendChild(userMessage);
+        scrollToBottom();
+
+        setTimeout(generateBotResponse, 600);
+      };
+
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+        
+        const isImage = file.type.startsWith("image/");
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+          fileInput.value = "";
+          const data = e.target.result.split(",")[1];
+          fileUploadWrapper.querySelector(".file-preview").src = e.target.result;
+          fileUploadWrapper.classList.add("active", isImage ? "img-attached" : "file-attached");
+          userData.file = { 
+            fileName: file.name, 
+            data: data, 
+            mime_type: file.type, 
+            isImage: isImage 
+          };
+        };
+      });
+
+      document.querySelector("#cancel-file-btn").addEventListener("click", () => {
+        userData.file = {};
+        fileUploadWrapper.classList.remove("file-attached", "img-attached", "active");
+      });
+
+      document.querySelector("#stop-response-btn").addEventListener("click", () => {
+        controller?.abort();
+        clearInterval(typingInterval);
+        document.body.classList.remove("bot-responding");
+      });
+
+      document.querySelector("#delete-chats-btn").addEventListener("click", () => {
+        chatHistory.length = 0;
+        chatsContainer.innerHTML = "";
+        document.body.classList.remove("chats-active", "bot-responding");
+      });
+
+      document.querySelectorAll(".suggestions-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          promptInput.value = item.querySelector(".text").textContent;
+          promptForm.dispatchEvent(new Event("submit"));
+        });
+      });
+
+      document.addEventListener("click", ({ target }) => {
+        const wrapper = document.querySelector(".prompt-wrapper");
+        const shouldHide = target.classList.contains("prompt-input") || 
+                          (wrapper.classList.contains("hide-controls") && 
+                          (target.id === "add-file-btn" || target.id === "stop-response-btn"));
+        wrapper.classList.toggle("hide-controls", shouldHide);
+      });
+
+      promptForm.addEventListener("submit", handleFormSubmit);
+      promptForm.querySelector("#add-file-btn").addEventListener("click", () => fileInput.click());
+    </script>
+  </body>
+</html>

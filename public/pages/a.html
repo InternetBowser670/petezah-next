@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WPH7NCG4');</script>
+<!-- End Google Tag Manager -->
+	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      	  		        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SHE360M0YP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SHE360M0YP');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
+     crossorigin="anonymous"></script>
+
+    
+
+    <title>PeteZah | Apps</title>
+    <link rel="icon" type="icon/x-icon" href="/storage/images/logo-png-removebg-preview.png" />
+	<link rel="stylesheet" type="text/css" href="/storage/css/themes.css">
+
+
+    <meta
+			name="description"
+			content="Pete Zah, game on"
+		/>
+		<meta
+			name="keywords"
+			content="Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah"
+		/>
+    <style>
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0A1D37;  /* Dark Blue background */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    padding: 0;
+    overflow: auto;  /* Enable scrolling */
+}
+
+/* Hide scrollbar but allow scrolling */
+body::-webkit-scrollbar {
+    display: none;  /* Hide scrollbar */
+}
+
+	    	.god-rays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 550px;
+    --stripes: repeating-linear-gradient( 100deg, rgba(20, 40, 60, 0.8) 0%, rgba(20, 40, 60, 0.8) 7%, transparent 10%, transparent 12%, rgba(20, 40, 60, 0.8) 16% );
+    --rays: repeating-linear-gradient( 100deg, rgba(30, 50, 90, 0.9) 10%, rgba(20, 40, 80, 0.9) 15%, rgba(30, 50, 90, 0.9) 20%, rgba(20, 40, 80, 0.9) 25%, rgba(30, 50, 90, 0.9) 30% );
+    background-image: var(--stripes), var(--rays);
+    background-size: 300%, 200%;
+    background-position: 50% 50%, 50% 50%;
+    animation: fadeIn 2s ease;
+    mask-image: radial-gradient(ellipse at 100% 0%, rgba(255, 255, 255, 0) 40%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 100% 0%, white 40%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.god-rays::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--stripes), var(--rays);
+    background-size: 200%, 100%;
+    animation: god-rays 40s linear infinite;
+    background-attachment: fixed;
+    mix-blend-mode: difference;
+}
+	    
+/* Fixed Search Bar */
+.search-container {
+    position: fixed;  /* Keeps the search bar fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0A1D37;  /* Dark blue background */
+    padding: 15px 0;
+    text-align: center;
+    z-index: 1000;  /* Ensure it's always on top */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);  /* Shadow effect on the search bar */
+}
+
+/* Search Bar Input */
+.search-container input {
+    font-family: "Nunito", serif;
+    width: 40vw;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: 2px solid #fff;  /* Skinny white border */
+    color: #fff;
+    background: #141414;
+    border-radius: 50px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);  /* Shadow on the input field */
+}
+
+.search-container input:focus {
+    background: #333;
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);  /* Focused shadow */
+    border-color: #0066cc;  /* Light blue focus border */
+}
+
+/* Game Container */
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 120px;  /* Added more padding to give space for the fixed search bar */
+    padding-bottom: 30px;  /* Added bottom padding for smoother look */
+}
+
+/* Image Item Styles */
+.image-item {
+    position: relative;
+    width: 250px;  /* Slightly larger image items */
+    height: 220px;
+    overflow: hidden;
+    border-radius: 10px;  /* Slightly less rounded corners */
+    background-color: #222;
+    border: 2px solid #fff;  /* Skinny white border */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);  /* Deeper shadow for a more modern look */
+    animation: fade-in 1s forwards;  /* Apply fade-in animation */
+    transition: transform 0.3s;
+}
+
+/* Fade-in animation for the images */
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply staggered fade-in based on row */
+.game-container .row {
+    display: flex;
+    gap: 30px;
+    opacity: 0;
+    animation: row-fade-in 1s forwards;
+}
+
+/* Fade-in animation for each row */
+@keyframes row-fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply staggered animation delay to each row */
+.game-container .row:nth-child(1) {
+    animation-delay: 0s;
+}
+.game-container .row:nth-child(2) {
+    animation-delay: 0.3s;
+}
+.game-container .row:nth-child(3) {
+    animation-delay: 0.6s;
+}
+.game-container .row:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+/* Ensure all image items within the row fade in one after the other */
+.game-container .row .image-item {
+    opacity: 0;
+    animation: fade-in 1s forwards;
+}
+
+.game-container .row .image-item:nth-child(1) {
+    animation-delay: 0s;
+}
+.game-container .row .image-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.game-container .row .image-item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.game-container .row .image-item:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.image-item:hover {
+    transform: scale(1.05);  /* Slight zoom effect on hover */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);  /* Bigger shadow on hover */
+}
+
+.image-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 10px;
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;  /* Matching rounded corners */
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-item img:hover {
+    transform: scale(1.1);  /* Slight zoom effect on image hover */
+}
+
+/* Label Styles */
+.label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);  /* Dark overlay for label */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.image-item:hover .label {
+    background-color: rgba(0, 0, 0, 0.8);  /* Darker on hover */
+}
+
+/* General Layout & Spacing */
+.game-container {
+    gap: 30px;  /* More space between image items */
+}
+
+
+
+.appImage {
+	opacity: 0;
+	animation: fade-in-bottom 1s;
+}
+
+.appsContainer {
+	top: 65px;
+	position: absolute;
+	width: 1070px;
+	display: inline-flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: flex-start;
+}
+
+.appsContainer img {
+	width: 198px;
+	height: 128px;
+	object-fit: cover;
+	border-radius: 14px;
+	cursor: pointer;
+	transition: 0.2s ease-in-out !important;
+}
+
+.appsContainer img:hover {
+	transform: scale(1.05);
+	transition: 0.2s ease-in-out !important;
+}
+
+.appsContainer img:active {
+	transition: 0s;
+	outline: 2px solid var(--image-outline-color);
+}
+
+.gameImage {
+	opacity: 0;
+	animation: fade-in-bottom 1s;
+}
+
+.appsContainer {
+	opacity: 1;
+}
+
+.gameContain {
+	top: 65px;
+	position: absolute;
+	width: 1070px;
+	display: inline-flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 20px;
+	justify-content: flex-start;
+}
+
+.gameContain img {
+	width: 198px;
+	height: 128px;
+	object-fit: cover;
+	border-radius: 14px;
+	cursor: pointer;
+	transition: 0.2s ease-in-out !important;
+}
+
+.gameContain img:hover {
+	transform: scale(1.05);
+	transition: 0.2s ease-in-out !important;
+}
+
+.gameContain img:active {
+	transition: 0s;
+	outline: 2px solid var(--image-outline-color);
+}
+
+.scrolltop {
+	background-color: var(--scrolltop-background-color);
+	backdrop-filter: var(--scrolltop-backdrop-filter);
+	width: 49px;
+	height: 49px;
+	border-radius: 50%;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	z-index: 9999;
+	transition: 0.3s ease-in-out all;
+	opacity: 0;
+}
+
+.scrolltop:hover {
+	transform: scale(1.1);
+}
+
+.scrolltop span.material-symbols-outlined {
+	justify-content: center;
+	transform: translateY(-10px);
+	font-size: 30px;
+}
+
+.randomBtn {
+	height: 35px;
+	padding: 0 20px;
+	text-wrap: nowrap;
+	background-color: var(--random-btn-background-color);
+	border-radius: 10px;
+	border: 0;
+	text-align: center;
+	outline: #ffffff17 1px solid;
+	user-select: none;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	width: 140px;
+	margin-left: -13em;
+	font-weight: 200;
+	color: #868686;
+	font-family: 'DM Sans';
+	transition: 0.3s all ease-in-out;
+	animation: fade-in-left 1s;
+	display: flex;
+	align-items: center;
+}
+
+.randomBtn:hover {
+	background-color: var(--random-btn-hover-background-color);
+	outline: var(--border-color) 1px solid;
+}
+
+.randomBtn:active {
+	background-color: var(--random-btn-active-background-color);
+}
+
+.gameSearchInput,
+.appsSearchInput,
+#gointospace {
+	padding-left: 40px;
+}
+
+.search-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	border-radius: 30px;
+}
+
+.search-header__input {
+	font-family: 'DM Sans';
+	font-size: 16px;
+	background-color: var(--input-background-color);
+	border: solid 0.5px var(--border-color);
+	color: var(--text-color);
+	padding: 0.7rem 1rem;
+	border-radius: 25px;
+	width: 240px;
+	height: 20px;
+	transition: all ease-in-out 0.5s;
+	margin-right: -2rem;
+	opacity: 1;
+	text-align: center;
+}
+
+.search-header__input:not(#gointospace2):hover,
+.search-header__input:not(#gointospace2):focus {
+	box-shadow:
+		10px 5px 40px -10px var(--dshadow1),
+		-14px -4px 40px -10px var(--dshadow2);
+	padding-left: calc(+50px) !important;
+	padding-right: calc(+50px) !important;
+}
+
+.search-header__input:focus {
+	outline: none;
+	background-color: #0a0a0af0;
+}
+
+.search-header__input::-webkit-input-placeholder {
+	font-weight: 200;
+	color: #868686;
+	font-family: 'DM Sans';
+}
+
+.search-header__input:focus + .search-header__button {
+	background-color: transparent;
+}
+
+.search-header__button {
+	border: none;
+	background-color: transparent;
+	margin-top: 0.1em;
+}
+
+.search-header__button:hover {
+	cursor: pointer;
+}
+
+.search-header__icon {
+	height: 1.3em;
+	width: 1.3em;
+	fill: #3a3a3a;
+}
+
+.searchEngineIcon {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	object-fit: cover;
+	position: relative;
+	z-index: 9999999;
+	margin-right: -35px;
+}
+
+
+
+.image-item {
+    position: relative;
+    width: 200px;
+    height: 170px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    border-radius: 10px;
+}
+
+.image-item:hover {
+    transform: scale(1.1);
+}
+
+.image-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}        
+
+	    .ad-container-horizantal {
+		width: 100%;
+		height: 200px;
+		border: 3px solid red;
+		background-color: #000e24;
+		z-index: -2;
+	}
+    </style>
+</head>
+<body>
+
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPH7NCG4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+	<div class="god-rays"></div>
+	
+            <div class="search-container">
+        <input type="text" id="search-games" placeholder="Search apps" onkeyup="filterItems()">
+            </div>
+	<div class="game-container" id="imageContainer" ">
+        <!-- App items here -->
+		<div class="image-item" data-label="app request">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfDWiLkFUAcAsVVzb57HFW1xfGY3dSUwbMUhDdinsyESCCYeg/viewform?usp=sf_link">
+                <img src="/storage/images/main/googleforms.jpg">
+                <div class="label">App Request</div>
+            </a>
+        </div>
+
+	<div class="image-item" data-label="pete ai">
+            <a href="/pages/other/ai/iframe.html" >
+                <img src="/storage/images/logo-png-removebg-preview.png">
+                <div class="label">PeteAI</div>
+            </a>
+        </div>
+<!-- App items here 
+	<div class="image-item" data-label="pete tv movies">
+            <a href="/iframe.html?url=/pages/other/movies.html">
+                <img src="/storage/images/main/petezahtv.jpeg">
+                <div class="label">Movies</div>
+            </a>
+        </div>
+-->		
+        <div class="image-item" data-label="google">
+            <a href="/iframe.html?url=/storage/ag/a/google/">
+                <img src="/storage/ag/a/google/IMG_5324.webp">
+                <div class="label">Google</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="now.gg">
+            <a href="/iframe.html?url=/storage/ag/a/nowgg/">
+                <img src="/storage/ag/a/nowgg/IMG_5325.png">
+                <div class="label">Now.gg</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="reddit">
+            <a href="/iframe.html?url=/storage/ag/a/reddit/">
+                <img src="/storage/ag/a/reddit/IMG_5326.jpeg">
+                <div class="label">Reddit</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="geforce now">
+            <a href="/iframe.html?url=/storage/ag/a/geforce">
+                <img src="/storage/images/main/geforce.jpg">
+                <div class="label">GeForce</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="xbox">
+            <a href="/iframe.html?url=/storage/ag/a/xbox/">
+                <img src="/storage/ag/a/xbox/IMG_5327.png">
+                <div class="label">Xbox</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="chatgpt">
+            <a href="/iframe.html?url=/storage/ag/a/chatgpt/">
+                <img src="/storage/ag/a/chatgpt/IMG_5328.jpeg">
+                <div class="label">ChatGPT</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="github">
+            <a href="/iframe.html?url=/storage/ag/a/github">
+                <img src="/storage/images/main/github.jpg">
+                <div class="label">Github</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="cool math games">
+            <a href="/iframe.html?url=/storage/ag/a/coolmathgames/">
+                <img src="/storage/ag/a/coolmathgames/IMG_5329.png">
+                <div class="label">Cool Math Games</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="crazy games">
+            <a href="/iframe.html?url=/storage/ag/a/crazygames/">
+                <img src="/storage/ag/a/crazygames/IMG_5330.webp">
+                <div class="label">Crazy Games</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="facebook">
+            <a href="/iframe.html?url=/storage/ag/a/facebook/">
+                <img src="/storage/ag/a/facebook/IMG_5332.jpeg">
+                <div class="label">Facebook</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="discord">
+            <a href="/iframe.html?url=/storage/ag/a/discord/">
+                <img src="/storage/ag/a/discord/IMG_5331.jpeg">
+                <div class="label">Discord</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="poki">
+            <a href="/iframe.html?url=/storage/ag/a/poki/">
+                <img src="/storage/ag/a/poki/IMG_5333.png">
+                <div class="label">Poki</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="tiktok">
+            <a href="/iframe.html?url=/storage/ag/a/tiktok/">
+                <img src="/storage/ag/a/tiktok/IMG_5335.png">
+                <div class="label">TikTok</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="snapchat">
+            <a href="/iframe.html?url=/storage/ag/a/snapchat/">
+                <img src="/storage/ag/a/snapchat/IMG_5334.png">
+                <div class="label">Snapchat</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="twitch">
+            <a href="/iframe.html?url=/storage/ag/a/twitch/">
+                <img src="/storage/ag/a/twitch/IMG_5336.png">
+                <div class="label">Twitch</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="x">
+            <a href="/iframe.html?url=/storage/ag/a/x/">
+                <img src="/storage/ag/a/x/IMG_5337.png">
+                <div class="label">X</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="youtube">
+            <a href="/iframe.html?url=/storage/ag/a/youtube/">
+                <img src="/storage/ag/a/youtube/IMG_5338.webp">
+                <div class="label">YouTube</div>
+            </a>
+        </div>
+
+	 <div class="image-item" data-label="youtube invidious">
+            <a href="/iframe.html?url=/storage/ag/a/invid/">
+                <img src="/storage/images/main/invid.png">
+                <div class="label">YouTube Invidious</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="hd today">
+            <a href="/iframe.html?url=/storage/ag/a/hdtoday/">
+                <img src="/storage/ag/a/hdtoday/IMG_5342.jpeg">
+                <div class="label">HD Today</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="aptoid">
+            <a href="/iframe.html?url=/storage/ag/a/aptoid/">
+                <img src="/storage/ag/a/aptoid/IMG_5343.png">
+                <div class="label">Aptoid</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="android emulator">
+            <a href="/iframe.html?url=/storage/ag/a/android/">
+                <img src="/storage/ag/a/android/logo.webp">
+                <div class="label">Android Emulator</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="emulatorjs">
+            <a href="/iframe.html?url=/storage/ag/a/emulatorjs/">
+                <img src="/storage/ag/a/emulatorjs/docs/Logo-light.png">
+                <div class="label">EmulatorJS</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="ruble">
+            <a href="/iframe.html?url=/storage/ag/a/rumble">
+                <img src="/storage/images/main/rumble.jpg">
+                <div class="label">Rumble</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="yahoo">
+            <a href="/iframe.html?url=/storage/ag/a/yahoo">
+                <img src="/storage/images/main/yahoo.jpg">
+                <div class="label">Yahoo</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="netflix">
+            <a href="/iframe.html?url=/storage/ag/a/netflix">
+                <img src="/storage/images/main/netflix.jpg">
+                <div class="label">Netflix</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="hulu">
+            <a href="/iframe.html?url=/storage/ag/a/hul">
+                <img src="/storage/images/main/hulu.jpg">
+                <div class="label">Hulu</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="pinterist">
+            <a href="/iframe.html?url=/storage/ag/a/pinterest">
+                <img src="/storage/images/main/pinterist.jpg">
+                <div class="label">Pinterist</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="soundcloud">
+            <a href="/iframe.html?url=/storage/ag/a/soundcloud">
+                <img src="/storage/images/main/soundcloud.jpg">
+                <div class="label">Soundcloud</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="espn">
+            <a href="/iframe.html?url=/storage/ag/a/espn">
+                <img src="/storage/images/main/espn.jpg">
+                <div class="label">ESPN</div>
+            </a>
+        </div>
+
+	<div class="image-item" data-label="vortex chat">
+            <a href="/iframe.html?url=/storage/ag/a/vortex">
+                <img src="/storage/images/main/vortex.png">
+                <div class="label">Vortex</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="espn">
+            <a href="/iframe.html?url=/storage/ag/a/fifa">
+                <img src="/storage/images/main/fifarosters.jpg">
+                <div class="label">Fifa Rosters</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="vercel">
+            <a href="/iframe.html?url=/storage/ag/a/vercel">
+                <img src="/storage/images/main/vercel.jpg">
+                <div class="label">Vercel</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="vscode">
+            <a href="/iframe.html?url=/storage/ag/a/vscode">
+                <img src="/storage/images/main/vscode.jpg">
+                <div class="label">VsCode</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="y8games">
+            <a href="/iframe.html?url=/storage/ag/a/y8games">
+                <img src="/storage/images/main/y8games.jpg">
+                <div class="label">Y8Games</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="w3school">
+            <a href="/iframe.html?url=/storage/ag/a/w3school">
+                <img src="/storage/images/main/w3school.jpg">
+                <div class="label">W3School</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="scratch">
+            <a href="/iframe.html?url=/storage/ag/a/scratch">
+                <img src="/storage/images/main/scratch.jpg">
+                <div class="label">Scratch</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="gmail">
+            <a href="/iframe.html?url=/storage/ag/a/gmail">
+                <img src="/storage/images/main/gmail.jpg">
+                <div class="label">Gmail</div>
+            </a>
+        </div>
+
+        <div class="image-item" data-label="google drive">
+            <a href="/iframe.html?url=/storage/ag/a/drive">
+                <img src="/storage/images/main/drive.jpg">
+                <div class="label">Google Drive</div>
+            </a>
+        </div>
+
+
+		<div class="ad-container-horizantal">
+      	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center; background-color: dark blue;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-6640595376330309"
+     data-ad-slot="2445086545"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+     </div>
+      
+     </div>
+  <script src="https://partner.senty.com.au/partner-a11f34f2.js"></script>
+
+
+    <script>
+        
+
+document.addEventListener('DOMContentLoaded', () => {
+    function filterItems() {
+        const searchInput = document.getElementById('search-games').value.toLowerCase();
+        document.querySelectorAll('.image-item').forEach(item => {
+            const label = item.dataset.label.toLowerCase();
+            item.style.display = label.includes(searchInput) ? '' : 'none';
+        });
+    }
+
+    document.getElementById('search-games').addEventListener('input', filterItems);
+});
+
+    </script>
+	<script src="/storage/js/settings.js"></script>
+</body>
+</html>

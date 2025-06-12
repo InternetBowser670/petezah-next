@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WPH7NCG4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHE360M0YP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-SHE360M0YP');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
+        crossorigin="anonymous"></script>
+
+    <title>PeteZah | Games</title>
+    <link rel="icon" type="icon/x-icon" href="/storage/images/logo-png-removebg-preview.png" />
+    <link rel="stylesheet" type="text/css" href="/storage/css/themes2.css">
+
+    <meta name="description" content="Pete Zah, game on" />
+    <meta name="keywords" content="Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0A1D37;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            padding: 0;
+            overflow: auto;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .god-rays {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 550px;
+            --stripes: repeating-linear-gradient(100deg, rgba(20, 40, 60, 0.8) 0%, rgba(20, 40, 60, 0.8) 7%, transparent 10%, transparent 12%, rgba(20, 40, 60, 0.8) 16%);
+            --rays: repeating-linear-gradient(100deg, rgba(30, 50, 90, 0.9) 10%, rgba(20, 40, 80, 0.9) 15%, rgba(30, 50, 90, 0.9) 20%, rgba(20, 40, 80, 0.9) 25%, rgba(30, 50, 90, 0.9) 30%);
+            background-image: var(--stripes), var(--rays);
+            background-size: 300%, 200%;
+            background-position: 50% 50%, 50% 50%;
+            animation: fadeIn 2s ease;
+            mask-image: radial-gradient(ellipse at 100% 0%, rgba(255, 255, 255, 0) 40%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at 100% 0%, white 40%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .god-rays::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: var(--stripes), var(--rays);
+            background-size: 200%, 100%;
+            animation: god-rays 40s linear infinite;
+            background-attachment: fixed;
+            mix-blend-mode: difference;
+        }
+
+        .search-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0A1D37;
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .search-container.animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .search-container input {
+            font-family: "Poppins", sans-serif;
+            width: 50vw;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: 2px solid #fff;
+            color: #fff;
+            background: #141414;
+            border-radius: 50px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-container input:focus {
+            background: #333;
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.4);
+            border-color: #0066cc;
+        }
+
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding-top: 120px;
+            padding-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .game-container.animate {
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .image-item {
+            position: relative;
+            width: 250px;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: #222;
+            border: 2px solid #fff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform, box-shadow;
+            animation: slideInFromLeft 0.5s ease-out forwards;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .image-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 10px;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .image-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .image-item:hover .label {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .appImage {
+            opacity: 0;
+            animation: fade-in-bottom 1s;
+        }
+
+        .appsContainer {
+            top: 65px;
+            position: absolute;
+            width: 1070px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+
+        .appsContainer img {
+            width: 198px;
+            height: 128px;
+            object-fit: cover;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out !important;
+        }
+
+        .appsContainer img:hover {
+            transform: scale(1.05);
+            transition: 0.2s ease-in-out !important;
+        }
+
+        .appsContainer img:active {
+            transition: 0s;
+            outline: 2px solid var(--image-outline-color);
+        }
+
+        .gameImage {
+            opacity: 0;
+            animation: fade-in-bottom 1s;
+        }
+
+        .appsContainer {
+            opacity: 1;
+        }
+
+        .gameContain {
+            top: 65px;
+            position: absolute;
+            width: 1070px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+
+        .gameContain img {
+            width: 198px;
+            height: 128px;
+            object-fit: cover;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out !important;
+        }
+
+        .gameContain img:hover {
+            transform: scale(1.05);
+            transition: 0.2s ease-in-out !important;
+        }
+
+        .gameContain img:active {
+            transition: 0s;
+            outline: 2px solid var(--image-outline-color);
+        }
+
+        .scrolltop {
+            background-color: var(--scrolltop-background-color);
+            backdrop-filter: var(--scrolltop-backdrop-filter);
+            width: 49px;
+            height: 49px;
+            border-radius: 50%;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+            transition: 0.3s ease-in-out all;
+            opacity: 0;
+        }
+
+        .scrolltop:hover {
+            transform: scale(1.1);
+        }
+
+        .scrolltop span.material-symbols-outlined {
+            justify-content: center;
+            transform: translateY(-10px);
+            font-size: 30px;
+        }
+
+        .gameSearchInput,
+        .appsSearchInput,
+        #gointospace {
+            padding-left: 40px;
+        }
+
+        .search-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            border-radius: 30px;
+        }
+
+        .search-header__input {
+            font-family: 'DM Sans';
+            font-size: 16px;
+            background-color: var(--input-background-color);
+            border: solid 0.5px var(--border-color);
+            color: var(--text-color);
+            padding: 0.7rem 1rem;
+            border-radius: 25px;
+            width: 240px;
+            height: 20px;
+            transition: all ease-in-out 0.5s;
+            margin-right: -2rem;
+            opacity: 1;
+            text-align: center;
+        }
+
+        .search-header__input:not(#gointospace2):hover,
+        .search-header__input:not(#gointospace2):focus {
+            box-shadow: 10px 5px 40px -10px var(--dshadow1), -14px -4px 40px -10px var(--dshadow2);
+            padding-left: calc(+50px) !important;
+            padding-right: calc(+50px) !important;
+        }
+
+        .search-header__input:focus {
+            outline: none;
+            background-color: #0a0a0af0;
+        }
+
+        .search-header__input::-webkit-input-placeholder {
+            font-weight: 200;
+            color: #868686;
+            font-family: 'DM Sans';
+        }
+
+        .search-header__input:focus+.search-header__button {
+            background-color: transparent;
+        }
+
+        .search-header__button {
+            border: none;
+            background-color: transparent;
+            margin-top: 0.1em;
+        }
+
+        .search-header__button:hover {
+            cursor: pointer;
+        }
+
+        .search-header__icon {
+            height: 1.3em;
+            width: 1.3em;
+            fill: #3a3a3a;
+        }
+
+        .searchEngineIcon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 9999999;
+            margin-right: -35px;
+        }
+
+        .randomGameOpensBtn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            padding: 10px 20px;
+            background-color: #141414;
+            color: white;
+            border: 1px solid white;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .randomGameOpensBtn.animate {
+            animation: slideInRight 0.8s ease-out 0.2s forwards;
+        }
+
+        .randomGameOpensBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .filter-container {
+            position: fixed;
+            top: 5px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #141414;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .filter-container.animate {
+            animation: slideInRight 0.8s ease-out 0.4s forwards;
+        }
+
+        .filter-container select {
+            background-color: #222;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 2px solid #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-container select:hover {
+            background-color: #333;
+        }
+
+        .ad-container-horizantal {
+            width: 100%;
+            height: 200px;
+            border: 3px solid red;
+            background-color: #000e24;
+            z-index: -2;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes god-rays {
+            0% {
+                background-position: 50% 50%, 0 0;
+            }
+            100% {
+                background-position: 350% 350%, 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPH7NCG4" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="god-rays"></div>
+
+    <button class="randomGameOpensBtn" onclick="randomGameOpen()">Random Game</button>
+
+    <div class="search-container">
+        <input type="text" id="search-games" placeholder="Search for YOUR Favorite Game....." onkeyup="filterItems()">
+    </div>
+
+    <div class="filter-container">
+        <select id="gameFilter" onchange="filterByCategory()">
+            <option value="">Filter by Category</option>
+            <option value="action">Action</option>
+            <option value="racing">Racing</option>
+            <option value="strategy">Strategy</option>
+            <option value="sports">Sports</option>
+            <option value="skill">Skill</option>
+            <option value="shooting">Shooting</option>
+            <option value="2 player">2 Player</option>
+            <option value="io">Io</option>
+        </select>
+    </div>
+
+    <div class="game-container" id="imageContainer"></div>
+
+    <div class="ad-container-horizantal">
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
+            crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block; text-align:center; background-color: dark blue;"
+            data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-6640595376330309"
+            data-ad-slot="2445086545"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <script>
+        let games = [];
+
+        // Fetch games data from JSON file
+        async function loadGames() {
+            try {
+                const response = await fetch('/storage/data/games2.json');
+                const data = await response.json();
+                games = data.games;
+                displayGames(games);
+            } catch (error) {
+                console.error('Error loading games:', error);
+            }
+        }
+
+        // Display games in the container
+        function displayGames(gamesToShow) {
+            const container = document.getElementById('imageContainer');
+            container.innerHTML = '';
+
+            gamesToShow.forEach(game => {
+                const div = document.createElement('div');
+                div.className = 'image-item';
+                div.setAttribute('data-label', game.label);
+                if (game.categories.length > 0) {
+                    div.setAttribute('data-category', game.categories[0]);
+                }
+
+                div.innerHTML = `
+                    <a href="${game.url}">
+                        <img src="${game.imageUrl}">
+                        <div class="label">${game.label}</div>
+                    </a>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function filterItems() {
+            const searchInput = document.getElementById('search-games').value.toLowerCase();
+            const filteredGames = games.filter(game =>
+                game.label.toLowerCase().includes(searchInput)
+            );
+            displayGames(filteredGames);
+        }
+
+        function randomGameOpen() {
+            if (games.length > 0) {
+                const randomIndex = Math.floor(Math.random() * games.length);
+                const randomGame = games[randomIndex];
+                window.location.href = randomGame.url;
+            }
+        }
+
+        function filterByCategory() {
+            const category = document.getElementById('gameFilter').value.toLowerCase();
+            const filteredGames = category ?
+                games.filter(game => game.categories.includes(category)) :
+                games;
+            displayGames(filteredGames);
+        }
+
+        // Trigger entrance animations
+        function triggerAnimations() {
+            document.querySelector('.search-container').classList.add('animate');
+            document.querySelector('.game-container').classList.add('animate');
+            document.querySelector('.randomGameOpensBtn').classList.add('animate');
+            document.querySelector('.filter-container').classList.add('animate');
+        }
+
+        // Load games and trigger animations when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGames();
+            triggerAnimations();
+        });
+    </script>
+    <script src="/storage/js/settings.js"></script>
+</body>
+
+</html>

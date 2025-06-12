@@ -1,0 +1,95 @@
+/* Theme Classes */
+body.theme-default {
+	background-color: #0a1d37;
+	color: #ffffff;
+	--primary-gradient: linear-gradient(90deg, #3c5b8e, #4a6fa5);
+	--hover-gradient: linear-gradient(90deg, #2a3c5f, #3c5b8e);
+}
+
+body.theme-swampy-green {
+	background-color: #1a3c34;
+	color: #d4e4d9;
+	--primary-gradient: linear-gradient(90deg, #2e6b4f, #3e8c65);
+	--hover-gradient: linear-gradient(90deg, #1f4a3a, #2e6b4f);
+	--god-rays-color: rgba(30, 70, 50, 0.9);
+}
+
+body.theme-royal-purple {
+	background-color: #2a1a3c;
+	color: #e2d4e9;
+	--primary-gradient: linear-gradient(90deg, #5e3c8e, #7a4fa5);
+	--hover-gradient: linear-gradient(90deg, #3f2a5f, #5e3c8e);
+	--god-rays-color: rgba(70, 30, 90, 0.9);
+}
+
+body.theme-blood-red {
+	background-color: #3c0a1a;
+	color: #e9d4d4;
+	--primary-gradient: linear-gradient(90deg, #8e3c4f, #a54f6f);
+	--hover-gradient: linear-gradient(90deg, #5f2a3f, #8e3c4f);
+	--god-rays-color: rgba(90, 20, 40, 0.9);
+}
+
+body.theme-midnight-forest {
+	background-color: #1f2a2f;
+	color: #cde4d9;
+	--primary-gradient: linear-gradient(90deg, #3f5e4a, #5a7f66);
+	--hover-gradient: linear-gradient(90deg, #2a3f35, #3f5e4a);
+	--god-rays-color: rgba(40, 70, 50, 0.9);
+}
+
+body.theme-cyber-neon {
+	background-color: #1a1a2e;
+	color: #e0e0ff;
+	--primary-gradient: linear-gradient(90deg, #ff2079, #00ddeb);
+	--hover-gradient: linear-gradient(90deg, #cc1a5f, #00a8b5);
+	--god-rays-color: rgba(50, 20, 80, 0.9);
+}
+
+body.theme-desert-oasis {
+	background-color: #3c2f1a;
+	color: #e9e4d4;
+	--primary-gradient: linear-gradient(90deg, #8e6b3c, #a58f4f);
+	--hover-gradient: linear-gradient(90deg, #5f4a2a, #8e6b3c);
+	--god-rays-color: rgba(90, 60, 30, 0.9);
+}
+
+body.theme-glacial-frost {
+	background-color: #2a3c4f;
+	color: #d4e9e9;
+	--primary-gradient: linear-gradient(90deg, #3c6b8e, #4f8fa5);
+	--hover-gradient: linear-gradient(90deg, #2a4a5f, #3c6b8e);
+	--god-rays-color: rgba(30, 60, 90, 0.9);
+}
+
+/* Apply Theme Variables */
+.tab,
+button,
+input[type="file"]::-webkit-file-upload-button,
+input[type="file"]::file-selector-button {
+	background: var(--primary-gradient);
+}
+
+.tab:hover,
+.tab.active,
+button:hover,
+input[type="file"]::-webkit-file-upload-button:hover,
+input[type="file"]::file-selector-button:hover {
+	background: var(--hover-gradient);
+}
+
+.god-rays {
+	background-image: repeating-linear-gradient(
+		100deg,
+		var(--god-rays-color, rgba(30, 50, 90, 0.9)) 10%,
+		rgba(20, 40, 80, 0.9) 15%,
+		var(--god-rays-color, rgba(30, 50, 90, 0.9)) 20%,
+		rgba(20, 40, 80, 0.9) 25%,
+		var(--god-rays-color, rgba(30, 50, 90, 0.9)) 30%
+	);
+}
+
+/* Ensure background image overrides theme background color if set */
+body {
+	transition: background-color 0.5s ease, color 0.5s ease;
+}

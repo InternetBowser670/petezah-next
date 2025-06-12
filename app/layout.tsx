@@ -80,7 +80,7 @@ export default function RootLayout({
           href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
         />
       </head>
-      <body className="text-[#ededed] h-full bg-[#0a0a0a]">
+      <body className="text-[#ededed] min-h-screen bg-[#0a0a0a]">
         <Particles />
         <Suspense>
           <SidebarProvider><Sidebar>{children}</Sidebar></SidebarProvider>

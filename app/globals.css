@@ -153,51 +153,6 @@ body {
   right: 20px;
 }
 
-@media (max-width: 1024px) {
-  .sidebar {
-    height: 56px;
-    margin: 13px;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    width: calc(100% - 26px);
-    max-height: calc(100vh - 26px);
-  }
-  .sidebar.menu-active {
-    overflow-y: auto;
-  }
-  .sidebar .sidebar-header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    border-radius: 16px;
-    background: #151a2d;
-    padding: 8px 10px;
-  }
-
-  .sidebar-header .sidebar-toggler,
-  .sidebar-nav .nav-item:hover .nav-tooltip {
-    display: none;
-  }
-
-  .sidebar-header .menu-toggler span {
-    font-size: 1.3rem;
-  }
-  .sidebar .sidebar-nav .nav-list {
-    padding: 10px;
-  }
-  .sidebar-nav .nav-link {
-    padding: 10px;
-    font-size: 0.94rem;
-  }
-  .sidebar-nav .nav-link .nav-icon {
-    font-size: 1.37rem;
-  }
-  .sidebar-nav .secondary-nav {
-    position: relative;
-    bottom: 0;
-    margin: 40px 0 30px;
-  }
-}
 .main-content {
   border: 1px solid white;
   background: #151a2d;

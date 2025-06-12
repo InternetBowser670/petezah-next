@@ -5,7 +5,8 @@ import "./globals.css";
 import Particles from "@/ui/particles";
 import Sidebar from "@/ui/sidebar";
 import { Suspense } from "react";
-import { SidebarProvider } from '@/context/sidebar-context';
+import { SidebarProvider } from "@/context/sidebar-context";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "PeteZah",
@@ -83,13 +84,15 @@ export default function RootLayout({
       <body className="text-[#ededed] min-h-screen bg-[#0a0a0a]">
         <Particles />
         <Suspense>
-          <SidebarProvider><Sidebar>{children}</Sidebar></SidebarProvider>
+          <SidebarProvider>
+            <Sidebar>{children}</Sidebar>
+          </SidebarProvider>
         </Suspense>
 
         {/* changelog */}
 
         <Script id="changelogfy-config">
-        {`
+          {`
             let CLF_config = {
               app_id: "03599c7b-79db-4651-8efa-90e18b54dabf",
               data: {
@@ -105,8 +108,9 @@ export default function RootLayout({
               }
             };
           `}
-      </Script>
-      <Script async src="https://widget.changelogfy.com/index.js" />
+        </Script>
+        <Script async src="https://widget.changelogfy.com/index.js" />
+        <Analytics />
       </body>
     </html>
   );

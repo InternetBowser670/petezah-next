@@ -142,13 +142,14 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           <ul className="h-full my-2 nav-list secondary-nav">
             <NavbarLink title="Profile" icon="account_circle" url="/pages/settings/p" />
             <NavbarLink title="Settings" icon="settings" url="/pages/settings" />
+            <NavbarLink title="About" icon="help" url="/about" />
           </ul>
         </nav>
       </aside>
 
       <main
         className={clsx(
-          "main-content overflow-hidden",
+          "main-content overflow-hidden transition-transform",
           sidebarToggled ? "sidebar-expanded" : ""
         )}
       >

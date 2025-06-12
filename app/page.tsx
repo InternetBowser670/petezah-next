@@ -10,8 +10,7 @@ import clsx from "clsx";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const [mounted, setMounted] = useState(false);
+  const [counter, setCounter] = useState(4);
 
   const images = [
     { src: "/storage/images/main/geo.jpeg", caption: "Geometry Dash" },
@@ -25,8 +24,6 @@ export default function Page() {
 
   const imageWidth = 128;
   const totalImages = images.length;
-
-  const [counter, setCounter] = useState(4);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -82,17 +79,14 @@ export default function Page() {
     router.push(`/g`);
   }
 
-  useEffect(() => {
-    setMounted(true);
-    if (!mounted) {
-      handlePrev();
-    }
-  }, []);
+  function redirectToAbout() {
+    router.push(`/about`);
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 1000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -109,12 +103,24 @@ export default function Page() {
             <span className="cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent h-[27px]">
               <Typewriter />
             </span>
+            <p className="text-sm my-[20px]! text-gray-400 flex items-center">
+              (Official Next.js Version)
+              <button
+                type="button"
+                className="justify-center items-center h-[25px] w-[25px] m-[4px]! bg-[#112c69] rounded-[8px] p-[4px]! inline-flex cursor-pointer"
+                onClick={redirectToAbout}
+              >
+                <span className="inline text-[18px]! text-white nav-icon material-symbols-rounded">
+                  help
+                </span>
+              </button>
+            </p>{" "}
           </h2>
-          <p className="my-[20px]! text-[18px]">Game on!</p>
+          <p className="mb-[20px]! text-[18px]">Game on!</p>
           <button
             onClick={redirectToGames}
             type="button"
-            className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors duration-500 hover:bg-[#31476b]"
+            className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
           >
             Start Gaming
           </button>

@@ -100,8 +100,11 @@ export default function Page() {
           <h2 className="text-[40px] font-bold">
             Welcome to
             <br />
-            <span className="cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent h-[27px]">
+            <span className="hidden cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent h-[27px] md:inline">
               <Typewriter />
+            </span>
+            <span className="cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent h-[27px] md:hidden">
+              PeteZah Games.
             </span>
             <p className="text-sm my-[20px]! text-gray-400 flex items-center">
               (Official Next.js Version)
@@ -161,7 +164,7 @@ export default function Page() {
           </div>
         </div>
         <div className="absolute top-0 flex items-center justify-center w-full pt-2!">
-          <div className="gh-image-shuffler flex items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! z-5 shadow-[0_12px_35px_rgba(255,255,255,0.2)] mx-auto border-2 border-white">
+          <div className="hidden gh-image-shuffler items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! z-5 shadow-[0_12px_35px_rgba(255,255,255,0.2)] mx-auto border-2 border-white md:flex">
             <button
               type="button"
               id="gh-prev-btn"
@@ -229,7 +232,7 @@ export default function Page() {
         </div>
         <MarqueeBg />
         <button
-          className="relative right-[200px] text-center p-[20px]! rounded-[12px] bg-[#0A1D37] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF]"
+          className="hidden lg:block relative right-[20px] xl:right-[200px] text-center p-[20px]! rounded-[12px] bg-[#0A1D37] cursor-pointer hover:scale-[1.05] hover:translate-y-[-10%] transition duration-300 border-2 border-[#0096FF]"
           type="button"
           onClick={redirectToGames}
         >

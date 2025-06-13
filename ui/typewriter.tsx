@@ -52,7 +52,7 @@ export default function Typewriter() {
   return (
     <>
       {text}
-      <span className="inline-block font-light animate-pulse text-blue-600">|</span>
+      <span className="inline-block font-light text-blue-600 animate-pulse">|</span>
     </>
   );
 }

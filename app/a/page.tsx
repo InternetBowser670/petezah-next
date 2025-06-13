@@ -239,7 +239,7 @@ export default function Page() {
               className="px-2! py-1! bg-black border-2 border-white rounded-2xl transition-colors duration-500 w-200 mx-2!"
               name="searchQuery"
               id="searchQuery"
-              placeholder="Search for your favorite game..."
+              placeholder="Search for your favorite app..."
             />
           </div>
           <div>

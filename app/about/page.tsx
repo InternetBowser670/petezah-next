@@ -91,7 +91,7 @@ export default function Page() {
   return (
     <div className="flex items-center relative justify-center h-[100%] leading-9">
       <MarqueeBg />
-      <div className="w-[80%] h-[80%] flex flex-col justify-center items-center bg-black z-1 rounded-2xl pt-15!">
+      <div className="w-[80%] h-[80%] flex flex-col justify-center items-center bg-black overflow-scroll z-1 rounded-2xl pt-15!">
         <Tabs
           containerClassName="flex justify-center items-center"
           contentClassName="flex justify-center"

@@ -19,17 +19,17 @@ const apps = [
   {
     label: "Google",
     url: "/iframe.html?url=/storage/ag/a/google/",
-    imageUrl: "/storage/ag/a/google/img_5324.webp",
+    imageUrl: "/storage/ag/a/google/IMG_5324.webp",
   },
   {
     label: "Now.gg",
     url: "/iframe.html?url=/storage/ag/a/nowgg/",
-    imageUrl: "/storage/ag/a/nowgg/img_5325.png",
+    imageUrl: "/storage/ag/a/nowgg/IMG_5325.png",
   },
   {
     label: "Reddit",
     url: "/iframe.html?url=/storage/ag/a/reddit/",
-    imageUrl: "/storage/ag/a/reddit/img_5326.jpeg",
+    imageUrl: "/storage/ag/a/reddit/IMG_5326.jpeg",
   },
   {
     label: "GeForce",
@@ -39,12 +39,12 @@ const apps = [
   {
     label: "Xbox",
     url: "/iframe.html?url=/storage/ag/a/xbox/",
-    imageUrl: "/storage/ag/a/xbox/img_5327.png",
+    imageUrl: "/storage/ag/a/xbox/IMG_5327.png",
   },
   {
     label: "ChatGPT",
     url: "/iframe.html?url=/storage/ag/a/chatgpt/",
-    imageUrl: "/storage/ag/a/chatgpt/img_5328.jpeg",
+    imageUrl: "/storage/ag/a/chatgpt/IMG_5328.jpeg",
   },
   {
     label: "Github",
@@ -54,37 +54,37 @@ const apps = [
   {
     label: "Facebook",
     url: "/iframe.html?url=/storage/ag/a/facebook/",
-    imageUrl: "/storage/ag/a/facebook/img_5332.jpeg",
+    imageUrl: "/storage/ag/a/facebook/IMG_5332.jpeg",
   },
   {
     label: "Discord",
     url: "/iframe.html?url=/storage/ag/a/discord/",
-    imageUrl: "/storage/ag/a/discord/img_5331.jpeg",
+    imageUrl: "/storage/ag/a/discord/IMG_5331.jpeg",
   },
   {
     label: "TikTok",
     url: "/iframe.html?url=/storage/ag/a/tiktok/",
-    imageUrl: "/storage/ag/a/tiktok/img_5335.png",
+    imageUrl: "/storage/ag/a/tiktok/IMG_5335.png",
   },
   {
     label: "Snapchat",
     url: "/iframe.html?url=/storage/ag/a/snapchat/",
-    imageUrl: "/storage/ag/a/snapchat/img_5334.png",
+    imageUrl: "/storage/ag/a/snapchat/IMG_5334.png",
   },
   {
     label: "Twitch",
     url: "/iframe.html?url=/storage/ag/a/twitch/",
-    imageUrl: "/storage/ag/a/twitch/img_5336.png",
+    imageUrl: "/storage/ag/a/twitch/IMG_5336.png",
   },
   {
     label: "X",
     url: "/iframe.html?url=/storage/ag/a/x/",
-    imageUrl: "/storage/ag/a/x/img_5337.png",
+    imageUrl: "/storage/ag/a/x/IMG_5337.png",
   },
   {
     label: "YouTube",
     url: "/iframe.html?url=/storage/ag/a/youtube/",
-    imageUrl: "/storage/ag/a/youtube/img_5338.webp",
+    imageUrl: "/storage/ag/a/youtube/IMG_5338.webp",
   },
   {
     label: "YouTube Invidious",
@@ -94,12 +94,12 @@ const apps = [
   {
     label: "HD Today",
     url: "/iframe.html?url=/storage/ag/a/hdtoday/",
-    imageUrl: "/storage/ag/a/hdtoday/img_5342.jpeg",
+    imageUrl: "/storage/ag/a/hdtoday/IMG_5342.jpeg",
   },
   {
     label: "Aptoid",
     url: "/iframe.html?url=/storage/ag/a/aptoid/",
-    imageUrl: "/storage/ag/a/aptoid/img_5343.png",
+    imageUrl: "/storage/ag/a/aptoid/IMG_5343.png",
   },
   {
     label: "Android Emulator",
@@ -214,6 +214,7 @@ export default function Page() {
                 height={170}
                 alt={app.label}
                 src={app.imageUrl}
+                unoptimized
               />
               <p className="absolute bottom-0 right-0 text-center bg-black/60 p-[10px] w-full">
                 {app.label}

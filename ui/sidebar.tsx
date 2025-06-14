@@ -39,10 +39,12 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
     title,
     url,
     icon,
+    altLinks
   }: {
     title: string;
     url: string;
     icon: string;
+    altLinks?: string[];
   }) {
     function handleClick() {
       router.push(url);
@@ -54,7 +56,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         className={clsx(
           !sidebarToggled && "translate-x-[8px] items-center!",
           "max-w-[90%] h-[50px] flex items-center transition-all rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
-          isActiveTab(url, []) && "bg-white text-black"
+          isActiveTab(url, altLinks) && "bg-white text-black"
         )}
       >
         <button
@@ -138,7 +140,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               )}
             >
               <NavbarLink title="Home" icon="Home" url="/" />
-              <NavbarLink title="Games" icon="sports_esports" url="/g" />
+              <NavbarLink title="Games" icon="sports_esports" url="/g" altLinks={["/play"]} />
               <NavbarLink title="Apps" icon="apps" url="/a" />
               <NavbarLink
                 title="Proxy"

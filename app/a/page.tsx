@@ -206,7 +206,13 @@ export default function Page() {
           <div className="relative w-[200px] h-[170px] overflow-hidden transition-transform duration-500 rounded-2xl border-white border-2 bg-black flex justify-center items-center hover:scale-110 group">
             <Link
               className="w-full h-[170px]! flex justify-center items-center"
-              href={app.url.replace("/iframe.html", "/app")+ "/index.html"}
+              href={
+                app.url.startsWith("/iframe.html")
+                  ? app.url.replace("/iframe.html", "/app") + "/index.html"
+                  : app.url == "/pages/other/ai/iframe.html"
+                  ? `app?url=/pages/other/ai/iframe.html`
+                  : app.url
+              }
             >
               <Image
                 className="object-cover! p-2 h-full hover:scale-110 transition-all duration-500 text-white"
@@ -244,14 +250,14 @@ export default function Page() {
           </div>
           <div>
             <div className="flex-1 overflow-y-auto !px-4 !py-6">
-              {(
+              {
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6">
                   {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   {filtered.map((app: any, index: number) => (
                     <AppCard key={index} app={app} />
                   ))}
                 </div>
-              )}
+              }
             </div>
           </div>
         </div>

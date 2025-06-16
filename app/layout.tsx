@@ -9,9 +9,9 @@ import { SidebarProvider } from "@/context/sidebar-context";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "PeteZah",
-  description: "Pete Zah, game on",
-  keywords: "Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah",
+  title: "PeteZah-Next",
+  description: "The next generation of PeteZah Games",
+  keywords: "Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah, Games,",
   other: {
     "benrogo:index": "index",
     "benrogo:uvpath": "/static/uv/uv.config.js",

@@ -210,7 +210,7 @@ export default function Page() {
                 app.url.startsWith("/iframe.html")
                   ? app.url.replace("/iframe.html", "/app") + "/index.html"
                   : app.url == "/pages/other/ai/iframe.html"
-                  ? `app?url=/pages/other/ai/iframe.html`
+                  ? `/pete-ai`
                   : app.url
               }
             >

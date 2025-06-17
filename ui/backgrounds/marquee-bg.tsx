@@ -23,9 +23,9 @@ const MarqueeRow = ({ hoverPause }: { hoverPause?: boolean }) => {
   );
 };
 
-export default function MarqueeBg({ hoverPause }: { hoverPause?: boolean }) {
+export default function MarqueeBg({ hoverPause, className }: { hoverPause?: boolean, className?: string}) {
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
+    <div className={`absolute inset-0 z-0 overflow-hidden ${className}`}>
       <div className="absolute -inset-[20%] -rotate-12 opacity-75">
         <div className="w-full h-full">
           <div className="flex flex-col h-full">

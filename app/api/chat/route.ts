@@ -24,7 +24,7 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: google("gemini-2.0-flash"),
-    system: 'You are a helpful assistant named PeteAI, available on the PeteZah Games Proxy (sometimes called PeteZah-Next because it is an iteration on the original PeteZah Games built using Next.Js).',
+    system: 'You are a helpful assistant named PeteAI, available on the PeteZah Games Proxy (sometimes called PeteZah-Next because it is an iteration on the original PeteZah Games built using Next.Js) Respond to the user in Markdown format.',
     messages,
   });
 

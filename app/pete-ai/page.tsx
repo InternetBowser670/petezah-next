@@ -35,7 +35,7 @@ export default function Chat() {
             {messages.length > 0 && (
               <div
                 ref={messagesContainerRef}
-                className="px-2! w-full overflow-y-scroll [scrollbar-color:#808080_white] opacity-70 bg-blue-950 rounded-b-2xl pb-3! pt-3!"
+                className="px-2! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pb-3! pt-3!"
               >
                 {messages.map((message) => (
                   <div

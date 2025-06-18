@@ -6,8 +6,8 @@ import {
   ArrowUpCircleIcon,
   LockClosedIcon,
   LightBulbIcon,
-  ChatBubbleLeftRightIcon,
-  EyeSlashIcon
+  EyeSlashIcon,
+  BoltIcon
 } from "@heroicons/react/24/solid";
 import { MemoizedMarkdown } from "@/ui/memoized-markdown";
 import { useEffect, useRef } from "react";
@@ -90,8 +90,8 @@ export default function Chat() {
                       </div>
                       <span className="text-gray-500">|</span>
                       <div className="flex items-center">
-                        <ChatBubbleLeftRightIcon width={20} height={30} />
-                        <p className="ml-1!">Communicative</p>
+                        <BoltIcon width={20} height={30} />
+                        <p className="ml-1!">Instant</p>
                       </div>
                       <span className="text-gray-500">|</span>
                       <div className="flex items-center">

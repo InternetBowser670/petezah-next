@@ -4,11 +4,27 @@ import { useChat } from "@ai-sdk/react";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 import { MemoizedMarkdown } from "@/ui/memoized-markdown";
+import { useEffect, useRef } from "react";
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     experimental_throttle: 50,
   });
+
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    const isUserAtBottom =
+      container.scrollHeight - container.scrollTop - container.clientHeight <
+      50;
+
+    if (!isUserAtBottom) {
+      container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+    }
+  }, [messages]);
 
   return (
     <>
@@ -17,7 +33,10 @@ export default function Chat() {
         <div className="flex flex-col items-center justify-between w-full h-full z-1">
           <div className="flex justify-center h-[90%] w-3/4">
             {messages.length > 0 && (
-              <div className="px-2! w-full overflow-y-scroll [scrollbar-color:#808080_white] opacity-70 bg-blue-950 rounded-b-2xl pb-3! pt-3!">
+              <div
+                ref={messagesContainerRef}
+                className="px-2! w-full overflow-y-scroll [scrollbar-color:#808080_white] opacity-70 bg-blue-950 rounded-b-2xl pb-3! pt-3!"
+              >
                 {messages.map((message) => (
                   <div
                     key={message.id}

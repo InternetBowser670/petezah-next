@@ -41,7 +41,7 @@ export default function Chat() {
           {messages.length > 0 ? (
             <div
               ref={messagesContainerRef}
-              className="px-4! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pt-3!"
+              className="px-4! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pt-3! pb-4!"
             >
               {messages.map((message) => (
                 <div
@@ -51,10 +51,10 @@ export default function Chat() {
                   }`}
                 >
                   <div
-                    className={`max-w-[75%] p-3! rounded-t-2xl ${
+                    className={`max-w-[75%] rounded-t-2xl ${
                       message.role === "user"
-                        ? "bg-blue-500 text-white rounded-bl-2xl"
-                        : "bg-[#1f2b47] text-white rounded-br-2xl"
+                        ? "bg-blue-500 text-white rounded-bl-2xl px-3!"
+                        : "bg-[#1f2b47] text-white rounded-br-2xl p-3!"
                     }`}
                   >
                     {message.parts.map((part, i) => {

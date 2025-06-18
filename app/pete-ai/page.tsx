@@ -36,11 +36,11 @@ export default function Chat() {
     <div className="flex flex-col items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden">
       <MarqueeBg className="opacity-50" />
       <div className="flex flex-col items-center justify-between w-full h-full z-1">
-        <div className="flex justify-center h-[90%] w-3/4">
+        <div className="flex justify-center h-[90%] w-[80%]">
           {messages.length > 0 ? (
             <div
               ref={messagesContainerRef}
-              className="px-2! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pb-3! pt-3!"
+              className="px-2! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pt-3!"
             >
               {messages.map((message) => (
                 <div
@@ -104,7 +104,7 @@ export default function Chat() {
                     <p className="ml-1!">Confidential</p>
                   </div>
                 </div>
-                <p className="text-md">Type a message below to get started.</p>
+                <p className="text-md mt-3!">Type a message below to get started.</p>
               </div>
             </div>
           )}

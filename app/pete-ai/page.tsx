@@ -7,7 +7,7 @@ import {
   LockClosedIcon,
   LightBulbIcon,
   EyeSlashIcon,
-  BoltIcon
+  BoltIcon,
 } from "@heroicons/react/24/solid";
 import { MemoizedMarkdown } from "@/ui/memoized-markdown";
 import { useEffect, useRef } from "react";
@@ -25,13 +25,14 @@ export default function Chat() {
     if (!container) return;
 
     const isUserAtBottom =
-      container.scrollHeight - container.scrollTop - container.clientHeight < 50;
+      container.scrollHeight - container.scrollTop - container.clientHeight <
+      50;
 
     if (!isUserAtBottom) {
       container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
     }
   }, [messages]);
-
+  
   return (
     <div className="flex flex-col items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden">
       <MarqueeBg className="opacity-50" />
@@ -40,7 +41,7 @@ export default function Chat() {
           {messages.length > 0 ? (
             <div
               ref={messagesContainerRef}
-              className="px-2! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pt-3!"
+              className="px-4! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pt-3!"
             >
               {messages.map((message) => (
                 <div
@@ -50,10 +51,10 @@ export default function Chat() {
                   }`}
                 >
                   <div
-                    className={`max-w-[75%] p-3! rounded-2xl ${
+                    className={`max-w-[75%] p-3! rounded-t-2xl ${
                       message.role === "user"
-                        ? "bg-blue-500 text-white"
-                        : "bg-[#1f2b47] text-white"
+                        ? "bg-blue-500 text-white rounded-bl-2xl"
+                        : "bg-[#1f2b47] text-white rounded-br-2xl"
                     }`}
                   >
                     {message.parts.map((part, i) => {
@@ -104,7 +105,9 @@ export default function Chat() {
                     <p className="ml-1!">Confidential</p>
                   </div>
                 </div>
-                <p className="text-md mt-3!">Type a message below to get started.</p>
+                <p className="text-md mt-3!">
+                  Type a message below to get started.
+                </p>
               </div>
             </div>
           )}

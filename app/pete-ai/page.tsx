@@ -2,7 +2,13 @@
 
 import { useChat } from "@ai-sdk/react";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
-import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowUpCircleIcon,
+  LockClosedIcon,
+  LightBulbIcon,
+  ChatBubbleLeftRightIcon,
+  EyeSlashIcon
+} from "@heroicons/react/24/solid";
 import { MemoizedMarkdown } from "@/ui/memoized-markdown";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
@@ -64,7 +70,7 @@ export default function Chat() {
             ) : (
               <>
                 <div className="flex items-center justify-center">
-                  <div className="flex flex-col items-center justify-center">
+                  <div className="flex flex-col items-center justify-center bg-[#07142d]/80 backdrop-blur-xs rounded-2xl p-4!">
                     <Image
                       src="/storage/images/logo-png-removebg-preview.png"
                       alt="Pete AI Logo"
@@ -72,7 +78,28 @@ export default function Chat() {
                       height={200}
                     />
                     <p className="text-3xl font-bold">Pete AI</p>
-                    <p className="text-md">Type a message to get started</p>
+                    <div className="flex items-center justify-around gap-2">
+                      <div className="flex items-center">
+                        <LockClosedIcon width={20} height={30} />
+                        <p className="ml-1!">Secure</p>
+                      </div>
+                      <span className="text-gray-500">|</span>
+                      <div className="flex items-center">
+                        <LightBulbIcon width={20} height={30} />
+                        <p className="ml-1!">Helpful</p>
+                      </div>
+                      <span className="text-gray-500">|</span>
+                      <div className="flex items-center">
+                        <ChatBubbleLeftRightIcon width={20} height={30} />
+                        <p className="ml-1!">Communicative</p>
+                      </div>
+                      <span className="text-gray-500">|</span>
+                      <div className="flex items-center">
+                        <EyeSlashIcon width={20} height={30} />
+                        <p className="ml-1!">Confidential</p>
+                      </div>
+                    </div>
+                    <p className="text-md">Type a message below to get started</p>
                   </div>
                 </div>
               </>

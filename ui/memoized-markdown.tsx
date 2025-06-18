@@ -10,7 +10,7 @@ function parseMarkdownIntoBlocks(markdown: string): string[] {
 const MemoizedMarkdownBlock = memo(
   ({ content, className }: { content: string; className?: string }) => {
     return (
-      <div className={`${className} mb-4!`}>
+      <div className={`${className}`}>
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     );
@@ -37,7 +37,7 @@ export const MemoizedMarkdown = memo(
 
     return blocks.map((block, index) => (
       <MemoizedMarkdownBlock
-        className={`${className ?? ""}`}
+        className={`${className ?? ""} my-2!`}
         content={block}
         key={`${id}-block_${index}`}
       />

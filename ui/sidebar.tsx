@@ -141,7 +141,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             >
               <NavbarLink title="Home" icon="Home" url="/" />
               <NavbarLink title="Games" icon="sports_esports" url="/g" altLinks={["/play"]} />
-              <NavbarLink title="Apps" icon="apps" url="/a" altLinks={["/app"]} />
+              <NavbarLink title="Apps" icon="apps" url="/a" altLinks={["/app", "/pete-ai"]} />
               <NavbarLink
                 title="Proxy"
                 icon="globe_book"

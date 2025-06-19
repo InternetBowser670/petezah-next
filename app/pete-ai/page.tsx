@@ -16,7 +16,14 @@ import Image from "next/image";
 import clsx from "clsx";
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit, append, setMessages } = useChat({
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    append,
+    setMessages,
+  } = useChat({
     experimental_throttle: 50,
   });
 
@@ -34,7 +41,7 @@ export default function Chat() {
       container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
     }
   }, [messages]);
-  
+
   function MessageSuggestion({ prompt }: { prompt: string }) {
     const handleClick = async () => {
       const newUserMessage = {
@@ -93,9 +100,7 @@ export default function Chat() {
                       if (part.type === "text") {
                         return (
                           <div className="" key={`${message.id}-${i}`}>
-                            <MemoizedMarkdown
-                              content={part.text}
-                            />
+                            <MemoizedMarkdown content={part.text} />
                           </div>
                         );
                       }
@@ -178,13 +183,13 @@ export default function Chat() {
               />
             </button>
           </div>
-          <button
-            className="bg-black rounded-2xl px-2! py-1! text-red-500 border-2! border-white mx-2!"
-            type="submit"
-            onClick={wipeChat}
-          >
-            Wipe chat
-          </button>
+            <button
+              className={clsx("bg-black rounded-2xl px-2! py-1! text-red-500 border-2! border-white mx-2! transition-opacity duration-500", messages.length > 0 ? "opacity-100" : "opacity-0")}
+              type="submit"
+              onClick={wipeChat}
+            >
+              Wipe chat
+            </button>
         </form>
       </div>
     </div>

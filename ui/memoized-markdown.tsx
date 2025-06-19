@@ -28,9 +28,7 @@ const markdownComponents: Components = {
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-4! py-2! border border-white">
-      {children}
-    </td>
+    <td className="px-4! py-2! border border-white">{children}</td>
   ),
   h1: ({ children }) => (
     <>
@@ -67,7 +65,11 @@ const markdownComponents: Components = {
     </>
   ),
   p: ({ children }) => <p>{children}</p>,
-  code: ({ className, children, ...props }: ComponentPropsWithoutRef<"code">) => {
+  code: ({
+    className,
+    children,
+    ...props
+  }: ComponentPropsWithoutRef<"code">) => {
     const match = /language-(\w+)/.exec(className || "");
     const isInline = !className;
 
@@ -88,7 +90,11 @@ const markdownComponents: Components = {
       {children}
     </a>
   ),
-  li: ({ children }) => <li>{children}</li>,
+  ul: ({ children }) => <ul className="list-disc pl-6!">{children}</ul>,
+  ol: ({ children }) => (
+    <ol className="list-decimal pl-6!">{children}</ol>
+  ),
+  li: ({ children }) => <li className="">{children}</li>,
 };
 
 const markdownPlugins = [remarkGfm, remarkExtendedTable];
@@ -104,26 +110,28 @@ export const MemoizedMarkdown = memo(function MemoizedMarkdown({
   useEffect(() => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tomorrow-night-blue.min.css";
+    link.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tomorrow-night-blue.min.css";
     document.head.appendChild(link);
     return () => {
       document.head.removeChild(link);
     };
   }, []);
 
-  const renderedMarkdown = useMemo(() => (
-    <ReactMarkdown
-      rehypePlugins={markdownRehypePlugins}
-      remarkPlugins={markdownPlugins}
-      components={markdownComponents}
-    >
-      {content}
-    </ReactMarkdown>
-  ), [content]);
+  const renderedMarkdown = useMemo(
+    () => (
+      <ReactMarkdown
+        rehypePlugins={markdownRehypePlugins}
+        remarkPlugins={markdownPlugins}
+        components={markdownComponents}
+      >
+        {content}
+      </ReactMarkdown>
+    ),
+    [content]
+  );
 
   return (
-    <div className={`px-[20px]! ${className ?? ""}`}>
-      {renderedMarkdown}
-    </div>
+    <div className={`px-[20px]! ${className ?? ""}`}>{renderedMarkdown}</div>
   );
 });

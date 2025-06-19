@@ -90,7 +90,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       <div className="flex w-full h-full">
         <aside
           className={clsx(
-            "sidebar ml-2",
+            "sidebar ml-2 border-white border-2",
             sidebarToggled ? "sidebar-expanded w-[270px]" : "collapsed"
           )}
         >
@@ -177,7 +177,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
         <main
           className={clsx(
-            "main-content flex-1 h-screen overflow-y-scroll transition-transform",
+            "main-content flex-1 h-screen overflow-y-scroll transition-transform border-white border-2",
             sidebarToggled ? "sidebar-expanded" : ""
           )}
         >

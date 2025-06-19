@@ -12,6 +12,7 @@ import {
 import { MemoizedMarkdown } from "@/ui/memoized-markdown";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import clsx from "clsx";
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
@@ -32,16 +33,26 @@ export default function Chat() {
       container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
     }
   }, [messages]);
-  
+
+  function MessageSuggestion({ prompt }: { prompt: string }) {
+    return (
+      <>
+        <button className="px-3! py-2! bg-[#07142d]/80 backdrop-blur-xs rounded-2xl m-2! border-white border-2 z-3">
+          {prompt}
+        </button>
+      </>
+    );
+  }
+
   return (
-    <div className="flex flex-col items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden">
+    <div className="flex flex-col items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden z-2">
       <MarqueeBg className="opacity-50" />
       <div className="flex flex-col items-center justify-between w-full h-full z-1">
-        <div className="flex justify-center h-[90%] w-[80%]">
+        <div className={clsx("flex flex-col items-center h-[90%] w-[80%]", !(messages.length > 0) && "justify-center" )}>
           {messages.length > 0 ? (
             <div
               ref={messagesContainerRef}
-              className="px-4! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pt-3! pb-4!"
+              className="px-4! w-full overflow-y-scroll [scrollbar-color:#808080_white] bg-[#07142d]/80 backdrop-blur-xs rounded-b-2xl pt-3! pb-4! border-b-2 border-x-2 border-white"
             >
               {messages.map((message) => (
                 <div
@@ -75,8 +86,8 @@ export default function Chat() {
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center">
-              <div className="flex flex-col items-center justify-center bg-[#07142d]/80 backdrop-blur-xs rounded-2xl p-4!">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center justify-center bg-[#07142d]/80 backdrop-blur-xs rounded-2xl p-4! border-white border-2">
                 <Image
                   src="/storage/images/logo-png-removebg-preview.png"
                   alt="Pete AI Logo"
@@ -108,6 +119,16 @@ export default function Chat() {
                 <p className="text-md mt-3!">
                   Type a message below to get started.
                 </p>
+              </div>
+              <div className="mt-3! flex flex-col items-center">
+                <div>
+                  <MessageSuggestion prompt="Tell me about yourself" />
+                  <MessageSuggestion prompt="Tell me about yourself" />
+                </div>
+                <div>
+                  <MessageSuggestion prompt="Tell me about yourself" />
+                  <MessageSuggestion prompt="Tell me about yourself" />
+                </div>
               </div>
             </div>
           )}

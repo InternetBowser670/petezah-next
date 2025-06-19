@@ -49,7 +49,7 @@ export default function Chat() {
 
     return (
       <button
-        className="px-3! py-2! bg-[#07142d]/80 backdrop-blur-xs rounded-2xl m-2! border-white border-2 z-3"
+        className="px-3! py-2! bg-[#07142d]/80 backdrop-blur-xs rounded-2xl m-2! border-white border-2 z-3 hover:bg-black duration-500 transition-all"
         onClick={handleClick}
       >
         {prompt}
@@ -142,6 +142,7 @@ export default function Chat() {
                 <div>
                   <MessageSuggestion prompt="Tell me about yourself." />
                   <MessageSuggestion prompt="Show me around the site." />
+                  <MessageSuggestion prompt="How can I contribute to the proxy?" />
                 </div>
                 <div>
                   <MessageSuggestion prompt="How do I learn to code?" />

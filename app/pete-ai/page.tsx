@@ -16,10 +16,9 @@ import Image from "next/image";
 import clsx from "clsx";
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit, append } =
-    useChat({
-      experimental_throttle: 50,
-    });
+  const { messages, input, handleInputChange, handleSubmit, append, setMessages } = useChat({
+    experimental_throttle: 50,
+  });
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -35,8 +34,8 @@ export default function Chat() {
       container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
     }
   }, [messages]);
+  
   function MessageSuggestion({ prompt }: { prompt: string }) {
-
     const handleClick = async () => {
       const newUserMessage = {
         id: crypto.randomUUID(),
@@ -55,6 +54,10 @@ export default function Chat() {
         {prompt}
       </button>
     );
+  }
+
+  function wipeChat() {
+    setMessages([]);
   }
 
   return (
@@ -157,19 +160,31 @@ export default function Chat() {
           className="flex items-center justify-center w-full h-[10%]"
           onSubmit={handleSubmit}
         >
-          <input
-            className="px-2! py-1! bg-black border-2 border-white rounded-2xl transition-colors duration-500 w-1/2 mx-2!"
-            value={input}
-            placeholder="Say something..."
-            onChange={handleInputChange}
-          />
-          <button type="submit">
-            <ArrowUpCircleIcon
-              width={40}
-              height={40}
-              color="black"
-              className="bg-white rounded-full"
+          <div className="relative w-1/2">
+            <input
+              className="px-4! py-2! bg-black border-2 border-white rounded-2xl transition-colors duration-500 w-full pr-12!" // extra right padding to make space for button
+              value={input}
+              placeholder="Say something..."
+              onChange={handleInputChange}
             />
+            <button
+              type="submit"
+              className="absolute top-1/2 right-2 transform -translate-y-1/2 rounded-full p-0!"
+            >
+              <ArrowUpCircleIcon
+                width={36}
+                height={36}
+                color="white"
+                className="object-cover rounded-full"
+              />
+            </button>
+          </div>
+          <button
+            className="bg-black rounded-2xl px-2! py-1! text-red-500 border-2! border-white mx-2!"
+            type="submit"
+            onClick={wipeChat}
+          >
+            Wipe chat
           </button>
         </form>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
 import { useChat } from "@ai-sdk/react";
@@ -15,9 +16,10 @@ import Image from "next/image";
 import clsx from "clsx";
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    experimental_throttle: 50,
-  });
+  const { messages, input, handleInputChange, handleSubmit, append } =
+    useChat({
+      experimental_throttle: 50,
+    });
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
@@ -33,14 +35,25 @@ export default function Chat() {
       container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
     }
   }, [messages]);
-
   function MessageSuggestion({ prompt }: { prompt: string }) {
+
+    const handleClick = async () => {
+      const newUserMessage = {
+        id: crypto.randomUUID(),
+        role: "user",
+        content: prompt,
+      };
+      //@ts-ignore
+      await append(newUserMessage);
+    };
+
     return (
-      <>
-        <button className="px-3! py-2! bg-[#07142d]/80 backdrop-blur-xs rounded-2xl m-2! border-white border-2 z-3">
-          {prompt}
-        </button>
-      </>
+      <button
+        className="px-3! py-2! bg-[#07142d]/80 backdrop-blur-xs rounded-2xl m-2! border-white border-2 z-3"
+        onClick={handleClick}
+      >
+        {prompt}
+      </button>
     );
   }
 
@@ -48,7 +61,12 @@ export default function Chat() {
     <div className="flex flex-col items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden z-2">
       <MarqueeBg className="opacity-50" />
       <div className="flex flex-col items-center justify-between w-full h-full z-1">
-        <div className={clsx("flex flex-col items-center h-[90%] w-[80%]", !(messages.length > 0) && "justify-center" )}>
+        <div
+          className={clsx(
+            "flex flex-col items-center h-[90%] w-[80%]",
+            !(messages.length > 0) && "justify-center"
+          )}
+        >
           {messages.length > 0 ? (
             <div
               ref={messagesContainerRef}

@@ -162,7 +162,7 @@ export default function Chat() {
         >
           <div className="relative w-1/2">
             <input
-              className="px-4! py-2! bg-black border-2 border-white rounded-2xl transition-colors duration-500 w-full pr-12!" // extra right padding to make space for button
+              className="px-4! py-2! bg-black border-2 border-white rounded-2xl transition-colors duration-500 w-full pr-12!"
               value={input}
               placeholder="Say something..."
               onChange={handleInputChange}

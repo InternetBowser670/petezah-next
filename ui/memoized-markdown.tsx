@@ -78,7 +78,7 @@ const markdownComponents: Components = {
         </code>
       </pre>
     ) : (
-      <code className="bg-[#b3b3b3] px-2! py-0! rounded-[4px] dark:bg-[#474747]" {...props}>
+      <code className="px-2! py-0! rounded-[4px] bg-[#474747]" {...props}>
         {children}
       </code>
     );

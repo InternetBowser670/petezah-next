@@ -85,7 +85,7 @@ export default function Chat() {
                   <div
                     className={`max-w-[75%] rounded-t-2xl ${
                       message.role === "user"
-                        ? "bg-blue-500 text-white rounded-bl-2xl px-3! py-2!"
+                        ? "bg-blue-500 text-white rounded-bl-2xl py-2!"
                         : "bg-[#1f2b47] text-white rounded-br-2xl p-3!"
                     }`}
                   >

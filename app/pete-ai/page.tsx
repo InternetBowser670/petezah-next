@@ -140,12 +140,12 @@ export default function Chat() {
               </div>
               <div className="mt-3! flex flex-col items-center">
                 <div>
-                  <MessageSuggestion prompt="Tell me about yourself" />
-                  <MessageSuggestion prompt="Tell me about yourself" />
+                  <MessageSuggestion prompt="Tell me about yourself." />
+                  <MessageSuggestion prompt="Show me around the site." />
                 </div>
                 <div>
-                  <MessageSuggestion prompt="Tell me about yourself" />
-                  <MessageSuggestion prompt="Tell me about yourself" />
+                  <MessageSuggestion prompt="How do I learn to code?" />
+                  <MessageSuggestion prompt="Tell me a joke." />
                 </div>
               </div>
             </div>

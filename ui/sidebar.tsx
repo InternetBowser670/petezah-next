@@ -61,9 +61,9 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         onClick={handleClick}
         className={clsx(
           !sidebarToggled
-            ? "items-center! w-[50px]! aspect-square!"
-            : "w-[90%] translate-x-[8px]",
-          "max-w-[90%] h-[50px] flex transition-all rounded-2xl disable-no-m-p hover:bg-white hover:text-black my-2! ",
+            ? "translate-x-[8px] items-center! aspect-square!"
+            : "w-[90%] ml-[8px]!",
+          "h-[50px] flex transition-all duration-400 rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
           isActiveTab(url, altLinks) && "bg-white text-black"
         )}
       >
@@ -132,7 +132,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           </header>
 
           <div
-            className={clsx("spacer spacer-margin-top", {
+            className={clsx("spacer spacer-margin-top transition-all duration-400", {
               nospacer: sidebarToggled,
             })}
           ></div>
@@ -149,7 +149,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             <ul
               className={clsx(
                 "transition-all my-2 flex flex-col",
-                sidebarToggled ? "pr-2!" : "pl-4!"
+                sidebarToggled ? "pr-2!" : "pr-[20%]!"
               )}
             >
               <NavbarLink
@@ -180,14 +180,14 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             <hr
               className={clsx(
                 !sidebarToggled && "w-[80%] ml-[10%]!",
-                sidebarToggled && "w-[90%] ml-[5%]!"
+                sidebarToggled && "w-[90%] ml-[5%]!", "transition-all duration-400"
               )}
             />
 
             <ul
               className={clsx(
                 "transition-all my-2 flex flex-col",
-                sidebarToggled ? "pr-2!" : "pl-4!"
+                sidebarToggled ? "pr-2!" : "pr-[20%]!"
               )}
             >
               <NavbarLink

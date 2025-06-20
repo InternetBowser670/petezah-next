@@ -1,25 +1,7 @@
+/* eslint-disable @next/next/no-css-tags */
 /* eslint-disable @next/next/no-page-custom-font */
-import { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
-import Particles from "@/ui/particles";
-import Sidebar from "@/ui/sidebar";
-import { Suspense } from "react";
-import { SidebarProvider } from "@/context/sidebar-context";
-import { Analytics } from "@vercel/analytics/next";
-import AntiScreenshotOverlay from "@/ui/anti-screenshot-overlay";
-import { Cloak } from "@/ui/cloak";
-
-export const metadata: Metadata = {
-  title: "PeteZah-Next",
-  description: "The next generation of PeteZah Games",
-  keywords:
-    "Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah, Games,",
-  other: {
-    "benrogo:index": "index",
-    "benrogo:uvpath": "/static/uv/uv.config.js",
-  },
-};
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -27,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html>
       <head>
         {/* Google Analytics */}
         <Script
@@ -54,7 +36,6 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-
         {/* Fonts */}
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -78,45 +59,16 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         />
 
+        <link rel="stylesheet" href="/globals.css" />
+
         {/* Additional CSS */}
         <link
           rel="stylesheet"
           href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
         />
       </head>
-      <body className="text-[#ededed] min-h-screen bg-[#0a0a0a]">
-        <Cloak>
-          <AntiScreenshotOverlay />
-          <Particles />
-          <Suspense>
-            <SidebarProvider>
-              <Sidebar>{children}</Sidebar>
-            </SidebarProvider>
-          </Suspense>
-
-          {/* changelog */}
-
-          <Script id="changelogfy-config">
-            {`
-            let CLF_config = {
-              app_id: "03599c7b-79db-4651-8efa-90e18b54dabf",
-              data: {
-                  user_id: '123456',
-                  user_email: 'user@email.com',
-                  user_name: 'User Name',
-                  custom_data: {
-                      'JobRole': 'CEO',
-                      'Plan': 'Pro',
-                      'teamMates': '4',
-                      'MonthlySpend': '50 USD'
-                  }
-              }
-            };
-          `}
-          </Script>
-          <Script async src="https://widget.changelogfy.com/index.js" />
-          <Analytics />
-        </Cloak>
+      <body className="text-[#ededed] h-full bg-[#0a0a0a]">
+        {children}
       </body>
     </html>
   );

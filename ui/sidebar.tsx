@@ -96,7 +96,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         >
           <header className="flex justify-between sidebar-header">
             <Link
-              href="/"
+              href="/home"
               className="header-logo w-[46px] h-[46px] flex justify-center items-center"
             >
               <Image
@@ -139,7 +139,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                 sidebarToggled ? "pr-2!" : "pr-[19%]!"
               )}
             >
-              <NavbarLink title="Home" icon="Home" url="/" />
+              <NavbarLink title="Home" icon="Home" url="/home" altLinks={["/home"]} />
               <NavbarLink title="Games" icon="sports_esports" url="/g" altLinks={["/play"]} />
               <NavbarLink title="Apps" icon="apps" url="/a" altLinks={["/app", "/pete-ai"]} />
               <NavbarLink

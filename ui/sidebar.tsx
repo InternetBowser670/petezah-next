@@ -88,7 +88,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       <div className="flex w-full h-full">
         <aside
           className={clsx(
-            "sidebar ml-2 border-white border-2",
+            "sidebar ml-2 border-white border-2 duration-300!",
             sidebarToggled ? "sidebar-expanded w-[270px]" : "collapsed"
           )}
         >
@@ -133,8 +133,8 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           <nav className="h-full sidebar-nav">
             <ul
               className={clsx(
-                "transition-all my-2 flex items-center justify-center flex-col",
-                sidebarToggled ? "pr-2!" : ""
+                "transition-all my-2 flex flex-col",
+                sidebarToggled ? "pr-2!" : "items-center justify-center"
               )}
             >
               <NavbarLink
@@ -171,8 +171,8 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
             <ul
               className={clsx(
-                "transition-all my-2 flex items-center justify-center flex-col",
-                sidebarToggled ? "pr-2!" : ""
+                "transition-all my-2 flex flex-col",
+                sidebarToggled ? "pr-2!" : "items-center justify-center"
               )}
             >
               <NavbarLink

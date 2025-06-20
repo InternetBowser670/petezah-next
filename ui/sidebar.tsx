@@ -7,6 +7,12 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { GoHome, GoChevronLeft } from "react-icons/go";
+import { IoGameControllerOutline } from "react-icons/io5";
+import { SlGlobe } from "react-icons/sl";
+import { BsGrid3X3GapFill, BsGear } from "react-icons/bs";
+import { FaRegUserCircle } from "react-icons/fa";
+import { FaRegCircleQuestion } from "react-icons/fa6";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -38,12 +44,12 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
   function NavbarLink({
     title,
     url,
-    icon,
-    altLinks
+    Icon,
+    altLinks,
   }: {
     title: string;
     url: string;
-    icon: string;
+    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     altLinks?: string[];
   }) {
     function handleClick() {
@@ -54,22 +60,14 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       <li
         onClick={handleClick}
         className={clsx(
-          !sidebarToggled && "translate-x-[8px] items-center!",
-          "max-w-[90%] h-[50px] flex items-center transition-all rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
+          !sidebarToggled ? "items-center! w-[50px]! aspect-square!" : "w-[90%] translate-x-[8px]",
+          "max-w-[90%] h-[50px] flex transition-all rounded-2xl disable-no-m-p hover:bg-white hover:text-black my-2! ",
           isActiveTab(url, altLinks) && "bg-white text-black"
         )}
       >
-        <button
-          type="button"
-          className={clsx(
-            "disable-no-m-p",
-            !sidebarToggled &&
-              "flex justify-center items-center h-full aspect-square!",
-            sidebarToggled && "flex ml-2!"
-          )}
-        >
-          <div className="box-content flex items-center justify-center h-full disable-no-m-p">
-            <span className="nav-icon material-symbols-rounded">{icon}</span>
+        <button type="button" className="w-full h-full disable-no-m-p">
+          <div className={clsx("box-content flex w-full h-full items-center disable-no-m-p ml-[4px]!")}>
+            <Icon className="z-10 flex items-center justify-center w-6 h-6 ml-2!" />
             <span
               className={clsx(
                 "nav-label disable-no-m-p transition-all",
@@ -110,11 +108,11 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               className={clsx("spacer mt-20px!", { nospacer: sidebarToggled })}
             ></div>
             <button
-              className="toggler w-[40px] absolute bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300"
+              className={clsx("toggler transition-all w-[40px] absolute bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300")}
               type="button"
               onClick={toggleSidebar}
             >
-              <span className="material-symbols-rounded">chevron_left</span>
+              <GoChevronLeft className={clsx("material-symbols-rounded transition-all", !sidebarToggled && "rotate-180")}>chevron_left</GoChevronLeft>
             </button>
           </header>
 
@@ -135,16 +133,31 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           <nav className="h-full sidebar-nav">
             <ul
               className={clsx(
-                "transition-all my-2 nav-list primary-nav",
-                sidebarToggled ? "pr-2!" : "pr-[19%]!"
+                "transition-all my-2 flex items-center justify-center flex-col",
+                sidebarToggled ? "pr-2!" : ""
               )}
             >
-              <NavbarLink title="Home" icon="Home" url="/home" altLinks={["/home"]} />
-              <NavbarLink title="Games" icon="sports_esports" url="/g" altLinks={["/play"]} />
-              <NavbarLink title="Apps" icon="apps" url="/a" altLinks={["/app", "/pete-ai"]} />
+              <NavbarLink
+                title="Home"
+                Icon={GoHome}
+                url="/home"
+                altLinks={["/home"]}
+              />
+              <NavbarLink
+                title="Games"
+                Icon={IoGameControllerOutline}
+                url="/g"
+                altLinks={["/play"]}
+              />
+              <NavbarLink
+                title="Apps"
+                Icon={BsGrid3X3GapFill}
+                url="/a"
+                altLinks={["/app", "/pete-ai"]}
+              />
               <NavbarLink
                 title="Proxy"
-                icon="globe_book"
+                Icon={SlGlobe}
                 url="/static/prox/main"
               />
             </ul>
@@ -156,21 +169,27 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               )}
             />
 
-            <ul className={clsx(
-                "transition-all my-2 nav-list secondary-nav",
-                sidebarToggled ? "pr-2!" : "pr-[19%]!"
-              )}>
+            <ul
+              className={clsx(
+                "transition-all my-2 flex items-center justify-center flex-col",
+                sidebarToggled ? "pr-2!" : ""
+              )}
+            >
               <NavbarLink
                 title="Profile"
-                icon="account_circle"
+                Icon={FaRegUserCircle}
                 url="/pages/settings/p"
               />
               <NavbarLink
                 title="Settings"
-                icon="settings"
+                Icon={BsGear}
                 url="/pages/settings"
               />
-              <NavbarLink title="About" icon="help" url="/about" />
+              <NavbarLink
+                title="About"
+                Icon={FaRegCircleQuestion}
+                url="/about"
+              />
             </ul>
           </nav>
         </aside>

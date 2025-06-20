@@ -8,6 +8,7 @@ import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import Image from "next/image";
 import clsx from "clsx";
 import { ImExit } from "react-icons/im";
+import { FaRegCircleQuestion } from "react-icons/fa6";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -125,9 +126,7 @@ export default function Page() {
                 className="justify-center items-center h-[25px] w-[25px] m-[4px]! bg-[#112c69] rounded-[8px] p-[4px]! inline-flex cursor-pointer"
                 onClick={redirectToAbout}
               >
-                <span className="inline text-[18px]! text-white nav-icon material-symbols-rounded">
-                  help
-                </span>
+                <FaRegCircleQuestion className="text-white" />
               </button>
             </p>{" "}
           </h2>

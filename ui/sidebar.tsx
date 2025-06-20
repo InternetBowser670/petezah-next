@@ -60,13 +60,19 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       <li
         onClick={handleClick}
         className={clsx(
-          !sidebarToggled ? "items-center! w-[50px]! aspect-square!" : "w-[90%] translate-x-[8px]",
+          !sidebarToggled
+            ? "items-center! w-[50px]! aspect-square!"
+            : "w-[90%] translate-x-[8px]",
           "max-w-[90%] h-[50px] flex transition-all rounded-2xl disable-no-m-p hover:bg-white hover:text-black my-2! ",
           isActiveTab(url, altLinks) && "bg-white text-black"
         )}
       >
         <button type="button" className="w-full h-full disable-no-m-p">
-          <div className={clsx("box-content flex w-full h-full items-center disable-no-m-p ml-[4px]!")}>
+          <div
+            className={clsx(
+              "box-content flex w-full h-full items-center disable-no-m-p ml-[4px]!"
+            )}
+          >
             <Icon className="z-10 flex items-center justify-center w-6 h-6 ml-2!" />
             <span
               className={clsx(
@@ -88,7 +94,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       <div className="flex w-full h-full">
         <aside
           className={clsx(
-            "sidebar ml-2 border-white border-2 duration-300!",
+            "sidebar ml-2 border-white border-2",
             sidebarToggled ? "sidebar-expanded w-[270px]" : "collapsed"
           )}
         >
@@ -108,11 +114,20 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               className={clsx("spacer mt-20px!", { nospacer: sidebarToggled })}
             ></div>
             <button
-              className={clsx("toggler transition-all w-[40px] absolute bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300")}
+              className={clsx(
+                "toggler transition-all w-[40px] absolute bg-white text-black flex justify-center items-center rounded-xl h-[40px] hover:bg-gray-300"
+              )}
               type="button"
               onClick={toggleSidebar}
             >
-              <GoChevronLeft className={clsx("material-symbols-rounded transition-all", !sidebarToggled && "rotate-180")}>chevron_left</GoChevronLeft>
+              <GoChevronLeft
+                className={clsx(
+                  "material-symbols-rounded transition-all",
+                  !sidebarToggled && "rotate-180"
+                )}
+              >
+                chevron_left
+              </GoChevronLeft>
             </button>
           </header>
 
@@ -134,7 +149,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             <ul
               className={clsx(
                 "transition-all my-2 flex flex-col",
-                sidebarToggled ? "pr-2!" : "items-center justify-center"
+                sidebarToggled ? "pr-2!" : "pl-4!"
               )}
             >
               <NavbarLink
@@ -172,7 +187,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             <ul
               className={clsx(
                 "transition-all my-2 flex flex-col",
-                sidebarToggled ? "pr-2!" : "items-center justify-center"
+                sidebarToggled ? "pr-2!" : "pl-4!"
               )}
             >
               <NavbarLink

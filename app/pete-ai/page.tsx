@@ -14,6 +14,7 @@ import { MemoizedMarkdown } from "@/ui/memoized-markdown";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import clsx from "clsx";
+import { SiGooglegemini } from "react-icons/si";
 
 export default function Chat() {
   const {
@@ -141,7 +142,10 @@ export default function Chat() {
                     <p className="ml-1!">Confidential</p>
                   </div>
                 </div>
-                <p className="text-md mt-3!">
+                <p className="flex items-center justify-center text-md">
+                  Powered by Gemini <SiGooglegemini className="ml-2!" />
+                </p>
+                <p className="text-md mt-5!">
                   Type a message below to get started.
                 </p>
               </div>

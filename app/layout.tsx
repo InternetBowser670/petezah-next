@@ -7,11 +7,14 @@ import Sidebar from "@/ui/sidebar";
 import { Suspense } from "react";
 import { SidebarProvider } from "@/context/sidebar-context";
 import { Analytics } from "@vercel/analytics/next";
+import AntiScreenshotOverlay from "@/ui/anti-screenshot-overlay";
+import { Cloak } from "@/ui/cloak";
 
 export const metadata: Metadata = {
   title: "PeteZah-Next",
   description: "The next generation of PeteZah Games",
-  keywords: "Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah, Games,",
+  keywords:
+    "Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah, Games,",
   other: {
     "benrogo:index": "index",
     "benrogo:uvpath": "/static/uv/uv.config.js",
@@ -82,17 +85,19 @@ export default function RootLayout({
         />
       </head>
       <body className="text-[#ededed] min-h-screen bg-[#0a0a0a]">
-        <Particles />
-        <Suspense>
-          <SidebarProvider>
-            <Sidebar>{children}</Sidebar>
-          </SidebarProvider>
-        </Suspense>
+        <Cloak>
+          <AntiScreenshotOverlay />
+          <Particles />
+          <Suspense>
+            <SidebarProvider>
+              <Sidebar>{children}</Sidebar>
+            </SidebarProvider>
+          </Suspense>
 
-        {/* changelog */}
+          {/* changelog */}
 
-        <Script id="changelogfy-config">
-          {`
+          <Script id="changelogfy-config">
+            {`
             let CLF_config = {
               app_id: "03599c7b-79db-4651-8efa-90e18b54dabf",
               data: {
@@ -108,9 +113,10 @@ export default function RootLayout({
               }
             };
           `}
-        </Script>
-        <Script async src="https://widget.changelogfy.com/index.js" />
-        <Analytics />
+          </Script>
+          <Script async src="https://widget.changelogfy.com/index.js" />
+          <Analytics />
+        </Cloak>
       </body>
     </html>
   );

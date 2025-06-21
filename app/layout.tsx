@@ -23,7 +23,7 @@ export default function RootLayout({
           `}
         </Script>
         
-        <title>404 - Page not found</title>
+        <title>Unit Convertor</title>
 
         {/* Google Ads */}
         <Script

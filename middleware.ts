@@ -26,7 +26,6 @@ export function middleware(request: NextRequest) {
 
   const url = request.nextUrl.clone();
   url.pathname = "/";
-  url.searchParams.set("error", "invalid_password");
   return NextResponse.redirect(url);
 }
 

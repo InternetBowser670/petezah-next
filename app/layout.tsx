@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Script from "next/script";
+import "./tw.css"
 
 export default function RootLayout({
   children,
@@ -7,7 +8,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="en" style={{ width: "100%", minHeight: "100vh" }} className="w-full min-h-screen">
       <head>
         {/* Google Analytics */}
         <Script
@@ -22,7 +23,7 @@ export default function RootLayout({
             gtag('config', 'G-SHE360M0YP');
           `}
         </Script>
-        
+
         <title>Unit Convertor</title>
 
         {/* Google Ads */}
@@ -65,7 +66,9 @@ export default function RootLayout({
           href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
         />
       </head>
-      <body className="text-[#ededed] h-full bg-[#0a0a0a]">
+      <body
+        className="w-full h-full min-h-screen"
+      >
         {children}
       </body>
     </html>

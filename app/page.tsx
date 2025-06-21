@@ -179,21 +179,21 @@ export default function Page() {
         )[]);
 
   return (
-    <div className="w-full h-full">
-      <main className="p-6 mx-auto mt-10 text-white bg-gray-900 rounded-lg shadow-lg">
+    <div className="flex items-center justify-center w-full h-screen">
+      <main className="p-6 mx-auto mt-10 border-2 border-black">
         <h1 className="mb-6 text-2xl font-semibold text-center">
           Unit Converter
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+          <div className="flex items-center">
             <label htmlFor="category" className="block mb-2 font-medium">
-              Category
+              Category:
             </label>
             <select
               id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value as Category)}
-              className="w-full p-2 m-2 bg-gray-800 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
             >
               <option value="length">Length</option>
               <option value="weight">Weight</option>
@@ -202,15 +202,15 @@ export default function Page() {
             </select>
           </div>
 
-          <div>
+          <div className="flex items-center">
             <label htmlFor="fromUnit" className="block mb-2 font-medium">
-              From
+              From:
             </label>
             <select
               id="fromUnit"
               value={fromUnit}
               onChange={(e) => setFromUnit(e.target.value as any)}
-              className="w-full p-2 m-2 bg-gray-800 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
             >
               {availableUnits.map((unit) => (
                 <option key={unit} value={unit}>
@@ -220,15 +220,15 @@ export default function Page() {
             </select>
           </div>
 
-          <div>
+          <div className="flex items-center">
             <label htmlFor="toUnit" className="block mb-2 font-medium">
-              To
+              To:
             </label>
             <select
               id="toUnit"
               value={toUnit}
               onChange={(e) => setToUnit(e.target.value as any)}
-              className="w-full p-2 m-2 bg-gray-800 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
             >
               {availableUnits.map((unit) => (
                 <option key={unit} value={unit}>
@@ -238,23 +238,23 @@ export default function Page() {
             </select>
           </div>
 
-          <div>
+          <div className="flex items-center">
             <label htmlFor="inputValue" className="block mb-2 font-medium">
-              Value
+              Value:
             </label>
             <input
               id="inputValue"
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="w-full p-2 m-2 text-white bg-gray-800 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
               placeholder="Enter value to convert or password"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full p-2 m-2 font-semibold transition-colors bg-blue-600 rounded hover:bg-blue-700"
+            className="w-full p-2 m-2 font-semibold transition-colors border rounded"
           >
             Convert
           </button>

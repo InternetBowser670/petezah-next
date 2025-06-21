@@ -9,6 +9,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import { ImExit } from "react-icons/im";
 import { FaRegCircleQuestion } from "react-icons/fa6";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -97,6 +98,8 @@ export default function Page() {
   async function signOut(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+
+    formData.append("password", uuidv4())
 
     await fetch("/api/submit-password", {
       method: "POST",

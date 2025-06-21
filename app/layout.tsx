@@ -1,6 +1,4 @@
-/* eslint-disable @next/next/no-css-tags */
 /* eslint-disable @next/next/no-page-custom-font */
-import "./globals.css";
 import Script from "next/script";
 
 export default function RootLayout({
@@ -24,6 +22,8 @@ export default function RootLayout({
             gtag('config', 'G-SHE360M0YP');
           `}
         </Script>
+        
+        <title>404 - Page not found</title>
 
         {/* Google Ads */}
         <Script
@@ -58,8 +58,6 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
         />
-
-        <link rel="stylesheet" href="/globals.css" />
 
         {/* Additional CSS */}
         <link

@@ -7,6 +7,7 @@ import { SidebarProvider } from "@/context/sidebar-context";
 import { Analytics } from "@vercel/analytics/next";
 import AntiScreenshotOverlay from "@/ui/anti-screenshot-overlay";
 import { Cloak } from "@/ui/cloak";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "PeteZah-Next",
@@ -25,6 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <>
       <div className="text-[#ededed] min-h-screen bg-[#0a0a0a]">
         <Cloak>
           <AntiScreenshotOverlay />
@@ -59,5 +61,6 @@ export default function RootLayout({
           <Analytics />
         </Cloak>
       </div>
+    </>
   );
 }

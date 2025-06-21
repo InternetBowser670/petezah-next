@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getPassword } from "@/lib/password-store";
 
-const PUBLIC_PATHS = ["/", "/globals.css", "submit-password"];
+const PUBLIC_PATHS = ["/", "/globals.css", "submit-password", "/ads.txt"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

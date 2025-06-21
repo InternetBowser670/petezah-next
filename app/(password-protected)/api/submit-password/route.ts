@@ -1,21 +1,17 @@
-import { cookies } from "next/headers";
-import { getPassword } from "@/lib/password-store";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const inputPassword = formData.get("password") as string;
-  const validPassword = getPassword();
+  
+  const submittedPassword = formData.get("password")?.toString();
 
-  (await cookies()).set("app-password", inputPassword, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-  });
-
-  if (inputPassword === validPassword) {
-    return NextResponse.json({ success: true });
+  if (submittedPassword) {
+    (await cookies()).set("app-password", submittedPassword, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+    });
   }
-
-  return NextResponse.json({ error: "Invalid password" }, { status: 401 });
+  return NextResponse.json({ success: true });
 }

@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     "benrogo:index": "index",
     "benrogo:uvpath": "/static/uv/uv.config.js",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +41,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <div className={`text-[#ededed] min-h-screen bg-[#0a0a0a] ${poppins.className}`}>
+      <div
+        className={`text-[#ededed] min-h-screen bg-[#0a0a0a] ${poppins.className}`}
+      >
         <Cloak>
           <AntiScreenshotOverlay />
           <Particles />

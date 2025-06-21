@@ -12,8 +12,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  console.log(cookiePassword || "No Pass", await verifyPassword(cookiePassword || ""))
-
   if (cookiePassword && await verifyPassword(cookiePassword)) {
     return NextResponse.next();
   }

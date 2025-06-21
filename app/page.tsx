@@ -48,6 +48,17 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
+    const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+    stylesheets.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        const newHref = href.split('?')[0] + `?v=${Date.now()}`;
+        link.setAttribute('href', newHref);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     switch (category) {
       case "length":
         setFromUnit("meter");
@@ -184,6 +195,7 @@ export default function Page() {
         <h1 className="mb-6 text-2xl font-semibold text-center">
           Unit Converter
         </h1>
+        <h2>Want more conversions? Look <a className="text-blue-500 underline" href="https://www.unitconverters.net/">here</a>.</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex items-center">
             <label htmlFor="category" className="block mb-2 font-medium">
@@ -193,7 +205,7 @@ export default function Page() {
               id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value as Category)}
-              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
+              className="w-full m-2 border focus:outline-none focus:ring-2 "
             >
               <option value="length">Length</option>
               <option value="weight">Weight</option>
@@ -210,7 +222,7 @@ export default function Page() {
               id="fromUnit"
               value={fromUnit}
               onChange={(e) => setFromUnit(e.target.value as any)}
-              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
+              className="w-full m-2 border focus:outline-none focus:ring-2 "
             >
               {availableUnits.map((unit) => (
                 <option key={unit} value={unit}>
@@ -228,7 +240,7 @@ export default function Page() {
               id="toUnit"
               value={toUnit}
               onChange={(e) => setToUnit(e.target.value as any)}
-              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
+              className="w-full m-2 border focus:outline-none focus:ring-2 "
             >
               {availableUnits.map((unit) => (
                 <option key={unit} value={unit}>
@@ -247,14 +259,14 @@ export default function Page() {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="w-full p-2 m-2 border rounded focus:outline-none focus:ring-2 "
-              placeholder="Enter value to convert or password"
+              className="w-full pl-1 m-2 border focus:outline-none focus:ring-2"
+              placeholder="Enter value to convert"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full p-2 m-2 font-semibold transition-colors border rounded"
+            className="w-full p-2 m-2 font-semibold transition-colors border"
           >
             Convert
           </button>

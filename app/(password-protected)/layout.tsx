@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import { Metadata } from "next";
 import Script from "next/script";
 import Particles from "@/ui/particles";
@@ -9,6 +10,7 @@ import AntiScreenshotOverlay from "@/ui/anti-screenshot-overlay";
 import { Cloak } from "@/ui/cloak";
 import "../globals.css";
 import Head from "next/head";
+import { poppins } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "PeteZah-Next",
@@ -30,8 +32,13 @@ export default function RootLayout({
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        {/* Fonts */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-      <div className="text-[#ededed] min-h-screen bg-[#0a0a0a]">
+      <div className={`text-[#ededed] min-h-screen bg-[#0a0a0a] ${poppins.className}`}>
         <Cloak>
           <AntiScreenshotOverlay />
           <Particles />

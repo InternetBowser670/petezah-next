@@ -10,7 +10,7 @@ import AntiScreenshotOverlay from "@/ui/anti-screenshot-overlay";
 import { Cloak } from "@/ui/cloak";
 import "../globals.css";
 import Head from "next/head";
-import { poppins } from "@/lib/fonts";
+import { geistMono } from "@/lib/fonts";
 import { CookiesProvider } from "next-client-cookies/server";
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ export default function RootLayout({
         />
       </Head>
       <div
-        className={`text-[#ededed] min-h-screen bg-[#0a0a0a] ${poppins.className}`}
+        className={`text-[#ededed] min-h-screen bg-[#0a0a0a] ${geistMono.className}`}
       >
         <Cloak>
           <AntiScreenshotOverlay />

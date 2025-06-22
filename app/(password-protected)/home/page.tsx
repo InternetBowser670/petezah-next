@@ -10,6 +10,7 @@ import clsx from "clsx";
 import { ImExit } from "react-icons/im";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import { v4 as uuidv4 } from 'uuid';
+import LatestPasswordStatus from "@/ui/latest-password-status";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -133,6 +134,7 @@ export default function Page() {
               </button>
             </p>{" "}
           </h2>
+          <LatestPasswordStatus />
           <p className="mb-[20px]! text-[18px]">Game on!</p>
           <button
             onClick={redirectToGames}

@@ -27,6 +27,7 @@
     "mongodb": "^6.16.0",
     "motion": "^12.18.1",
     "next": "15.3.2",
+    "next-client-cookies": "^2.1.0",
     "ogl": "^1.0.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -39,6 +40,7 @@
     "sharp": "^0.34.2",
     "tailwind-merge": "^3.3.1",
     "three": "^0.176.0",
+    "uuid": "^11.1.0",
     "zod": "^3.25.67"
   },
   "devDependencies": {

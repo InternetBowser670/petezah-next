@@ -5,7 +5,7 @@ import { updateSession } from "@/utils/supabase/middleware";
 
 const PUBLIC_PATHS = [
   "/",
-   "?reload=1",
+  "?reload=1",
   "/globals.css",
   "/api/submit-password",
   "/ads.txt",
@@ -17,6 +17,7 @@ const STARTSWITH_PATHS = ["/error"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const cookiePassword = request.cookies.get("app-password")?.value;
 
   const supabaseResponse = await updateSession(request);
 
@@ -25,22 +26,23 @@ export async function middleware(request: NextRequest) {
   }
 
   if (
-  PUBLIC_PATHS.includes(pathname) ||
-  STARTSWITH_PATHS.some((prefix) => pathname.startsWith(prefix))
-) {
-  if (pathname === "/") {
-    const url = request.nextUrl.clone();
-    url.pathname = "/home";
-    const redirectResponse = NextResponse.redirect(url);
-    supabaseResponse.cookies.getAll().forEach((cookie) => {
-      redirectResponse.cookies.set(cookie);
-    });
-    return redirectResponse;
+    PUBLIC_PATHS.includes(pathname) ||
+    STARTSWITH_PATHS.some((prefix) => pathname.startsWith(prefix))
+  ) {
+    if (pathname === "/") {
+      const url = request.nextUrl.clone();
+      if (cookiePassword && (await verifyPassword(cookiePassword))) {
+        url.pathname = "/home";
+        const redirectResponse = NextResponse.redirect(url);
+        supabaseResponse.cookies.getAll().forEach((cookie) => {
+          redirectResponse.cookies.set(cookie);
+        });
+        return redirectResponse;
+      }
+    }
+    return supabaseResponse;
   }
-  return supabaseResponse;
-}
 
-  const cookiePassword = request.cookies.get("app-password")?.value;
   if (cookiePassword && (await verifyPassword(cookiePassword))) {
     return supabaseResponse;
   }

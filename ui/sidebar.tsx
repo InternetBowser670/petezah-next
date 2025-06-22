@@ -13,6 +13,7 @@ import { SlGlobe } from "react-icons/sl";
 import { BsGrid3X3GapFill, BsGear } from "react-icons/bs";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaRegCircleQuestion } from "react-icons/fa6";
+import { KeyIcon } from "@heroicons/react/24/outline";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -62,7 +63,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         className={clsx(
           !sidebarToggled
             ? "translate-x-[8px] items-center! aspect-square!"
-            : "w-[90%] ml-[8px]!",
+            : "w-[90%] ml-[16px]!",
           "h-[50px] flex transition-all duration-400 rounded-2xl disable-no-m-p hover:bg-white hover:text-black m-2!",
           isActiveTab(url, altLinks) && "bg-white text-black"
         )}
@@ -171,9 +172,14 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                 altLinks={["/app", "/pete-ai"]}
               />
               <NavbarLink
-                title="Proxy"
+                title="Proxy (WIP)"
                 Icon={SlGlobe}
                 url="/static/prox/main"
+              />
+              <NavbarLink
+                title="Access"
+                Icon={KeyIcon}
+                url="/access"
               />
             </ul>
 
@@ -191,12 +197,12 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               )}
             >
               <NavbarLink
-                title="Profile"
+                title="Profile (WIP)"
                 Icon={FaRegUserCircle}
                 url="/pages/settings/p"
               />
               <NavbarLink
-                title="Settings"
+                title="Settings (WIP)"
                 Icon={BsGear}
                 url="/pages/settings"
               />

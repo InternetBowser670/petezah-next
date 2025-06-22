@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 type LengthUnits = "meter" | "kilometer" | "mile" | "foot";
 type WeightUnits = "gram" | "kilogram" | "pound" | "ounce";
@@ -45,15 +46,17 @@ export default function Page() {
   const [inputValue, setInputValue] = useState("0");
   const [result, setResult] = useState<number | null>(null);
   const [message, setMessage] = useState("");
+  
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
-    stylesheets.forEach(link => {
-      const href = link.getAttribute('href');
+    stylesheets.forEach((link) => {
+      const href = link.getAttribute("href");
       if (href) {
-        const newHref = href.split('?')[0] + `?v=${Date.now()}`;
-        link.setAttribute('href', newHref);
+        const newHref = href.split("?")[0] + `?v=${Date.now()}`;
+        link.setAttribute("href", newHref);
       }
     });
   }, []);
@@ -160,6 +163,14 @@ export default function Page() {
     }
   }
 
+  useEffect(() => {
+    if (searchParams.get("reload") === "1") {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("reload");
+      router.replace(`?${params.toString()}`);
+    }
+  }, [searchParams, router]);
+
   const availableUnits =
     category === "length"
       ? (["meter", "kilometer", "mile", "foot"] as (
@@ -190,22 +201,31 @@ export default function Page() {
         )[]);
 
   return (
-    <div className="flex items-center justify-center w-full h-screen">
-      <main className="p-6 mx-auto mt-10 border-2 border-black">
-        <h1 className="mb-6 text-2xl font-semibold text-center">
+    <div className="flex items-center justify-center w-full h-screen bg-white">
+      <main className="p-6! mx-auto mt-10! border-2 border-black">
+        <h1 className="mb-6! text-2xl font-semibold text-center">
           Unit Converter
         </h1>
-        <h2>Want more conversions? Look <a className="text-blue-500 underline" href="https://www.unitconverters.net/">here</a>.</h2>
+        <h2>
+          Want more conversions? Look{" "}
+          <a
+            className="text-blue-500 underline"
+            href="https://www.unitconverters.net/"
+          >
+            here
+          </a>
+          .
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex items-center">
-            <label htmlFor="category" className="block mb-2 font-medium">
+            <label htmlFor="category" className="block mb-2! font-medium">
               Category:
             </label>
             <select
               id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value as Category)}
-              className="w-full m-2 border focus:outline-none focus:ring-2 "
+              className="w-full m-2! border focus:outline-none focus:ring-2 "
             >
               <option value="length">Length</option>
               <option value="weight">Weight</option>
@@ -215,14 +235,14 @@ export default function Page() {
           </div>
 
           <div className="flex items-center">
-            <label htmlFor="fromUnit" className="block mb-2 font-medium">
+            <label htmlFor="fromUnit" className="block mb-2! font-medium">
               From:
             </label>
             <select
               id="fromUnit"
               value={fromUnit}
               onChange={(e) => setFromUnit(e.target.value as any)}
-              className="w-full m-2 border focus:outline-none focus:ring-2 "
+              className="w-full m-2! border focus:outline-none focus:ring-2 "
             >
               {availableUnits.map((unit) => (
                 <option key={unit} value={unit}>
@@ -233,14 +253,14 @@ export default function Page() {
           </div>
 
           <div className="flex items-center">
-            <label htmlFor="toUnit" className="block mb-2 font-medium">
+            <label htmlFor="toUnit" className="block mb-2! font-medium">
               To:
             </label>
             <select
               id="toUnit"
               value={toUnit}
               onChange={(e) => setToUnit(e.target.value as any)}
-              className="w-full m-2 border focus:outline-none focus:ring-2 "
+              className="w-full m-2! border focus:outline-none focus:ring-2 "
             >
               {availableUnits.map((unit) => (
                 <option key={unit} value={unit}>
@@ -251,7 +271,7 @@ export default function Page() {
           </div>
 
           <div className="flex items-center">
-            <label htmlFor="inputValue" className="block mb-2 font-medium">
+            <label htmlFor="inputValue" className="block mb-2! font-medium">
               Value:
             </label>
             <input
@@ -259,26 +279,26 @@ export default function Page() {
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="w-full pl-1 m-2 border focus:outline-none focus:ring-2"
+              className="w-full pl-1! m-2! border focus:outline-none focus:ring-2"
               placeholder="Enter value to convert"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full p-2 m-2 font-semibold transition-colors border"
+            className="w-full p-2! m-2! font-semibold transition-colors border"
           >
             Convert
           </button>
         </form>
 
         {result !== null && !isNaN(result) && (
-          <p className="mt-6 text-lg font-semibold text-center">
+          <p className="mt-6! text-lg font-semibold text-center">
             Result: {result.toFixed(4)}
           </p>
         )}
         {message && (
-          <p className="mt-4 font-semibold text-center text-red-500">
+          <p className="mt-4! font-semibold text-center text-red-500">
             {message}
           </p>
         )}

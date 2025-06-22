@@ -8,7 +8,6 @@ export async function POST(request: Request) {
 
   if (submittedPassword) {
     (await cookies()).set("app-password", submittedPassword, {
-      httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       path: "/",
     });

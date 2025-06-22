@@ -11,6 +11,7 @@ import { Cloak } from "@/ui/cloak";
 import "../globals.css";
 import Head from "next/head";
 import { poppins } from "@/lib/fonts";
+import { CookiesProvider } from "next-client-cookies/server";
 
 export const metadata: Metadata = {
   title: "PeteZah-Next",
@@ -48,9 +49,11 @@ export default function RootLayout({
           <AntiScreenshotOverlay />
           <Particles />
           <Suspense>
-            <SidebarProvider>
-              <Sidebar>{children}</Sidebar>
-            </SidebarProvider>
+            <CookiesProvider>
+              <SidebarProvider>
+                <Sidebar>{children}</Sidebar>
+              </SidebarProvider>
+            </CookiesProvider>
           </Suspense>
 
           {/* changelog */}

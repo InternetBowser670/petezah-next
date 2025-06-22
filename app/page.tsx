@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type LengthUnits = "meter" | "kilometer" | "mile" | "foot";
 type WeightUnits = "gram" | "kilogram" | "pound" | "ounce";
@@ -35,7 +33,7 @@ const conversionRates = {
   } as Record<TimeUnits, number>,
 };
 
-export default function Page() {
+function Converter() {
   const [category, setCategory] = useState<Category>("length");
   const [fromUnit, setFromUnit] = useState<
     LengthUnits | WeightUnits | TempUnits | TimeUnits
@@ -46,7 +44,7 @@ export default function Page() {
   const [inputValue, setInputValue] = useState("0");
   const [result, setResult] = useState<number | null>(null);
   const [message, setMessage] = useState("");
-  
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -241,6 +239,7 @@ export default function Page() {
             <select
               id="fromUnit"
               value={fromUnit}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onChange={(e) => setFromUnit(e.target.value as any)}
               className="w-full m-2! border focus:outline-none focus:ring-2 "
             >
@@ -259,6 +258,7 @@ export default function Page() {
             <select
               id="toUnit"
               value={toUnit}
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onChange={(e) => setToUnit(e.target.value as any)}
               className="w-full m-2! border focus:outline-none focus:ring-2 "
             >
@@ -304,5 +304,13 @@ export default function Page() {
         )}
       </main>
     </div>
+  );
+}
+
+export default function PageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Converter />
+    </Suspense>
   );
 }

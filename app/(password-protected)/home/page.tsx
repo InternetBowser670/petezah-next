@@ -9,12 +9,25 @@ import Image from "next/image";
 import clsx from "clsx";
 import { ImExit } from "react-icons/im";
 import { FaRegCircleQuestion } from "react-icons/fa6";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import LatestPasswordStatus from "@/ui/latest-password-status";
+import { createClient } from "@/utils/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [counter, setCounter] = useState(4);
+  const [user, setUser] = useState<User | null>(null);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function loadUser() {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+    }
+    loadUser();
+  }, [supabase.auth]);
 
   const images = [
     { src: "/storage/images/main/geo.jpeg", caption: "Geometry Dash" },
@@ -100,13 +113,22 @@ export default function Page() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    formData.append("password", uuidv4())
+    formData.append("password", uuidv4());
 
     await fetch("/api/submit-password", {
       method: "POST",
       body: formData,
     });
-    router.push("/")
+    router.push("/");
+  }
+
+  async function handleSignOut() {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      alert("Error signing out: " + error);
+    }
+    const { data } = await supabase.auth.getUser();
+    setUser(data.user);
   }
 
   return (
@@ -136,13 +158,32 @@ export default function Page() {
           </h2>
           <LatestPasswordStatus />
           <p className="mb-[20px]! text-[18px]">Game on!</p>
-          <button
-            onClick={redirectToGames}
-            type="button"
-            className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
-          >
-            Start Gaming
-          </button>
+          <div className="flex">
+            <button
+              onClick={redirectToGames}
+              type="button"
+              className="mr-2! bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
+            >
+              Start Gaming
+            </button>
+            <br />
+            {user ? (
+              <button
+                className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </button>
+            ) : (
+              <a
+                className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
+                href="/login"
+              >
+                Sign In (Optional)
+              </a>
+            )}
+          </div>
+
           <br />
           <form onSubmit={signOut}>
             <button type="submit">

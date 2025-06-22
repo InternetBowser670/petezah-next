@@ -78,7 +78,7 @@ export default function LatestPasswordStatus({ className }: { className?: string
       ) : (
         <>
           <span className="text-yellow-400">You are not on the latest password. </span>
-          <button onClick={enableLatestPassword} className="px-1! my-2! ml-4! bg-green-500 rounded-lg">
+          <button onClick={enableLatestPassword} className="px-2! my-2! ml-4! bg-green-500 rounded-lg">
             Switch to Latest
           </button>
         </>

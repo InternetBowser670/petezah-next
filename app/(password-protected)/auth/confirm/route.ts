@@ -1,3 +1,5 @@
+"use server";
+
 import { type EmailOtpType } from '@supabase/supabase-js'
 import { type NextRequest } from 'next/server'
 

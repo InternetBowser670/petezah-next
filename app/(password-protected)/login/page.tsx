@@ -1,16 +1,35 @@
+"use client";
+
 import { login, signup } from "./actions";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
+import type { User } from "@supabase/supabase-js";
+import { FaGithub } from "react-icons/fa";
 
-export default async function LoginPage() {
-  const supabase = await createClient();
+export default function LoginPage() {
+  const [user, setUser] = useState<User | null>(null);
 
-  const user = await supabase.auth.getUser();
+  useEffect(() => {
+    async function fetchUser() {
+      const supabase = await createClient();
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+    }
+    fetchUser();
+  }, []);
+
+  async function signInWithGithub() {
+    const supabase = await createClient();
+    await supabase.auth.signInWithOAuth({
+      provider: "github",
+    });
+  }
 
   return (
     <div className="flex items-center relative justify-center h-[100%]">
       <MarqueeBg />
-      {user.data.user ? (
+      {user ? (
         <div className="max-w-[80%] p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37]">
           <h1 className="text-3xl text-center">You are already logged in!</h1>
           <br />
@@ -24,11 +43,11 @@ export default async function LoginPage() {
         </div>
       ) : (
         <div>
-          <form className="text-center px-[50px]! py-[25px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37]">
+          <form className="max-w-[80%] text-center px-[50px]! py-[25px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37]">
             <h1 className="text-3xl mb-3!">Authenticate</h1>
             <label htmlFor="email">Email:</label>
             <input
-              className="px-2! py-1! bg-black border-2 border-white rounded-2xl transition-colors duration-500 w-200 mx-2!"
+              className="px-2! py-1! bg-black border-2 border-white rounded-2xl transition-colors duration-500 mx-2! w-100"
               id="email"
               name="email"
               type="email"
@@ -38,7 +57,7 @@ export default async function LoginPage() {
             <br />
             <label htmlFor="password">Password:</label>
             <input
-              className="px-2! py-1! bg-black border-2 border-white rounded-2xl transition-colors duration-500 w-200 mx-2!"
+              className="px-2! py-1! bg-black border-2 border-white rounded-2xl transition-colors duration-500 mx-2! w-100"
               id="password"
               name="password"
               type="password"
@@ -65,6 +84,18 @@ export default async function LoginPage() {
             <p className="text-gray-500">
               You will have to verify your email address before you can log in.
             </p>
+            <br />
+            <p>Or sign in with:</p>
+            <br />
+            <div className="flex flex-wrap justify-center w-full gap-2">
+              <button
+                className="px-2! py-1! bg-black border-2 border-white rounded-2xl hover:bg-gray-800 transition-colors duration-500 flex items-center justify-center gap-2"
+                onClick={signInWithGithub}
+              >
+                <FaGithub />
+                GitHub
+              </button>
+            </div>
           </form>
         </div>
       )}

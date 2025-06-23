@@ -5,8 +5,7 @@ import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
-import { FaGithub } from "react-icons/fa";
-
+import { FaGithub, FaGoogle } from "react-icons/fa";  
 export default function LoginPage() {
   const [user, setUser] = useState<User | null>(null);
 
@@ -20,9 +19,16 @@ export default function LoginPage() {
   }, []);
 
   async function signInWithGithub() {
-    const supabase = await createClient();
+    const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: "github",
+    });
+  }
+
+  async function signInWithGoogle() {
+    const supabase = createClient();
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
     });
   }
 
@@ -94,6 +100,13 @@ export default function LoginPage() {
               >
                 <FaGithub />
                 GitHub
+              </button>
+              <button
+                className="px-2! py-1! bg-black border-2 border-white rounded-2xl hover:bg-gray-800 transition-colors duration-500 flex items-center justify-center gap-2"
+                onClick={signInWithGoogle}
+              >
+                <FaGoogle />
+                Google
               </button>
             </div>
           </form>

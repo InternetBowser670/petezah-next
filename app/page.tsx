@@ -203,9 +203,9 @@ function Converter() {
 
   return (
     <div
-      className={`flex items-center justify-center w-full h-screen bg-gray-100 ${arimo.className}`}
+      className={`flex items-center justify-center w-full min-h-screen bg-gray-100 ${arimo.className}`}
     >
-      <main className="p-6! mx-auto mt-10! border-2 border-black max-w-[80%]!">
+      <main className="p-6! mx-auto mt-10! border-2 border-black max-w-[60%]!">
         <h1 className="mb-6! text-2xl font-semibold text-center">
           Unit Converter
         </h1>
@@ -219,11 +219,19 @@ function Converter() {
             Free Online Unit Converter
           </h2>
           <p className="mb-4! text-center">
-            Instantly convert units of measurement with this simple, accurate{" "}
-            <strong>online unit converter</strong>. Whether you&apos;re working with{" "}
-            <strong>length</strong>, <strong>weight</strong>,{" "}
-            gi<strong>temperature</strong>, or <strong>time</strong>, get fast and
-            reliable results for personal, educational, or professional use.
+            Instantly convert any unit of measurement with this fast and
+            accurate <strong>free online unit converter tool</strong>. Easily
+            calculate <strong>length conversions</strong> (meters, kilometers,
+            miles, feet), <strong>weight conversions</strong> (grams, kilograms,
+            pounds, ounces), <strong>temperature conversions</strong> (Celsius,
+            Fahrenheit, Kelvin), and <strong>time conversions</strong> (seconds,
+            minutes, hours, days). Designed for <strong>students</strong>,{" "}
+            <strong>professionals</strong>, <strong>travelers</strong>, and{" "}
+            <strong>scientists</strong>, this unit conversion calculator
+            delivers instant results with high precision. Access from any device
+            and simplify your <strong>unit conversion</strong> needs for{" "}
+            <strong>education</strong>, <strong>engineering</strong>,{" "}
+            <strong>science</strong>, or <strong>everyday calculations</strong>.
           </p>
 
           <h3 className="text-lg font-semibold mb-2!">

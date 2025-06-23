@@ -4,7 +4,7 @@ import Image from "next/image";
 const MarqueeRow = ({ hoverPause }: { hoverPause?: boolean }) => {
   return (
     <Marquee
-      speed={250}
+      speed={150}
       autoFill={true}
       pauseOnHover={hoverPause ? true : false}
       className="flex-1 h-1/5 z-[0] flex items-center text-[10vh] font-bold text-white overflow-y-hidden"

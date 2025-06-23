@@ -187,9 +187,9 @@ export default function Page() {
         <td className="px-4! py-2! border border-white">
           <div>
             {isCurrentMonth ? (
-              <span className="text-green-500">Current Month</span>
+              <span className="text-blue-500">Current Month</span>
             ) : isNextMonth ? (
-              <span className="text-blue-500">Next Month</span>
+              <span className="text-green-500">Next Month</span>
             ) : (
               <span className="text-gray-400">Expired</span>
             )}

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { verifyPassword } from "@/lib/password-store";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
@@ -12,6 +13,11 @@ export async function POST(request: Request) {
       path: "/",
     });
   }
+
+  if (submittedPassword && (await verifyPassword(submittedPassword))) {
+    return NextResponse.json({ success: true });
+  }
+
   const url = new URL(request.url);
   url.pathname = "/";
   url.searchParams.set("reload", "1");

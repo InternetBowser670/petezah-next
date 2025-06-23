@@ -123,7 +123,7 @@ export default function Page() {
   }
 
   async function handleSignOut() {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut({ scope: 'local' });
     if (error) {
       alert("Error signing out: " + error);
     }

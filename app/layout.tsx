@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import Script from "next/script";
 import "./tw.css"
+import GooglebotVerifier from "@/ui/googlebot-verifier";
 
 export default function RootLayout({
   children,
@@ -65,6 +66,7 @@ export default function RootLayout({
       <body
         className="w-full h-full min-h-screen"
       >
+        <GooglebotVerifier />
         {children}
       </body>
     </html>

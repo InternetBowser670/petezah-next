@@ -3,8 +3,6 @@ import { NextResponse } from "next/server";
 import { verifyPassword } from "@/lib/password-store";
 import { updateSession } from "@/utils/supabase/middleware";
 
-import dns from "dns/promises";
-
 const PUBLIC_PATHS = [
   "/",
   "?reload=1",
@@ -17,39 +15,6 @@ const PUBLIC_PATHS = [
 
 const STARTSWITH_PATHS = ["/error"];
 
-async function isVerifiedGooglebot(request: NextRequest): Promise<boolean> {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-    request.headers.get("x-real-ip");
-
-  if (!ip) {
-    return false;
-  }
-
-  try {
-    const hostnames = await dns.reverse(ip);
-    const isGoogleHost = hostnames.some(
-      (hostname) =>
-        hostname.endsWith(".googlebot.com") || hostname.endsWith(".google.com")
-    );
-
-    if (!isGoogleHost) {
-      return false;
-    }
-
-    for (const hostname of hostnames) {
-      const addresses = await dns.lookup(hostname, { all: true });
-      const verified = addresses.some((addr) => addr.address === ip);
-      if (verified) return true;
-    }
-
-    return false;
-  } catch (e) {
-    console.error("Googlebot verification failed:", e);
-    return false;
-  }
-}
-
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const cookiePassword = request.cookies.get("app-password")?.value;
@@ -58,6 +23,12 @@ export async function middleware(request: NextRequest) {
 
   if (supabaseResponse.status !== 200) {
     return supabaseResponse;
+  }
+
+  const isGooglebotCookie = request.cookies.get("isGooglebot")?.value === "true";
+
+  if (isGooglebotCookie) {
+    return NextResponse.next();
   }
 
   if (
@@ -75,12 +46,6 @@ export async function middleware(request: NextRequest) {
         return redirectResponse;
       }
     }
-    return supabaseResponse;
-  }
-
-  const userAgent = request.headers.get("user-agent")?.toLowerCase() ?? "";
-  if (userAgent.includes("googlebot") && (await isVerifiedGooglebot(request))) {
-    console.log("Allowing verified Googlebot access to", pathname);
     return supabaseResponse;
   }
 

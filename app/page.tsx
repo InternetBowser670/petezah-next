@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { arimo } from "@/lib/fonts";
 
 type LengthUnits = "meter" | "kilometer" | "mile" | "foot";
 type WeightUnits = "gram" | "kilogram" | "pound" | "ounce";
@@ -162,12 +163,15 @@ function Converter() {
   }
 
   useEffect(() => {
-    if (searchParams.get("reload") === "1") {
-      const params = new URLSearchParams(searchParams.toString());
-      params.delete("reload");
-      router.replace(`?${params.toString()}`);
-    }
-  }, [searchParams, router]);
+    console.log(searchParams.get("reload"));
+  if (searchParams.get("reload")?.toString() === "1") {
+    const timeout = setTimeout(() => {
+      router.push("/?reload=0");
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }
+}, [searchParams, router]);
 
   const availableUnits =
     category === "length"
@@ -199,7 +203,9 @@ function Converter() {
         )[]);
 
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-white">
+    <div
+      className={`flex items-center justify-center w-full h-screen bg-gray-100 ${arimo.className}`}
+    >
       <main className="p-6! mx-auto mt-10! border-2 border-black">
         <h1 className="mb-6! text-2xl font-semibold text-center">
           Unit Converter

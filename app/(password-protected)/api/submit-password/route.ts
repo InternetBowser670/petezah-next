@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  
+
   const submittedPassword = formData.get("password")?.toString();
 
   if (submittedPassword) {
@@ -12,5 +12,8 @@ export async function POST(request: Request) {
       path: "/",
     });
   }
-  return NextResponse.json({ success: true });
+  const url = new URL(request.url);
+  url.pathname = "/";
+  url.searchParams.set("reload", "1");
+  return NextResponse.redirect(url);
 }

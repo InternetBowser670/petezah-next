@@ -163,15 +163,14 @@ function Converter() {
   }
 
   useEffect(() => {
-    console.log(searchParams.get("reload"));
-  if (searchParams.get("reload")?.toString() === "1") {
-    const timeout = setTimeout(() => {
-      router.push("/?reload=0");
-    }, 1000);
+    if (searchParams.get("reload")?.toString() === "1") {
+      const timeout = setTimeout(() => {
+        router.push("/");
+      }, 1000);
 
-    return () => clearTimeout(timeout);
-  }
-}, [searchParams, router]);
+      return () => clearTimeout(timeout);
+    }
+  }, [searchParams, router]);
 
   const availableUnits =
     category === "length"

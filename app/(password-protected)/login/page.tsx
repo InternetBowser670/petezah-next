@@ -5,7 +5,7 @@ import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
-import { FaGithub, FaGoogle } from "react-icons/fa";  
+import { FaGithub, FaGoogle, FaDiscord } from "react-icons/fa";
 export default function LoginPage() {
   const [user, setUser] = useState<User | null>(null);
 
@@ -29,6 +29,13 @@ export default function LoginPage() {
     const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: "google",
+    });
+  }
+
+  async function signInWithDiscord() {
+    const supabase = createClient();
+    await supabase.auth.signInWithOAuth({
+      provider: "discord",
     });
   }
 
@@ -96,6 +103,13 @@ export default function LoginPage() {
             <div className="flex flex-wrap justify-center w-full gap-2">
               <button
                 className="px-2! py-1! bg-black border-2 border-white rounded-2xl hover:bg-gray-800 transition-colors duration-500 flex items-center justify-center gap-2"
+                onClick={signInWithGoogle}
+              >
+                <FaGoogle />
+                Google
+              </button>
+              <button
+                className="px-2! py-1! bg-black border-2 border-white rounded-2xl hover:bg-gray-800 transition-colors duration-500 flex items-center justify-center gap-2"
                 onClick={signInWithGithub}
               >
                 <FaGithub />
@@ -103,10 +117,10 @@ export default function LoginPage() {
               </button>
               <button
                 className="px-2! py-1! bg-black border-2 border-white rounded-2xl hover:bg-gray-800 transition-colors duration-500 flex items-center justify-center gap-2"
-                onClick={signInWithGoogle}
+                onClick={signInWithDiscord}
               >
-                <FaGoogle />
-                Google
+                <FaDiscord />
+                Discord
               </button>
             </div>
           </form>

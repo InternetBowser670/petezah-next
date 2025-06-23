@@ -205,7 +205,7 @@ function Converter() {
     <div
       className={`flex items-center justify-center w-full h-screen bg-gray-100 ${arimo.className}`}
     >
-      <main className="p-6! mx-auto mt-10! border-2 border-black">
+      <main className="p-6! mx-auto mt-10! border-2 border-black max-w-[80%]!">
         <h1 className="mb-6! text-2xl font-semibold text-center">
           Unit Converter
         </h1>

@@ -209,16 +209,54 @@ function Converter() {
         <h1 className="mb-6! text-2xl font-semibold text-center">
           Unit Converter
         </h1>
-        <h2>
-          Want more conversions? Look{" "}
-          <a
-            className="text-blue-500 underline"
-            href="https://www.unitconverters.net/"
-          >
-            here
-          </a>
-          .
+        <h2 className="mb-4! text-center">
+          Convert <strong>Length</strong>, <strong>Weight</strong>,{" "}
+          <strong>Temperature</strong>, and <strong>Time</strong> easily.
         </h2>
+
+        <section className="mt-10! p-4! bg-white rounded shadow">
+          <h2 className="text-2xl font-bold mb-4! text-center">
+            Free Online Unit Converter
+          </h2>
+          <p className="mb-4! text-center">
+            Instantly convert units of measurement with this simple, accurate{" "}
+            <strong>online unit converter</strong>. Whether you&apos;re working with{" "}
+            <strong>length</strong>, <strong>weight</strong>,{" "}
+            gi<strong>temperature</strong>, or <strong>time</strong>, get fast and
+            reliable results for personal, educational, or professional use.
+          </p>
+
+          <h3 className="text-lg font-semibold mb-2!">
+            Supported Unit Categories:
+          </h3>
+          <ul className="list-disc ml-6! mb-4!">
+            <li>
+              <strong>Length:</strong> meter, kilometer, mile, foot
+            </li>
+            <li>
+              <strong>Weight:</strong> gram, kilogram, pound, ounce
+            </li>
+            <li>
+              <strong>Temperature:</strong> Celsius, Fahrenheit, Kelvin
+            </li>
+            <li>
+              <strong>Time:</strong> second, minute, hour, day
+            </li>
+          </ul>
+
+          <p className="mt-4! text-center">
+            Looking for more conversions? Visit
+            <a
+              className="ml-1 text-blue-500 underline"
+              href="https://www.unitconverters.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              UnitConverters.net
+            </a>
+            .
+          </p>
+        </section>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex items-center">
             <label htmlFor="category" className="block mb-2! font-medium">

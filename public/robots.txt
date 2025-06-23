@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /login
+Disallow: /api
+Disallow: /submit-password
+Disallow: /error
+Disallow: /ads.txt
+Disallow: /favicon.ico
+Disallow: /not-found

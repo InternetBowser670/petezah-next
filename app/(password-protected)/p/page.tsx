@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import type { User, UserIdentity } from "@supabase/supabase-js";
-import { FaGithub, FaGoogle, FaDiscord } from "react-icons/fa";
+import type { User, UserIdentity, Provider } from "@supabase/supabase-js";
+import { FaGithub, FaGoogle, FaDiscord, FaTwitch } from "react-icons/fa";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 
 export default function ProfilePage() {
@@ -13,10 +13,8 @@ export default function ProfilePage() {
   useEffect(() => {
     async function fetchData() {
       const supabase = createClient();
-
       const { data: userData } = await supabase.auth.getUser();
       setUser(userData.user);
-
       const { data: identityData } = await supabase.auth.getUserIdentities();
       if (identityData?.identities) {
         setIdentities(identityData.identities);
@@ -25,7 +23,7 @@ export default function ProfilePage() {
     fetchData();
   }, []);
 
-  async function linkIdentity(provider: "google" | "github" | "discord") {
+  async function linkIdentity(provider: Provider) {
     const supabase = createClient();
     const { error } = await supabase.auth.linkIdentity({ provider });
     if (
@@ -33,25 +31,22 @@ export default function ProfilePage() {
       error?.message.includes("identity_already_exists")
     ) {
       alert(
-        "This account is already linked to another user, sorry. You may want to delete the linked account first."
+        "Sorry, this account is already linked to another user. If you delete the other user, you will not be able to link your social account with this one."
       );
     }
   }
 
   async function handleDelete() {
     if (!user) return;
-
     const confirmed = confirm(
       "Are you sure you want to delete your account? This action cannot be undone."
     );
     if (!confirmed) return;
-
     const res = await fetch("/api/delete-user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: user.id }),
     });
-
     if (res.ok) {
       alert("Your account has been deleted.");
       window.location.href = "/";
@@ -74,9 +69,7 @@ export default function ProfilePage() {
             <p className="mb-3">
               User ID: <strong>{user.id}</strong>
             </p>
-
             <br />
-
             <h2 className="mb-2 text-2xl">Linked Providers:</h2>
             <ul className="mb-4">
               {identities.map((identity) => (
@@ -85,9 +78,7 @@ export default function ProfilePage() {
                 </li>
               ))}
             </ul>
-
             <br />
-
             <h2 className="mb-2 text-2xl">Link More Accounts:</h2>
             <div className="flex flex-wrap justify-center w-full gap-2">
               {!identities.find((i) => i.provider === "google") && (
@@ -112,6 +103,14 @@ export default function ProfilePage() {
                   onClick={() => linkIdentity("discord")}
                 >
                   <FaDiscord /> Link Discord
+                </button>
+              )}
+              {!identities.find((i) => i.provider === "twitch") && (
+                <button
+                  className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-800 flex items-center justify-center gap-2"
+                  onClick={() => linkIdentity("twitch")}
+                >
+                  <FaTwitch /> Link Twitch
                 </button>
               )}
             </div>

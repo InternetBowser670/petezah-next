@@ -13,11 +13,14 @@ import { v4 as uuidv4 } from "uuid";
 import LatestPasswordStatus from "@/ui/latest-password-status";
 import { createClient } from "@/utils/supabase/client";
 import type { User } from "@supabase/supabase-js";
+import { useSearchParams } from "next/navigation";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [counter, setCounter] = useState(4);
   const [user, setUser] = useState<User | null>(null);
+
+  const searchParams = useSearchParams();
 
   const supabase = createClient();
 
@@ -108,6 +111,15 @@ export default function Page() {
   }, [images.length]);
 
   const currentImage = images[currentIndex];
+
+  useEffect(() => {
+    const error = searchParams.get("error");
+    const errorDescription = searchParams.get("error_description");
+
+    if (error) {
+      alert(`Error: ${error}\n\n${errorDescription}`);
+    }
+  }, [searchParams]);
 
   async function signOut(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

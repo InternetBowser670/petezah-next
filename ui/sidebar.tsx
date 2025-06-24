@@ -197,9 +197,9 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               )}
             >
               <NavbarLink
-                title="Profile (WIP)"
+                title="Profile"
                 Icon={FaRegUserCircle}
-                url="/pages/settings/p"
+                url="/p"
               />
               <NavbarLink
                 title="Settings (WIP)"

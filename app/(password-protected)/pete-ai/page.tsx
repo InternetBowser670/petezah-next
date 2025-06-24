@@ -150,12 +150,12 @@ export default function Chat() {
                 </p>
               </div>
               <div className="mt-3! flex flex-col items-center">
-                <div>
+                <div className="flex justify-center">
                   <MessageSuggestion prompt="Tell me about yourself." />
                   <MessageSuggestion prompt="Show me around the site." />
                   <MessageSuggestion prompt="How can I contribute to the proxy?" />
                 </div>
-                <div>
+                <div className="flex justify-center">
                   <MessageSuggestion prompt="How do I learn to code?" />
                   <MessageSuggestion prompt="Tell me a joke." />
                 </div>

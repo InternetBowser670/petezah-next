@@ -119,7 +119,7 @@ export default function ProfilePage() {
             <hr />
             <br />
             <button
-              className="px-4! py-2! text-white bg-black transition-all duration-300 hover:bg-red-800 rounded-2xl border-2 border-white"
+              className="px-4! py-2! text-white bg-black transition-all duration-300 hover:bg-red-600 rounded-2xl border-2 border-white"
               onClick={handleDelete}
             >
               Delete My Account

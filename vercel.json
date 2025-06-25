@@ -1,17 +1,20 @@
 {
   "buildCommand": "npm run build",
+  "devCommand": "npm run dev", // default fallback, see below for making it dynamic
   "outputDirectory": ".next",
   "framework": "nextjs",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
   "crons": [
     {
       "path": "/api/cron-password",
       "schedule": "0 0 * * *"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }

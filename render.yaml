@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: petezah-games-next
+    env: node
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    runtime: node
+    plan: free
+    branch: main
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22

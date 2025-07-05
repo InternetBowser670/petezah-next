@@ -2,29 +2,31 @@ import { Redis } from "@upstash/redis";
 
 const redis = Redis.fromEnv();
 
+// chatgpt locked in
+
 const nouns = [
-  "apple",
-  "river",
-  "tiger",
-  "cloud",
-  "planet",
-  "forest",
-  "rocket",
-  "ocean",
-  "castle",
-  "wizard",
+  "apple", "river", "tiger", "cloud", "planet", "forest", "rocket", "ocean", "castle", "wizard",
+  "mountain", "desert", "phoenix", "comet", "nebula", "star", "galaxy", "volcano", "island", "tree",
+  "dragon", "panther", "crystal", "storm", "lightning", "flame", "snowflake", "eagle", "shadow", "mirror",
+  "machine", "giant", "pirate", "samurai", "robot", "astronaut", "ninja", "beast", "falcon", "cloudburst",
+  "torch", "canyon", "echo", "serpent", "moon", "thunder", "grizzly", "cyclone", "blizzard", "glacier",
+  "sandstorm", "avalanche", "frost", "cliff", "meadow", "wave", "breeze", "saber", "vortex", "spark",
+  "goblin", "griffin", "unicorn", "chimera", "hydra", "hawk", "lion", "wolf", "leopard", "yeti",
+  "flame", "ember", "quasar", "satellite", "nebula", "tornado", "tsunami", "prism", "thistle", "whale",
+  "stingray", "orca", "coral", "reef", "jungle", "swamp", "valley", "brook", "geyser", "crater",
+  "orbit", "pulse", "signal", "beacon", "warden", "guardian", "sentry", "ranger", "archer", "basilisk"
 ];
+
 const verbs = [
-  "runs",
-  "flies",
-  "shines",
-  "jumps",
-  "sleeps",
-  "grows",
-  "drifts",
-  "explores",
-  "builds",
-  "sings",
+  "runs", "flies", "shines", "jumps", "sleeps", "grows", "drifts", "explores", "builds", "sings",
+  "fights", "rises", "glows", "howls", "roars", "burns", "melts", "erupts", "charges", "dives",
+  "climbs", "surges", "wanders", "leaps", "sprints", "vanishes", "spins", "floats", "crashes", "glides",
+  "stomps", "whispers", "hides", "dashes", "swoops", "swims", "blinks", "breaks", "bounces", "twists",
+  "crackles", "shouts", "strikes", "pierces", "awakens", "screeches", "echoes", "blazes", "twinkles", "vibrates",
+  "reflects", "ascends", "descends", "twirls", "grinds", "rumbles", "flashes", "spreads", "shimmers", "warps",
+  "lurks", "emerges", "flickers", "charges", "bursts", "dances", "weaves", "launches", "detonates", "crawls",
+  "dissolves", "reacts", "collides", "soars", "levitates", "rattles", "races", "freezes", "ignites", "radiates",
+  "spikes", "creeps", "fades", "slithers", "pulses", "spirals", "expands", "contracts", "glitches", "splashes"
 ];
 
 function getMonthKey(offset: number = 0): string {

@@ -93,7 +93,7 @@ export default function Page() {
                     Enable
                   </th>
                   <th className="px-4! py-2! font-semibold text-left border border-white">
-                    Expiration time
+                    Time Until Expiration
                   </th>
                 </tr>
               </thead>

@@ -166,7 +166,11 @@ export default function Chat() {
 
         <form
           className="flex items-center justify-center w-full h-[10%]"
-          onSubmit={handleSubmit}
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (input.trim() === "") return;
+            handleSubmit(e);
+          }}
         >
           <div className="relative w-1/2">
             <input
@@ -182,18 +186,21 @@ export default function Chat() {
               <ArrowUpCircleIcon
                 width={36}
                 height={36}
-                color="white"
+                color={input.trim() == "" ? "gray" : "white"}
                 className="object-cover rounded-full"
               />
             </button>
           </div>
-            <button
-              className={clsx("bg-black rounded-2xl px-2! py-1! text-red-500 border-2! border-white mx-2! transition-opacity duration-500", messages.length > 0 ? "opacity-100" : "opacity-0")}
-              type="submit"
-              onClick={wipeChat}
-            >
-              Wipe chat
-            </button>
+          <button
+            className={clsx(
+              "bg-black rounded-2xl px-2! py-1! text-red-500 border-2! border-white mx-2! transition-opacity duration-500",
+              messages.length > 0 ? "opacity-100" : "opacity-0"
+            )}
+            type="submit"
+            onClick={wipeChat}
+          >
+            Wipe chat
+          </button>
         </form>
       </div>
     </div>

@@ -191,7 +191,7 @@ export default function ProfilePage() {
                 </form>
               )}
             </div>
-            {passwordToSet && passwordToSet.length > 0 && (
+            {passwordToSet && passwordToSet.length && !identities.find((i) => i.provider === "email") && (
               <>
                 <br />
                 <ul className="space-y-2 text-sm">

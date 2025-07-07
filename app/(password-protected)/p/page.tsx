@@ -3,16 +3,27 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import type { User, UserIdentity, Provider } from "@supabase/supabase-js";
-import { FaGithub, FaGoogle, FaDiscord, FaTwitch } from "react-icons/fa";
+import {
+  FaGithub,
+  FaGoogle,
+  FaDiscord,
+  FaTwitch,
+  FaEnvelope,
+} from "react-icons/fa";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
+import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
   const [identities, setIdentities] = useState<UserIdentity[]>([]);
+  const [passwordToSet, setPasswordToSet] = useState<string>("");
+
+  const supabase = createClient();
 
   useEffect(() => {
+    const supabase = createClient();
+
     async function fetchData() {
-      const supabase = createClient();
       const { data: userData } = await supabase.auth.getUser();
       setUser(userData.user);
       const { data: identityData } = await supabase.auth.getUserIdentities();
@@ -24,7 +35,6 @@ export default function ProfilePage() {
   }, []);
 
   async function linkIdentity(provider: Provider) {
-    const supabase = createClient();
     const { error } = await supabase.auth.linkIdentity({ provider });
     if (
       error?.status === 400 &&
@@ -56,6 +66,38 @@ export default function ProfilePage() {
     }
   }
 
+  const rules = {
+    minLength: passwordToSet.length >= 6,
+    hasLowercase: /[a-z]/.test(passwordToSet),
+    hasUppercase: /[A-Z]/.test(passwordToSet),
+    hasDigit: /\d/.test(passwordToSet),
+    hasSymbol: /[^a-zA-Z0-9]/.test(passwordToSet),
+  };
+
+  const allPassed = Object.values(rules).every(Boolean);
+
+  async function handleEmailAdded() {
+    if (passwordToSet.trim() === "") return alert("Please enter a password.");
+    if (!allPassed) {
+      return alert(
+        "Password must be at least 6 characters long, contain uppercase and lowercase letters, a digit, and a symbol."
+      );
+    }
+
+    const result = await supabase.auth.updateUser({password: passwordToSet});
+  
+    if (result.error) {
+      alert("Failed to link email: " + result.error.message);
+    } else {
+      alert("Email linked successfully!");
+      setPasswordToSet("");
+      const { data: identityData } = await supabase.auth.getUserIdentities();
+      if (identityData?.identities) {
+        setIdentities(identityData.identities);
+      }
+    }
+  }
+
   return (
     <div className="flex items-center justify-center h-[100%] relative">
       <MarqueeBg />
@@ -80,6 +122,7 @@ export default function ProfilePage() {
             </ul>
             <br />
             <h2 className="mb-2 text-2xl">Link More Accounts:</h2>
+            <br />
             <div className="flex flex-wrap justify-center w-full gap-2">
               {!identities.find((i) => i.provider === "google") && (
                 <button
@@ -113,12 +156,92 @@ export default function ProfilePage() {
                   <FaTwitch /> Link Twitch
                 </button>
               )}
+              {!identities.find((i) => i.provider === "email") && (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleEmailAdded();
+                  }}
+                >
+                  <div className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 flex items-center justify-center gap-2">
+                    <FaEnvelope className="ml-2!" /> Link Email
+                    <input
+                      type="password"
+                      name="password"
+                      value={passwordToSet}
+                      placeholder="Enter password"
+                      onChange={(e) => setPasswordToSet(e.target.value)}
+                      className="ml-2 text-white bg-transparent border-b-2 focus:outline-none mr-2! my-1!"
+                      required
+                    />
+                    <button
+                      type="submit"
+                      onClick={() => {
+                        if (allPassed) handleEmailAdded();
+                      }}
+                    >
+                      <ArrowUpCircleIcon
+                        width={36}
+                        height={36}
+                        color={allPassed ? "white" : "gray"}
+                        className="object-cover rounded-full"
+                      />
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
+            {passwordToSet && passwordToSet.length > 0 && (
+              <>
+                <br />
+                <ul className="space-y-2 text-sm">
+                  <li
+                    className={
+                      rules.minLength ? "text-green-600" : "text-red-600"
+                    }
+                  >
+                    {rules.minLength ? "✅" : "❌"} Minimum 6 characters
+                  </li>
+                  <li
+                    className={
+                      rules.hasLowercase ? "text-green-600" : "text-red-600"
+                    }
+                  >
+                    {rules.hasLowercase ? "✅" : "❌"} At least one lowercase
+                    letter
+                  </li>
+                  <li
+                    className={
+                      rules.hasUppercase ? "text-green-600" : "text-red-600"
+                    }
+                  >
+                    {rules.hasUppercase ? "✅" : "❌"} At least one uppercase
+                    letter
+                  </li>
+                  <li
+                    className={
+                      rules.hasDigit ? "text-green-600" : "text-red-600"
+                    }
+                  >
+                    {rules.hasDigit ? "✅" : "❌"} At least one digit
+                  </li>
+                  <li
+                    className={
+                      rules.hasSymbol ? "text-green-600" : "text-red-600"
+                    }
+                  >
+                    {rules.hasSymbol ? "✅" : "❌"} At least one symbol (e.g.
+                    !@#$%)
+                  </li>
+                </ul>
+              </>
+            )}
+
             <br />
             <hr />
             <br />
             <button
-              className="px-4! py-2! text-white bg-black transition-all duration-300 hover:bg-red-600 rounded-2xl border-2 border-white"
+              className="px-4! py-2! text-white bg-black transition-all duration-300 hover:bg-red-700 rounded-2xl border-2 border-white"
               onClick={handleDelete}
             >
               Delete My Account

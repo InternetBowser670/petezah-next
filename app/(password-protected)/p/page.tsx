@@ -11,12 +11,17 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
-import { ArrowUpCircleIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowUpCircleIcon,
+  EyeSlashIcon,
+  EyeIcon,
+} from "@heroicons/react/24/solid";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
   const [identities, setIdentities] = useState<UserIdentity[]>([]);
-  const [passwordToSet, setPasswordToSet] = useState<string>("");
+  const [passwordToSetA, setPasswordToSetA] = useState<string>("");
+  const [showPasswordA, setShowPasswordA] = useState(false);
 
   const supabase = createClient();
 
@@ -67,30 +72,30 @@ export default function ProfilePage() {
   }
 
   const rules = {
-    minLength: passwordToSet.length >= 6,
-    hasLowercase: /[a-z]/.test(passwordToSet),
-    hasUppercase: /[A-Z]/.test(passwordToSet),
-    hasDigit: /\d/.test(passwordToSet),
-    hasSymbol: /[^a-zA-Z0-9]/.test(passwordToSet),
+    minLength: passwordToSetA.length >= 6,
+    hasLowercase: /[a-z]/.test(passwordToSetA),
+    hasUppercase: /[A-Z]/.test(passwordToSetA),
+    hasDigit: /\d/.test(passwordToSetA),
+    hasSymbol: /[^a-zA-Z0-9]/.test(passwordToSetA),
   };
 
   const allPassed = Object.values(rules).every(Boolean);
 
   async function handleEmailAdded() {
-    if (passwordToSet.trim() === "") return alert("Please enter a password.");
+    if (passwordToSetA.trim() === "") return alert("Please enter a password.");
     if (!allPassed) {
       return alert(
         "Password must be at least 6 characters long, contain uppercase and lowercase letters, a digit, and a symbol."
       );
     }
 
-    const result = await supabase.auth.updateUser({password: passwordToSet});
-  
+    const result = await supabase.auth.updateUser({ password: passwordToSetA });
+
     if (result.error) {
       alert("Failed to link email: " + result.error.message);
     } else {
       alert("Email linked successfully!");
-      setPasswordToSet("");
+      setPasswordToSetA("");
       const { data: identityData } = await supabase.auth.getUserIdentities();
       if (identityData?.identities) {
         setIdentities(identityData.identities);
@@ -116,7 +121,10 @@ export default function ProfilePage() {
             <ul className="mb-4">
               {identities.map((identity) => (
                 <li key={identity.id} className="mb-1">
-                  ✅ {identity.provider.toUpperCase()}
+                  ✅ {identity.provider.toUpperCase()}{" "}
+                  {identity?.identity_data?.email &&
+                    identity.provider == "email" &&
+                    `(${identity?.identity_data?.email})`}
                 </li>
               ))}
             </ul>
@@ -166,14 +174,29 @@ export default function ProfilePage() {
                   <div className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 flex items-center justify-center gap-2">
                     <FaEnvelope className="ml-2!" /> Link Email
                     <input
-                      type="password"
+                      type={showPasswordA ? "text" : "password"}
                       name="password"
-                      value={passwordToSet}
+                      value={passwordToSetA}
                       placeholder="Enter password"
-                      onChange={(e) => setPasswordToSet(e.target.value)}
-                      className="ml-2 text-white bg-transparent border-b-2 focus:outline-none mr-2! my-1!"
+                      onChange={(e) => setPasswordToSetA(e.target.value)}
+                      className="ml-2 text-white bg-transparent border-b-2 focus:outline-none my-1!"
                       required
                     />
+                    {passwordToSetA.length > 0 && (
+                      <>
+                        <button
+                          type="button"
+                          className="mr-2!"
+                          onClick={() => setShowPasswordA(!showPasswordA)}
+                        >
+                          {showPasswordA ? (
+                            <EyeSlashIcon width={20} height={20} />
+                          ) : (
+                            <EyeIcon width={20} height={20} />
+                          )}
+                        </button>
+                      </>
+                    )}
                     <button
                       type="submit"
                       onClick={() => {
@@ -191,51 +214,53 @@ export default function ProfilePage() {
                 </form>
               )}
             </div>
-            {passwordToSet && passwordToSet.length && !identities.find((i) => i.provider === "email") && (
-              <>
-                <br />
-                <ul className="space-y-2 text-sm">
-                  <li
-                    className={
-                      rules.minLength ? "text-green-600" : "text-red-600"
-                    }
-                  >
-                    {rules.minLength ? "✅" : "❌"} Minimum 6 characters
-                  </li>
-                  <li
-                    className={
-                      rules.hasLowercase ? "text-green-600" : "text-red-600"
-                    }
-                  >
-                    {rules.hasLowercase ? "✅" : "❌"} At least one lowercase
-                    letter
-                  </li>
-                  <li
-                    className={
-                      rules.hasUppercase ? "text-green-600" : "text-red-600"
-                    }
-                  >
-                    {rules.hasUppercase ? "✅" : "❌"} At least one uppercase
-                    letter
-                  </li>
-                  <li
-                    className={
-                      rules.hasDigit ? "text-green-600" : "text-red-600"
-                    }
-                  >
-                    {rules.hasDigit ? "✅" : "❌"} At least one digit
-                  </li>
-                  <li
-                    className={
-                      rules.hasSymbol ? "text-green-600" : "text-red-600"
-                    }
-                  >
-                    {rules.hasSymbol ? "✅" : "❌"} At least one symbol (e.g.
-                    !@#$%)
-                  </li>
-                </ul>
-              </>
-            )}
+            {passwordToSetA &&
+              passwordToSetA.length &&
+              !identities.find((i) => i.provider === "email") && (
+                <>
+                  <br />
+                  <ul className="space-y-2 text-sm">
+                    <li
+                      className={
+                        rules.minLength ? "text-green-600" : "text-red-600"
+                      }
+                    >
+                      {rules.minLength ? "✅" : "❌"} Minimum 6 characters
+                    </li>
+                    <li
+                      className={
+                        rules.hasLowercase ? "text-green-600" : "text-red-600"
+                      }
+                    >
+                      {rules.hasLowercase ? "✅" : "❌"} At least one lowercase
+                      letter
+                    </li>
+                    <li
+                      className={
+                        rules.hasUppercase ? "text-green-600" : "text-red-600"
+                      }
+                    >
+                      {rules.hasUppercase ? "✅" : "❌"} At least one uppercase
+                      letter
+                    </li>
+                    <li
+                      className={
+                        rules.hasDigit ? "text-green-600" : "text-red-600"
+                      }
+                    >
+                      {rules.hasDigit ? "✅" : "❌"} At least one digit
+                    </li>
+                    <li
+                      className={
+                        rules.hasSymbol ? "text-green-600" : "text-red-600"
+                      }
+                    >
+                      {rules.hasSymbol ? "✅" : "❌"} At least one symbol (e.g.
+                      !@#$%)
+                    </li>
+                  </ul>
+                </>
+              )}
 
             <br />
             <hr />

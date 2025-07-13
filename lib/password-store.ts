@@ -7,7 +7,7 @@ const redis = Redis.fromEnv();
 const nouns = [
   "apple", "river", "tiger", "cloud", "planet", "forest", "rocket", "ocean", "castle", "wizard",
   "mountain", "desert", "phoenix", "comet", "nebula", "star", "galaxy", "volcano", "island", "tree",
-  "dragon", "panther", "crystal", "storm", "lightning", "flame", "snowflake", "eagle", "shadow", "mirror",
+  "dragon", "panther", "crystal", "storm", "lightning", "flame", "PeteZah", "snowflake", "eagle", "shadow", "mirror",
   "machine", "giant", "pirate", "samurai", "robot", "astronaut", "ninja", "beast", "falcon", "cloudburst",
   "torch", "canyon", "echo", "serpent", "moon", "thunder", "grizzly", "cyclone", "blizzard", "glacier",
   "sandstorm", "avalanche", "frost", "cliff", "meadow", "wave", "breeze", "saber", "vortex", "spark",

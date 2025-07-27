@@ -14,7 +14,7 @@ const nouns = [
   "goblin", "griffin", "unicorn", "chimera", "hydra", "hawk", "lion", "wolf", "leopard", "yeti",
   "flame", "ember", "quasar", "satellite", "nebula", "tornado", "tsunami", "prism", "thistle", "whale",
   "stingray", "orca", "coral", "reef", "jungle", "swamp", "valley", "brook", "geyser", "crater",
-  "orbit", "pulse", "signal", "beacon", "warden", "guardian", "sentry", "ranger", "archer", "basilisk"
+  "orbit", "pulse", "signal", "beacon", "warden", "guardian", "sentry", "ranger", "archer", "basilisk", "box"
 ];
 
 const verbs = [

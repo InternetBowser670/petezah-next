@@ -204,7 +204,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               <NavbarLink
                 title="Settings (WIP)"
                 Icon={BsGear}
-                url="/pages/settings"
+                url="/settings"
               />
               <NavbarLink
                 title="About"

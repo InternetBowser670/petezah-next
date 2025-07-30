@@ -174,7 +174,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
               <NavbarLink
                 title="Proxy (WIP)"
                 Icon={SlGlobe}
-                url="/static/prox/main"
+                url="/pr"
               />
               <NavbarLink
                 title="Access"

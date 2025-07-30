@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+const nextConfig = {
+  experimental: {
+    optimizePackageImports: ["@heroicons/react"],
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

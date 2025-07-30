@@ -14,6 +14,7 @@ import LatestPasswordStatus from "@/ui/latest-password-status";
 import { createClient } from "@/utils/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { useSearchParams } from "next/navigation";
+import { PrimaryButtonChildren, SecondaryButtonChildren } from "@/ui/global/buttons";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -171,28 +172,25 @@ export default function Page() {
           <LatestPasswordStatus />
           <p className="mb-[20px]! text-[18px]">Game on!</p>
           <div className="flex">
-            <button
+            <PrimaryButtonChildren
               onClick={redirectToGames}
-              type="button"
-              className="mr-2! bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
+              className="mr-2!"
             >
               Start Gaming
-            </button>
+            </PrimaryButtonChildren>
             <br />
             {user ? (
-              <button
-                className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
+              <SecondaryButtonChildren
                 onClick={handleSignOut}
               >
                 Sign Out
-              </button>
+              </SecondaryButtonChildren>
             ) : (
-              <a
-                className="bg-[#2a5daf] px-[20px]! py-[12px]! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
-                href="/login"
+              <SecondaryButtonChildren
+                onClick={() => router.push("/login")}
               >
                 Sign In (Optional)
-              </a>
+              </SecondaryButtonChildren>
             )}
           </div>
 

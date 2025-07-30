@@ -6,6 +6,7 @@ import { PrimaryButtonChildren } from "@/ui/global/buttons";
 import Card from "@/ui/global/card";
 
 export default function Page() {
+
   function openAboutBlank() {
     if (typeof window === "undefined") return;
 
@@ -62,8 +63,11 @@ export default function Page() {
         </h1>
         <WipWarning estCompletionDate="by the beginning of the school year" />
         <Card className="mt-4! w-full">
-          <h2 className="text-lg font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-2!">Disguising</h2>
-          <p className="mb-2!">Control disguise behavior to enhance privacy.</p>
+          <h2 className="text-lg font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-2!">
+            Cloaking
+          </h2>
+          <hr className="my-4!" />
+          <p className="mb-2!">Control cloaking behavior to enhance privacy.</p>
           <PrimaryButtonChildren onClick={openAboutBlank}>
             Open in about:blank
           </PrimaryButtonChildren>

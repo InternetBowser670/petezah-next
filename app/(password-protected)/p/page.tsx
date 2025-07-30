@@ -16,6 +16,7 @@ import {
   EyeSlashIcon,
   EyeIcon,
 } from "@heroicons/react/24/solid";
+import { PrimaryButtonChildren } from "@/ui/global/buttons";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
@@ -117,150 +118,159 @@ export default function ProfilePage() {
               User ID: <strong>{user.id}</strong>
             </p>
             <br />
-            <h2 className="mb-2 text-2xl">Linked Providers:</h2>
-            <ul className="mb-4">
-              {identities.map((identity) => (
-                <li key={identity.id} className="mb-1">
-                  ✅ {identity.provider.toUpperCase()}{" "}
-                  {identity?.identity_data?.email &&
-                    identity.provider == "email" &&
-                    `(${identity?.identity_data?.email})`}
-                </li>
-              ))}
-            </ul>
-            <br />
-            <h2 className="mb-2 text-2xl">Link More Accounts:</h2>
-            <br />
-            <div className="flex flex-wrap justify-center w-full gap-2">
-              {!identities.find((i) => i.provider === "google") && (
-                <button
-                  className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-800 flex items-center justify-center gap-2"
-                  onClick={() => linkIdentity("google")}
-                >
-                  <FaGoogle /> Link Google
-                </button>
-              )}
-              {!identities.find((i) => i.provider === "github") && (
-                <button
-                  className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-800 flex items-center justify-center gap-2"
-                  onClick={() => linkIdentity("github")}
-                >
-                  <FaGithub /> Link GitHub
-                </button>
-              )}
-              {!identities.find((i) => i.provider === "discord") && (
-                <button
-                  className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-800 flex items-center justify-center gap-2"
-                  onClick={() => linkIdentity("discord")}
-                >
-                  <FaDiscord /> Link Discord
-                </button>
-              )}
-              {!identities.find((i) => i.provider === "twitch") && (
-                <button
-                  className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-800 flex items-center justify-center gap-2"
-                  onClick={() => linkIdentity("twitch")}
-                >
-                  <FaTwitch /> Link Twitch
-                </button>
-              )}
-              {!identities.find((i) => i.provider === "email") && (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    handleEmailAdded();
-                  }}
-                >
-                  <div className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 flex items-center justify-center gap-2">
-                    <FaEnvelope className="ml-2!" /> Link Email
-                    <input
-                      type={showPasswordA ? "text" : "password"}
-                      name="password"
-                      value={passwordToSetA}
-                      placeholder="Enter password"
-                      onChange={(e) => setPasswordToSetA(e.target.value)}
-                      className="ml-2 text-white bg-transparent border-b-2 focus:outline-none my-1!"
-                      required
-                    />
-                    {passwordToSetA.length > 0 && (
-                      <>
-                        <button
-                          type="button"
-                          className="mr-2!"
-                          onClick={() => setShowPasswordA(!showPasswordA)}
-                        >
-                          {showPasswordA ? (
-                            <EyeSlashIcon width={20} height={20} />
-                          ) : (
-                            <EyeIcon width={20} height={20} />
-                          )}
-                        </button>
-                      </>
-                    )}
-                    <button
-                      type="submit"
-                      onClick={() => {
-                        if (allPassed) handleEmailAdded();
+            {identities.length > 0 && (
+              <>
+                <h2 className="mb-2 text-2xl">Linked Providers:</h2>
+                <ul className="mb-4">
+                  {identities.map((identity) => (
+                    <li key={identity.id} className="mb-1">
+                      ✅ {identity.provider.toUpperCase()}{" "}
+                      {identity?.identity_data?.email &&
+                        identity.provider == "email" &&
+                        `(${identity?.identity_data?.email})`}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {(identities.length < 5) && (
+              <>
+                <br />
+                <h2 className="mb-2 text-2xl">Link More Providers:</h2>
+                <br />
+                <div className="flex flex-wrap justify-center w-full gap-2">
+                  {!identities.find((i) => i.provider === "google") && (
+                    <PrimaryButtonChildren
+                      onClick={() => linkIdentity("google")}
+                    >
+                      <FaGoogle /> Link Google
+                    </PrimaryButtonChildren>
+                  )}
+                  {!identities.find((i) => i.provider === "github") && (
+                    <PrimaryButtonChildren
+                      onClick={() => linkIdentity("github")}
+                    >
+                      <FaGithub /> Link GitHub
+                    </PrimaryButtonChildren>
+                  )}
+                  {!identities.find((i) => i.provider === "discord") && (
+                    <PrimaryButtonChildren
+                      onClick={() => linkIdentity("discord")}
+                    >
+                      <FaDiscord /> Link Discord
+                    </PrimaryButtonChildren>
+                  )}
+                  {!identities.find((i) => i.provider === "twitch") && (
+                    <PrimaryButtonChildren
+                      onClick={() => linkIdentity("twitch")}
+                    >
+                      <FaTwitch /> Link Twitch
+                    </PrimaryButtonChildren>
+                  )}
+                  {!identities.find((i) => i.provider === "email") && (
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        handleEmailAdded();
                       }}
                     >
-                      <ArrowUpCircleIcon
-                        width={36}
-                        height={36}
-                        color={allPassed ? "white" : "gray"}
-                        className="object-cover rounded-full"
-                      />
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
-            {passwordToSetA &&
-              passwordToSetA.length &&
-              !identities.find((i) => i.provider === "email") && (
-                <>
-                  <br />
-                  <ul className="space-y-2 text-sm">
-                    <li
-                      className={
-                        rules.minLength ? "text-green-600" : "text-red-600"
-                      }
-                    >
-                      {rules.minLength ? "✅" : "❌"} Minimum 6 characters
-                    </li>
-                    <li
-                      className={
-                        rules.hasLowercase ? "text-green-600" : "text-red-600"
-                      }
-                    >
-                      {rules.hasLowercase ? "✅" : "❌"} At least one lowercase
-                      letter
-                    </li>
-                    <li
-                      className={
-                        rules.hasUppercase ? "text-green-600" : "text-red-600"
-                      }
-                    >
-                      {rules.hasUppercase ? "✅" : "❌"} At least one uppercase
-                      letter
-                    </li>
-                    <li
-                      className={
-                        rules.hasDigit ? "text-green-600" : "text-red-600"
-                      }
-                    >
-                      {rules.hasDigit ? "✅" : "❌"} At least one digit
-                    </li>
-                    <li
-                      className={
-                        rules.hasSymbol ? "text-green-600" : "text-red-600"
-                      }
-                    >
-                      {rules.hasSymbol ? "✅" : "❌"} At least one symbol (e.g.
-                      !@#$%)
-                    </li>
-                  </ul>
-                </>
-              )}
+                      <div className="px-2! py-1! bg-black border-2 border-white rounded-2xl duration-300 flex items-center justify-center gap-2 hover:bg-gray-900">
+                        <FaEnvelope className="ml-2!" /> Link Email
+                        <input
+                          type={showPasswordA ? "text" : "password"}
+                          name="password"
+                          value={passwordToSetA}
+                          placeholder="Enter password"
+                          onChange={(e) => setPasswordToSetA(e.target.value)}
+                          className="ml-2 text-white bg-transparent border-b-2 focus:outline-none my-1!"
+                          required
+                        />
+                        {passwordToSetA.length > 0 && (
+                          <>
+                            <button
+                              type="button"
+                              className="mr-2!"
+                              onClick={() => setShowPasswordA(!showPasswordA)}
+                            >
+                              {showPasswordA ? (
+                                <EyeSlashIcon width={20} height={20} />
+                              ) : (
+                                <EyeIcon width={20} height={20} />
+                              )}
+                            </button>
+                          </>
+                        )}
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            if (allPassed) handleEmailAdded();
+                          }}
+                        >
+                          <ArrowUpCircleIcon
+                            width={36}
+                            height={36}
+                            color={allPassed ? "white" : "gray"}
+                            className="object-cover rounded-full"
+                          />
+                        </button>
+                      </div>
+                    </form>
+                  )}
+                </div>
+                {passwordToSetA &&
+                  passwordToSetA.length &&
+                  !identities.find((i) => i.provider === "email") && (
+                    <>
+                      <br />
+                      <ul className="space-y-2 text-sm">
+                        <li
+                          className={
+                            rules.minLength ? "text-green-600" : "text-red-600"
+                          }
+                        >
+                          {rules.minLength ? "✅" : "❌"} Minimum 6 characters
+                        </li>
+                        <li
+                          className={
+                            rules.hasLowercase
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {rules.hasLowercase ? "✅" : "❌"} At least one
+                          lowercase letter
+                        </li>
+                        <li
+                          className={
+                            rules.hasUppercase
+                              ? "text-green-600"
+                              : "text-red-600"
+                          }
+                        >
+                          {rules.hasUppercase ? "✅" : "❌"} At least one
+                          uppercase letter
+                        </li>
+                        <li
+                          className={
+                            rules.hasDigit ? "text-green-600" : "text-red-600"
+                          }
+                        >
+                          {rules.hasDigit ? "✅" : "❌"} At least one digit
+                        </li>
+                        <li
+                          className={
+                            rules.hasSymbol ? "text-green-600" : "text-red-600"
+                          }
+                        >
+                          {rules.hasSymbol ? "✅" : "❌"} At least one symbol
+                          (e.g. !@#$%)
+                        </li>
+                      </ul>
+                    </>
+                  )}
+              </>
+            )}
 
             <br />
             <hr />

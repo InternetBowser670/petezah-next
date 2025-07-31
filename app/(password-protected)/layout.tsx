@@ -16,7 +16,6 @@ import { SupabaseAuthListener } from "@/ui/client-providers";
 import SettingsProvider from "@/ui/settings-manager";
 
 export const metadata: Metadata = {
-  title: "PeteZah-Next",
   description: "The next generation of PeteZah Games",
   keywords:
     "Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah, Games,",
@@ -38,6 +37,7 @@ export default function RootLayout({
     <>
       <SupabaseAuthListener />
       <Head>
+        <title key="title">PeteZah-Next</title>
         <link rel="icon" href="/favicon.ico" />
         {/* Fonts */}
         <link

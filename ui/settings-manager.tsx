@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Head from "next/head";
 
 export function setLocalStorage(key: string, value: string) {
   localStorage.setItem(key, value);
@@ -8,6 +9,10 @@ export function setLocalStorage(key: string, value: string) {
 }
 
 export function applyGlobalSettings() {
+  const storedTitle = localStorage.getItem("siteTitle");
+  if (storedTitle) {
+    document.title = storedTitle;
+  }
   localStorage.setItem("settingsUpdated", Date.now().toString());
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,5 +37,17 @@ export default function SettingsProvider({
     applyGlobalSettings();
   }, []);
 
-  return <>{children}</>;
+  const storedTitle =
+    typeof window !== "undefined" ? localStorage.getItem("siteTitle") : null;
+
+  return (
+    <>
+      {storedTitle && (
+        <Head>
+          <title key="title">{storedTitle}</title>
+        </Head>
+      )}
+      {children}
+    </>
+  );
 }

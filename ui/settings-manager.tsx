@@ -12,6 +12,8 @@ export function applyGlobalSettings() {
   const storedTitle = localStorage.getItem("siteTitle");
   if (storedTitle) {
     document.title = storedTitle;
+  } else {
+    document.title = "PeteZah-Next";
   }
   localStorage.setItem("settingsUpdated", Date.now().toString());
 

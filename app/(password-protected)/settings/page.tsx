@@ -47,6 +47,8 @@ export default function Page() {
 
       setAntiClose(newVal);
 
+      localStorage.setItem("antiClose", String(newVal));
+
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -62,7 +64,6 @@ export default function Page() {
         },
         body: JSON.stringify({ user_id: user.id, anti_close_enabled: newVal }),
       });
-      localStorage.setItem("antiClose", String(newVal));
     };
 
     return (

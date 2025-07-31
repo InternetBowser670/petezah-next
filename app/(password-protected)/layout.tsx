@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { Metadata } from "next";
-import Script from "next/script";
 import Particles from "@/ui/particles";
 import Sidebar from "@/ui/sidebar";
 import { Suspense } from "react";
@@ -61,9 +60,7 @@ export default function RootLayout({
             </Suspense>
           </SettingsProvider>
 
-          {/* changelog */}
-
-          <Script id="changelogfy-config">
+          {/* changelog <Script id="changelogfy-config">
             {`
             let CLF_config = {
               app_id: "03599c7b-79db-4651-8efa-90e18b54dabf",
@@ -81,7 +78,8 @@ export default function RootLayout({
             };
           `}
           </Script>
-          <Script async src="https://widget.changelogfy.com/index.js" />
+          <Script async src="https://widget.changelogfy.com/index.js" /> */}
+
           <Analytics />
         </Cloak>
       </div>

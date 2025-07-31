@@ -8,6 +8,8 @@ export function setLocalStorage(key: string, value: string) {
 }
 
 export function applyGlobalSettings() {
+  localStorage.setItem("settingsUpdated", Date.now().toString());
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const beforeUnloadHandler = (e: any) => {
     e.preventDefault();

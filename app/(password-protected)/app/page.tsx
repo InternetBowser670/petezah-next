@@ -7,14 +7,12 @@ import {
   ArrowPathIcon,
   ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
-import { useRef, useState } from "react";
-import WidgetBot from "@widgetbot/react-embed";
-import { FaDiscord } from "react-icons/fa"
+import { useRef } from "react";
+import WidgetBotCrate from "@/ui/play/crate";
 
 export default function Page() {
   const searchParams = useSearchParams();
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [widgetVisible, setWidgetVisible] = useState(false);
 
   const url = searchParams.get("url");
 
@@ -49,10 +47,6 @@ export default function Page() {
     if (iframeRef.current) {
       window.open(iframeRef.current.src, "_blank");
     }
-  }
-
-  function toggleWidgetBot() {
-    setWidgetVisible((prev) => !prev);
   }
 
   if (!url) {
@@ -92,12 +86,6 @@ export default function Page() {
               <BsFullscreen size={20} />
             </button>
             <button
-              onClick={toggleWidgetBot}
-              className="border-2 border-gray-400 rounded-full hover:bg-gray-900 p-4! hover:scale-110 transition-all duration-500"
-            >
-              <FaDiscord size={30} />
-            </button>
-            <button
               onClick={openIframeSource}
               className="border-2 border-gray-400 rounded-full hover:bg-gray-900 p-4! hover:scale-110 transition-all duration-500"
             >
@@ -105,15 +93,7 @@ export default function Page() {
             </button>
           </div>
         </div>
-        {widgetVisible && (
-          <div className="absolute bottom-4 right-4 w-[400px] h-[300px] z-2">
-            <WidgetBot
-            className="w-full h-full"
-              server="299881420891881473"
-              channel="355719584830980096"
-            />
-          </div>
-        )}
+        <WidgetBotCrate />
       </div>
     </>
   );

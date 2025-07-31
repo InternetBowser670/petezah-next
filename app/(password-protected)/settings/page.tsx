@@ -7,6 +7,7 @@ import Card from "@/ui/global/card";
 import { Checkbox } from "@/ui/global/input";
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { setLocalStorage } from "@/ui/settings-manager";
 
 export default function Page() {
   function AntiCloseCheckbox() {
@@ -19,7 +20,6 @@ export default function Page() {
 
       supabase.auth.getSession().then(async ({ data: { session } }) => {
         const user = session?.user;
-
 
         if (!user) return;
 
@@ -37,7 +37,7 @@ export default function Page() {
 
         if ("antiClose" in json) {
           setAntiClose(json.antiClose);
-          localStorage.setItem("antiClose", String(json.antiClose));
+          setLocalStorage("antiClose", String(json.antiClose));
         }
       });
     }, [supabase.auth]);
@@ -47,7 +47,7 @@ export default function Page() {
 
       setAntiClose(newVal);
 
-      localStorage.setItem("antiClose", String(newVal));
+      setLocalStorage("antiClose", String(newVal));
 
       const {
         data: { session },

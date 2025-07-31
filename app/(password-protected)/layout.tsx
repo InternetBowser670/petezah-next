@@ -13,6 +13,7 @@ import Head from "next/head";
 import { geistMono } from "@/lib/fonts";
 import { CookiesProvider } from "next-client-cookies/server";
 import { SupabaseAuthListener } from "@/ui/client-providers";
+import SettingsProvider from "@/ui/settings-manager";
 
 export const metadata: Metadata = {
   title: "PeteZah-Next",
@@ -50,13 +51,15 @@ export default function RootLayout({
         <Cloak>
           <AntiScreenshotOverlay />
           <Particles />
-          <Suspense>
-            <CookiesProvider>
-              <SidebarProvider>
-                <Sidebar>{children}</Sidebar>
-              </SidebarProvider>
-            </CookiesProvider>
-          </Suspense>
+          <SettingsProvider>
+            <Suspense>
+              <CookiesProvider>
+                <SidebarProvider>
+                  <Sidebar>{children}</Sidebar>
+                </SidebarProvider>
+              </CookiesProvider>
+            </Suspense>
+          </SettingsProvider>
 
           {/* changelog */}
 

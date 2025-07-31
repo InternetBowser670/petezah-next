@@ -12,6 +12,7 @@ import "../globals.css";
 import Head from "next/head";
 import { geistMono } from "@/lib/fonts";
 import { CookiesProvider } from "next-client-cookies/server";
+import { SupabaseAuthListener } from "@/ui/client-providers";
 
 export const metadata: Metadata = {
   title: "PeteZah-Next",
@@ -34,6 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <>
+      <SupabaseAuthListener />
       <Head>
         <link rel="icon" href="/favicon.ico" />
         {/* Fonts */}

@@ -105,14 +105,14 @@ export default function Page() {
 	`;
 
     const iframe = popup.document.createElement("iframe");
-    iframe.src = "/home"; // Or any route in your Next.js app
+    iframe.src = "/home";
     iframe.style.cssText = `
 		position: absolute;
 		top: 0; left: 0;
 		width: 100vw;
 		height: 100vh;
 		border: none;
-		display: none; /* hide until loaded */
+		display: none;
 	`;
 
     popup.document.body.appendChild(iframe);

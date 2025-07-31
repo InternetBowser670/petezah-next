@@ -4,8 +4,76 @@ import { WipWarning } from "@/ui/wip/wip-page";
 import CenteredDivPage from "@/ui/global/centered-div-page";
 import { PrimaryButtonChildren } from "@/ui/global/buttons";
 import Card from "@/ui/global/card";
+import { Checkbox } from "@/ui/global/input";
+import { useState, useEffect } from "react";
+import { createClient } from "@/utils/supabase/client";
 
 export default function Page() {
+  function AntiCloseCheckbox() {
+    const [antiClose, setAntiClose] = useState(false);
+    const supabase = createClient();
+
+    useEffect(() => {
+      const stored = localStorage.getItem("antiClose");
+      if (stored !== null) setAntiClose(stored === "true");
+
+      supabase.auth.getSession().then(async ({ data: { session } }) => {
+        const user = session?.user;
+
+
+        if (!user) return;
+
+        const res = await fetch(
+          `/api/private-profile?user_id=${session.user.id}`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              user_id: user.id,
+            }),
+          }
+        );
+
+        const json = await res.json();
+
+        if ("antiClose" in json) {
+          setAntiClose(json.antiClose);
+          localStorage.setItem("antiClose", String(json.antiClose));
+        }
+      });
+    }, [supabase.auth]);
+
+    const handleChange = async () => {
+      const newVal = !antiClose;
+
+      setAntiClose(newVal);
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      const user = session?.user;
+
+      if (!user) return;
+
+      fetch("/api/set-anti-close", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_id: user.id, anti_close_enabled: newVal }),
+      });
+      localStorage.setItem("antiClose", String(newVal));
+    };
+
+    return (
+      <Checkbox
+        checked={antiClose}
+        onChange={handleChange}
+        label="Anti-Close"
+        className="mt-2!"
+      />
+    );
+  }
 
   function openAboutBlank() {
     if (typeof window === "undefined") return;
@@ -71,6 +139,9 @@ export default function Page() {
           <PrimaryButtonChildren onClick={openAboutBlank}>
             Open in about:blank
           </PrimaryButtonChildren>
+          <div>
+            <AntiCloseCheckbox />
+          </div>
         </Card>
       </CenteredDivPage>
     </>

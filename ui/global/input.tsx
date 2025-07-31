@@ -16,7 +16,7 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
 }) => {
   return (
     <label
-      className={`flex items-center gap-2 text-lg cursor-pointer select-none ${className}`}
+      className={`flex items-center gap-2 text-lg cursor-pointer select-none w-fit ${className}`}
     >
       {label && <span className="font-semibold">{label}</span>}
       <span className="relative flex items-center justify-center">

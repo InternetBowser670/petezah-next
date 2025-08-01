@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRef } from "react";
 import WidgetBotCrate from "@/ui/play/crate";
+import { FaDiscord } from "react-icons/fa6";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -47,6 +48,12 @@ export default function Page() {
     if (iframeRef.current) {
       window.open(iframeRef.current.src, "_blank");
     }
+  }
+
+  function DCMessagae() {
+    alert(
+      'You can now send messages in the Discord channel. Click the icon in the bottom to open the channel. Alternatively, you can join the server by using the link provided by Pete-ai (in "apps").'
+    );
   }
 
   if (!url) {
@@ -90,6 +97,12 @@ export default function Page() {
               className="border-2 border-gray-400 rounded-full hover:bg-gray-900 p-4! hover:scale-110 transition-all duration-500"
             >
               <ArrowTopRightOnSquareIcon width={30} height={30} />
+            </button>
+            <button
+              onClick={DCMessagae}
+              className="border-2 border-gray-400 rounded-full hover:bg-gray-900 p-4! hover:scale-110 transition-all duration-500"
+            >
+              <FaDiscord size={30} />
             </button>
           </div>
         </div>

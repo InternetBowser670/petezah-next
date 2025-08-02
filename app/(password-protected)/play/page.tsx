@@ -103,7 +103,7 @@ export default function Page() {
               <ArrowTopRightOnSquareIcon width={30} height={30} />
             </button>
             <button
-              onClick={DCMessagae}
+              onClick={DCMessage}
               className="border-2 border-gray-400 rounded-full hover:bg-gray-900 p-4! hover:scale-110 transition-all duration-500"
             >
               <FaDiscord size={30} />

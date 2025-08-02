@@ -50,9 +50,15 @@ export default function Page() {
     }
   }
   
-  function DCMessagae() {
-    alert("You can now send messages in the Discord channel. Click the icon in the bottom to open the channel. Alternatively, you can join the server by using the link provided by Pete-ai (in \"apps\").");
+  function DCMessage() {
+  alert(
+    'You can now send messages in the Discord channel. Click the icon in the bottom to open the channel. Alternatively, you can join the server by using the link provided in the next screen.'
+  );
+  
+  if (window.confirm("Click OK to open the Discord server, or Cancel to stay here.")) {
+    window.open('https://discord.gg/GqshrYNn62', '_blank');
   }
+}
 
   if (!url) {
     return (

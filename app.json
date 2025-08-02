@@ -1,0 +1,25 @@
+{
+  "name": "petezah-next",
+  "description": "Next.js version of PeteZah Games",
+  "scripts": {
+    "postdeploy": "npm run build"
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "NODE_VERSION": "22",
+    "PORT": "3000"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1X"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "addons": [],
+  "log_drain_url": null
+}

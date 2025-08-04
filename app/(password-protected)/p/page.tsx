@@ -17,6 +17,7 @@ import {
   EyeIcon,
 } from "@heroicons/react/24/solid";
 import { PrimaryButtonChildren } from "@/ui/global/buttons";
+import BoosterData from "@/ui/profile/booster-data";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
@@ -134,7 +135,7 @@ export default function ProfilePage() {
               </>
             )}
 
-            {(identities.length < 5) && (
+            {identities.length < 5 && (
               <>
                 <br />
                 <h2 className="mb-2 text-2xl">Link More Providers:</h2>
@@ -271,6 +272,10 @@ export default function ProfilePage() {
                   )}
               </>
             )}
+
+            <br />
+
+            <BoosterData />
 
             <br />
             <hr />

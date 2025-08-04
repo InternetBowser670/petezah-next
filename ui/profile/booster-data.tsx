@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import Card from "@/ui/global/card";
 
 export default function BoosterData() {
   const [isBooster, setIsBooster] = useState<boolean | null>(null);
@@ -35,7 +36,7 @@ export default function BoosterData() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center h-full">
+    <Card className="flex flex-col items-center justify-center h-full">
       <h1 className="mb-4 text-2xl font-bold">Booster Data</h1>
       {isBooster !== null ? (
         <>
@@ -44,6 +45,6 @@ export default function BoosterData() {
       ) : (
         <p className="text-lg">No booster data available at the moment.</p>
       )}
-    </div>
+    </Card>
   );
 }

@@ -239,7 +239,7 @@ export default function Page() {
           </div>
         </div>
         <div className="absolute top-0 flex items-center justify-center w-full pt-2!">
-          <div className="hidden gh-image-shuffler items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! z-5 shadow-[0_12px_35px_rgba(255,255,255,0.2)] mx-auto border-2 border-white md:flex">
+          <div className="hidden gh-image-shuffler items-center w-[60%] max-w-[800px] rounded-[12px] bg-[#1e1e2d] p-[14px]! z-5 mx-auto border-2 border-[#0096FF] md:flex">
             <button
               type="button"
               id="gh-prev-btn"
@@ -272,7 +272,7 @@ export default function Page() {
                   <div
                     key={index}
                     className={clsx(
-                      "relative flex flex-col z-10 border-white border-2 group items-center text-center cursor-pointer rounded-md overflow-hidden gh-image-box"
+                      "relative flex flex-col z-10 border-[#0096FF] border-2 group items-center text-center cursor-pointer rounded-md overflow-hidden gh-image-box"
                     )}
                     onClick={redirectToGames}
                     style={{ width: imageWidth }}
@@ -317,7 +317,7 @@ export default function Page() {
             width={200}
             src={currentImage.src}
             alt={currentImage.caption}
-            className="h-[200px] border-[5px] border-solid border-[rgba(255, 255, 255, 0.5)] rounded-[12px] transition-all duration-300 ease-in-out hover:shadow-[0_20px_50px_rgba(255,255,255,0.4)] hover:scale-105 transform"
+            className="h-[200px] border-[5px] border-solid border-[#0096FF] rounded-[15px] transition-all duration-300 ease-in-out hover:scale-105 transform"
             id="large-image"
           />
           <div

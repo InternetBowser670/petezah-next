@@ -18,6 +18,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { PrimaryButtonChildren } from "@/ui/global/buttons";
 import BoosterData from "@/ui/profile/booster-data";
+import Card from "@/ui/global/card";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<User | null>(null);
@@ -275,7 +276,13 @@ export default function ProfilePage() {
 
             <br />
 
-            <BoosterData />
+            {identities?.some((identity) => identity.provider === "discord") ? (
+              <BoosterData />
+            ) : (
+              <Card className="text-lg">
+                Sign in with Discord and boost our server for special perks!
+              </Card>
+            )}
 
             <br />
             <hr />

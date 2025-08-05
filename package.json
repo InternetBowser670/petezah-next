@@ -2,6 +2,9 @@
   "name": "petezah-games-next",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  }
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--inspect next dev --turbopack",
     "build": "next build",

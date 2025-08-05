@@ -1,8 +1,17 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
   "crons": [
     {
       "path": "/api/cron-password",
       "schedule": "0 0 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ]
 }

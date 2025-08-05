@@ -37,8 +37,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-**or you can use one of the following buttons**
-## or use the buttons below
+**Alternatively, you can use one of the following buttons**
+## Or use the buttons below (You will have to set up enviroment variables)
 >
 > [![Deploy to Heroku](https://binbashbanana.github.io/deploy-buttons/buttons/remade/heroku.svg)](https://heroku.com/deploy/?template=https://github.com/InternetBowser670/petezah-next)
 [![Run on Replit](https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg)](https://replit.com/github/InternetBowser670/petezah-next)

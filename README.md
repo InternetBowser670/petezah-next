@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Getting Started
 
 > [!IMPORTANT]  
-> Make sure to set up your enviroment variables by making a copy of `.env.example`, naming it to `.env.local` and filling in the blanks.
+> Make sure to set up your enviroment variables by making a copy of [`.env.example`](/.env.example), naming it to `.env.local` and filling in the blanks.
 
 First, run the development server:
 

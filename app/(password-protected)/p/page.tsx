@@ -298,12 +298,11 @@ export default function ProfilePage() {
           <>
             <p>You are not logged in.</p>
             <br />
-            <a
-              className="bg-[#2a5daf] px-[20px]! py-[12px]! mt-2! rounded-2xl text-white text-[16px] font-bold transition-colors cursor-pointer duration-500 hover:bg-[#31476b]"
-              href="/login"
-            >
+            <PrimaryButtonChildren onClick={() => {
+              window.location.href = "/login";
+            }}>
               Sign In (Optional)
-            </a>
+            </PrimaryButtonChildren>
           </>
         )}
       </div>

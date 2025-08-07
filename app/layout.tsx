@@ -2,6 +2,7 @@
 import Script from "next/script";
 import "./tw.css"
 import GooglebotVerifier from "@/ui/googlebot-verifier";
+import AdManager from "@/ui/ad-manager";
 
 export default function RootLayout({
   children,
@@ -27,12 +28,7 @@ export default function RootLayout({
 
         <title>Unit Convertor</title>
 
-        {/* Google Ads */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
-          crossOrigin="anonymous"
-        />
+        <AdManager />
         <meta charSet="utf-8" />
         <meta
           name="viewport"

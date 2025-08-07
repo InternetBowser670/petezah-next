@@ -10,42 +10,43 @@ export default function AdManager() {
   const supabase = createClient();
 
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      const user = session?.user;
+    async function fetchData() {
+      await supabase.auth.getSession().then(async ({ data: { session } }) => {
+        const user = session?.user;
 
-      if (!user) {
-        setIsBooster(false);
-        return;
-      };
+        if (!user) {
+          setIsBooster(false);
+          return;
+        }
 
-      const res = await fetch(`/api/is-booster?user_id=${session.user.id}`, {
-        method: "POST",
-        body: JSON.stringify({
-          user_id: user.id,
-        }),
+        const res = await fetch(`/api/is-booster?user_id=${user.id}`, {
+          method: "POST",
+          body: JSON.stringify({
+            user_id: user.id,
+          }),
+        });
+
+        const json = await res.json();
+
+        if (res.ok) {
+          setIsBooster(json.isBooster);
+        }
       });
-
-      const json = await res.json();
-
-      if (res.ok) {
-        setIsBooster(json.isBooster);
-      }
-    });
+    }
+    fetchData();
   }, [supabase.auth]);
 
   return (
     <>
-      {
-        !(isBooster == true) && (
-          <>
-            <Script
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
-              crossOrigin="anonymous"
-            />
-          </>
-        )
-      }
+      {!(isBooster == true || isBooster == null) && (
+        <>
+          <Script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6640595376330309"
+            crossOrigin="anonymous"
+          />
+        </>
+      )}
     </>
   );
 }

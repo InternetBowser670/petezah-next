@@ -62,14 +62,8 @@ body {
   overflow: hidden;
 }
 .sidebar {
-  height: calc(100vh - 32px);
-  border-radius: 16px;
   background: #151a2d;
   transition: all 0.4s ease;
-  border-radius: 16px;
-  margin-left: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
   overflow: hidden;
 }
 .sidebar.collapsed {
@@ -154,13 +148,7 @@ body {
 
 .main-content {
   background: #151a2d;
-  height: calc(100vh - 32px);
-  margin-bottom: 16px;
-  margin-top: 16px;
-  margin-left: 10px;
-  margin-right: 10px;
   width: calc(100% - 101px); /* Adjusted width for collapsed sidebar */
-  border-radius: 16px;
   transition: margin-left 0.4s ease, width 0.4s ease;
 }
 .main-content.sidebar-expanded {

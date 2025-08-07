@@ -92,10 +92,10 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
   return (
     mounted && (
-      <div className="flex w-full h-full">
+      <div className="flex w-screen h-screen">
         <aside
           className={clsx(
-            "sidebar ml-2 border-white border-2",
+            "sidebar h-full md:ml-[16px]! md:mt-[16px]! md:mb-[16px]! md:h-[calc(100vh-32px)]! md:rounded-[16px]! border-white border-r-2 md:border-2 transition-all duration-400",
             sidebarToggled ? "sidebar-expanded w-[270px]" : "collapsed"
           )}
         >
@@ -217,7 +217,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
         <main
           className={clsx(
-            "main-content flex-1 h-screen overflow-y-auto transition-transform border-white border-2",
+            "main-content flex-1 overflow-y-auto border-white md:border-2 md:my-[16px]! md:mx-[10px]! md:h-[calc(100vh - 32px)]! md:rounded-[16px]! transition-all! duration-400",
             sidebarToggled ? "sidebar-expanded" : ""
           )}
         >

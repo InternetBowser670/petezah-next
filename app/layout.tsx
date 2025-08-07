@@ -29,6 +29,7 @@ export default function RootLayout({
         <title>Unit Convertor</title>
 
         <AdManager />
+        
         <meta charSet="utf-8" />
         <meta
           name="viewport"

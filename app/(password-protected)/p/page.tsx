@@ -16,7 +16,10 @@ import {
   EyeSlashIcon,
   EyeIcon,
 } from "@heroicons/react/24/solid";
-import { PrimaryButtonChildren } from "@/ui/global/buttons";
+import {
+  PrimaryButtonChildren,
+  SecondaryButtonChildren,
+} from "@/ui/global/buttons";
 import BoosterData from "@/ui/profile/booster-data";
 import Card from "@/ui/global/card";
 
@@ -287,20 +290,32 @@ export default function ProfilePage() {
             <br />
             <hr />
             <br />
-            <button
-              className="px-4! py-2! text-white bg-black transition-all duration-300 hover:bg-red-700 rounded-2xl border-2 border-white"
-              onClick={handleDelete}
-            >
-              Delete My Account
-            </button>
+            <div className="flex gap-2! justify-center">
+              <SecondaryButtonChildren
+                onClick={() => {
+                  supabase.auth.signOut();
+                  window.location.href = "/";
+                }}
+              >
+                Sign Out
+              </SecondaryButtonChildren>
+              <button
+                className="px-4! py-2! text-white bg-black transition-all duration-300 hover:bg-red-700 rounded-2xl border-2 border-white"
+                onClick={handleDelete}
+              >
+                Delete My Account
+              </button>
+            </div>
           </>
         ) : (
           <>
             <p>You are not logged in.</p>
             <br />
-            <PrimaryButtonChildren onClick={() => {
-              window.location.href = "/login";
-            }}>
+            <PrimaryButtonChildren
+              onClick={() => {
+                window.location.href = "/login";
+              }}
+            >
               Sign In (Optional)
             </PrimaryButtonChildren>
           </>

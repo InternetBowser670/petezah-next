@@ -236,7 +236,7 @@ export default function Page() {
     <>
       <div className="flex flex-col items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden">
         <MarqueeBg />
-        <div className="relative w-full h-full overflow-y-scroll z-1 backdrop-blur-[2px]">
+        <div className="relative w-full h-full overflow-y-auto z-1 backdrop-blur-[2px]">
           <div className="h-[12%] w-full bg-black/20 p-2! px-8! flex justify-center items-center">
             <input
               onChange={(e) => {

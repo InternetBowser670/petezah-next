@@ -217,7 +217,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
         <main
           className={clsx(
-            "main-content flex-1 h-screen overflow-y-scroll transition-transform border-white border-2",
+            "main-content flex-1 h-screen overflow-y-auto transition-transform border-white border-2",
             sidebarToggled ? "sidebar-expanded" : ""
           )}
         >

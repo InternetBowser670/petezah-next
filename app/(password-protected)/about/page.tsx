@@ -7,7 +7,7 @@ export default function Page() {
       title: "PeteZah Games",
       value: "PeteZah Games",
       content: (
-        <div className="text-center p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] max-h-[90%] max-w-[80%] overflow-y-scroll">
+        <div className="text-center p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] max-h-[90%] max-w-[80%] overflow-y-auto">
           <h1 className="text-3xl font-bold cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent">
             About PeteZah Games
           </h1>
@@ -36,7 +36,7 @@ export default function Page() {
       title: "PeteZah-Next",
       value: "PeteZah-Next",
       content: (
-        <div className="text-center p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] max-h-[90%] max-w-[80%] overflow-y-scroll">
+        <div className="text-center p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] max-h-[90%] max-w-[80%] overflow-y-auto">
           <h1 className="text-3xl font-bold cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent">
             About PeteZah-Next
           </h1>
@@ -59,7 +59,7 @@ export default function Page() {
       title: "The Devs",
       value: "The Devs",
       content: (
-        <div className="text-center p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] max-h-[90%] max-w-[80%] overflow-y-scroll">
+        <div className="text-center p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] max-h-[90%] max-w-[80%] overflow-y-auto">
           <h1 className="text-3xl font-bold cursor-text bg-linear-to-r from-[#40e0d0] via-[#0096FF] to-[#0096FF] bg-clip-text text-transparent">
             About The Devs
           </h1>
@@ -91,7 +91,7 @@ export default function Page() {
   return (
     <div className="flex items-center relative justify-center h-[100%] leading-9">
       <MarqueeBg />
-      <div className="w-[80%] h-[80%] flex flex-col justify-center items-center bg-black overflow-scroll z-1 rounded-2xl py-15!">
+      <div className="w-[80%] h-[80%] flex flex-col justify-center items-center bg-black overflow-auto z-1 rounded-2xl py-15!">
         <Tabs
           containerClassName="flex justify-center items-center"
           contentClassName="flex justify-center"

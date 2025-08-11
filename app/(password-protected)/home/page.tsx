@@ -14,12 +14,16 @@ import LatestPasswordStatus from "@/ui/latest-password-status";
 import { createClient } from "@/utils/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { useSearchParams } from "next/navigation";
-import { PrimaryButtonChildren, SecondaryButtonChildren } from "@/ui/global/buttons";
+import {
+  PrimaryButtonChildren,
+  SecondaryButtonChildren,
+} from "@/ui/global/buttons";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [counter, setCounter] = useState(4);
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const searchParams = useSearchParams();
 
@@ -27,8 +31,10 @@ export default function Page() {
 
   useEffect(() => {
     async function loadUser() {
+      setLoading(true);
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
+      setLoading(false);
     }
     loadUser();
   }, [supabase.auth]);
@@ -136,7 +142,7 @@ export default function Page() {
   }
 
   async function handleSignOut() {
-    const { error } = await supabase.auth.signOut({ scope: 'local' });
+    const { error } = await supabase.auth.signOut({ scope: "local" });
     if (error) {
       alert("Error signing out: " + error);
     }
@@ -172,23 +178,21 @@ export default function Page() {
           <LatestPasswordStatus />
           <p className="mb-[20px]! text-[18px]">Game on!</p>
           <div className="flex">
-            <PrimaryButtonChildren
-              onClick={redirectToGames}
-              className="mr-2!"
-            >
+            <PrimaryButtonChildren onClick={redirectToGames} className="mr-2!">
               Start Gaming
             </PrimaryButtonChildren>
             <br />
-            {user ? (
-              <SecondaryButtonChildren
-                onClick={handleSignOut}
-              >
+            {loading ? (
+              <div className="flex items-center justify-center m-[4px]! mt-[15px]!">
+                {" "}
+                <span>Fetching user...</span>
+              </div>
+            ) : user ? (
+              <SecondaryButtonChildren onClick={handleSignOut}>
                 Sign Out
               </SecondaryButtonChildren>
             ) : (
-              <SecondaryButtonChildren
-                onClick={() => router.push("/login")}
-              >
+              <SecondaryButtonChildren onClick={() => router.push("/login")}>
                 Sign In (Optional)
               </SecondaryButtonChildren>
             )}

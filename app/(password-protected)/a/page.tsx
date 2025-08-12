@@ -17,6 +17,11 @@ const apps = [
     imageUrl: "/storage/images/logo-png-removebg-preview.png",
   },
   {
+    label: "PeteMusic",
+    url: "/pages/other/music/iframe.html",
+    imageUrl: "/storage/images/PZMusic.png",
+  },
+  {
     label: "Google",
     url: "/iframe.html?url=/storage/ag/a/google/",
     imageUrl: "/storage/ag/a/google/IMG_5324.webp",
@@ -211,6 +216,8 @@ export default function Page() {
                   ? app.url.replace("/iframe.html", "/app") + "/index.html"
                   : app.url == "/pages/other/ai/iframe.html"
                   ? `/pete-ai`
+                  : app.url == "/pages/other/music/iframe.html"
+                  ? `/pzm`
                   : app.url
               }
             >

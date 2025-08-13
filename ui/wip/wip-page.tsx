@@ -18,7 +18,7 @@ export default function WipPage({
 
   return (
     <>
-      <CenteredDivPage>
+      <CenteredDivPage className="p-[50px]!">
         <div className="flex items-center justify-center gap-4!">
           <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
             This page is a work in progress.

@@ -126,7 +126,7 @@ export default function Page() {
 
   return (
     <>
-      <CenteredDivPage>
+      <CenteredDivPage className="p-[50px]!">
         <h1 className="text-3xl font-bold text-center sm:text-5xl md:text-6xl lg:text-7xl mb-4!">
           Settings
         </h1>

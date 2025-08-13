@@ -16,7 +16,7 @@ const markdownComponents: Components = {
     </table>
   ),
   thead: ({ children }) => (
-    <thead className="bg-[#1f2b47] text-white">{children}</thead>
+    <thead className="bg-[#2c3b5a] text-white">{children}</thead>
   ),
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => (

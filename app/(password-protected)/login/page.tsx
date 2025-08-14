@@ -51,7 +51,7 @@ export default function LoginPage() {
     <div className="flex items-center relative justify-center h-[100%]">
       <MarqueeBg />
       {user ? (
-        <div className="max-w-[80%] p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37]">
+        <div className="max-w-[80%] xl:max-w-1/2 transition-all p-[50px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37]">
           <h1 className="text-3xl text-center">You are already logged in!</h1>
           <br />
           <p className="text-center text-gray-300">
@@ -64,8 +64,8 @@ export default function LoginPage() {
         </div>
       ) : (
         <div className="flex items-center justify-center">
-          <div className="max-w-[80%] text-center px-[50px]! py-[25px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37]">
-            <form>
+          <div className="max-w-[80%] xl:max-w-1/2 transition-all text-center px-[50px]! py-[25px]! rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37]">
+            <form className="overflow-auto">
               <h1 className="text-3xl mb-3!">Authenticate</h1>
               <label htmlFor="email">Email:</label>
               <input
@@ -127,7 +127,7 @@ export default function LoginPage() {
                 className="px-2! py-1! bg-black border-2 border-white rounded-2xl hover:bg-gray-800 transition-colors duration-500 flex items-center justify-center gap-2"
                 onClick={signInWithDiscord}
               >
-                <FaDiscord /> Discord
+                <FaDiscord /> Discord*
               </button>
               <button
                 className="px-2! py-1! bg-black border-2 border-white rounded-2xl hover:bg-gray-800 transition-colors duration-500 flex items-center justify-center gap-2"
@@ -136,6 +136,8 @@ export default function LoginPage() {
                 <FaTwitch /> Twitch
               </button>
             </div>
+            <br />
+            <p className="text-sm font-bold ">* Discord OAuth doesn&apos;t work well on this page. Try signing in with a different method and linking your Discord account later in the profile page.</p>
           </div>
         </div>
       )}

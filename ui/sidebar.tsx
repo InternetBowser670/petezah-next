@@ -169,7 +169,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                 title="Apps"
                 Icon={BsGrid3X3GapFill}
                 url="/a"
-                altLinks={["/app", "/pete-ai"]}
+                altLinks={["/app", "/pete-ai", "/pzm"]}
               />
               <NavbarLink
                 title="Proxy (WIP)"

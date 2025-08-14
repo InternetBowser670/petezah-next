@@ -41,7 +41,7 @@ export default function Page() {
               )}
             </div>
             <div
-              className="info flex flex-col justify-center w-full"
+              className="info flex flex-col justify-center w-[400px]"
               id="playerInfo"
             >
               <div className="top-icons flex gap-10 justify-between items-center">
@@ -86,10 +86,10 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              <div id="seekbar" className="seekbar">
+              <div id="seekbar" className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full">
                 <div id="progress"></div>
               </div>
-              <div className="timecodes">
+              <div className="timecodes flex justify-between">
                 <span id="currentTime">0:00</span>
                 <span id="remainingTime">-0:00</span>
               </div>

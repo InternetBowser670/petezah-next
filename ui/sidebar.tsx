@@ -217,7 +217,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
         <main
           className={clsx(
-            "main-content flex-1 overflow-y-auto border-white md:border-2 md:my-[16px]! md:mx-[10px]! md:h-[calc(100vh - 32px)]! md:rounded-[16px]! transition-all! duration-400",
+            "main-content flex-1 overflow-y-auto border-white md:border-2 md:my-[16px]! md:mx-[10px]! md:h-[calc(100vh - 32px)]! md:rounded-[16px]! transition-all! duration-400 relative",
             sidebarToggled ? "sidebar-expanded" : ""
           )}
         >

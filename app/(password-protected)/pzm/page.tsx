@@ -12,6 +12,7 @@ import {
   FaBackward,
   FaPlay,
   FaVolumeUp,
+  FaSearch
 } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
@@ -21,6 +22,11 @@ export default function Page() {
   const [albumCoverSRC, setAlbumCoverSRC] = useState<string | null>(null);
   return (
     <>
+      <div className="absolute top-2 w-full flex justify-center items-center">
+        <div className="max-w-[560px] flex items-center justify-center gap-2 z-100 border-2 border-white p-2! rounded-2xl bg-gray-400/10 backdrop-blur-md backdrop-filter hover:bg-gray-200/20 focus:bg-white/30">
+          <FaSearch /><input className="focus:outline-0" id="searchbar" placeholder="Search for any song..." type="text" />
+        </div>
+      </div>
       <CenteredDivPage className="py-[20px]! pl-[20px]! overflow-auto">
         <div className="flex flex-col">
           <div className="flex gap-[20px]! mb-4!">
@@ -86,7 +92,10 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              <div id="seekbar" className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full">
+              <div
+                id="seekbar"
+                className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full"
+              >
                 <div id="progress"></div>
               </div>
               <div className="timecodes flex justify-between">

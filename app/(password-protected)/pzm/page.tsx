@@ -12,7 +12,7 @@ import {
   FaBackward,
   FaPlay,
   FaVolumeUp,
-  FaSearch
+  FaSearch,
 } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
@@ -24,7 +24,13 @@ export default function Page() {
     <>
       <div className="absolute top-2 w-full flex justify-center items-center">
         <div className="max-w-[560px] flex items-center justify-center gap-2 z-100 border-2 border-white p-2! rounded-2xl bg-gray-400/10 backdrop-blur-md backdrop-filter hover:bg-gray-200/20 focus:bg-white/30">
-          <FaSearch /><input className="focus:outline-0" id="searchbar" placeholder="Search for any song..." type="text" />
+          <FaSearch />
+          <input
+            className="focus:outline-0"
+            id="searchbar"
+            placeholder="Search for any song..."
+            type="text"
+          />
         </div>
       </div>
       <CenteredDivPage className="py-[20px]! pl-[20px]! overflow-auto">

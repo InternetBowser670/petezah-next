@@ -16,12 +16,14 @@ import {
 } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
+import { v4 } from "uuid";
 
 interface ITunesResult {
   trackName: string;
   artistName: string;
   artworkUrl100: string;
   previewUrl: string;
+  id: string;
 }
 
 interface ITunesResponse {
@@ -35,24 +37,20 @@ export default function Page() {
   const [searchResults, setSearchResults] = useState<ITunesResponse | null>(
     null
   );
+  const [queue, setQueue] = useState<ITunesResult[] | null>(null);
 
   const SEARCH_EP = "https://itunes.apple.com/search?term=";
 
   async function getSearchResults(query: string | null) {
     if (query == null) return;
-
     const url = `${SEARCH_EP}${encodeURIComponent(query)}&media=music&limit=10`;
-
     try {
       const response = await fetch(url);
       const data = await response.json();
       return data;
     } catch (e) {
       console.log(e);
-      return {
-        type: "error",
-        message: e,
-      };
+      return { type: "error", message: e };
     }
   }
 
@@ -65,7 +63,6 @@ export default function Page() {
         setSearchResults(null);
       }
     }, 500);
-
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
@@ -96,9 +93,16 @@ export default function Page() {
                     key={track.previewUrl}
                     className="flex items-center gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg"
                     onClick={() => {
-                      setAlbumCoverSRC(
-                        track.artworkUrl100.replaceAll("100", "600")
-                      );
+                      const trackWithId: ITunesResult = {
+                        ...track,
+                        id: v4(),
+                      };
+                      if (queue == null || queue.length === 0) {
+                        setAlbumCoverSRC(
+                          track.artworkUrl100.replaceAll("100", "600")
+                        );
+                      }
+                      setQueue([...(queue ?? []), trackWithId]);
                       setSearchQuery("");
                     }}
                   >
@@ -124,27 +128,21 @@ export default function Page() {
           )}
         </div>
       </div>
-      <CenteredDivPage className="py-[20px]! pl-[20px]! overflow-auto">
+      <CenteredDivPage className="p-[20px]! overflow-auto flex max-h-[80%]">
         <div className="flex flex-col">
           <div className="flex gap-[20px]! mb-4!">
-            {" "}
             <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
               {albumCoverSRC ? (
-                <>
-                  {" "}
-                  <img
-                    src={albumCoverSRC}
-                    alt="Album Art"
-                    crossOrigin="anonymous"
-                  />
-                </>
+                <img
+                  src={albumCoverSRC}
+                  alt="Album Art"
+                  crossOrigin="anonymous"
+                />
               ) : (
-                <>
-                  <MusicalNoteIcon
-                    className="m-10! text-white/50"
-                    id="musicIcon"
-                  />
-                </>
+                <MusicalNoteIcon
+                  className="m-10! text-white/50"
+                  id="musicIcon"
+                />
               )}
             </div>
             <div
@@ -155,18 +153,16 @@ export default function Page() {
                 <h1 className="track-title text-3xl" id="trackTitle">
                   Not Playing
                 </h1>
-                {
-                  false && (
-                    <StarIcon
-                      id="favoritesBtn"
-                      className="w-[18px] h-[18px] cursor-pointer text-white/60"
-                    />
-                  ) /* Not yet lol */
-                }
+                {false && (
+                  <StarIcon
+                    id="favoritesBtn"
+                    className="w-[18px] h-[18px] cursor-pointer text-white/60"
+                  />
+                )}
               </div>
               <div className="artist mb-[20px]!" id="artistName"></div>
               <div className="controls">
-                <div className="control-row flex gap-3  mb-[10px]! w-full items-center justify-center">
+                <div className="control-row flex gap-3 mb-[10px]! w-full items-center justify-center">
                   <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
                     <FaBackward id="backward10" className="size-full" />
                   </div>
@@ -183,7 +179,6 @@ export default function Page() {
                     <FaForward id="forward10" className="size-full" />
                   </div>
                 </div>
-
                 <div className="control-row flex gap-3! mb-[15px]! w-full items-center justify-center">
                   <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
                     <FaRepeat id="loopToggle" className="size-full" />
@@ -209,6 +204,43 @@ export default function Page() {
             </div>
           </div>
           <WipWarning />
+        </div>
+        <div className="bl-2 bl-white">
+          {queue && queue.length > 0 && (
+            <>
+              {queue.map((track) => (
+                <div
+                  key={track.id}
+                  className="flex items-center gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg"
+                  onClick={() => {
+                    const trackWithId: ITunesResult = {
+                      ...track,
+                      id: v4(),
+                    };
+                    if (queue == null || queue.length === 0) {
+                      setAlbumCoverSRC(
+                        track.artworkUrl100.replaceAll("100", "600")
+                      );
+                    }
+                    setQueue([...(queue ?? []), trackWithId]);
+                    setSearchQuery("");
+                  }}
+                >
+                  <img
+                    src={track.artworkUrl100}
+                    alt={track.trackName}
+                    width={50}
+                    height={50}
+                    className="rounded-md"
+                  />
+                  <div>
+                    <p className="text-white">{track.trackName}</p>
+                    <p className="text-white/70 text-sm">{track.artistName}</p>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </CenteredDivPage>
     </>

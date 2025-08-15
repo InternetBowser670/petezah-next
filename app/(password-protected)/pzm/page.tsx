@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import CenteredDivPage from "@/ui/global/centered-div-page";
 import { useEffect, useState } from "react";
 import { MusicalNoteIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/outline";
@@ -17,6 +16,7 @@ import {
 import { FaRepeat } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
 import { v4 } from "uuid";
+import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 
 interface ITunesResult {
   trackName: string;
@@ -128,86 +128,91 @@ export default function Page() {
           )}
         </div>
       </div>
-      <CenteredDivPage className="p-[20px]! overflow-auto flex max-h-[80%]">
-        <div className="flex flex-col">
-          <div className="flex gap-[20px]! mb-4!">
-            <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
-              {albumCoverSRC ? (
-                <img
-                  src={albumCoverSRC}
-                  alt="Album Art"
-                  crossOrigin="anonymous"
-                />
-              ) : (
-                <MusicalNoteIcon
-                  className="m-10! text-white/50"
-                  id="musicIcon"
-                />
-              )}
-            </div>
-            <div
-              className="info flex flex-col justify-center w-[400px]"
-              id="playerInfo"
-            >
-              <div className="top-icons flex gap-10 justify-between items-center">
-                <h1 className="track-title text-3xl" id="trackTitle">
-                  Not Playing
-                </h1>
-                {false && (
-                  <StarIcon
-                    id="favoritesBtn"
-                    className="w-[18px] h-[18px] cursor-pointer text-white/60"
+      <div
+        className={`flex items-center relative justify-center h-[100%] gap-3`}
+      >
+        <MarqueeBg />
+        <div className="max-w-[80%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto flex max-h-[80%]">
+          <div className="flex flex-col">
+            <div className="flex gap-[20px]! mb-4!">
+              <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
+                {albumCoverSRC ? (
+                  <img
+                    src={albumCoverSRC}
+                    alt="Album Art"
+                    crossOrigin="anonymous"
+                  />
+                ) : (
+                  <MusicalNoteIcon
+                    className="m-10! text-white/50"
+                    id="musicIcon"
                   />
                 )}
               </div>
-              <div className="artist mb-[20px]!" id="artistName"></div>
-              <div className="controls">
-                <div className="control-row flex gap-3 mb-[10px]! w-full items-center justify-center">
-                  <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                    <FaBackward id="backward10" className="size-full" />
-                  </div>
-                  <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                    <FaChevronLeft id="backward5" className="size-full" />
-                  </div>
-                  <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                    <FaPlay id="playPause" className="size-full" />
-                  </div>
-                  <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                    <FaChevronRight id="forward5" className="size-full" />
-                  </div>
-                  <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                    <FaForward id="forward10" className="size-full" />
-                  </div>
-                </div>
-                <div className="control-row flex gap-3! mb-[15px]! w-full items-center justify-center">
-                  <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                    <FaRepeat id="loopToggle" className="size-full" />
-                  </div>
-                  <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                    <FaVolumeUp id="volumeBtn" className="size-full" />
-                  </div>
-                </div>
-              </div>
               <div
-                id="seekbar"
-                className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full"
+                className="info flex flex-col justify-center w-[400px]"
+                id="playerInfo"
               >
-                <div id="progress"></div>
+                <div className="top-icons flex gap-10 justify-between items-center">
+                  <h1 className="track-title text-3xl" id="trackTitle">
+                    Not Playing
+                  </h1>
+                  {false && (
+                    <StarIcon
+                      id="favoritesBtn"
+                      className="w-[18px] h-[18px] cursor-pointer text-white/60"
+                    />
+                  )}
+                </div>
+                <div className="artist mb-[20px]!" id="artistName"></div>
+                <div className="controls">
+                  <div className="control-row flex gap-3 mb-[10px]! w-full items-center justify-center">
+                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaBackward id="backward10" className="size-full" />
+                    </div>
+                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaChevronLeft id="backward5" className="size-full" />
+                    </div>
+                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaPlay id="playPause" className="size-full" />
+                    </div>
+                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaChevronRight id="forward5" className="size-full" />
+                    </div>
+                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaForward id="forward10" className="size-full" />
+                    </div>
+                  </div>
+                  <div className="control-row flex gap-3! mb-[15px]! w-full items-center justify-center">
+                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaRepeat id="loopToggle" className="size-full" />
+                    </div>
+                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaVolumeUp id="volumeBtn" className="size-full" />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="seekbar"
+                  className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full"
+                >
+                  <div id="progress"></div>
+                </div>
+                <div className="timecodes flex justify-between">
+                  <span id="currentTime">0:00</span>
+                  <span id="remainingTime">-0:00</span>
+                </div>
               </div>
-              <div className="timecodes flex justify-between">
-                <span id="currentTime">0:00</span>
-                <span id="remainingTime">-0:00</span>
+              <div className="lyrics-info" id="lyricsInfo">
+                <div className="lyrics-content" id="lyricsContent"></div>
               </div>
             </div>
-            <div className="lyrics-info" id="lyricsInfo">
-              <div className="lyrics-content" id="lyricsContent"></div>
-            </div>
+            <WipWarning />
           </div>
-          <WipWarning />
         </div>
-        <div className="bl-2 bl-white">
-          {queue && queue.length > 0 && (
-            <>
+        {queue && queue.length > 0 && (
+          <>
+            <div className="max-w-[80%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
               {queue.map((track) => (
                 <div
                   key={track.id}
@@ -239,10 +244,10 @@ export default function Page() {
                   </div>
                 </div>
               ))}
-            </>
-          )}
-        </div>
-      </CenteredDivPage>
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }

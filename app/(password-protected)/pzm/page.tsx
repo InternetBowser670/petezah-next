@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import Image from "next/image";
 import CenteredDivPage from "@/ui/global/centered-div-page";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MusicalNoteIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/outline";
 import {
@@ -17,31 +17,126 @@ import {
 import { FaRepeat } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
 
+interface ITunesResult {
+  trackName: string;
+  artistName: string;
+  artworkUrl100: string;
+  previewUrl: string;
+}
+
+interface ITunesResponse {
+  resultCount: number;
+  results: ITunesResult[];
+}
+
 export default function Page() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [albumCoverSRC, setAlbumCoverSRC] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<ITunesResponse | null>(
+    null
+  );
+
+  const SEARCH_EP = "https://itunes.apple.com/search?term=";
+
+  async function getSearchResults(query: string | null) {
+    if (query == null) return;
+
+    const url = `${SEARCH_EP}${encodeURIComponent(query)}&media=music&limit=10`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (e) {
+      console.log(e);
+      return {
+        type: "error",
+        message: e,
+      };
+    }
+  }
+
+  useEffect(() => {
+    const handler = setTimeout(async () => {
+      if (searchQuery.trim().length > 0) {
+        const results = await getSearchResults(searchQuery);
+        setSearchResults(results);
+      } else {
+        setSearchResults(null);
+      }
+    }, 500);
+
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
   return (
     <>
       <div className="absolute top-2 w-full flex justify-center items-center">
-        <div className="max-w-[560px] flex items-center justify-center gap-2 z-100 border-2 border-white p-2! rounded-2xl bg-gray-400/10 backdrop-blur-md backdrop-filter hover:bg-gray-200/20 focus:bg-white/30">
-          <FaSearch />
-          <input
-            className="focus:outline-0"
-            id="searchbar"
-            placeholder="Search for any song..."
-            type="text"
-          />
+        <div className="max-w-[560px] max-h-[80vh] overflow-y-auto transition-all z-100 border-2 border-white p-2! rounded-2xl bg-gray-400/10 backdrop-blur-md backdrop-filter hover:bg-gray-200/20 focus:bg-white/30">
+          <div className="flex items-center justify-center gap-2">
+            <FaSearch />
+            <input
+              className="focus:outline-0"
+              id="searchbar"
+              placeholder="Search for any song..."
+              type="text"
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+              }}
+              value={searchQuery}
+            />
+          </div>
+          {searchQuery && (
+            <div className="flex flex-col gap-2 mt-2">
+              {searchResults == null ? (
+                <p className="text-white/70">Searching...</p>
+              ) : searchResults.resultCount > 0 ? (
+                searchResults.results.map((track) => (
+                  <div
+                    key={track.previewUrl}
+                    className="flex items-center gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg"
+                    onClick={() => {
+                      setAlbumCoverSRC(
+                        track.artworkUrl100.replaceAll("100", "600")
+                      );
+                      setSearchQuery("");
+                    }}
+                  >
+                    <img
+                      src={track.artworkUrl100}
+                      alt={track.trackName}
+                      width={50}
+                      height={50}
+                      className="rounded-md"
+                    />
+                    <div>
+                      <p className="text-white">{track.trackName}</p>
+                      <p className="text-white/70 text-sm">
+                        {track.artistName}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-white/70">No results found</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
       <CenteredDivPage className="py-[20px]! pl-[20px]! overflow-auto">
         <div className="flex flex-col">
           <div className="flex gap-[20px]! mb-4!">
             {" "}
-            <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl">
+            <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
               {albumCoverSRC ? (
                 <>
                   {" "}
-                  <Image src="" alt="Album Art" crossOrigin="anonymous" />
+                  <img
+                    src={albumCoverSRC}
+                    alt="Album Art"
+                    crossOrigin="anonymous"
+                  />
                 </>
               ) : (
                 <>

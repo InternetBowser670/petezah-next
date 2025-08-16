@@ -17,7 +17,7 @@ export default function TextWithSeeMore({
       {text.length > maxLength ? (
         <>
           {isExpanded ? text : text.slice(0, maxLength) + "..."}
-          <button className="underline pl-2" onClick={toggleExpansion}>
+          <button className="underline pl-2!" onClick={toggleExpansion}>
             {isExpanded ? "See Less" : "See More"}
           </button>
         </>

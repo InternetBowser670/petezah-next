@@ -12,11 +12,14 @@ import {
   FaPlay,
   FaVolumeUp,
   FaSearch,
+  FaTrashAlt,
 } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
 import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
+import clsx from "clsx";
+import TextWithSeeMore from "@/ui/global/text-with-see-more";
 
 interface ITunesResult {
   trackName: string;
@@ -132,7 +135,12 @@ export default function Page() {
         className={`flex items-center relative justify-center h-[100%] gap-3`}
       >
         <MarqueeBg />
-        <div className="max-w-[80%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto flex max-h-[80%]">
+        <div
+          className={clsx(
+            "rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto flex max-h-[80%]",
+            queue ? "max-w-[60%]" : "max-w-[90%]"
+          )}
+        >
           <div className="flex flex-col">
             <div className="flex gap-[20px]! mb-4!">
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
@@ -212,35 +220,47 @@ export default function Page() {
         </div>
         {queue && queue.length > 0 && (
           <>
-            <div className="max-w-[80%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
-              {queue.map((track) => (
+            <div className="max-w-[30%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
+              {queue.map((currentTrack) => (
                 <div
-                  key={track.id}
-                  className="flex items-center gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg"
-                  onClick={() => {
-                    const trackWithId: ITunesResult = {
-                      ...track,
-                      id: v4(),
-                    };
-                    if (queue == null || queue.length === 0) {
-                      setAlbumCoverSRC(
-                        track.artworkUrl100.replaceAll("100", "600")
-                      );
-                    }
-                    setQueue([...(queue ?? []), trackWithId]);
-                    setSearchQuery("");
-                  }}
+                  key={currentTrack.id}
+                  className="flex items-center justify-between gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg h-[90px]"
                 >
-                  <img
-                    src={track.artworkUrl100}
-                    alt={track.trackName}
-                    width={50}
-                    height={50}
-                    className="rounded-md"
-                  />
+                  <div className="flex items-center gap-3">
+                    {" "}
+                    <img
+                      src={currentTrack.artworkUrl100}
+                      alt={currentTrack.trackName}
+                      width={50}
+                      height={50}
+                      className="rounded-md"
+                    />
+                    <div>
+                      <TextWithSeeMore
+                        text={currentTrack.trackName}
+                        className="text-white"
+                        maxLength={15}
+                      />
+                      <TextWithSeeMore
+                        text={currentTrack.artistName}
+                        className="text-white"
+                        maxLength={15}
+                      />
+                    </div>
+                  </div>
                   <div>
-                    <p className="text-white">{track.trackName}</p>
-                    <p className="text-white/70 text-sm">{track.artistName}</p>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setQueue(
+                          queue.filter((track) => track.id !== currentTrack.id)
+                        );
+                      }}
+                      className="rounded-full mr-2! p-3! hover:bg-white/30 z-100"
+                    >
+                      <FaTrashAlt />
+                    </button>
                   </div>
                 </div>
               ))}

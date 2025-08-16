@@ -19,7 +19,7 @@ import { WipWarning } from "@/ui/wip/wip-page";
 import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
-import TextWithSeeMore from "@/ui/global/text-with-see-more";
+import MarqueeText from "@/ui/global/marquee-text";
 
 interface ITunesResult {
   trackName: string;
@@ -35,12 +35,14 @@ interface ITunesResponse {
 }
 
 export default function Page() {
-  const [albumCoverSRC, setAlbumCoverSRC] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<ITunesResponse | null>(
     null
   );
   const [queue, setQueue] = useState<ITunesResult[] | null>(null);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState<null | number>(
+    null
+  );
 
   const SEARCH_EP = "https://itunes.apple.com/search?term=";
 
@@ -101,9 +103,7 @@ export default function Page() {
                         id: v4(),
                       };
                       if (queue == null || queue.length === 0) {
-                        setAlbumCoverSRC(
-                          track.artworkUrl100.replaceAll("100", "600")
-                        );
+                        setCurrentTrackIndex(0);
                       }
                       setQueue([...(queue ?? []), trackWithId]);
                       setSearchQuery("");
@@ -144,9 +144,12 @@ export default function Page() {
           <div className="flex flex-col">
             <div className="flex gap-[20px]! mb-4!">
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
-                {albumCoverSRC ? (
+                {queue && currentTrackIndex != null ? (
                   <img
-                    src={albumCoverSRC}
+                    src={queue[currentTrackIndex].artworkUrl100.replaceAll(
+                      "100",
+                      "600"
+                    )}
                     alt="Album Art"
                     crossOrigin="anonymous"
                   />
@@ -221,30 +224,25 @@ export default function Page() {
         {queue && queue.length > 0 && (
           <>
             <div className="max-w-[30%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
-              {queue.map((currentTrack) => (
+              {queue.map((trackData) => (
                 <div
-                  key={currentTrack.id}
+                  key={trackData.id}
                   className="flex items-center justify-between gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg h-[90px]"
                 >
                   <div className="flex items-center gap-3">
                     {" "}
                     <img
-                      src={currentTrack.artworkUrl100}
-                      alt={currentTrack.trackName}
+                      src={trackData.artworkUrl100}
+                      alt={trackData.trackName}
                       width={50}
                       height={50}
                       className="rounded-md"
                     />
-                    <div>
-                      <TextWithSeeMore
-                        text={currentTrack.trackName}
-                        className="text-white"
-                        maxLength={15}
-                      />
-                      <TextWithSeeMore
-                        text={currentTrack.artistName}
-                        className="text-white"
-                        maxLength={15}
+                    <div className="flex flex-col gap-1">
+                      <MarqueeText text={trackData.trackName} />
+                      <MarqueeText
+                        className="text-white/70 text-sm border-white/70"
+                        text={trackData.artistName}
                       />
                     </div>
                   </div>
@@ -254,7 +252,7 @@ export default function Page() {
                         e.preventDefault();
                         e.stopPropagation();
                         setQueue(
-                          queue.filter((track) => track.id !== currentTrack.id)
+                          queue.filter((track) => track.id !== trackData.id)
                         );
                       }}
                       className="rounded-full mr-2! p-3! hover:bg-white/30 z-100"

@@ -57,7 +57,7 @@
     "@types/react-dom": "^19",
     "@types/three": "^0.176.0",
     "cross-env": "^7.0.3",
-    "dependency-cruiser": "^17.0.0",
+    "dependency-cruiser": "^17.0.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "supabase": "^2.26.9",

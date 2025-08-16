@@ -44,11 +44,13 @@ export default function Page() {
     null
   );
 
-  const SEARCH_EP = "https://itunes.apple.com/search?term=";
+  const SEARCH_URL = "https://itunes.apple.com/search?term=";
 
   async function getSearchResults(query: string | null) {
     if (query == null) return;
-    const url = `${SEARCH_EP}${encodeURIComponent(query)}&media=music&limit=10`;
+    const url = `${SEARCH_URL}${encodeURIComponent(
+      query
+    )}&media=music&limit=10`;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -166,7 +168,9 @@ export default function Page() {
               >
                 <div className="top-icons flex gap-10 justify-between items-center">
                   <h1 className="track-title text-3xl" id="trackTitle">
-                    Not Playing
+                    {queue && currentTrackIndex != null
+                      ? queue[currentTrackIndex].trackName
+                      : "Not Playing"}
                   </h1>
                   {false && (
                     <StarIcon
@@ -175,7 +179,11 @@ export default function Page() {
                     />
                   )}
                 </div>
-                <div className="artist mb-[20px]!" id="artistName"></div>
+                <div className="mb-[20px]! text-gray-500">
+                  {queue &&
+                    currentTrackIndex != null &&
+                    queue[currentTrackIndex].artistName}
+                </div>
                 <div className="controls">
                   <div className="control-row flex gap-3 mb-[10px]! w-full items-center justify-center">
                     <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">

@@ -56,5 +56,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 [![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://render.com/deploy?repo=https://github.com/PeteZah-Games/petezah-next)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/PeteZah-Games/petezah-next)
 >
-> [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rhenryw/UV-Static-2.0)
-[![Open in Codenywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/rhenryw/UV-Static-2.0)
+> [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/PeteZah-Games/petezah-next)
+[![Open in Codenywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/PeteZah-Games/petezah-next)

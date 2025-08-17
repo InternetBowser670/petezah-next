@@ -20,6 +20,7 @@ import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
 import MarqueeText from "@/ui/global/marquee-text";
+import YouTube, { YouTubeProps } from "react-youtube";
 
 interface YTMusicReult {
   name: string;
@@ -76,6 +77,33 @@ export default function Page() {
       .toString()
       .padStart(2, "0");
     return `${minutes}:${secs}`;
+  }
+
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    console.log(event);
+  };
+
+  const onPlayerEnd: YouTubeProps["onEnd"] = () => {
+    if (
+      currentTrackIndex != null &&
+      queue &&
+      queue?.length > currentTrackIndex
+    ) {
+      setCurrentTrackIndex(currentTrackIndex + 1);
+    }
+  };
+
+  const opts: YouTubeProps["opts"] = {
+    height: "0",
+    width: "0",
+    playerVars: {
+      // i aint deleting ts - dont try to make me
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
+  if (queue && queue.length > 0 && currentTrackIndex != null) {
+    console.log(queue[currentTrackIndex].videoId);
   }
 
   return (
@@ -231,53 +259,89 @@ export default function Page() {
                       : "-0:00"}
                   </span>
                 </div>
+                {queue && queue.length > 0 && currentTrackIndex != null && (
+                  <YouTube
+                    videoId={queue[currentTrackIndex].videoId}
+                    onReady={onPlayerReady}
+                    opts={opts}
+                    onEnd={onPlayerEnd}
+                  />
+                )}
               </div>
               <div className="lyrics-info" id="lyricsInfo">
                 <div className="lyrics-content" id="lyricsContent"></div>
               </div>
             </div>
             <WipWarning />
+            <div className="flex justify-center items-center">
+              <h1>
+                The music <span className="italic">should</span> play, but the
+                control buttons above don&apos;t do anything yet.
+              </h1>
+            </div>
           </div>
         </div>
         {queue && queue.length > 0 && (
           <>
             <div className="max-w-[30%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
-              {queue.map((trackData) => (
+              {queue.map((trackData, index) => (
                 <div
                   key={trackData.id}
-                  className="flex items-center justify-between gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg h-[90px]"
+                  className={clsx(
+                    "flex items-center justify-between gap-3 cursor-pointer p-2! rounded-lg h-[90px]",
+                    index == currentTrackIndex
+                      ? "bg-white/10 hover:bg-white/20"
+                      : "hover:bg-white/10"
+                  )}
                 >
-                  <div className="flex items-center gap-3">
-                    {" "}
-                    <img
-                      src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
-                        trackData.thumbnails.sort(
-                          (a, b) => b.width - a.width
-                        )[0].url
-                      )}`}
-                      alt={trackData.name}
-                      width={50}
-                      height={50}
-                      className="rounded-md"
-                    />
-                    <div className="flex flex-col gap-1">
-                      <MarqueeText text={trackData.name} />
-                      <MarqueeText
-                        className="text-white/70 text-sm border-white/70"
-                        text={trackData.artist.name}
+                  {" "}
+                  <button
+                    onClick={() => {
+                      setCurrentTrackIndex(index);
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      {" "}
+                      <img
+                        src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
+                          trackData.thumbnails.sort(
+                            (a, b) => b.width - a.width
+                          )[0].url
+                        )}`}
+                        alt={trackData.name}
+                        width={50}
+                        height={50}
+                        className="rounded-md"
                       />
+                      <div className="flex flex-col gap-1">
+                        <MarqueeText text={trackData.name} />
+                        <MarqueeText
+                          className="text-white/70 text-sm border-white/70"
+                          text={trackData.artist.name}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  </button>
                   <div>
                     <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        setQueue(
-                          queue.filter((track) => track.id !== trackData.id)
-                        );
+                        if (
+                          currentTrackIndex != null &&
+                          index >= currentTrackIndex
+                        ) {
+                          setQueue(
+                            queue.filter((track) => track.id !== trackData.id)
+                          );
+                        } else if (
+                          currentTrackIndex != null &&
+                          index < currentTrackIndex
+                        ) {
+                          setCurrentTrackIndex(currentTrackIndex - 1);
+                        }
                       }}
-                      className="rounded-full mr-2! p-3! hover:bg-white/30 z-100"
+                      className="rounded-full mr-2! p-3! bg-white/20 hover:bg-white/30 z-100"
                     >
                       <FaTrashAlt />
                     </button>

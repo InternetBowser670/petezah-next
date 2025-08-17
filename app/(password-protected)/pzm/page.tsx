@@ -285,7 +285,7 @@ export default function Page() {
                       }}
                       className={clsx(
                         "w-full h-[6px] cursor-pointer appearance-none rounded-3xl",
-                        "bg-white/20 accent-white hover:h-[12px] transition-all duration-300"
+                        "bg-white/30 accent-white hover:h-[12px] transition-all duration-300 [&::-webkit-slider-thumb]:bg-blue-500"
                       )}
                     />
                   </div>
@@ -294,7 +294,7 @@ export default function Page() {
                     <div className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full"></div>
                   </>
                 )}
-                <div className="timecodes flex justify-between mt-2!">
+                <div className="timecodes flex justify-between mt-1">
                   <span>{formatTime(currentTime)}</span>
                   <span>
                     {queue && queue.length > 0 && currentTrackIndex != null

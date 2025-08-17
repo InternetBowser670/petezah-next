@@ -283,12 +283,12 @@ export default function Page() {
         </div>
         {queue && queue.length > 0 && (
           <>
-            <div className="max-w-[30%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
+            <div className="flex flex-col gap-2 max-w-[30%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
               {queue.map((trackData, index) => (
                 <div
                   key={trackData.id}
                   className={clsx(
-                    "flex items-center justify-between gap-3 cursor-pointer p-2! rounded-lg h-[90px]",
+                    "flex items-center justify-between gap-3 cursor-pointer px-2! rounded-lg h-[90px]",
                     index == currentTrackIndex
                       ? "bg-white/10 hover:bg-white/20"
                       : "hover:bg-white/10"
@@ -299,6 +299,7 @@ export default function Page() {
                     onClick={() => {
                       setCurrentTrackIndex(index);
                     }}
+                    className="w-full"
                   >
                     <div className="flex items-center gap-3">
                       {" "}

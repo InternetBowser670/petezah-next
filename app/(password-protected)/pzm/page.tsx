@@ -299,7 +299,7 @@ export default function Page() {
                     onClick={() => {
                       setCurrentTrackIndex(index);
                     }}
-                    className="w-full"
+                    className="w-full h-full"
                   >
                     <div className="flex items-center gap-3">
                       {" "}

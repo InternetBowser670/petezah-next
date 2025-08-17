@@ -24,7 +24,7 @@ import MarqueeText from "@/ui/global/marquee-text";
 interface YTMusicReult {
   name: string;
   artist: { artistId: string; name: string };
-  duration: string;
+  duration: number;
   thumbnails: { height: number; width: number; url: string }[];
   videoId: string;
   id: string;
@@ -69,6 +69,14 @@ export default function Page() {
     }, 500);
     return () => clearTimeout(handler);
   }, [searchQuery]);
+
+  function formatTime(seconds: number) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${minutes}:${secs}`;
+  }
 
   return (
     <>
@@ -217,7 +225,11 @@ export default function Page() {
                 </div>
                 <div className="timecodes flex justify-between">
                   <span id="currentTime">0:00</span>
-                  <span id="remainingTime">-0:00</span>
+                  <span id="remainingTime">
+                    {queue && queue.length > 0 && currentTrackIndex != null
+                      ? formatTime(queue[currentTrackIndex].duration)
+                      : "-0:00"}
+                  </span>
                 </div>
               </div>
               <div className="lyrics-info" id="lyricsInfo">

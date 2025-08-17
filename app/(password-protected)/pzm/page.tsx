@@ -105,10 +105,10 @@ export default function Page() {
                     }}
                   >
                     <img
-                      src={
-                        track.thumbnails.sort((a, b) => a.width - b.width)[0]
+                      src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
+                        track.thumbnails.sort((a, b) => b.width - a.width)[0]
                           .url
-                      }
+                      )}`}
                       alt={track.name}
                       width={50}
                       height={50}
@@ -144,11 +144,11 @@ export default function Page() {
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
                 {queue && currentTrackIndex != null ? (
                   <img
-                    src={
+                    src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
                       queue[currentTrackIndex].thumbnails.sort(
-                        (a, b) => a.width - b.width
+                        (a, b) => b.width - a.width
                       )[0].url
-                    }
+                    )}`}
                     alt="Album Art"
                     crossOrigin="anonymous"
                   />
@@ -237,11 +237,11 @@ export default function Page() {
                   <div className="flex items-center gap-3">
                     {" "}
                     <img
-                      src={
+                      src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
                         trackData.thumbnails.sort(
-                          (a, b) => a.width - b.width
+                          (a, b) => b.width - a.width
                         )[0].url
-                      }
+                      )}`}
                       alt={trackData.name}
                       width={50}
                       height={50}

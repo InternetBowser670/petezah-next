@@ -142,7 +142,7 @@ export default function Page() {
           <div className="flex flex-col">
             <div className="flex gap-[20px]! mb-4!">
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
-                {queue && currentTrackIndex != null ? (
+                {queue && queue.length > 0 && currentTrackIndex != null ? (
                   <img
                     src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
                       queue[currentTrackIndex].thumbnails.sort(
@@ -165,7 +165,7 @@ export default function Page() {
               >
                 <div className="top-icons flex gap-10 justify-between items-center">
                   <h1 className="track-title text-3xl" id="trackTitle">
-                    {queue && currentTrackIndex != null
+                    {queue && queue.length > 0 && currentTrackIndex != null
                       ? queue[currentTrackIndex].name
                       : "Not Playing"}
                   </h1>
@@ -178,6 +178,7 @@ export default function Page() {
                 </div>
                 <div className="mb-[20px]! text-gray-500">
                   {queue &&
+                    queue.length > 0 &&
                     currentTrackIndex != null &&
                     queue[currentTrackIndex].artist.name}
                 </div>

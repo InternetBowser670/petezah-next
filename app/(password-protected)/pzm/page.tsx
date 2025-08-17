@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { MusicalNoteIcon } from "@heroicons/react/24/solid";
 import { StarIcon } from "@heroicons/react/24/outline";
 import {
@@ -80,7 +80,7 @@ export default function Page() {
   }
 
   const onPlayerReady: YouTubeProps["onReady"] = (event) => {
-    console.log(event);
+    playerRef.current = event.target;
   };
 
   const onPlayerEnd: YouTubeProps["onEnd"] = () => {
@@ -102,9 +102,22 @@ export default function Page() {
       autoplay: 1,
     },
   };
-  if (queue && queue.length > 0 && currentTrackIndex != null) {
-    console.log(queue[currentTrackIndex].videoId);
-  }
+
+  console.log("Player state " + YouTube.PlayerState);
+
+  const [currentTime, setCurrentTime] = useState(0);
+  const playerRef = useRef<YT.Player | null>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (playerRef.current) {
+        const time = playerRef.current.getCurrentTime();
+        setCurrentTime(time);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -178,7 +191,10 @@ export default function Page() {
           <div className="flex flex-col">
             <div className="flex gap-[20px]! mb-4!">
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
-                {queue && queue.length > 0 && currentTrackIndex != null ? (
+                {queue &&
+                queue.length > 0 &&
+                currentTrackIndex != null &&
+                currentTrackIndex <= queue.length - 1 ? (
                   <img
                     src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
                       queue[currentTrackIndex].thumbnails.sort(
@@ -201,7 +217,10 @@ export default function Page() {
               >
                 <div className="top-icons flex gap-10 justify-between items-center">
                   <h1 className="track-title text-3xl" id="trackTitle">
-                    {queue && queue.length > 0 && currentTrackIndex != null
+                    {queue &&
+                    queue.length > 0 &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex <= queue.length - 1
                       ? queue[currentTrackIndex].name
                       : "Not Playing"}
                   </h1>
@@ -216,6 +235,7 @@ export default function Page() {
                   {queue &&
                     queue.length > 0 &&
                     currentTrackIndex != null &&
+                    currentTrackIndex <= queue.length - 1 &&
                     queue[currentTrackIndex].artist.name}
                 </div>
                 <div className="controls">
@@ -245,17 +265,43 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
-                <div
-                  id="seekbar"
-                  className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full"
-                >
-                  <div id="progress"></div>
-                </div>
-                <div className="timecodes flex justify-between">
-                  <span id="currentTime">0:00</span>
-                  <span id="remainingTime">
+                {queue &&
+                queue.length > 0 &&
+                currentTrackIndex != null &&
+                currentTrackIndex <= queue.length - 1 ? (
+                  <div className="w-full flex items-center gap-2">
+                    <input
+                      type="range"
+                      min={0}
+                      max={queue[currentTrackIndex].duration}
+                      step={1}
+                      value={currentTime}
+                      onChange={(e) => {
+                        const newTime = Number(e.target.value);
+                        setCurrentTime(newTime);
+                        if (playerRef.current) {
+                          playerRef.current.seekTo(newTime, true);
+                        }
+                      }}
+                      className={clsx(
+                        "w-full h-[6px] cursor-pointer appearance-none rounded-3xl",
+                        "bg-white/20 accent-white hover:h-[12px] transition-all duration-300"
+                      )}
+                    />
+                  </div>
+                ) : (
+                  <>
+                    <div className="h-[6px] bg-white/20 rounded-3xl relative hover:h-[12px] transition-all duration-300 w-full"></div>
+                  </>
+                )}
+                <div className="timecodes flex justify-between mt-2!">
+                  <span>{formatTime(currentTime)}</span>
+                  <span>
                     {queue && queue.length > 0 && currentTrackIndex != null
-                      ? formatTime(queue[currentTrackIndex].duration)
+                      ? "-" +
+                        formatTime(
+                          queue[currentTrackIndex].duration - currentTime
+                        )
                       : "-0:00"}
                   </span>
                 </div>

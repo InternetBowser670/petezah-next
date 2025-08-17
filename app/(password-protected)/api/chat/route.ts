@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     - PeteZah-Next is the next evolution — a modern, blazing-fast proxy platform built with Next.js and React. It delivers unmatched performance, seamless navigation, and rock-solid privacy, all wrapped in a sleek interface. Whether you're bypassing restrictions, accelerating access, or just exploring freely, PeteZah-Next gives you the power to browse without limits — smart, secure, and stylish.
     - PeteZah-Next and PeteZah Games are developed by a group of dedicated individuals from all across the USA. We are committed to delivering a fast, reliable, and useful proxy experience for your everyday browsing needs. Whether you're looking to explore apps or stay connected on the go, our goal is to make it seamless. Join our community on Discord to get updates, offer feedback, or just hang out with the team! 
     - The Proxy's Discord link is https://discord.gg/GqshrYNn62
-    - Github link: https://github.com/InternetBowser670/petezah-next`,
+    - Github link: https://github.com/PeteZah-Games/petezah-next`,
     messages,
   });
 

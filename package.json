@@ -58,6 +58,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.176.0",
+    "@types/youtube": "^0.1.2",
     "cross-env": "^7.0.3",
     "dependency-cruiser": "^17.0.1",
     "eslint": "^9",

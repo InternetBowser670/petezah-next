@@ -103,8 +103,6 @@ export default function Page() {
     },
   };
 
-  console.log("Player state " + YouTube.PlayerState);
-
   const [currentTime, setCurrentTime] = useState(0);
   const playerRef = useRef<YT.Player | null>(null);
 
@@ -196,13 +194,10 @@ export default function Page() {
                 currentTrackIndex != null &&
                 currentTrackIndex <= queue.length - 1 ? (
                   <img
-                    src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
-                      queue[currentTrackIndex].thumbnails.sort(
-                        (a, b) => b.width - a.width
-                      )[0].url
-                    )}`}
+                    src={`https://img.youtube.com/vi/${queue[currentTrackIndex].videoId}/maxresdefault.jpg`}
                     alt="Album Art"
                     crossOrigin="anonymous"
+                    className="object-cover w-full h-full"
                   />
                 ) : (
                   <MusicalNoteIcon
@@ -297,7 +292,11 @@ export default function Page() {
                 <div className="timecodes flex justify-between mt-1">
                   <span>{formatTime(currentTime)}</span>
                   <span>
-                    {queue && queue.length > 0 && currentTrackIndex != null
+                    {queue &&
+                    queue.length > 0 &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex <= queue.length - 1
                       ? "-" +
                         formatTime(
                           queue[currentTrackIndex].duration - currentTime
@@ -305,14 +304,17 @@ export default function Page() {
                       : "-0:00"}
                   </span>
                 </div>
-                {queue && queue.length > 0 && currentTrackIndex != null && (
-                  <YouTube
-                    videoId={queue[currentTrackIndex].videoId}
-                    onReady={onPlayerReady}
-                    opts={opts}
-                    onEnd={onPlayerEnd}
-                  />
-                )}
+                {queue &&
+                  queue.length > 0 &&
+                  currentTrackIndex != null &&
+                  currentTrackIndex <= queue.length - 1 && (
+                    <YouTube
+                      videoId={queue[currentTrackIndex].videoId}
+                      onReady={onPlayerReady}
+                      opts={opts}
+                      onEnd={onPlayerEnd}
+                    />
+                  )}
               </div>
               <div className="lyrics-info" id="lyricsInfo">
                 <div className="lyrics-content" id="lyricsContent"></div>

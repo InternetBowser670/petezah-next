@@ -21,50 +21,47 @@ import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
 import MarqueeText from "@/ui/global/marquee-text";
 
-interface ITunesResult {
-  trackName: string;
-  artistName: string;
-  artworkUrl100: string;
-  previewUrl: string;
+interface YTMusicReult {
+  name: string;
+  artist: { artistId: string; name: string };
+  duration: string;
+  thumbnails: { height: number; width: number; url: string }[];
+  videoId: string;
   id: string;
-}
-
-interface ITunesResponse {
-  resultCount: number;
-  results: ITunesResult[];
 }
 
 export default function Page() {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<ITunesResponse | null>(
+  const [searchResults, setSearchResults] = useState<YTMusicReult[] | null>(
     null
   );
-  const [queue, setQueue] = useState<ITunesResult[] | null>(null);
+  const [queue, setQueue] = useState<YTMusicReult[] | null>(null);
   const [currentTrackIndex, setCurrentTrackIndex] = useState<null | number>(
     null
   );
 
-  const SEARCH_URL = "https://itunes.apple.com/search?term=";
-
   async function getSearchResults(query: string | null) {
     if (query == null) return;
-    const url = `${SEARCH_URL}${encodeURIComponent(
-      query
-    )}&media=music&limit=10`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-    } catch (e) {
-      console.log(e);
-      return { type: "error", message: e };
+
+    const res = await fetch(
+      `/api/ytmusic/search?q=${encodeURIComponent(query)}`
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch search results");
     }
+
+    const data = await res.json();
+
+    return data;
   }
 
   useEffect(() => {
     const handler = setTimeout(async () => {
       if (searchQuery.trim().length > 0) {
         const results = await getSearchResults(searchQuery);
+        for (let i = 0; i < results.length; i++) {
+          results[i].id = v4();
+        }
         setSearchResults(results);
       } else {
         setSearchResults(null);
@@ -94,34 +91,33 @@ export default function Page() {
             <div className="flex flex-col gap-2 mt-2">
               {searchResults == null ? (
                 <p className="text-white/70">Searching...</p>
-              ) : searchResults.resultCount > 0 ? (
-                searchResults.results.map((track) => (
+              ) : searchResults.length > 0 ? (
+                searchResults.map((track) => (
                   <div
-                    key={track.previewUrl}
+                    key={track.id}
                     className="flex items-center gap-3 cursor-pointer hover:bg-white/10 p-2! rounded-lg"
                     onClick={() => {
-                      const trackWithId: ITunesResult = {
-                        ...track,
-                        id: v4(),
-                      };
                       if (queue == null || queue.length === 0) {
                         setCurrentTrackIndex(0);
                       }
-                      setQueue([...(queue ?? []), trackWithId]);
+                      setQueue([...(queue ?? []), track]);
                       setSearchQuery("");
                     }}
                   >
                     <img
-                      src={track.artworkUrl100}
-                      alt={track.trackName}
+                      src={
+                        track.thumbnails.sort((a, b) => a.width - b.width)[0]
+                          .url
+                      }
+                      alt={track.name}
                       width={50}
                       height={50}
                       className="rounded-md"
                     />
                     <div>
-                      <p className="text-white">{track.trackName}</p>
+                      <p className="text-white">{track.name}</p>
                       <p className="text-white/70 text-sm">
-                        {track.artistName}
+                        {track.artist.name}
                       </p>
                     </div>
                   </div>
@@ -148,10 +144,11 @@ export default function Page() {
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
                 {queue && currentTrackIndex != null ? (
                   <img
-                    src={queue[currentTrackIndex].artworkUrl100.replaceAll(
-                      "100",
-                      "600"
-                    )}
+                    src={
+                      queue[currentTrackIndex].thumbnails.sort(
+                        (a, b) => a.width - b.width
+                      )[0].url
+                    }
                     alt="Album Art"
                     crossOrigin="anonymous"
                   />
@@ -169,7 +166,7 @@ export default function Page() {
                 <div className="top-icons flex gap-10 justify-between items-center">
                   <h1 className="track-title text-3xl" id="trackTitle">
                     {queue && currentTrackIndex != null
-                      ? queue[currentTrackIndex].trackName
+                      ? queue[currentTrackIndex].name
                       : "Not Playing"}
                   </h1>
                   {false && (
@@ -182,7 +179,7 @@ export default function Page() {
                 <div className="mb-[20px]! text-gray-500">
                   {queue &&
                     currentTrackIndex != null &&
-                    queue[currentTrackIndex].artistName}
+                    queue[currentTrackIndex].artist.name}
                 </div>
                 <div className="controls">
                   <div className="control-row flex gap-3 mb-[10px]! w-full items-center justify-center">
@@ -240,17 +237,21 @@ export default function Page() {
                   <div className="flex items-center gap-3">
                     {" "}
                     <img
-                      src={trackData.artworkUrl100}
-                      alt={trackData.trackName}
+                      src={
+                        trackData.thumbnails.sort(
+                          (a, b) => a.width - b.width
+                        )[0].url
+                      }
+                      alt={trackData.name}
                       width={50}
                       height={50}
                       className="rounded-md"
                     />
                     <div className="flex flex-col gap-1">
-                      <MarqueeText text={trackData.trackName} />
+                      <MarqueeText text={trackData.name} />
                       <MarqueeText
                         className="text-white/70 text-sm border-white/70"
-                        text={trackData.artistName}
+                        text={trackData.artist.name}
                       />
                     </div>
                   </div>

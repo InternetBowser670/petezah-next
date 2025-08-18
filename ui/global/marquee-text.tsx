@@ -7,7 +7,7 @@ interface MarqueeTextProps {
 }
 
 export default function MarqueeText({ text, className }: MarqueeTextProps) {
-  const [threshold, setThreshold] = useState(50);
+  const [threshold, setThreshold] = useState(40);
 
   useEffect(() => {
     function updateThreshold() {

@@ -40,8 +40,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-**Alternatively, you can use one of the following buttons**
-## Or use the buttons below (You will have to set up enviroment variables)
+## **Alternatively, you can use one of the following buttons**
+
+Or use the buttons below (You will have to set up enviroment variables)
 >
 > [![Deploy to Heroku](https://binbashbanana.github.io/deploy-buttons/buttons/remade/heroku.svg)](https://heroku.com/deploy/?template=https://github.com/PeteZah-Games/petezah-next)
 [![Run on Replit](https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg)](https://replit.com/github/PeteZah-Games/petezah-next)
@@ -59,5 +60,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 > [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/PeteZah-Games/petezah-next)
 [![Open in Codenywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/PeteZah-Games/petezah-next)
 
-# Preview Link:
+## Links
+
+- [sso.adidasnmdcitysock.com](sso.adidasnmdcitysock.com)
+
+More coming soon!
+
+## Preview Link
+
 This will become a booster feature soon. Right now, all users can access the most recent version with [this](https://petezah-next-git-internetbowser670-internetbowsers-projects.vercel.app?_vercel_share=q4vztvGtVmf9s0JpndrkViXlEYHHea3P) link:

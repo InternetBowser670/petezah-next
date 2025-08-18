@@ -218,30 +218,29 @@ export default function Page() {
                 className="info flex flex-col justify-center w-[400px]"
                 id="playerInfo"
               >
-                <div className="top-icons flex gap-10 justify-between items-center">
-                  <h1 className="track-title text-3xl" id="trackTitle">
-                    {queue &&
-                    queue.length > 0 &&
-                    currentTrackIndex != null &&
-                    currentTrackIndex <= queue.length - 1 ? (
-                      <>
-                        {playerRef.current?.getPlayerState() == 3 ? (
-                          <>Loading...</>
-                        ) : (
-                          queue[currentTrackIndex].name
-                        )}
-                      </>
-                    ) : (
-                      "Not Playing"
-                    )}
-                  </h1>
-                  {false && (
-                    <StarIcon
-                      id="favoritesBtn"
-                      className="w-[18px] h-[18px] cursor-pointer text-white/60"
-                    />
-                  )}
+                <div className="top-icons flex items-center gap-3">
+                  <MarqueeText
+                    className="text-3xl flex-1 overflow-y-hidden"
+                    text={
+                      queue &&
+                      queue.length > 0 &&
+                      currentTrackIndex != null &&
+                      currentTrackIndex <= queue.length - 1
+                        ? playerRef.current?.getPlayerState() == 3 ||
+                          !playerRef.current
+                          ? "Loading..."
+                          : queue[currentTrackIndex].name
+                        : "Not Playing"
+                    }
+                  />
+                  <StarIcon
+                    id="favoritesBtn"
+                    width={18}
+                    height={18}
+                    className="flex-shrink-0 w-[18px]! h-[18px]! cursor-pointer text-white/60"
+                  />
                 </div>
+
                 <div className="mb-[20px]! text-gray-500">
                   {queue &&
                     queue.length > 0 &&
@@ -268,7 +267,7 @@ export default function Page() {
                               <FaPause className="size-full" />
                             </button>
                           </>
-                        ) : (
+                        ) : playerRef.current.getPlayerState() == 2 ? (
                           <>
                             <button
                               onClick={resumeSong}
@@ -277,6 +276,10 @@ export default function Page() {
                               <FaPlay className="size-full" />
                             </button>
                           </>
+                        ) : (
+                          <button className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                            <FaPlay className="size-full" />
+                          </button>
                         )}
                       </>
                     ) : (
@@ -385,7 +388,7 @@ export default function Page() {
                 <div
                   key={trackData.id}
                   className={clsx(
-                    "flex items-center justify-between gap-3 cursor-pointer px-2! rounded-lg h-[90px]",
+                    "flex items-center justify-between gap-3 cursor-pointer p-2! rounded-lg",
                     index == currentTrackIndex
                       ? "bg-white/10 hover:bg-white/20"
                       : "hover:bg-white/10"
@@ -412,9 +415,12 @@ export default function Page() {
                         className="rounded-md"
                       />
                       <div className="flex flex-col gap-1">
-                        <MarqueeText text={trackData.name} />
                         <MarqueeText
-                          className="text-white/70 text-sm border-white/70"
+                          text={trackData.name}
+                          className="text-left overflow-x-auto"
+                        />
+                        <MarqueeText
+                          className="text-white/70 text-sm border-white/70 text-left"
                           text={trackData.artist.name}
                         />
                       </div>

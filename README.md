@@ -58,3 +58,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 >
 > [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/PeteZah-Games/petezah-next)
 [![Open in Codenywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/PeteZah-Games/petezah-next)
+
+# Preview Link:
+This will become a booster feature soon. Right now, all users can access the most recent version with [this](https://petezah-next-git-internetbowser670-internetbowsers-projects.vercel.app?_vercel_share=q4vztvGtVmf9s0JpndrkViXlEYHHea3P) link:

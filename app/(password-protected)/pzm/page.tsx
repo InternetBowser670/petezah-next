@@ -40,6 +40,7 @@ export default function Page() {
   const [currentTrackIndex, setCurrentTrackIndex] = useState<null | number>(
     null
   );
+  const [playerState, setPlayerState] = useState<number | null>(null);
 
   async function getSearchResults(query: string | null) {
     if (query == null) return;
@@ -124,6 +125,10 @@ export default function Page() {
   function resumeSong() {
     playerRef.current?.playVideo();
   }
+
+  const onStateChange: YouTubeProps["onStateChange"] = (event) => {
+    setPlayerState(event.target.getPlayerState());
+  };
 
   return (
     <>
@@ -226,8 +231,7 @@ export default function Page() {
                       queue.length > 0 &&
                       currentTrackIndex != null &&
                       currentTrackIndex <= queue.length - 1
-                        ? playerRef.current?.getPlayerState() == 3 ||
-                          !playerRef.current
+                        ? playerState == 3 || !playerRef.current
                           ? "Loading..."
                           : queue[currentTrackIndex].name
                         : "Not Playing"
@@ -260,7 +264,7 @@ export default function Page() {
                     </div>
                     {playerRef.current ? (
                       <>
-                        {playerRef.current.getPlayerState() == 1 ? (
+                        {playerState == 1 ? (
                           <>
                             <button
                               onClick={pauseSong}
@@ -269,7 +273,7 @@ export default function Page() {
                               <FaPause className="size-full" />
                             </button>
                           </>
-                        ) : playerRef.current.getPlayerState() == 2 ? (
+                        ) : playerState == 2 ? (
                           <>
                             <button
                               onClick={resumeSong}
@@ -367,6 +371,7 @@ export default function Page() {
                       onReady={onPlayerReady}
                       opts={opts}
                       onEnd={onPlayerEnd}
+                      onStateChange={onStateChange}
                     />
                   )}
               </div>

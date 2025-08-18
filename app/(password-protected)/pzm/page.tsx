@@ -321,7 +321,7 @@ export default function Page() {
             <WipWarning />
             <div className="flex justify-center items-center">
               <h1>
-                The music <span className="italic">should</span> play, but the
+                The music <span className="italic">should</span> play, but some
                 control buttons above don&apos;t do anything yet.
               </h1>
             </div>

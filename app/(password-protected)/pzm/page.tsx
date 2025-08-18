@@ -223,9 +223,17 @@ export default function Page() {
                     {queue &&
                     queue.length > 0 &&
                     currentTrackIndex != null &&
-                    currentTrackIndex <= queue.length - 1
-                      ? queue[currentTrackIndex].name
-                      : "Not Playing"}
+                    currentTrackIndex <= queue.length - 1 ? (
+                      <>
+                        {playerRef.current?.getPlayerState() == 3 ? (
+                          <>Loading...</>
+                        ) : (
+                          queue[currentTrackIndex].name
+                        )}
+                      </>
+                    ) : (
+                      "Not Playing"
+                    )}
                   </h1>
                   {false && (
                     <StarIcon

@@ -233,12 +233,14 @@ export default function Page() {
                         : "Not Playing"
                     }
                   />
-                  <StarIcon
-                    id="favoritesBtn"
-                    width={18}
-                    height={18}
-                    className="flex-shrink-0 w-[18px]! h-[18px]! cursor-pointer text-white/60"
-                  />
+                  {false && (
+                    <StarIcon
+                      id="favoritesBtn"
+                      width={18}
+                      height={18}
+                      className="flex-shrink-0 w-[18px]! h-[18px]! cursor-pointer text-white/60"
+                    />
+                  )}
                 </div>
 
                 <div className="mb-[20px]! text-gray-500">

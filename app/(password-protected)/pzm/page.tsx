@@ -113,7 +113,7 @@ export default function Page() {
         const time = playerRef.current.getCurrentTime();
         setCurrentTime(time);
       }
-    }, 1000);
+    }, 200);
 
     return () => clearInterval(interval);
   }, []);
@@ -129,6 +129,22 @@ export default function Page() {
   const onStateChange: YouTubeProps["onStateChange"] = (event) => {
     setPlayerState(event.target.getPlayerState());
   };
+
+  function seekForwards5() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 5, true);
+  }
+
+  function seekBackwards5() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 5, true);
+  }
+
+  function seekForwards10() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+  }
+
+  function seekBackwards10() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
+  }
 
   return (
     <>
@@ -256,12 +272,18 @@ export default function Page() {
                 </div>
                 <div>
                   <div className="flex gap-3 mb-[10px]! w-full items-center justify-center">
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    <button
+                      onClick={seekBackwards10}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaBackward id="backward10" className="size-full" />
-                    </div>
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    </button>
+                    <button
+                      onClick={seekBackwards5}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaChevronLeft id="backward5" className="size-full" />
-                    </div>
+                    </button>
                     {playerRef.current ? (
                       <>
                         {playerState == 1 ? (
@@ -295,12 +317,18 @@ export default function Page() {
                         </div>
                       </>
                     )}
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    <button
+                      onClick={seekForwards5}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaChevronRight id="forward5" className="size-full" />
-                    </div>
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    </button>
+                    <button
+                      onClick={seekForwards10}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaForward id="forward10" className="size-full" />
-                    </div>
+                    </button>
                   </div>
                   <div className="control-row flex gap-3! mb-[15px]! w-full items-center justify-center">
                     <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">

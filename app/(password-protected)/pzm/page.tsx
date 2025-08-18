@@ -14,7 +14,7 @@ import {
   FaSearch,
   FaTrashAlt,
 } from "react-icons/fa";
-import { FaRepeat } from "react-icons/fa6";
+import { FaRepeat, FaPause } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
 import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
@@ -103,8 +103,6 @@ export default function Page() {
     },
   };
 
-  console.log("Player state " + YouTube.PlayerState);
-
   const [currentTime, setCurrentTime] = useState(0);
   const playerRef = useRef<YT.Player | null>(null);
 
@@ -118,6 +116,14 @@ export default function Page() {
 
     return () => clearInterval(interval);
   }, []);
+
+  function pauseSong() {
+    playerRef.current?.pauseVideo();
+  }
+
+  function resumeSong() {
+    playerRef.current?.playVideo();
+  }
 
   return (
     <>
@@ -196,13 +202,10 @@ export default function Page() {
                 currentTrackIndex != null &&
                 currentTrackIndex <= queue.length - 1 ? (
                   <img
-                    src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
-                      queue[currentTrackIndex].thumbnails.sort(
-                        (a, b) => b.width - a.width
-                      )[0].url
-                    )}`}
+                    src={`https://img.youtube.com/vi/${queue[currentTrackIndex].videoId}/maxresdefault.jpg`}
                     alt="Album Art"
                     crossOrigin="anonymous"
+                    className="object-cover w-full h-full"
                   />
                 ) : (
                   <MusicalNoteIcon
@@ -238,17 +241,43 @@ export default function Page() {
                     currentTrackIndex <= queue.length - 1 &&
                     queue[currentTrackIndex].artist.name}
                 </div>
-                <div className="controls">
-                  <div className="control-row flex gap-3 mb-[10px]! w-full items-center justify-center">
+                <div>
+                  <div className="flex gap-3 mb-[10px]! w-full items-center justify-center">
                     <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
                       <FaBackward id="backward10" className="size-full" />
                     </div>
                     <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
                       <FaChevronLeft id="backward5" className="size-full" />
                     </div>
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                      <FaPlay id="playPause" className="size-full" />
-                    </div>
+                    {playerRef.current ? (
+                      <>
+                        {playerRef.current.getPlayerState() == 1 ? (
+                          <>
+                            <button
+                              onClick={pauseSong}
+                              className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                            >
+                              <FaPause className="size-full" />
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              onClick={resumeSong}
+                              className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                            >
+                              <FaPlay className="size-full" />
+                            </button>
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                          <FaPlay id="playPause" className="size-full" />
+                        </div>
+                      </>
+                    )}
                     <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
                       <FaChevronRight id="forward5" className="size-full" />
                     </div>
@@ -285,7 +314,14 @@ export default function Page() {
                       }}
                       className={clsx(
                         "w-full h-[6px] cursor-pointer appearance-none rounded-3xl",
-                        "bg-white/30 accent-white hover:h-[12px] transition-all duration-300 [&::-webkit-slider-thumb]:bg-blue-500"
+                        "bg-white/30 accent-white hover:h-[12px] transition-all duration-300 [&::-webkit-slider-thumb]:bg-blue-500",
+                        ` [&::-webkit-slider-thumb]:appearance-none
+                          [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3
+                          [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white
+                          [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:w-3
+                          [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white
+                          [&::-ms-thumb]:h-3 [&::-ms-thumb]:w-3
+                          [&::-ms-thumb]:rounded-full [&::-ms-thumb]:bg-white`
                       )}
                     />
                   </div>
@@ -297,7 +333,11 @@ export default function Page() {
                 <div className="timecodes flex justify-between mt-1">
                   <span>{formatTime(currentTime)}</span>
                   <span>
-                    {queue && queue.length > 0 && currentTrackIndex != null
+                    {queue &&
+                    queue.length > 0 &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex <= queue.length - 1
                       ? "-" +
                         formatTime(
                           queue[currentTrackIndex].duration - currentTime
@@ -305,14 +345,17 @@ export default function Page() {
                       : "-0:00"}
                   </span>
                 </div>
-                {queue && queue.length > 0 && currentTrackIndex != null && (
-                  <YouTube
-                    videoId={queue[currentTrackIndex].videoId}
-                    onReady={onPlayerReady}
-                    opts={opts}
-                    onEnd={onPlayerEnd}
-                  />
-                )}
+                {queue &&
+                  queue.length > 0 &&
+                  currentTrackIndex != null &&
+                  currentTrackIndex <= queue.length - 1 && (
+                    <YouTube
+                      videoId={queue[currentTrackIndex].videoId}
+                      onReady={onPlayerReady}
+                      opts={opts}
+                      onEnd={onPlayerEnd}
+                    />
+                  )}
               </div>
               <div className="lyrics-info" id="lyricsInfo">
                 <div className="lyrics-content" id="lyricsContent"></div>

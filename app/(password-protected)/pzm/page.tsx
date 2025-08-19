@@ -14,13 +14,14 @@ import {
   FaSearch,
   FaTrashAlt,
 } from "react-icons/fa";
-import { FaRepeat, FaPause } from "react-icons/fa6";
+import { FaPause } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
 import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
 import MarqueeText from "@/ui/global/marquee-text";
 import YouTube, { YouTubeProps } from "react-youtube";
+import { PiRepeat, PiRepeatBold, PiRepeatOnceBold } from "react-icons/pi";
 
 interface YTMusicReult {
   name: string;
@@ -41,6 +42,7 @@ export default function Page() {
     null
   );
   const [playerState, setPlayerState] = useState<number | null>(null);
+  const [repeating, setRepeating] = useState<true | false | 1>(false);
 
   async function getSearchResults(query: string | null) {
     if (query == null) return;
@@ -73,6 +75,9 @@ export default function Page() {
   }, [searchQuery]);
 
   function formatTime(seconds: number) {
+    if (seconds < 0) {
+      seconds = 0;
+    }
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60)
       .toString()
@@ -88,9 +93,16 @@ export default function Page() {
     if (
       currentTrackIndex != null &&
       queue &&
-      queue?.length > currentTrackIndex
+      queue?.length > currentTrackIndex && (repeating === false)
     ) {
       setCurrentTrackIndex(currentTrackIndex + 1);
+    } else if (currentTrackIndex != null &&
+      queue && repeating === true && currentTrackIndex == queue.length - 1) {
+      setCurrentTrackIndex(0);
+      playerRef.current?.seekTo(0, true);
+    } else if (currentTrackIndex != null &&
+      queue && repeating === 1 && currentTrackIndex == queue.length - 1) {
+      playerRef.current?.seekTo(0, true);
     }
   };
 
@@ -219,9 +231,9 @@ export default function Page() {
             <div className="flex gap-[20px]! mb-4!">
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
                 {queue &&
-                queue.length > 0 &&
-                currentTrackIndex != null &&
-                currentTrackIndex <= queue.length - 1 ? (
+                  queue.length > 0 &&
+                  currentTrackIndex != null &&
+                  currentTrackIndex <= queue.length - 1 ? (
                   <img
                     src={`https://img.youtube.com/vi/${queue[currentTrackIndex].videoId}/maxresdefault.jpg`}
                     alt="Album Art"
@@ -244,9 +256,9 @@ export default function Page() {
                     className="text-3xl flex-1 overflow-y-hidden"
                     text={
                       queue &&
-                      queue.length > 0 &&
-                      currentTrackIndex != null &&
-                      currentTrackIndex <= queue.length - 1
+                        queue.length > 0 &&
+                        currentTrackIndex != null &&
+                        currentTrackIndex <= queue.length - 1
                         ? playerState == 3 || !playerRef.current
                           ? "Loading..."
                           : queue[currentTrackIndex].name
@@ -331,18 +343,60 @@ export default function Page() {
                     </button>
                   </div>
                   <div className="control-row flex gap-3! mb-[15px]! w-full items-center justify-center">
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                      <FaRepeat id="loopToggle" className="size-full" />
-                    </div>
+                    {playerRef.current ? (
+                      <>
+                        {" "}
+                        {repeating === false ? (
+                          <>
+                            <button
+                              onClick={() => {
+                                setRepeating(true);
+                              }}
+                              className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white/50 p-3! flex items-center justify-center"
+                            >
+                              <PiRepeat className="size-full" />
+                            </button>
+                          </>
+                        ) : repeating === true ? (
+                          <>
+                            <button
+                              onClick={() => {
+                                setRepeating(1);
+                              }}
+                              className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                            >
+                              <PiRepeatBold className="size-full" />
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              onClick={() => {
+                                setRepeating(false);
+                              }}
+                              className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                            >
+                              <PiRepeatOnceBold className="size-full" />
+                            </button>
+                          </>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                          <PiRepeat className="size-full" />
+                        </div>
+                      </>
+                    )}
                     <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
                       <FaVolumeUp id="volumeBtn" className="size-full" />
                     </div>
                   </div>
                 </div>
                 {queue &&
-                queue.length > 0 &&
-                currentTrackIndex != null &&
-                currentTrackIndex <= queue.length - 1 ? (
+                  queue.length > 0 &&
+                  currentTrackIndex != null &&
+                  currentTrackIndex <= queue.length - 1 ? (
                   <div className="w-full flex items-center gap-2">
                     <input
                       type="range"
@@ -379,14 +433,14 @@ export default function Page() {
                   <span>{formatTime(currentTime)}</span>
                   <span>
                     {queue &&
-                    queue.length > 0 &&
-                    currentTrackIndex != null &&
-                    currentTrackIndex != null &&
-                    currentTrackIndex <= queue.length - 1
+                      queue.length > 0 &&
+                      currentTrackIndex != null &&
+                      currentTrackIndex != null &&
+                      currentTrackIndex <= queue.length - 1
                       ? "-" +
-                        formatTime(
-                          queue[currentTrackIndex].duration - currentTime
-                        )
+                      formatTime(
+                        queue[currentTrackIndex].duration - currentTime
+                      )
                       : "-0:00"}
                   </span>
                 </div>

@@ -39,6 +39,7 @@ export async function middleware(request: NextRequest) {
       const url = request.nextUrl.clone();
       if (cookiePassword && (await verifyPassword(cookiePassword))) {
         url.pathname = "/home";
+        url.searchParams.set('reload', '1');
         const redirectResponse = NextResponse.redirect(url);
         supabaseResponse.cookies.getAll().forEach((cookie) => {
           redirectResponse.cookies.set(cookie);

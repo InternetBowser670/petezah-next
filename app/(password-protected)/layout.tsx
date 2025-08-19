@@ -15,9 +15,8 @@ import { SupabaseAuthListener } from "@/ui/client-providers";
 import SettingsProvider from "@/ui/settings-manager";
 
 export const metadata: Metadata = {
-  description: "The next generation of PeteZah Games",
-  keywords:
-    "Proxy, Unblocker, Pete Zah Unblocker, Pete Zah Games, Pete Zah, Games,",
+  description: "The next generation of PeteZah, privacy tool",
+  keywords: "security, privacy",
   other: {
     "benrogo:index": "index",
     "benrogo:uvpath": "/static/uv/uv.config.js",

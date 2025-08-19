@@ -156,9 +156,9 @@ export default function Page() {
           setCurrentTrackIndex(currentTrackIndex + 1);
         } else if (repeating === true && currentTrackIndex == queue.length - 1) {
           setCurrentTrackIndex(0);
-          playerRef.current?.seekTo(0, true);
+          playerRef.current?.seekTo(0, false);
         } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
-          playerRef.current?.seekTo(0, true);
+          playerRef.current?.seekTo(0, false);
         }
       }
     }
@@ -181,9 +181,9 @@ export default function Page() {
           setCurrentTrackIndex(currentTrackIndex + 1);
         } else if (repeating === true && currentTrackIndex == queue.length - 1) {
           setCurrentTrackIndex(0);
-          playerRef.current?.seekTo(0, true);
+          playerRef.current?.seekTo(0, false);
         } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
-          playerRef.current?.seekTo(0, true);
+          playerRef.current?.seekTo(0, false);
         }
       }
     }

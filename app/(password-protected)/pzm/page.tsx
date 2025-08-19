@@ -40,6 +40,7 @@ export default function Page() {
   const [currentTrackIndex, setCurrentTrackIndex] = useState<null | number>(
     null
   );
+  const [playerState, setPlayerState] = useState<number | null>(null);
 
   async function getSearchResults(query: string | null) {
     if (query == null) return;
@@ -112,7 +113,7 @@ export default function Page() {
         const time = playerRef.current.getCurrentTime();
         setCurrentTime(time);
       }
-    }, 1000);
+    }, 200);
 
     return () => clearInterval(interval);
   }, []);
@@ -123,6 +124,26 @@ export default function Page() {
 
   function resumeSong() {
     playerRef.current?.playVideo();
+  }
+
+  const onStateChange: YouTubeProps["onStateChange"] = (event) => {
+    setPlayerState(event.target.getPlayerState());
+  };
+
+  function seekForwards5() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 5, true);
+  }
+
+  function seekBackwards5() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 5, true);
+  }
+
+  function seekForwards10() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+  }
+
+  function seekBackwards10() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
   }
 
   return (
@@ -218,22 +239,30 @@ export default function Page() {
                 className="info flex flex-col justify-center w-[400px]"
                 id="playerInfo"
               >
-                <div className="top-icons flex gap-10 justify-between items-center">
-                  <h1 className="track-title text-3xl" id="trackTitle">
-                    {queue &&
-                    queue.length > 0 &&
-                    currentTrackIndex != null &&
-                    currentTrackIndex <= queue.length - 1
-                      ? queue[currentTrackIndex].name
-                      : "Not Playing"}
-                  </h1>
+                <div className="top-icons flex items-center gap-3">
+                  <MarqueeText
+                    className="text-3xl flex-1 overflow-y-hidden"
+                    text={
+                      queue &&
+                      queue.length > 0 &&
+                      currentTrackIndex != null &&
+                      currentTrackIndex <= queue.length - 1
+                        ? playerState == 3 || !playerRef.current
+                          ? "Loading..."
+                          : queue[currentTrackIndex].name
+                        : "Not Playing"
+                    }
+                  />
                   {false && (
                     <StarIcon
                       id="favoritesBtn"
-                      className="w-[18px] h-[18px] cursor-pointer text-white/60"
+                      width={18}
+                      height={18}
+                      className="flex-shrink-0 w-[18px]! h-[18px]! cursor-pointer text-white/60"
                     />
                   )}
                 </div>
+
                 <div className="mb-[20px]! text-gray-500">
                   {queue &&
                     queue.length > 0 &&
@@ -243,15 +272,21 @@ export default function Page() {
                 </div>
                 <div>
                   <div className="flex gap-3 mb-[10px]! w-full items-center justify-center">
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    <button
+                      onClick={seekBackwards10}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaBackward id="backward10" className="size-full" />
-                    </div>
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    </button>
+                    <button
+                      onClick={seekBackwards5}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaChevronLeft id="backward5" className="size-full" />
-                    </div>
+                    </button>
                     {playerRef.current ? (
                       <>
-                        {playerRef.current.getPlayerState() == 1 ? (
+                        {playerState == 1 ? (
                           <>
                             <button
                               onClick={pauseSong}
@@ -260,7 +295,7 @@ export default function Page() {
                               <FaPause className="size-full" />
                             </button>
                           </>
-                        ) : (
+                        ) : playerState == 2 ? (
                           <>
                             <button
                               onClick={resumeSong}
@@ -269,6 +304,10 @@ export default function Page() {
                               <FaPlay className="size-full" />
                             </button>
                           </>
+                        ) : (
+                          <button className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                            <FaPlay className="size-full" />
+                          </button>
                         )}
                       </>
                     ) : (
@@ -278,12 +317,18 @@ export default function Page() {
                         </div>
                       </>
                     )}
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    <button
+                      onClick={seekForwards5}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaChevronRight id="forward5" className="size-full" />
-                    </div>
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                    </button>
+                    <button
+                      onClick={seekForwards10}
+                      className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                    >
                       <FaForward id="forward10" className="size-full" />
-                    </div>
+                    </button>
                   </div>
                   <div className="control-row flex gap-3! mb-[15px]! w-full items-center justify-center">
                     <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
@@ -354,6 +399,7 @@ export default function Page() {
                       onReady={onPlayerReady}
                       opts={opts}
                       onEnd={onPlayerEnd}
+                      onStateChange={onStateChange}
                     />
                   )}
               </div>
@@ -364,7 +410,7 @@ export default function Page() {
             <WipWarning />
             <div className="flex justify-center items-center">
               <h1>
-                The music <span className="italic">should</span> play, but the
+                The music <span className="italic">should</span> play, but some
                 control buttons above don&apos;t do anything yet.
               </h1>
             </div>
@@ -377,7 +423,7 @@ export default function Page() {
                 <div
                   key={trackData.id}
                   className={clsx(
-                    "flex items-center justify-between gap-3 cursor-pointer px-2! rounded-lg h-[90px]",
+                    "flex items-center justify-between gap-3 cursor-pointer p-2! rounded-lg",
                     index == currentTrackIndex
                       ? "bg-white/10 hover:bg-white/20"
                       : "hover:bg-white/10"
@@ -404,9 +450,12 @@ export default function Page() {
                         className="rounded-md"
                       />
                       <div className="flex flex-col gap-1">
-                        <MarqueeText text={trackData.name} />
                         <MarqueeText
-                          className="text-white/70 text-sm border-white/70"
+                          text={trackData.name}
+                          className="text-left overflow-x-auto"
+                        />
+                        <MarqueeText
+                          className="text-white/70 text-sm border-white/70 text-left"
                           text={trackData.artist.name}
                         />
                       </div>

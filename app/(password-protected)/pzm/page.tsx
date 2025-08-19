@@ -143,7 +143,25 @@ export default function Page() {
   };
 
   function seekForwards5() {
-    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 5, true);
+    const currentTime = playerRef.current?.getCurrentTime() ?? 0;
+    playerRef.current?.seekTo(currentTime + 5, true);
+
+    if (currentTrackIndex == null) {
+      return;
+    }
+
+    if (currentTime + 5 >= (queue?.[currentTrackIndex]?.duration ?? 0)) {
+      if (currentTrackIndex != null && queue && queue.length > currentTrackIndex) {
+        if (repeating === false) {
+          setCurrentTrackIndex(currentTrackIndex + 1);
+        } else if (repeating === true && currentTrackIndex == queue.length - 1) {
+          setCurrentTrackIndex(0);
+          playerRef.current?.seekTo(0, true);
+        } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
+          playerRef.current?.seekTo(0, true);
+        }
+      }
+    }
   }
 
   function seekBackwards5() {
@@ -152,6 +170,24 @@ export default function Page() {
 
   function seekForwards10() {
     playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+
+    if (currentTrackIndex == null) {
+      return;
+    }
+
+    if (currentTime + 10 >= (queue?.[currentTrackIndex]?.duration ?? 0)) {
+      if (currentTrackIndex != null && queue && queue.length > currentTrackIndex) {
+        if (repeating === false) {
+          setCurrentTrackIndex(currentTrackIndex + 1);
+        } else if (repeating === true && currentTrackIndex == queue.length - 1) {
+          setCurrentTrackIndex(0);
+          playerRef.current?.seekTo(0, true);
+        } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
+          playerRef.current?.seekTo(0, true);
+        }
+      }
+    }
+
   }
 
   function seekBackwards10() {

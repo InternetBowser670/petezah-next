@@ -101,7 +101,7 @@ Or use the buttons below (You will have to set up enviroment variables)
 
 ## Links
 
-- [sso.adidasnmdcitysock.com](sso.adidasnmdcitysock.com)
+- [sso.adidasnmdcitysock.com](https://sso.adidasnmdcitysock.com)
 
 More coming soon!
 

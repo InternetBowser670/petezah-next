@@ -7,7 +7,41 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 > [!IMPORTANT]  
 > Make sure to set up your enviroment variables by making a copy of [`.env.example`](/.env.example), naming it to `.env.local` and filling in the blanks.
 
-First, run the development server:
+## 🚧 Development Instructions
+
+### 1. ✅ Install Node.js 22 or later
+
+Make sure you have **Node.js v22** (or later) installed. You can check by running:
+
+```bash
+node -v
+```
+
+> If not installed, download it from [https://nodejs.org/](https://nodejs.org/)
+
+---
+
+### 2. 📦 Install Dependencies
+
+Run the following command in your terminal to install required packages:
+
+```bash
+npm i
+```
+
+---
+
+### 3. ⚙️ Create Your `.env.local` File
+
+Duplicate the file `.enve.example` and rename it `.env.local`
+
+---
+
+### 4. ✍️ Fill in `.env.local` with required values
+
+Everything that you need will be listed in the file
+
+### 5. 🚀 Start the app
 
 ```bash
 npm run dev
@@ -19,11 +53,13 @@ pnpm dev
 bun dev
 ```
 
+---
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the site by modifying any `.ts/.tsx` file. The page auto-updates as you edit the file, though it may be slow, as this is a very large project.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), [Poppins](https://vercel.com/font) and [Arimo](https://vercel.com/font).
 
 ## Learn More
 
@@ -34,11 +70,15 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+---
+
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy the app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+[![Deploy to Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/PeteZah-Games/petezah-next)
 
 ## **Alternatively, you can use one of the following buttons**
 
@@ -51,7 +91,6 @@ Or use the buttons below (You will have to set up enviroment variables)
 [![Run on Google Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/PeteZah-Games/petezah-next)
 [![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/PeteZah-Games/petezah-next/archive/refs/heads/main.zip)
 [![Deploy on Railway](https://binbashbanana.github.io/deploy-buttons/buttons/remade/railway.svg)](https://railway.app/new/template?template=https://github.com/PeteZah-Games/petezah-next)
-[![Deploy to Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/PeteZah-Games/petezah-next)
 [![Deploy to Netlify](https://binbashbanana.github.io/deploy-buttons/buttons/remade/netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/PeteZah-Games/petezah-next)
 [![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/PeteZah-Games/petezah-next&branch=Main&name=PeteZah-Next)
 [![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://render.com/deploy?repo=https://github.com/PeteZah-Games/petezah-next)

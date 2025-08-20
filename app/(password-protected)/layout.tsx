@@ -21,7 +21,10 @@ export const metadata: Metadata = {
     education, learning, teaching, curriculum, classroom technology, study tools, academic resources,
     school, public school, private school, K-12, primary school, secondary school, high school,
     higher education, university, college, degree, diploma, academic success,
-    online learning, e-learning, distance education, remote learning, virtual classroom, digital learning, education software, learning platform
+    online learning, e-learning, distance education, remote learning, virtual classroom, digital learning, education software, learning platform,
+    math, mathematics, algebra, geometry, calculus, science, physics, chemistry, biology, environmental science,
+    english, literature, reading, writing, grammar, language arts,
+    history, social studies, geography, civics, economics, philosophy, psychology, computer science, coding, programming, technology in education
   `,
   other: {
     "benrogo:index": "index",

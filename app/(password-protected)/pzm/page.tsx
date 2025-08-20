@@ -22,7 +22,7 @@ import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
 import MarqueeText from "@/ui/global/marquee-text";
 import YouTube, { YouTubeProps } from "react-youtube";
-import { PiRepeat, PiRepeatBold, PiRepeatOnceBold } from "react-icons/pi";=
+import { PiRepeat, PiRepeatBold, PiRepeatOnceBold } from "react-icons/pi";
 
 interface YTMusicReult {
   name: string;

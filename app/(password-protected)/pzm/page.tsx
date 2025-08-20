@@ -13,6 +13,7 @@ import {
   FaVolumeUp,
   FaSearch,
   FaTrashAlt,
+  FaVolumeMute,
 } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
 import { WipWarning } from "@/ui/wip/wip-page";
@@ -22,6 +23,7 @@ import clsx from "clsx";
 import MarqueeText from "@/ui/global/marquee-text";
 import YouTube, { YouTubeProps } from "react-youtube";
 import { PiRepeat, PiRepeatBold, PiRepeatOnceBold } from "react-icons/pi";
+import { set } from "zod";
 
 interface YTMusicReult {
   name: string;
@@ -43,6 +45,7 @@ export default function Page() {
   );
   const [playerState, setPlayerState] = useState<number | null>(null);
   const [repeating, setRepeating] = useState<true | false | 1>(false);
+  const [muted, setMuted] = useState(false);
 
   async function getSearchResults(query: string | null) {
     if (query == null) return;
@@ -214,7 +217,7 @@ export default function Page() {
           {searchQuery && (
             <div className="flex flex-col gap-2 mt-2">
               {searchResults == null ? (
-                <p className="text-white/70">Searching...</p>
+                <p className="text-white/70 ml-2!">Searching...</p>
               ) : searchResults.length > 0 ? (
                 searchResults.map((track) => (
                   <div
@@ -424,9 +427,22 @@ export default function Page() {
                         </div>
                       </>
                     )}
-                    <div className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                      <FaVolumeUp id="volumeBtn" className="size-full" />
-                    </div>
+                    {muted ? (<>
+                      <button onClick={() => {
+                        setMuted(false);
+                        playerRef.current?.unMute();
+                      }} className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                        <FaVolumeUp className="size-full" />
+                      </button>
+                    </>) : (<>
+                      <button onClick={() => {
+                        setMuted(true);
+                        playerRef.current?.mute();
+                      }} className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                        <FaVolumeMute className="size-full" />
+                      </button>
+                    </>)}
+
                   </div>
                 </div>
                 {queue &&

@@ -16,7 +16,6 @@ import {
   FaVolumeMute,
 } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
-import { WipWarning } from "@/ui/wip/wip-page";
 import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
@@ -511,13 +510,6 @@ export default function Page() {
               <div className="lyrics-info" id="lyricsInfo">
                 <div className="lyrics-content" id="lyricsContent"></div>
               </div>
-            </div>
-            <WipWarning />
-            <div className="flex justify-center items-center">
-              <h1>
-                The music <span className="italic">should</span> play, but some
-                control buttons above don&apos;t do anything yet.
-              </h1>
             </div>
           </div>
         </div>

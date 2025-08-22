@@ -285,7 +285,14 @@ export default function Page() {
 
   // Gets starred songs
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("starredSongs") || "[]");
+    let stored;
+
+    try {
+      stored = JSON.parse(localStorage.getItem("starredSongs") || "[]");
+    } catch {
+      stored = [];
+    }
+    
     if (stored.length > 0) setStarredSongs(stored);
 
     supabase.auth.getSession().then(async ({ data: { session } }) => {
@@ -306,8 +313,8 @@ export default function Page() {
       const json = await res.json();
 
       if ("starredSongs" in json) {
-        setStarredSongs([...starredSongs, json.starredSongs]);
-        setLocalStorage("starredSongs", String(json.starredSongs));
+        setStarredSongs([...starredSongs, ...json.starredSongs]);
+        setLocalStorage("starredSongs", String(...json.starredSongs));
       }
     });
   }, [supabase.auth]);
@@ -801,23 +808,23 @@ export default function Page() {
                               {" "}
                               <img
                                 src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
-                                  trackData.thumbnails.sort(
+                                  trackData.thumbnails?.sort(
                                     (a, b) => b.width - a.width
                                   )[0].url
                                 )}`}
-                                alt={trackData.name}
+                                alt={trackData?.name}
                                 width={50}
                                 height={50}
                                 className="rounded-md"
                               />
                               <div className="flex flex-col gap-1">
                                 <MarqueeText
-                                  text={trackData.name}
+                                  text={trackData?.name}
                                   className="text-left overflow-x-auto"
                                 />
                                 <MarqueeText
                                   className="text-white/70 text-sm border-white/70 text-left"
-                                  text={trackData.artist.name}
+                                  text={trackData?.artist?.name}
                                 />
                               </div>
                             </div>

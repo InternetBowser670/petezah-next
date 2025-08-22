@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -16,14 +15,17 @@ import {
   FaVolumeMute,
 } from "react-icons/fa";
 import { FaPause } from "react-icons/fa6";
-import { WipWarning } from "@/ui/wip/wip-page";
 import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
 import MarqueeText from "@/ui/global/marquee-text";
 import YouTube, { YouTubeProps } from "react-youtube";
 import { PiRepeat, PiRepeatBold, PiRepeatOnceBold } from "react-icons/pi";
+import { createClient } from "@/utils/supabase/client";
+import { setLocalStorage } from "@/ui/settings-manager";
+import { PrimaryButton } from "@/ui/global/buttons";
 
+// Standard song type
 interface YTMusicReult {
   name: string;
   artist: { artistId: string; name: string };
@@ -34,6 +36,7 @@ interface YTMusicReult {
 }
 
 export default function Page() {
+  // Stateful values
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<YTMusicReult[] | null>(
     null
@@ -45,7 +48,19 @@ export default function Page() {
   const [playerState, setPlayerState] = useState<number | null>(null);
   const [repeating, setRepeating] = useState<true | false | 1>(false);
   const [muted, setMuted] = useState(false);
+  const [starredSongs, setStarredSongs] = useState<YTMusicReult[] | []>([]);
+  const [sideMenuPage, setSideMenuPage] = useState<"queue" | "starredSongs">(
+    "queue"
+  );
+  const [currentTime, setCurrentTime] = useState(0);
 
+  // The YouTube Player
+  const playerRef = useRef<YT.Player | null>(null);
+
+  // Supabase client
+  const supabase = createClient();
+
+  // Util functions
   async function getSearchResults(query: string | null) {
     if (query == null) return;
 
@@ -61,6 +76,186 @@ export default function Page() {
     return data;
   }
 
+  function formatTime(seconds: number) {
+    if (seconds < 0) {
+      seconds = 0;
+    }
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${minutes}:${secs}`;
+  }
+
+  function pauseSong() {
+    playerRef.current?.pauseVideo();
+  }
+
+  function resumeSong() {
+    playerRef.current?.playVideo();
+  }
+
+  // Seek controls
+
+  function seekBackwards10() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
+  }
+
+  function seekBackwards5() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 5, true);
+  }
+
+  function seekForwards5() {
+    const currentTime = playerRef.current?.getCurrentTime() ?? 0;
+    playerRef.current?.seekTo(currentTime + 5, true);
+
+    if (currentTrackIndex == null) {
+      return;
+    }
+
+    if (currentTime + 5 >= (queue?.[currentTrackIndex]?.duration ?? 0)) {
+      if (
+        currentTrackIndex != null &&
+        queue &&
+        queue.length > currentTrackIndex
+      ) {
+        if (repeating === false) {
+          setCurrentTrackIndex(currentTrackIndex + 1);
+        } else if (
+          repeating === true &&
+          currentTrackIndex == queue.length - 1
+        ) {
+          setCurrentTrackIndex(0);
+          playerRef.current?.seekTo(0, false);
+        } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
+          playerRef.current?.seekTo(0, false);
+        }
+      }
+    }
+  }
+
+  function seekForwards10() {
+    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
+
+    if (currentTrackIndex == null) {
+      return;
+    }
+
+    if (currentTime + 10 >= (queue?.[currentTrackIndex]?.duration ?? 0)) {
+      if (
+        currentTrackIndex != null &&
+        queue &&
+        queue.length > currentTrackIndex
+      ) {
+        if (repeating === false) {
+          setCurrentTrackIndex(currentTrackIndex + 1);
+        } else if (
+          repeating === true &&
+          currentTrackIndex == queue.length - 1
+        ) {
+          setCurrentTrackIndex(0);
+          playerRef.current?.seekTo(0, false);
+        } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
+          playerRef.current?.seekTo(0, false);
+        }
+      }
+    }
+  }
+
+  async function addSongToStars(songData: YTMusicReult) {
+    const trackWithId = { ...songData, id: v4() };
+    setStarredSongs([...starredSongs, trackWithId]);
+
+    const user = (await supabase.auth.getUser()).data.user;
+
+    if (!user) return;
+
+    fetch("/api/star-song", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        songs: [trackWithId],
+        user_id: user.id,
+        remove: false,
+      }),
+    });
+  }
+
+  async function removeSongFromStars(songData: YTMusicReult) {
+    setStarredSongs(
+      starredSongs.filter((song) => song.videoId !== songData.videoId)
+    );
+
+    const user = (await supabase.auth.getUser()).data.user;
+
+    if (!user) return;
+
+    fetch("/api/star-song", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        songs: [songData],
+        user_id: user.id,
+        remove: true,
+      }),
+    });
+  }
+
+  async function addSongToQueue(songData: YTMusicReult) {
+    const trackWithId = { ...songData, id: v4() };
+    setQueue([...(queue ?? []), trackWithId]);
+  }
+  // Player params and functions
+
+  const opts: YouTubeProps["opts"] = {
+    height: "0",
+    width: "0",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    playerRef.current = event.target;
+  };
+
+  const onPlayerEnd: YouTubeProps["onEnd"] = () => {
+    if (
+      currentTrackIndex != null &&
+      queue &&
+      queue?.length > currentTrackIndex &&
+      repeating === false
+    ) {
+      setCurrentTrackIndex(currentTrackIndex + 1);
+    } else if (
+      currentTrackIndex != null &&
+      queue &&
+      repeating === true &&
+      currentTrackIndex == queue.length - 1
+    ) {
+      setCurrentTrackIndex(0);
+      playerRef.current?.seekTo(0, true);
+    } else if (
+      currentTrackIndex != null &&
+      queue &&
+      repeating === 1 &&
+      currentTrackIndex == queue.length - 1
+    ) {
+      playerRef.current?.seekTo(0, true);
+    }
+  };
+
+  const onStateChange: YouTubeProps["onStateChange"] = (event) => {
+    setPlayerState(event.target.getPlayerState());
+  };
+
+  // UseEffect callbacks
+
+  // Search handler
   useEffect(() => {
     const handler = setTimeout(async () => {
       if (searchQuery.trim().length > 0) {
@@ -76,51 +271,7 @@ export default function Page() {
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
-  function formatTime(seconds: number) {
-    if (seconds < 0) {
-      seconds = 0;
-    }
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60)
-      .toString()
-      .padStart(2, "0");
-    return `${minutes}:${secs}`;
-  }
-
-  const onPlayerReady: YouTubeProps["onReady"] = (event) => {
-    playerRef.current = event.target;
-  };
-
-  const onPlayerEnd: YouTubeProps["onEnd"] = () => {
-    if (
-      currentTrackIndex != null &&
-      queue &&
-      queue?.length > currentTrackIndex && (repeating === false)
-    ) {
-      setCurrentTrackIndex(currentTrackIndex + 1);
-    } else if (currentTrackIndex != null &&
-      queue && repeating === true && currentTrackIndex == queue.length - 1) {
-      setCurrentTrackIndex(0);
-      playerRef.current?.seekTo(0, true);
-    } else if (currentTrackIndex != null &&
-      queue && repeating === 1 && currentTrackIndex == queue.length - 1) {
-      playerRef.current?.seekTo(0, true);
-    }
-  };
-
-  const opts: YouTubeProps["opts"] = {
-    height: "0",
-    width: "0",
-    playerVars: {
-      // i aint deleting ts - dont try to make me
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-  };
-
-  const [currentTime, setCurrentTime] = useState(0);
-  const playerRef = useRef<YT.Player | null>(null);
-
+  //Updates the player time
   useEffect(() => {
     const interval = setInterval(() => {
       if (playerRef.current) {
@@ -132,69 +283,51 @@ export default function Page() {
     return () => clearInterval(interval);
   }, []);
 
-  function pauseSong() {
-    playerRef.current?.pauseVideo();
-  }
+  // Gets starred songs
+  useEffect(() => {
+    let stored;
 
-  function resumeSong() {
-    playerRef.current?.playVideo();
-  }
-
-  const onStateChange: YouTubeProps["onStateChange"] = (event) => {
-    setPlayerState(event.target.getPlayerState());
-  };
-
-  function seekForwards5() {
-    const currentTime = playerRef.current?.getCurrentTime() ?? 0;
-    playerRef.current?.seekTo(currentTime + 5, true);
-
-    if (currentTrackIndex == null) {
-      return;
+    try {
+      stored = JSON.parse(localStorage.getItem("starredSongs") || "[]");
+    } catch {
+      stored = [];
     }
+    
+    if (stored.length > 0) setStarredSongs(stored);
 
-    if (currentTime + 5 >= (queue?.[currentTrackIndex]?.duration ?? 0)) {
-      if (currentTrackIndex != null && queue && queue.length > currentTrackIndex) {
-        if (repeating === false) {
-          setCurrentTrackIndex(currentTrackIndex + 1);
-        } else if (repeating === true && currentTrackIndex == queue.length - 1) {
-          setCurrentTrackIndex(0);
-          playerRef.current?.seekTo(0, false);
-        } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
-          playerRef.current?.seekTo(0, false);
-        }
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
+      const user = session?.user;
+
+      if (!user) return;
+
+      for (let i = 0; i < starredSongs.length; i++) {
+        addSongToStars(starredSongs[i]);
       }
-    }
-  }
 
-  function seekBackwards5() {
-    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 5, true);
-  }
-
-  function seekForwards10() {
-    playerRef.current?.seekTo(playerRef.current.getCurrentTime() + 10, true);
-
-    if (currentTrackIndex == null) {
-      return;
-    }
-
-    if (currentTime + 10 >= (queue?.[currentTrackIndex]?.duration ?? 0)) {
-      if (currentTrackIndex != null && queue && queue.length > currentTrackIndex) {
-        if (repeating === false) {
-          setCurrentTrackIndex(currentTrackIndex + 1);
-        } else if (repeating === true && currentTrackIndex == queue.length - 1) {
-          setCurrentTrackIndex(0);
-          playerRef.current?.seekTo(0, false);
-        } else if (repeating === 1 && currentTrackIndex == queue.length - 1) {
-          playerRef.current?.seekTo(0, false);
+      const res = await fetch(
+        `/api/private-profile?user_id=${session.user.id}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            user_id: user.id,
+          }),
         }
+      );
+
+      const json = await res.json();
+
+      if ("starredSongs" in json) {
+        setStarredSongs([...starredSongs, ...json.starredSongs]);
+        setLocalStorage("starredSongs", String(...json.starredSongs));
       }
-    }
+    });
+  }, [supabase.auth]);
 
-  }
+  // Sets the starred songs
 
-  function seekBackwards10() {
-    playerRef.current?.seekTo(playerRef.current.getCurrentTime() - 10, true);
-  }
+  useEffect(() => {
+    setLocalStorage("starredSongs", JSON.stringify(starredSongs));
+  }, [starredSongs]);
 
   return (
     <>
@@ -210,7 +343,7 @@ export default function Page() {
               onChange={(e) => {
                 setSearchQuery(e.target.value);
               }}
-              value={searchQuery}
+              value={searchQuery ?? ""}
             />
           </div>
           {searchQuery && (
@@ -226,7 +359,7 @@ export default function Page() {
                       if (queue == null || queue.length === 0) {
                         setCurrentTrackIndex(0);
                       }
-                      setQueue([...(queue ?? []), track]);
+                      addSongToQueue(track);
                       setSearchQuery("");
                     }}
                   >
@@ -269,9 +402,9 @@ export default function Page() {
             <div className="flex gap-[20px]! mb-4!">
               <div className="grow-0 shrink-0 basis-[250px] h-[250px] w-[250px] flex justify-center items-center bg-white/10 rounded-xl overflow-hidden">
                 {queue &&
-                  queue.length > 0 &&
-                  currentTrackIndex != null &&
-                  currentTrackIndex <= queue.length - 1 ? (
+                queue.length > 0 &&
+                currentTrackIndex != null &&
+                currentTrackIndex <= queue.length - 1 ? (
                   <img
                     src={`https://img.youtube.com/vi/${queue[currentTrackIndex].videoId}/maxresdefault.jpg`}
                     alt="Album Art"
@@ -294,23 +427,50 @@ export default function Page() {
                     className="text-3xl flex-1 overflow-y-hidden"
                     text={
                       queue &&
-                        queue.length > 0 &&
-                        currentTrackIndex != null &&
-                        currentTrackIndex <= queue.length - 1
+                      queue.length > 0 &&
+                      currentTrackIndex != null &&
+                      currentTrackIndex <= queue.length - 1
                         ? playerState == 3 || !playerRef.current
                           ? "Loading..."
                           : queue[currentTrackIndex].name
                         : "Not Playing"
                     }
                   />
-                  {false && (
-                    <StarIcon
-                      id="favoritesBtn"
-                      width={18}
-                      height={18}
-                      className="flex-shrink-0 w-[18px]! h-[18px]! cursor-pointer text-white/60"
-                    />
-                  )}
+                  {queue &&
+                    queue.length > 0 &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex <= queue.length - 1 && (
+                      <>
+                        {starredSongs.some(
+                          (song) =>
+                            song.videoId === queue[currentTrackIndex].videoId
+                        ) ? (
+                          <StarIcon
+                            id="favoritesBtn"
+                            width={18}
+                            height={18}
+                            className={clsx(
+                              "flex-shrink-0 w-[18px]! h-[18px]! cursor-pointer text-white/60 fill-white/60"
+                            )}
+                            onClick={() => {
+                              removeSongFromStars(queue[currentTrackIndex]);
+                            }}
+                          />
+                        ) : (
+                          <StarIcon
+                            id="favoritesBtn"
+                            width={18}
+                            height={18}
+                            className={clsx(
+                              "flex-shrink-0 w-[18px]! h-[18px]! cursor-pointer text-white/60"
+                            )}
+                            onClick={() => {
+                              addSongToStars(queue[currentTrackIndex]);
+                            }}
+                          />
+                        )}
+                      </>
+                    )}
                 </div>
 
                 <div className="mb-[20px]! text-gray-500">
@@ -426,35 +586,44 @@ export default function Page() {
                         </div>
                       </>
                     )}
-                    {muted ? (<>
-                      <button onClick={() => {
-                        setMuted(false);
-                        playerRef.current?.unMute();
-                      }} className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                        <FaVolumeUp className="size-full" />
-                      </button>
-                    </>) : (<>
-                      <button onClick={() => {
-                        setMuted(true);
-                        playerRef.current?.mute();
-                      }} className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
-                        <FaVolumeMute className="size-full" />
-                      </button>
-                    </>)}
-
+                    {muted ? (
+                      <>
+                        <button
+                          onClick={() => {
+                            setMuted(false);
+                            playerRef.current?.unMute();
+                          }}
+                          className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                        >
+                          <FaVolumeUp className="size-full" />
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => {
+                            setMuted(true);
+                            playerRef.current?.mute();
+                          }}
+                          className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center"
+                        >
+                          <FaVolumeMute className="size-full" />
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
                 {queue &&
-                  queue.length > 0 &&
-                  currentTrackIndex != null &&
-                  currentTrackIndex <= queue.length - 1 ? (
+                queue.length > 0 &&
+                currentTrackIndex != null &&
+                currentTrackIndex <= queue.length - 1 ? (
                   <div className="w-full flex items-center gap-2">
                     <input
                       type="range"
                       min={0}
                       max={queue[currentTrackIndex].duration}
                       step={1}
-                      value={currentTime}
+                      value={currentTime ?? "0:00"}
                       onChange={(e) => {
                         const newTime = Number(e.target.value);
                         setCurrentTime(newTime);
@@ -484,14 +653,14 @@ export default function Page() {
                   <span>{formatTime(currentTime)}</span>
                   <span>
                     {queue &&
-                      queue.length > 0 &&
-                      currentTrackIndex != null &&
-                      currentTrackIndex != null &&
-                      currentTrackIndex <= queue.length - 1
+                    queue.length > 0 &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex != null &&
+                    currentTrackIndex <= queue.length - 1
                       ? "-" +
-                      formatTime(
-                        queue[currentTrackIndex].duration - currentTime
-                      )
+                        formatTime(
+                          queue[currentTrackIndex].duration - currentTime
+                        )
                       : "-0:00"}
                   </span>
                 </div>
@@ -512,86 +681,183 @@ export default function Page() {
                 <div className="lyrics-content" id="lyricsContent"></div>
               </div>
             </div>
-            <WipWarning />
-            <div className="flex justify-center items-center">
-              <h1>
-                The music <span className="italic">should</span> play, but some
-                control buttons above don&apos;t do anything yet.
-              </h1>
-            </div>
           </div>
         </div>
-        {queue && queue.length > 0 && (
+        {((queue && queue.length) || (starredSongs && starredSongs.length)) >
+          0 && (
           <>
             <div className="flex flex-col gap-2 max-w-[30%] rounded-[12px] border-2 border-[#0096FF] backdrop-blur-md backdrop-filter backdrop-opacity-50 bg-[#0A1D37] p-[20px]! overflow-auto max-h-[80%]">
-              {queue.map((trackData, index) => (
-                <div
-                  key={trackData.id}
+              <div className="flex w-full justify-center items-center gap-2">
+                <PrimaryButton
+                  text="Queue"
+                  className={clsx(sideMenuPage == "queue" && "bg-gray-800")}
+                  onClick={() => {
+                    setSideMenuPage("queue");
+                  }}
+                />
+                <PrimaryButton
+                  text="Starred Songs"
                   className={clsx(
-                    "flex items-center justify-between gap-3 cursor-pointer p-2! rounded-lg",
-                    index == currentTrackIndex
-                      ? "bg-white/10 hover:bg-white/20"
-                      : "hover:bg-white/10"
+                    sideMenuPage == "starredSongs" && "bg-gray-800"
                   )}
-                >
-                  {" "}
-                  <button
-                    onClick={() => {
-                      setCurrentTrackIndex(index);
-                    }}
-                    className="w-full h-full"
-                  >
-                    <div className="flex items-center gap-3">
-                      {" "}
-                      <img
-                        src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
-                          trackData.thumbnails.sort(
-                            (a, b) => b.width - a.width
-                          )[0].url
-                        )}`}
-                        alt={trackData.name}
-                        width={50}
-                        height={50}
-                        className="rounded-md"
-                      />
-                      <div className="flex flex-col gap-1">
-                        <MarqueeText
-                          text={trackData.name}
-                          className="text-left overflow-x-auto"
-                        />
-                        <MarqueeText
-                          className="text-white/70 text-sm border-white/70 text-left"
-                          text={trackData.artist.name}
-                        />
+                  onClick={() => {
+                    setSideMenuPage("starredSongs");
+                  }}
+                />
+              </div>
+              {sideMenuPage == "queue" ? (
+                <>
+                  {queue ? (
+                    queue.map((trackData, index) => (
+                      <div
+                        key={trackData.id}
+                        className={clsx(
+                          "flex items-center justify-between gap-3 cursor-pointer p-2! rounded-lg",
+                          index == currentTrackIndex
+                            ? "bg-white/10 hover:bg-white/20"
+                            : "hover:bg-white/10"
+                        )}
+                      >
+                        {" "}
+                        <button
+                          onClick={() => {
+                            setCurrentTrackIndex(index);
+                          }}
+                          className="w-full h-full"
+                        >
+                          <div className="flex items-center gap-3">
+                            {" "}
+                            <img
+                              src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
+                                trackData.thumbnails.sort(
+                                  (a, b) => b.width - a.width
+                                )[0].url
+                              )}`}
+                              alt={trackData.name}
+                              width={50}
+                              height={50}
+                              className="rounded-md"
+                            />
+                            <div className="flex flex-col gap-1">
+                              <MarqueeText
+                                text={trackData.name}
+                                className="text-left overflow-x-auto"
+                              />
+                              <MarqueeText
+                                className="text-white/70 text-sm border-white/70 text-left"
+                                text={trackData.artist.name}
+                              />
+                            </div>
+                          </div>
+                        </button>
+                        <div>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              if (
+                                currentTrackIndex != null &&
+                                index >= currentTrackIndex
+                              ) {
+                                setQueue(
+                                  queue.filter(
+                                    (track) => track.id !== trackData.id
+                                  )
+                                );
+                              } else if (
+                                currentTrackIndex != null &&
+                                index < currentTrackIndex
+                              ) {
+                                setCurrentTrackIndex(currentTrackIndex - 1);
+                              }
+                            }}
+                            className="rounded-full mr-2! p-3! bg-white/20 hover:bg-white/30 z-100"
+                          >
+                            <FaTrashAlt />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </button>
-                  <div>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (
-                          currentTrackIndex != null &&
-                          index >= currentTrackIndex
-                        ) {
-                          setQueue(
-                            queue.filter((track) => track.id !== trackData.id)
-                          );
-                        } else if (
-                          currentTrackIndex != null &&
-                          index < currentTrackIndex
-                        ) {
-                          setCurrentTrackIndex(currentTrackIndex - 1);
-                        }
-                      }}
-                      className="rounded-full mr-2! p-3! bg-white/20 hover:bg-white/30 z-100"
-                    >
-                      <FaTrashAlt />
-                    </button>
-                  </div>
-                </div>
-              ))}
+                    ))
+                  ) : (
+                    <>
+                      {" "}
+                      <p className="w-full text-center text-gray-400">
+                        Your queue is empty
+                      </p>
+                    </>
+                  )}
+                </>
+              ) : (
+                sideMenuPage == "starredSongs" && (
+                  <>
+                    {starredSongs && starredSongs.length > 0 ? (
+                      starredSongs.map((trackData, index) => (
+                        <div
+                          key={trackData.id}
+                          className={clsx(
+                            "flex items-center justify-between gap-3 cursor-pointer p-2! rounded-lg",
+                            index == currentTrackIndex
+                              ? "bg-white/10 hover:bg-white/20"
+                              : "hover:bg-white/10"
+                          )}
+                        >
+                          {" "}
+                          <button
+                            onClick={() => {
+                              addSongToQueue(trackData);
+                            }}
+                            className="w-full h-full"
+                          >
+                            <div className="flex items-center gap-3">
+                              {" "}
+                              <img
+                                src={`/api/ytmusic/thumbnail?url=${encodeURIComponent(
+                                  trackData.thumbnails?.sort(
+                                    (a, b) => b.width - a.width
+                                  )[0].url
+                                )}`}
+                                alt={trackData?.name}
+                                width={50}
+                                height={50}
+                                className="rounded-md"
+                              />
+                              <div className="flex flex-col gap-1">
+                                <MarqueeText
+                                  text={trackData?.name}
+                                  className="text-left overflow-x-auto"
+                                />
+                                <MarqueeText
+                                  className="text-white/70 text-sm border-white/70 text-left"
+                                  text={trackData?.artist?.name}
+                                />
+                              </div>
+                            </div>
+                          </button>
+                          <div>
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+
+                                removeSongFromStars(trackData);
+                              }}
+                              className="rounded-full mr-2! p-3! bg-white/20 hover:bg-white/30 z-100"
+                            >
+                              <FaTrashAlt />
+                            </button>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <>
+                        <p className="w-full text-center text-gray-400">
+                          You have no starred songs.
+                        </p>
+                      </>
+                    )}
+                  </>
+                )
+              )}
             </div>
           </>
         )}

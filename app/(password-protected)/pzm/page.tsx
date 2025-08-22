@@ -300,6 +300,10 @@ export default function Page() {
 
       if (!user) return;
 
+      for (let i = 0; i < starredSongs.length; i++) {
+        addSongToStars(starredSongs[i]);
+      }
+
       const res = await fetch(
         `/api/private-profile?user_id=${session.user.id}`,
         {

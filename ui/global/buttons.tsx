@@ -18,7 +18,7 @@ export function PrimaryButton({ onClick, Icon, text, className }: ButtonProps) {
   return (
     <button
       type="button"
-      className={clsx("px-3! py-2! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-900 flex items-center justify-center gap-2", className)} 
+      className={clsx("px-3! py-2! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-800 flex items-center justify-center gap-2", className)} 
       onClick={onClick}
     >
       {Icon && <Icon width={24} />} {text}
@@ -28,7 +28,7 @@ export function PrimaryButton({ onClick, Icon, text, className }: ButtonProps) {
 
 export function PrimaryButtonChildren({ children, onClick, className }: ChildrenButtonProps) {
   return (
-    <button className={clsx("px-3! py-2! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-900 flex items-center justify-center gap-2 ", className)} onClick={onClick}>
+    <button className={clsx("px-3! py-2! bg-black border-2 border-white rounded-2xl duration-300 hover:bg-gray-800 flex items-center justify-center gap-2 ", className)} onClick={onClick}>
       {children}
     </button>
   );

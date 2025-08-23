@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Typewriter from "@/ui/typewriter";
-import { useEffect, useState, useRef, use } from "react";
+import { useEffect, useState, useRef } from "react";
 import Particles from "@/ui/particles";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import Image from "next/image";
@@ -21,7 +21,6 @@ import {
 import Card from "@/ui/global/card";
 import Link from "next/link";
 import { IoIosClose } from "react-icons/io";
-import { set } from "zod";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -184,7 +183,7 @@ export default function Page() {
                 </div>
               </div>
               <p className="text-gray-400">
-                We're happy to have you here. If you would like to be part of
+                We&apos;re happy to have you here. If you would like to be part of
                 our community and gain access to more links, features and info,
                 please join our Discord Server{" "}
                 <Link

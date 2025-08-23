@@ -1,4 +1,4 @@
-# Improved docs coming soon
+# PeteZah-Next
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -101,7 +101,7 @@ Or use the buttons below (You will have to set up enviroment variables)
 
 ## Links
 
-- [sso.adidasnmdcitysock.com](sso.adidasnmdcitysock.com)
+- [sso.adidasnmdcitysock.com](https://sso.adidasnmdcitysock.com)
 
 More coming soon!
 

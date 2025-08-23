@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -321,6 +322,7 @@ export default function Page() {
         setLocalStorage("starredSongs", String(...json.starredSongs));
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase.auth]);
 
   // Sets the starred songs

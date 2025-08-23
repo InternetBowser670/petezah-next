@@ -10,6 +10,7 @@ import { createClient } from "@/utils/supabase/client";
 import { setLocalStorage } from "@/ui/settings-manager";
 
 export default function Page() {
+
   function AntiCloseCheckbox() {
     const [antiClose, setAntiClose] = useState(false);
     const supabase = createClient();
@@ -71,6 +72,72 @@ export default function Page() {
         checked={antiClose}
         onChange={handleChange}
         label="Anti-Close"
+        className="mt-2!"
+      />
+    );
+  }
+
+  function AutoAboutBlankCheckbox() {
+    const [autoAboutBlank, setAutoAboutBlank] = useState(false);
+    const supabase = createClient();
+
+    useEffect(() => {
+      const stored = localStorage.getItem("auto_about_blank");
+      if (stored !== null) setAutoAboutBlank(stored === "true");
+
+      supabase.auth.getSession().then(async ({ data: { session } }) => {
+        const user = session?.user;
+
+        if (!user) return;
+
+        const res = await fetch(
+          `/api/private-profile?user_id=${session.user.id}`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              user_id: user.id,
+            }),
+          }
+        );
+
+        const json = await res.json();
+
+        if ("antiClose" in json) {
+          setAutoAboutBlank(json.antiClose);
+          setLocalStorage("autoAboutBlank", String(json.antiClose));
+        }
+      });
+    }, [supabase.auth]);
+
+    const handleChange = async () => {
+      const newVal = !autoAboutBlank;
+
+      setAutoAboutBlank(newVal);
+
+      setLocalStorage("autoAboutBlank", String(newVal));
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      const user = session?.user;
+
+      if (!user) return;
+
+      fetch("/api/set-auto-about-blank", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_id: user.id, autoAboutBlank: newVal }),
+      });
+    };
+
+    return (
+      <Checkbox
+        checked={autoAboutBlank}
+        onChange={handleChange}
+        label="Auto about:blank (WIP)"
         className="mt-2!"
       />
     );
@@ -140,8 +207,9 @@ export default function Page() {
           <PrimaryButtonChildren onClick={openAboutBlank}>
             Open in about:blank
           </PrimaryButtonChildren>
-          <div>
+          <div className="flex gap-2 mt-2! justify-around">
             <AntiCloseCheckbox />
+            <AutoAboutBlankCheckbox />
           </div>
         </Card>
       </CenteredDivPage>

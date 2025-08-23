@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Typewriter from "@/ui/typewriter";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import Particles from "@/ui/particles";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import Image from "next/image";
@@ -18,12 +18,17 @@ import {
   PrimaryButtonChildren,
   SecondaryButtonChildren,
 } from "@/ui/global/buttons";
+import Card from "@/ui/global/card";
+import Link from "next/link";
+import { IoIosClose } from "react-icons/io";
+import { set } from "zod";
 
 export default function Page() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [counter, setCounter] = useState(4);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
 
   const searchParams = useSearchParams();
 
@@ -150,8 +155,51 @@ export default function Page() {
     setUser(data.user);
   }
 
+  function hidePopup() {
+    setShowPopup(false);
+    localStorage.setItem("popupHiddenTime", String(Date.now()));
+  }
+
+  useEffect(() => {
+    if (
+      parseInt(localStorage.getItem("popupHiddenTime") || "0") < 1755952891140
+    ) {
+      setShowPopup(true);
+    }
+  }, []);
+
   return (
     <div className="flex items-center h-full relative w-full bg-[#0A1D37] text-white overflow-hidden">
+      {showPopup && (
+        <>
+          <div className="absolute z-100 w-full h-full top-0 left-0 flex justify-center items-center bg-gray-800/50">
+            <Card className="p-2! text-center max-w-1/2 xl:max-w-1/3">
+              <div className="flex justify-between items-center mb-2!">
+                <h1 className="text-3xl ml-3">Welcome to PeteZah-Next!</h1>{" "}
+                <div
+                  className="rounded-full bg-red-600 flex justify-center items-center h-[35px] w-[35px] cursor-pointer aspect-square!"
+                  onClick={hidePopup}
+                >
+                  <IoIosClose size={30} />
+                </div>
+              </div>
+              <p className="text-gray-400">
+                We're happy to have you here. If you would like to be part of
+                our community and gain access to more links, features and info,
+                please join our Discord Server{" "}
+                <Link
+                  className="text-blue-500 underline"
+                  href={"https://discord.gg/GqshrYNn62"}
+                >
+                  here
+                </Link>
+                .
+              </p>
+            </Card>
+          </div>
+        </>
+      )}
+
       <Particles />
       <div className="flex items-center justify-between w-full">
         <div className="relative z-5 p-8! rounded-2xl bg-[#0A1D37] border-2 border-[#0096FF] text-white text-left left-[10%] w-[450px]">

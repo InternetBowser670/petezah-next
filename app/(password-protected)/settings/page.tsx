@@ -130,7 +130,7 @@ export default function Page() {
         <h1 className="text-3xl font-bold text-center sm:text-5xl md:text-6xl lg:text-7xl mb-4!">
           Settings
         </h1>
-        <WipWarning estCompletionDate="by the beginning of the school year" />
+        <WipWarning />
         <Card className="mt-4! w-full">
           <h2 className="text-lg font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-2!">
             Cloaking

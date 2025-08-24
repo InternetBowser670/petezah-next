@@ -2,7 +2,8 @@ import { createAdminClient } from "@/utils/supabase/admin";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  try {
+    const body = await req.json();
   const userId = body.user_id;
 
   if (!userId || typeof userId !== "string") {
@@ -33,7 +34,10 @@ export async function POST(req: Request) {
 
   const dcData = await res.json();
 
-  const isBooster = dcData.roles.includes("1341154772006211666");
+  const isBooster = dcData.roles?.includes("1341154772006211666");
 
   return NextResponse.json({ isBooster });
+  } catch (error) {
+    console.error("Error in /api/is-booster:", error);
+  }
 }

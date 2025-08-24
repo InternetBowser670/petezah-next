@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
   const { data, error } = await createAdminClient()
     .from('profiles_private')
-    .select('anti_close_enabled, discord_id, starred_songs')
+    .select('anti_close_enabled, discord_id, starred_songs, auto_about_blank')
     .eq('id', userId)
     .single();
 
@@ -19,5 +19,5 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json({ antiClose: data.anti_close_enabled, discordId: data.discord_id, starredSongs: data.starred_songs });
+  return NextResponse.json({ antiClose: data.anti_close_enabled, discordId: data.discord_id, starredSongs: data.starred_songs, autoAboutBlank: data.auto_about_blank });
 }

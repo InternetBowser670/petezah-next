@@ -102,9 +102,9 @@ export default function Page() {
 
         const json = await res.json();
 
-        if ("antiClose" in json) {
-          setAutoAboutBlank(json.antiClose);
-          setLocalStorage("autoAboutBlank", String(json.antiClose));
+        if ("autoAboutBlank" in json) {
+          setAutoAboutBlank(json.autoAboutBlank);
+          setLocalStorage("autoAboutBlank", String(json.autoAboutBlank));
         }
       });
     }, [supabase.auth]);

@@ -18,6 +18,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid body" }, { status: 400 });
   }
 
+  console.log(autoAboutBlank, user_id);
+
   const { error } = await supabase
     .from("profiles_private")
     .update({ auto_about_blank: autoAboutBlank })

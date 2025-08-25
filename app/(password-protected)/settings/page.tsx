@@ -10,61 +10,52 @@ import { createClient } from "@/utils/supabase/client";
 import { setLocalStorage } from "@/ui/settings-manager";
 
 export default function Page() {
+  const supabase = createClient();
 
   function AntiCloseCheckbox() {
     const [antiClose, setAntiClose] = useState(false);
-    const supabase = createClient();
+
+    async function updateAntiClose(newVal: boolean) {
+      const user = (await supabase.auth.getUser()).data.user;
+      if (!user) return;
+
+      const { error } = await supabase
+        .from("profiles_private")
+        .update({ anti_close_enabled: newVal })
+        .eq("id", user.id);
+
+      if (error) console.error(error);
+    }
 
     useEffect(() => {
       const stored = localStorage.getItem("antiClose");
       if (stored !== null) setAntiClose(stored === "true");
 
-      supabase.auth.getSession().then(async ({ data: { session } }) => {
-        const user = session?.user;
-
+      supabase.auth.getUser().then(async ({ data: { user } }) => {
         if (!user) return;
+        const { data, error } = await supabase
+          .from("profiles_private")
+          .select("anti_close_enabled")
+          .eq("id", user.id)
+          .single();
 
-        const res = await fetch(
-          `/api/private-profile?user_id=${session.user.id}`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              user_id: user.id,
-            }),
-          }
-        );
+        if (error) {
+          console.error(error);
+          return;
+        }
 
-        const json = await res.json();
-
-        if ("antiClose" in json) {
-          setAntiClose(json.antiClose);
-          setLocalStorage("antiClose", String(json.antiClose));
+        if (data?.anti_close_enabled !== undefined) {
+          setAntiClose(data.anti_close_enabled);
+          setLocalStorage("antiClose", String(data.anti_close_enabled));
         }
       });
-    }, [supabase.auth]);
+    }, []);
 
     const handleChange = async () => {
       const newVal = !antiClose;
-
       setAntiClose(newVal);
-
       setLocalStorage("antiClose", String(newVal));
-
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      const user = session?.user;
-
-      if (!user) return;
-
-      fetch("/api/set-anti-close", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user_id: user.id, anti_close_enabled: newVal }),
-      });
+      await updateAntiClose(newVal);
     };
 
     return (
@@ -79,58 +70,48 @@ export default function Page() {
 
   function AutoAboutBlankCheckbox() {
     const [autoAboutBlank, setAutoAboutBlank] = useState(false);
-    const supabase = createClient();
+
+    async function updateAutoAboutBlank(newVal: boolean) {
+      const user = (await supabase.auth.getUser()).data.user;
+      if (!user) return;
+
+      const { error } = await supabase
+        .from("profiles_private")
+        .update({ auto_about_blank: newVal })
+        .eq("id", user.id);
+
+      if (error) console.error(error);
+    }
 
     useEffect(() => {
-      const stored = localStorage.getItem("auto_about_blank");
+      const stored = localStorage.getItem("autoAboutBlank");
       if (stored !== null) setAutoAboutBlank(stored === "true");
 
-      supabase.auth.getSession().then(async ({ data: { session } }) => {
-        const user = session?.user;
-
+      supabase.auth.getUser().then(async ({ data: { user } }) => {
         if (!user) return;
+        const { data, error } = await supabase
+          .from("profiles_private")
+          .select("auto_about_blank")
+          .eq("id", user.id)
+          .single();
 
-        const res = await fetch(
-          `/api/private-profile?user_id=${session.user.id}`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              user_id: user.id,
-            }),
-          }
-        );
+        if (error) {
+          console.error(error);
+          return;
+        }
 
-        const json = await res.json();
-
-        if ("autoAboutBlank" in json) {
-          setAutoAboutBlank(json.autoAboutBlank);
-          setLocalStorage("autoAboutBlank", String(json.autoAboutBlank));
+        if (data?.auto_about_blank !== undefined) {
+          setAutoAboutBlank(data.auto_about_blank);
+          setLocalStorage("autoAboutBlank", String(data.auto_about_blank));
         }
       });
-    }, [supabase.auth]);
+    }, []);
 
     const handleChange = async () => {
       const newVal = !autoAboutBlank;
-
       setAutoAboutBlank(newVal);
-
       setLocalStorage("autoAboutBlank", String(newVal));
-
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      const user = session?.user;
-
-      if (!user) return;
-
-      fetch("/api/set-auto-about-blank", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user_id: user.id, autoAboutBlank: newVal }),
-      });
+      await updateAutoAboutBlank(newVal);
     };
 
     return (
@@ -166,21 +147,21 @@ export default function Page() {
     popup.document.body.style.height = "100vh";
     popup.document.body.style.background = "#fff";
     popup.document.body.innerHTML = `
-		<div id="loading" style="font-family: sans-serif; font-size: 1.2rem;">
-			Loading...
-		</div>
-	`;
+      <div id="loading" style="font-family: sans-serif; font-size: 1.2rem;">
+        Loading...
+      </div>
+    `;
 
     const iframe = popup.document.createElement("iframe");
     iframe.src = "/home";
     iframe.style.cssText = `
-		position: absolute;
-		top: 0; left: 0;
-		width: 100vw;
-		height: 100vh;
-		border: none;
-		display: none;
-	`;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      display: none;
+    `;
 
     popup.document.body.appendChild(iframe);
 
@@ -192,27 +173,25 @@ export default function Page() {
   }
 
   return (
-    <>
-      <CenteredDivPage className="p-[50px]!">
-        <h1 className="text-3xl font-bold text-center sm:text-5xl md:text-6xl lg:text-7xl mb-4!">
-          Settings
-        </h1>
-        <WipWarning />
-        <Card className="mt-4! w-full">
-          <h2 className="text-lg font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-2!">
-            Cloaking
-          </h2>
-          <hr className="my-4!" />
-          <p className="mb-2!">Control cloaking behavior to enhance privacy.</p>
-          <PrimaryButtonChildren onClick={openAboutBlank}>
-            Open in about:blank
-          </PrimaryButtonChildren>
-          <div className="flex gap-2 mt-2! justify-around">
-            <AntiCloseCheckbox />
-            <AutoAboutBlankCheckbox />
-          </div>
-        </Card>
-      </CenteredDivPage>
-    </>
+    <CenteredDivPage className="p-[50px]!">
+      <h1 className="text-3xl font-bold text-center sm:text-5xl md:text-6xl lg:text-7xl mb-4!">
+        Settings
+      </h1>
+      <WipWarning />
+      <Card className="mt-4! w-full">
+        <h2 className="text-lg font-semibold sm:text-2xl md:text-3xl lg:text-4xl mb-2!">
+          Cloaking
+        </h2>
+        <hr className="my-4!" />
+        <p className="mb-2!">Control cloaking behavior to enhance privacy.</p>
+        <PrimaryButtonChildren onClick={openAboutBlank}>
+          Open in about:blank
+        </PrimaryButtonChildren>
+        <div className="flex gap-2 mt-2! justify-around">
+          <AntiCloseCheckbox />
+          <AutoAboutBlankCheckbox />
+        </div>
+      </Card>
+    </CenteredDivPage>
   );
 }

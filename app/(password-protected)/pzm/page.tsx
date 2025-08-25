@@ -15,7 +15,7 @@ import {
   FaTrashAlt,
   FaVolumeMute,
 } from "react-icons/fa";
-import { FaPause } from "react-icons/fa6";
+import { FaPause, FaShuffle } from "react-icons/fa6";
 import { v4 } from "uuid";
 import MarqueeBg from "@/ui/backgrounds/marquee-bg";
 import clsx from "clsx";
@@ -94,6 +94,37 @@ export default function Page() {
 
   function resumeSong() {
     playerRef.current?.playVideo();
+  }
+
+  // Shuffle array but keep the item at fixedIndex in the same place
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function shuffleKeepIndex(arr: any[], fixedIndex: number) {
+    const result = [...arr];
+
+    const fixedValue = result[fixedIndex];
+
+    const rest = result.filter((_, i) => i !== fixedIndex);
+
+    for (let i = rest.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [rest[i], rest[j]] = [rest[j], rest[i]];
+    }
+
+    let ri = 0;
+    for (let i = 0; i < result.length; i++) {
+      if (i === fixedIndex) {
+        result[i] = fixedValue;
+      } else {
+        result[i] = rest[ri++];
+      }
+    }
+
+    return result;
+  }
+
+  function shuffleQueue() {
+    setQueue(shuffleKeepIndex(queue ?? [], currentTrackIndex ?? 0));
   }
 
   // Seek controls
@@ -293,7 +324,7 @@ export default function Page() {
     } catch {
       stored = [];
     }
-    
+
     if (stored.length > 0) setStarredSongs(stored);
 
     supabase.auth.getSession().then(async ({ data: { session } }) => {
@@ -322,7 +353,7 @@ export default function Page() {
         setLocalStorage("starredSongs", String(...json.starredSongs));
       }
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase.auth]);
 
   // Sets the starred songs
@@ -588,6 +619,9 @@ export default function Page() {
                         </div>
                       </>
                     )}
+                    <button onClick={shuffleQueue} className="bg-white/10 hover:bg-white/40 transition-all duration-400 rounded-full aspect-square size-10 text-white p-3! flex items-center justify-center">
+                      <FaShuffle className="size-full" />
+                    </button>
                     {muted ? (
                       <>
                         <button
@@ -709,7 +743,7 @@ export default function Page() {
               </div>
               {sideMenuPage == "queue" ? (
                 <>
-                  {queue ? (
+                  {queue && queue.length > 0 ? (
                     queue.map((trackData, index) => (
                       <div
                         key={trackData.id}

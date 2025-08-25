@@ -79,7 +79,7 @@ export default function Page() {
         .from("profiles_private")
         .update({ auto_about_blank: newVal })
         .eq("id", user.id);
-
+ 
       if (error) console.error(error);
     }
 
@@ -118,7 +118,7 @@ export default function Page() {
       <Checkbox
         checked={autoAboutBlank}
         onChange={handleChange}
-        label="Auto about:blank (WIP)"
+        label="Auto about:blank"
         className="mt-2!"
       />
     );
